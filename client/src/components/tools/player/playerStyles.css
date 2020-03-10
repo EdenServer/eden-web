@@ -1,0 +1,86 @@
+.eden_profile-content {
+    display: flex;
+}
+
+.gm_player-title {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.gm_player-title::before {
+    font-size: 12px;
+    content: "•";
+    margin: 0 4px;
+}
+
+.eden_player-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.ui.header .eden_player-header-right > i.icon {
+    margin-left: 16px;
+    margin-right: 0;
+}
+
+.eden_player-nations {
+    text-align: center;
+}
+
+.eden_player-nation {
+    height: 16px;
+    margin: 0 6px;
+}
+
+.eden_equip-section {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.eden_player-jobs {
+    display: inline-flex;
+    flex-direction: column;
+    border: 0.5px solid #ccc;
+    border-radius: 4px;
+    height: 185px;
+    width: 150px;
+    margin: 4px;
+}
+
+.eden_player-job {
+    text-align: center;
+    font-weight: bold;
+}
+
+.eden_player-jobs > h6 {
+    border-bottom: 0.5px solid #ccc;
+    text-align: center;
+    margin: 0;
+}
+
+.eden_player-jobs td {
+    line-height: .9em;
+    width: 65px;
+}
+
+/**
+ * equipbox CSS and HTML styled from
+ * https://www.ffxiah.com/player/Odin/Godmode
+ */
+.player-equipbox {
+    float: left;
+    width: 130px;
+    height: 130px;
+    border: 1px solid #ddd;
+    margin: 4px;
+    border-collapse: collapse;
+    background-color: #eee;
+}
+
+.equipslot {
+    background-color: rgba(0, 0, 0, 0);;
+    float: left;
+    width: 32px;
+    height: 32px;
+    background-image: url(https://www.ffxiah.com/images/equip_box.gif);
+}
