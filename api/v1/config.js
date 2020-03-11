@@ -119,9 +119,9 @@ module.exports = {
             description: 'A great resource on era retail camps. Some camps will not apply as they are WoTG area camps.',
         },
         {
-            url: 'https://ffxi-atlas.com/',
+            url: 'http://ffxi-atlas.mageringnetwork.com/',
             image: 'https://static.ffxiah.com/images/icon/191.png',
-            header: 'FFXI Atlas',
+            header: 'FFXI Atlas (Mirror)',
             description: 'All the maps without the cost of buying your own maps in game. However, good luck finding where you are in relation to the map!',
         },
         {

@@ -265,8 +265,8 @@ export default {
     equipslot: (slotid) => `https://static.ffxiah.com/images/eq${slotid}.gif`,
     flags: {
         sandoria: 'https://vignette.wikia.nocookie.net/ffxi/images/2/2f/Ffxi_flg_03l.jpg',
-        bastok: 'https://vignette.wikia.nocookie.net/ffxi/images/b/bf/Ffxi_flg_04l.jpg',
-        windurst: 'https://vignette.wikia.nocookie.net/ffxi/images/0/07/Ffxi_flg_01l.jpg',
+        bastok: 'https://vignette.wikia.nocookie.net/ffxi/images/0/07/Ffxi_flg_01l.jpg',
+        windurst: 'https://vignette.wikia.nocookie.net/ffxi/images/b/bf/Ffxi_flg_04l.jpg',
     },
     weather: {
         fire:'https://vignette.wikia.nocookie.net/ffxi/images/2/2c/Trans_Fire.gif',
