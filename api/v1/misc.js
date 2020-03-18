@@ -11,7 +11,8 @@ router.get('/status', (req, res) => {
     try {
         scanner.checkPortStatus(54231, 'localhost', async (error, status) => {
             if (!error && status === 'open') {
-                const online = await req.app.locals.query('SELECT COUNT(*) AS ct FROM accounts_sessions;');
+                const query = 'SELECT COUNT(*) AS ct FROM accounts_sessions JOIN chars ON accounts_sessions.charid = chars.charid WHERE gmlevel = 0;';
+                const online = await req.app.locals.query(query);
                 return res.status(200).send(online[0].ct.toString());
             }
             res.status(404).send();
