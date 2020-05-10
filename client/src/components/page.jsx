@@ -43,9 +43,7 @@ const Page = props => {
         <Route
           exact
           path="/install"
-          render={() => (
-            <Install info={config.install ? config.install : null} />
-          )}
+          render={() => <Install info={config.install} />}
         />
         <Route exact path="/tools" render={() => <Tools />} />
         <Route
@@ -62,9 +60,7 @@ const Page = props => {
         <Route
           exact
           path="/home"
-          render={props => (
-            <Home posts={config.posts ? config.posts : null} {...props} />
-          )}
+          render={() => <Home posts={config.posts} />}
         />
         <Route exact path="/contact" render={() => <Contact />} />
         <Redirect from="/" to={localStorage.getItem('page') || '/home'} />
@@ -88,7 +84,7 @@ Page.propTypes = {
       discord: PropTypes.string.isRequired,
       source1: PropTypes.string.isRequired,
       source2: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
     links: PropTypes.arrayOf(
       PropTypes.shape({
         description: PropTypes.string,
@@ -96,7 +92,7 @@ Page.propTypes = {
         image: PropTypes.string,
         url: PropTypes.string,
       })
-    ).isRequired,
+    ),
     posts: PropTypes.arrayOf(
       PropTypes.shape({
         author: PropTypes.string,
@@ -104,7 +100,7 @@ Page.propTypes = {
         message: PropTypes.string,
         title: PropTypes.string,
       })
-    ).isRequired,
+    ),
     rules: PropTypes.shape({
       allowed: PropTypes.arrayOf(PropTypes.string),
       disallowed: PropTypes.arrayOf(PropTypes.string),

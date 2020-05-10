@@ -31,7 +31,11 @@ Links.propTypes = {
       image: PropTypes.string,
       url: PropTypes.string,
     })
-  ).isRequired,
+  ),
+};
+
+Links.defaultProps = {
+  links: [],
 };
 
 export default Links;
