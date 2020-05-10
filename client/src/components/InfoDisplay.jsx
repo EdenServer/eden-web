@@ -8,18 +8,24 @@ function InfoDisplay(props) {
   return (
     <Card bg="light" className="m-3">
       <Card.Body>
-        <Card.Title>
-          <h3>{title}</h3>
-        </Card.Title>
-        <Card.Text>{children}</Card.Text>
+        {title && (
+          <Card.Title>
+            <h3>{title}</h3>
+          </Card.Title>
+        )}
+        {children}
       </Card.Body>
     </Card>
   );
 }
 
 InfoDisplay.propTypes = {
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+
+InfoDisplay.defaultProps = {
+  title: '',
 };
 
 export default InfoDisplay;

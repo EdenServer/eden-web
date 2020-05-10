@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
 import InfoDisplay from '../InfoDisplay';
 import Contributing from './contributing';
 
@@ -10,35 +11,35 @@ export default () => {
           "What's Different between Eden, other private servers, and retail?"
         }
       >
-        <p>
+        <Card.Text>
           Eden was created in part to recreate the era experience as close as
           possible. We define era as anything that happened before the Wings of
           the Goddess release on November 20th, 2007. While FFXI is still a
           great game today, it is vastly different than it was in 2007. We don't
           aim to take the place of retail today, and we encourage you to
           subscribe to it, if nothing else to finish the amazing storyline.
-        </p>
-        <p>
+        </Card.Text>
+        <Card.Text>
           Many past players of FFXI long for the days of a cooperative
           environment where "quality of life" was an afterthought. Because there
           is no classic solution from SquareEnix, Eden was created to fill that
           desire. Our vision is to recreate the 2007 era experience as closely
           as possible with as very few deviations as possible.
-        </p>
-        <p>
+        </Card.Text>
+        <Card.Text>
           While all private servers have some deviation from era retail, we
           believe that the other private servers that we have encountered are
           full of customizations and/or are just too far from era accuracy. We
           also have a large volunteer staff of about 30 people that help us keep
           Eden running smooth.
-        </p>
+        </Card.Text>
       </InfoDisplay>
 
       <InfoDisplay title="How has Eden deviated from retail?">
-        <p>
+        <Card.Text>
           There are a small handful of deviations from this though and that's
           what is going to be highlighed below.
-        </p>
+        </Card.Text>
         <table className="ui celled table">
           <thead>
             <tr>
@@ -158,14 +159,14 @@ export default () => {
       </InfoDisplay>
 
       <InfoDisplay title="How can I help?">
-        <p>
+        <Card.Text>
           There are several ways to help. You can fill out bug reports, report
           players who are cheating by using the in-game ticketing system,
           volunteer as a staff member, contribute code, et. cetera. If you'd
           like to contribute code, we could really use all the help we can get!
           Below I've drafted up how to set up your own private server here and
           create a basic BCNM.
-        </p>
+        </Card.Text>
       </InfoDisplay>
 
       <Contributing />
