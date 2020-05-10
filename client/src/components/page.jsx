@@ -12,7 +12,8 @@ import About from './about';
 import Contact from './contact';
 import './style.css';
 
-const Page = ({ location, config }) => {
+const Page = props => {
+  const { location, config } = props;
   const [active, setActive] = React.useState(false);
 
   const changePage = (_e, data) => {
@@ -42,11 +43,11 @@ const Page = ({ location, config }) => {
         <Route
           exact
           path="/install"
-          render={props => (
-            <Install info={config.install ? config.install : null} {...props} />
+          render={() => (
+            <Install info={config.install ? config.install : null} />
           )}
         />
-        <Route exact path="/tools" render={props => <Tools {...props} />} />
+        <Route exact path="/tools" render={() => <Tools />} />
         <Route
           exact
           path="/links"
