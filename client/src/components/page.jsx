@@ -51,7 +51,7 @@ const Page = props => {
         <Route
           exact
           path="/links"
-          render={props => <Links links={config.links} {...props} />}
+          render={() => <Links links={config.links} />}
         />
         <Route
           exact
