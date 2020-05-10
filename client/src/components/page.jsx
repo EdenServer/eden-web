@@ -22,7 +22,7 @@ const Page = props => {
   };
 
   return (
-    <div className="gm_main">
+    <div className="gm_main h-100">
       <div className="gm_banner">
         <Hamburger active={active} toggle={() => setActive(!active)} />
         <h2 className="gm_banner_text">Eden</h2>
