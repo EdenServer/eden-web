@@ -9,7 +9,7 @@ function install(props) {
 
   return (
     <>
-      <Card className="m-3">
+      <Card className="m-3 bg-light">
         <Card.Body>
           <Card.Title>
             <h3>Account Registration</h3>
@@ -25,7 +25,7 @@ function install(props) {
         </Card.Body>
       </Card>
 
-      <Card className="m-3">
+      <Card className="m-3 bg-light">
         <Card.Body>
           <Card.Title>
             <h3>Fresh Install 64-bit systems</h3>
@@ -51,7 +51,7 @@ function install(props) {
         </Card.Body>
       </Card>
 
-      <Card className="m-3">
+      <Card className="m-3 bg-light">
         <Card.Body>
           <Card.Title>
             <h3>Coming back / migrating from another private server</h3>
