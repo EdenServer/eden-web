@@ -56,7 +56,7 @@ const Page = props => {
         <Route
           exact
           path="/rules"
-          render={props => <Rules list={config.rules} {...props} />}
+          render={() => <Rules list={config.rules} />}
         />
         <Route exact path="/about" render={About} />
         <Route
