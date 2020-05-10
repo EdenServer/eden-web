@@ -6,6 +6,7 @@
   "scripts": {
     "client-dev": "cd client && npm start",
     "dev": "concurrently \"nodemon index.js\" \"npm run client-dev\"",
+    "dev:api": "nodemon index.js",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
