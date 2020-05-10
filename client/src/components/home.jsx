@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Container, Row, Col } from 'react-bootstrap';
 import Yells from './yellbox';
 import News from './newsbox';
 
@@ -7,10 +8,12 @@ function Home(props) {
   const { posts } = props;
 
   return (
-    <div className="gm_home">
-      <Yells />
-      {posts && <News posts={posts} />}
-    </div>
+    <Row noGutters className="h-100">
+      <Col xs={12} lg={4}>
+        <Yells className="my-3 my-lg-0" />
+      </Col>
+      <Col>{posts && <News posts={posts} />}</Col>
+    </Row>
   );
 }
 
