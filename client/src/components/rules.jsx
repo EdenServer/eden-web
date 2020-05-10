@@ -146,7 +146,18 @@ Rules.propTypes = {
     rules: PropTypes.arrayOf(PropTypes.string),
     terms: PropTypes.arrayOf(PropTypes.string),
     yells: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
+  }),
+};
+
+Rules.defaultProps = {
+  list: {
+    allowed: [],
+    disallowed: [],
+    discord: [],
+    rules: [],
+    terms: [],
+    yells: [],
+  },
 };
 
 export default Rules;
