@@ -4,8 +4,7 @@ This website was written by Godmode from the Eden Server with inspiration from F
 ## Dependencies
 
 1. [Node.js](https://nodejs.org/en/download/)
-2. `nodemon` for some scripts
-3. `pm2` for deployment
+2. `pm2` for deployment
 
 ## Setup
 
