@@ -7,7 +7,6 @@
     "client-dev": "cd client && npm start",
     "dev": "concurrently \"nodemon index.js\" \"npm run client-dev\"",
     "start": "node index.js",
-    "game-mock": "nodemon game-mock.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
