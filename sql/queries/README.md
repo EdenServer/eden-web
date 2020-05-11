@@ -1,1 +1,1 @@
-Files in this folder will be ignores, so copy any of the examples from the `examples` folder into this folder, and modify them as you see fit.
+Files in this folder will be ignores, so copy any of the examples from the `samples` folder into this folder, and modify them as you see fit.
