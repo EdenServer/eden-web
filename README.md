@@ -46,7 +46,7 @@ Software:
 
 
 ### Adding character and misc. other data
-In `sql\queries\examples` you can find example SQL scripts for adding content to the website. Copy the ones you need to user the `sql\queries` folder, and modify them as you see fit. 
+In `sql\queries\samples` you can find example SQL scripts for adding content to the website. Copy the ones you need to user the `sql\queries` folder, and modify them as you see fit. 
 Any new files in the `sql\queries` folder are ignored by git, so you can make as many changes as you want to the scripts you have there.
 
 The SQL scripts can be run in the same way as when you were setting up the tables and data:
