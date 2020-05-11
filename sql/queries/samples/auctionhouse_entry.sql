@@ -7,7 +7,7 @@ SET @sellPrice = 42;
 
 
 -- Add auction house entry
-SET @seller = (SELECT charid FROM chars WHERE charname = @charName);
-SET @date = UNIX_TIMESTAMP()/1000;
+SET @seller = (SELECT charid FROM chars WHERE charname = @sellerName);
+SET @date = UNIX_TIMESTAMP();
 SET @sellDate = @date;
 INSERT INTO server_auctionhouse(itemid, stack, seller, seller_name, date, buyer_name, sale, sell_date) VALUES(@itemId, @stack, @seller, @sellerName, @date, @buyerName, @sellPrice, @sellDate);
