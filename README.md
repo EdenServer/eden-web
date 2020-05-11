@@ -23,6 +23,7 @@ This website was written by Godmode from the Eden Server with inspiration from F
 ### Development
 1. Install the client by changing to the `/client` directory and running `npm i`;
 1. Navigate back to the root directory and run  the `npm run dev` command on the shell.
+1. (Optional) To simulate Eden being online locally, you can run `npm run game-mock`.
 
 ## TODO
 1. Fix eslint with react scripts. Enable by removing leading _ on .eslintrc.js and _devDependencies
