@@ -10,11 +10,11 @@ const { getYells } = require('./utils/yells');
 router.get('/status', async (req, res) => {
     try {
         let gameServerOnline = false;
-        if (process.env.MOCK_GAME_SERVER_ONLINE == "true") {
+        if (process.env.MOCK_GAME_SERVER_ONLINE === "true") {
             gameServerOnline = true;
         } else {
             const status = await scanner.checkPortStatus(process.env.GAME_SERVER_PORT, process.env.GAME_SERVER_HOST)
-            gameServerOnline = status == 'open';
+            gameServerOnline = status === 'open';
         }
 
         if (gameServerOnline) {
