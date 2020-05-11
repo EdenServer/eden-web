@@ -1,3 +1,7 @@
 node_modules
 build
 .env
+
+sql/data
+!sql/data/examples
+!sql/data/README.md
