@@ -7,17 +7,23 @@ const scanner = require('portscanner');
 
 const { getYells } = require('./utils/yells');
 
-router.get('/status', (req, res) => {
+router.get('/status', async (req, res) => {
     try {
-        scanner.checkPortStatus(process.env.GAME_SERVER_PORT, process.env.GAME_SERVER_HOST, async (error, status) => {
-            if (!error && status === 'open') {
-                const query = 'SELECT COUNT(*) AS ct FROM accounts_sessions JOIN chars ON accounts_sessions.charid = chars.charid WHERE gmlevel = 0;';
-                const online = await req.app.locals.query(query);
-                return res.status(200).send(online[0].ct.toString());
-            }
-            res.status(404).send();
-        });
+        let gameServerOnline = false;
+        if (process.env.MOCK_GAME_SERVER_ONLINE == "true") {
+            gameServerOnline = true;
+        } else {
+            const status = await scanner.checkPortStatus(process.env.GAME_SERVER_PORT, process.env.GAME_SERVER_HOST)
+            gameServerOnline = status == 'open';
+        }
+
+        if (gameServerOnline) {
+            const query = 'SELECT COUNT(*) AS ct FROM accounts_sessions JOIN chars ON accounts_sessions.charid = chars.charid WHERE gmlevel = 0;';
+            const online = await req.app.locals.query(query);
+            return res.status(200).send(online[0].ct.toString());
+        }
     } catch (error) {
+        console.error(error);
         res.status(404).send();
     }
 });
