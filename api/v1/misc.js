@@ -9,7 +9,7 @@ const { getYells } = require('./utils/yells');
 
 router.get('/status', (req, res) => {
     try {
-        scanner.checkPortStatus(54231, 'localhost', async (error, status) => {
+        scanner.checkPortStatus(process.env.GAME_SERVER_PORT, process.env.GAME_SERVER_HOST, async (error, status) => {
             if (!error && status === 'open') {
                 const query = 'SELECT COUNT(*) AS ct FROM accounts_sessions JOIN chars ON accounts_sessions.charid = chars.charid WHERE gmlevel = 0;';
                 const online = await req.app.locals.query(query);
