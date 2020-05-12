@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS `chars`;
 CREATE TABLE `chars` (
   `charid` int(10) unsigned NOT NULL,
   `accid` int(10) unsigned NOT NULL,
-  `charname` varchar(15) UNIQUE NOT NULL,
+  `charname` varchar(15) NOT NULL,
   `nation` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `pos_zone` smallint(3) unsigned NOT NULL,
   `pos_prevzone` smallint(3) unsigned NOT NULL DEFAULT '0',
