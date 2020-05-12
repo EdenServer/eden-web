@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 
 function InfoDisplay(props) {
-  const { title, children } = props;
+  const { header, title, children } = props;
 
   return (
     <Card bg="light" className="m-3">
+      {header && <Card.Header>{header}</Card.Header>}
       <Card.Body>
         {title && (
           <Card.Title>
@@ -20,11 +21,13 @@ function InfoDisplay(props) {
 }
 
 InfoDisplay.propTypes = {
+  header: PropTypes.node,
   title: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
 InfoDisplay.defaultProps = {
+  header: null,
   title: '',
 };
 
