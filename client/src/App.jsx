@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       ready: false,
+      apiNoResponse: false,
       profile: {
         emailModalOpen: false,
         passwordModalOpen: false,
@@ -39,21 +40,21 @@ class App extends Component {
     await api
       .getConfig()
       .then(response => this.setConfig(response.data))
-      .catch(error => this.handleErrorOnGetConfig(error.response));
+      .catch(() => this.handleErrorOnGetConfig());
   }
 
-  handleErrorOnGetConfig(error) {
+  handleErrorOnGetConfig() {
     this.setState({ config: {}, ready: true });
   }
 
   render() {
-    const { ready, config } = this.state;
+    const { ready, config, apiNoResponse } = this.state;
 
     return (
       <>
         {ready && (
           <Router>
-            <LandingPage config={config} />
+            <LandingPage config={config} apiNoResponse={apiNoResponse} />
           </Router>
         )}
       </>
