@@ -1,11 +1,11 @@
 ## Description
+
 This website was written by Godmode from the Eden Server with inspiration from FFXIAH and Arcanus.
 
 ## Dependencies
 
 1. [Node.js](https://nodejs.org/en/download/)
-2. `nodemon` for some scripts
-3. `pm2` for deployment
+2. `pm2` for deployment
 
 ## Setup
 
@@ -16,16 +16,29 @@ This website was written by Godmode from the Eden Server with inspiration from F
 ## Running
 
 ### Production
+
 1. Install the client by changing to the `/client` directory and running `npm i`;
 2. Build running `npm run build` in the same directory.
 3. Navigate back to the root directory and run the `npm start` command on the shell.
 
 ### Development
+
 1. Install the client by changing to the `/client` directory and running `npm i`;
-1. Navigate back to the root directory and run  the `npm run dev` command on the shell.
+2. Navigate back to the root directory and run the `npm run dev` command on the shell.
+
+### Linting & Code Formatting
+
+The 'client' React app is setup with its own ESLint and Prettier config, plus a VSCode workspace config which enables format on save and issue highlighting. For this to work properly, open the 'client' folder as your project in VSCode. Test this is working by creating an issue such as incorrect tab spacing (Prettier), or referencing state or props directly in JSX to trigger a 'use destructuring' prompt (ESLint). You should see squiggly lines in the code and be able to hover over this for more info and potential quick fix options. Saving the file will solve any automatically fixable issues.
+
+### Notes on the 'client' app
+
+Ideally the 'client' React app should be able to function on its own without at the API. Therefore it should handle its own dependencies in terms of node modules and any configuration. Please ensure that any npm packages required for 'client' are installed at the 'client' level and not at the root API level.
 
 ## TODO
-1. Fix eslint with react scripts. Enable by removing leading _ on .eslintrc.js and _devDependencies
+
+1. Fix eslint with react scripts. Enable by removing leading \_ on .eslintrc.js and \_devDependencies
+
+(UPDATE: ESLint config has since been added to the Client app directly, so need to set this up just to handle the API and check that this is not conflicting with the Client linting.)
 
 
 ## Local database setup
