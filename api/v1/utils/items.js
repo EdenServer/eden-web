@@ -1,7 +1,6 @@
-const loadItems = async (query) => {
-    try {
-        const statement =
-            `SELECT *, b.itemid AS id, b.name AS name,
+const loadItems = async query => {
+  try {
+    const statement = `SELECT *, b.itemid AS id, b.name AS name,
                 IF(a.itemid IS NOT NULL, 1, 0) AS isArmor,
                 IF(f.itemid IS NOT NULL, 1, 0) AS isFurnishing,
                 IF(l.itemid IS NOT NULL, 1, 0) AS hasLatents,
@@ -19,87 +18,86 @@ const loadItems = async (query) => {
             LEFT JOIN item_puppet AS p ON b.itemid = p.itemid
             LEFT JOIN item_usable AS u ON b.itemid = u.itemid
             LEFT JOIN item_weapon AS w ON b.itemid = w.itemid;`;
-        return await query(statement);
-    } catch (error) {
-        return [];
-    }
+    return await query(statement);
+  } catch (error) {
+    return [];
+  }
 };
 
-const loadItemKeys = async (query) => {
-    try {
-        const statement =
-            `SELECT item_basic.itemid, item_basic.name, level, jobs FROM item_basic
+const loadItemKeys = async query => {
+  try {
+    const statement = `SELECT item_basic.itemid, item_basic.name, level, jobs FROM item_basic
             LEFT JOIN item_armor ON item_basic.itemid = item_armor.itemid;`;
-        const results = await query(statement);
-        const map = {};
-        results.forEach(r => map[r.itemid] = {
-            key: r.name,
-            level: r.level,
-            jobs: r.jobs,
-        });
-        return map;
-    } catch (error) {
-        return {};
-    }
+    const results = await query(statement);
+    const map = {};
+    results.forEach(
+      r =>
+        (map[r.itemid] = {
+          key: r.name,
+          level: r.level,
+          jobs: r.jobs,
+        })
+    );
+    return map;
+  } catch (error) {
+    return {};
+  }
 };
 
 const getRecipeFor = async (query, itemname) => {
-    try {
-        const statement =
-            `SELECT * FROM synth_recipes AS r
+  try {
+    const statement = `SELECT * FROM synth_recipes AS r
             JOIN item_basic AS b ON r.result = b.itemid OR resultHQ1 = b.itemid OR resultHQ2 = b.itemid OR resultHQ3 = b.itemid
             WHERE b.name = ?;`;
-        return await query(statement, [itemname]);
-    } catch (error) {
-        return [];
-    }
+    return await query(statement, [itemname]);
+  } catch (error) {
+    return [];
+  }
 };
 
 const getLastSold = async (query, itemname, stack = 0, count = 10) => {
-    try {
-        const statement =
-            `SELECT name, seller_name, buyer_name, sale, sell_date FROM server_auctionhouse
+  try {
+    const statement = `SELECT name, seller_name, buyer_name, sale, sell_date FROM server_auctionhouse
             JOIN item_basic on item_basic.itemid = server_auctionhouse.itemid
             WHERE sell_date != 0 AND item_basic.name = ? AND stack = ?
             ORDER BY sell_date DESC LIMIT ?;`;
-        return await query(statement, [itemname, stack, count]);
-    } catch (error) {
-        return [];
-    }
+    return await query(statement, [itemname, stack, count]);
+  } catch (error) {
+    return [];
+  }
 };
 
 const getBazaars = async (query, itemname) => {
-    try {
-        const statement =
-            `SELECT charname, bazaar FROM char_inventory AS i
+  try {
+    const statement = `SELECT charname, bazaar FROM char_inventory AS i
             JOIN item_basic AS b ON b.itemid = i.itemid
             JOIN chars AS c ON c.charid = i.charid
             WHERE bazaar != 0 AND b.name = ? ORDER BY charname ASC;`;
-        return await query(statement, [itemname]);
-    } catch (error) {
-        return [];
-    }
+    return await query(statement, [itemname]);
+  } catch (error) {
+    return [];
+  }
 };
 
 const getJobs = (level, jobs, idToStr) => {
-    if (level && jobs) {
-        const vals = [];
-        for (let job = 0; job < 22; job++) {
-            if ((jobs & Math.pow(2, job)) !== 0) {
-                vals.push(idToStr[job + 1]);
-            }
-        }
-        return `Lv ${level} ${vals.join(' ')}`;
-    } else {
-        return null;
+  if (level && jobs) {
+    const vals = [];
+    for (let job = 0; job < 22; job++) {
+      if ((jobs & Math.pow(2, job)) !== 0) {
+        vals.push(idToStr[job + 1]);
+      }
     }
+    return `Lv ${level} ${vals.join(' ')}`;
+  } else {
+    return null;
+  }
 };
 
 module.exports = {
-    loadItems,
-    loadItemKeys,
-    getRecipeFor,
-    getLastSold,
-    getBazaars,
-    getJobs,
+  loadItems,
+  loadItemKeys,
+  getRecipeFor,
+  getLastSold,
+  getBazaars,
+  getJobs,
 };
