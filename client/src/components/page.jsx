@@ -43,7 +43,13 @@ const Page = props => {
         <Route
           exact
           path="/install"
+<<<<<<< HEAD
           render={() => <Install info={config.install} />}
+=======
+          render={() => (
+            <Install info={config.install ? config.install : null} />
+          )}
+>>>>>>> upstream/master
         />
         <Route exact path="/tools" render={() => <Tools />} />
         <Route
