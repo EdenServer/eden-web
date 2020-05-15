@@ -1,24 +1,24 @@
-require('lightenv');
-const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql2');
-const path = require('path');
+import 'lightenv';
+import bodyParser from 'body-parser';
+import express from 'express';
+import mysql from 'mysql2';
+import path from 'path';
+import Cache from './api/v1/utils/cache';
+import preparedStatement from './api/v1/utils/db';
+import { loadItemKeys, loadItems } from './api/v1/utils/items';
+import api from './api';
 
-const api = require('./api');
-const { loadItems, loadItemKeys } = require('./api/v1/utils/items');
-const Cache = require('./api/v1/utils/cache');
-const preparedStatement = require('./api/v1/utils/db');
 
 const port = process.env.PORT || 8081;
 const app = express();
 
 app.use(bodyParser.json());
 
-app.use('/public', express.static(path.join(__dirname, 'client/build')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use('/api', api);
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build/index.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.locals.cache = new Cache({ interval: 120000 }); // 2 minutes
@@ -27,7 +27,7 @@ app.locals.db = mysql.createPool({
     user: process.env.MYSQLUSER,
     password: process.env.MYSQLPASS,
     database: process.env.MYSQLDB,
-    port: process.env.MYSQLPORT,
+    port: process.env.MYSQLPORT ? parseInt(process.env.MYSQLPORT) : 3306,
     waitForConnections: true,
     connectionLimit: 10,
 });

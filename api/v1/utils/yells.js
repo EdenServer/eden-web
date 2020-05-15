@@ -2,11 +2,11 @@ const autotranslate = require('./autotranslate');
 const lists = require('../lists');
 
 const hexToAscii= (str) => {
-    hexString = str;
-    strOut = '';
-        for (x = 0; x < hexString.length; x += 2) {
-            strOut += String.fromCharCode(parseInt(hexString.substr(x, 2), 16));
-        }
+    let hexString = str;
+    let strOut = '';
+    for (let x = 0; x < hexString.length; x += 2) {
+        strOut += String.fromCharCode(parseInt(hexString.substr(x, 2), 16));
+    }
     return strOut;
 }
 

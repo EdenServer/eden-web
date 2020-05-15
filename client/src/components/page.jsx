@@ -43,7 +43,13 @@ const Page = props => {
         <Route
           exact
           path="/install"
+<<<<<<< HEAD
           render={() => <Install info={config.install} />}
+=======
+          render={() => (
+            <Install info={config.install ? config.install : null} />
+          )}
+>>>>>>> upstream/master
         />
         <Route exact path="/tools" render={() => <Tools />} />
         <Route
@@ -84,7 +90,11 @@ Page.propTypes = {
       discord: PropTypes.string.isRequired,
       source1: PropTypes.string.isRequired,
       source2: PropTypes.string.isRequired,
+<<<<<<< HEAD
     }),
+=======
+    }).isRequired,
+>>>>>>> upstream/master
     links: PropTypes.arrayOf(
       PropTypes.shape({
         description: PropTypes.string,
@@ -92,7 +102,11 @@ Page.propTypes = {
         image: PropTypes.string,
         url: PropTypes.string,
       })
+<<<<<<< HEAD
     ),
+=======
+    ).isRequired,
+>>>>>>> upstream/master
     posts: PropTypes.arrayOf(
       PropTypes.shape({
         author: PropTypes.string,
@@ -100,7 +114,11 @@ Page.propTypes = {
         message: PropTypes.string,
         title: PropTypes.string,
       })
+<<<<<<< HEAD
     ),
+=======
+    ).isRequired,
+>>>>>>> upstream/master
     rules: PropTypes.shape({
       allowed: PropTypes.arrayOf(PropTypes.string),
       disallowed: PropTypes.arrayOf(PropTypes.string),
