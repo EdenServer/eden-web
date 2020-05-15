@@ -12,7 +12,7 @@ This website was written by Godmode from the Eden Server with inspiration from F
 1. After installing Node make sure you are able to run npm commands in your shell.
 2. Copy the `example.env` as `.env` in the root directory and fill in the appropriate credentials.
 3. Run the `npm i` command on the shell in the root directory.
-4. Install the client dependencies by changing to the `/client` directory and running `npm i`.
+4. Run the `npm i` command on the shell in the /client directory.
 
 ## Running
 
