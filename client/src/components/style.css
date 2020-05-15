@@ -1,249 +1,246 @@
 /* Banner */
 
 .gm_banner {
-    background: url(../assets/banner.jpg) no-repeat center center;
-    background-size: cover;
-    border-bottom: 2px solid #060606;
-    border-top: 2px solid #060606;
-    box-shadow: inset 0 0 15px 0 #111, inset 0 0 15px 0 #111;
-    height: 55px;
-    min-width: 400px;
-    position: relative;
+  background: url(../assets/banner.jpg) no-repeat center center;
+  background-size: cover;
+  border-bottom: 2px solid #060606;
+  border-top: 2px solid #060606;
+  box-shadow: inset 0 0 15px 0 #111, inset 0 0 15px 0 #111;
+  height: 55px;
+  position: relative;
 }
 
 .gm_banner_text {
-    color: #F8F8FF;
-    display: block;
-    font-family: 'Ruslan Display','Trebuchet MS','Lucida Sans Unicode','Lucida Grande','Lucida Sans',Arial,sans-serif;
-    font-size: 4em;
-    font-weight: bold;
-    letter-spacing: -0.25rem;
-    margin: 0;
-    text-align: center;
-    text-decoration: none;
-    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,0.1), 0 0 5px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.3), 0 3px 5px rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(25,200,255,0.4), 0 20px 20px rgba(0,0,0,0.15);
-    position: absolute;
-    bottom: -1rem;
-    right: 1rem;
-    user-select: none;
+  color: #f8f8ff;
+  display: block;
+  font-family: 'Ruslan Display', 'Trebuchet MS', 'Lucida Sans Unicode',
+    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 4em;
+  font-weight: bold;
+  letter-spacing: -0.25rem;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(25, 200, 255, 0.4),
+    0 20px 20px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  bottom: -1rem;
+  right: 1rem;
+  user-select: none;
 }
 
 /* Menu */
 
 .gm_menu.ui.menu {
-    margin: 1rem;
-    position: absolute;
-    z-index: 1;
+  margin: 1rem;
+  position: absolute;
+  z-index: 1;
 }
 
 .gm_menu-credits {
-    
 }
 
 /* Home section */
 
-.gm_home {
-    width: 100%;
-    display: flex;
-}
-
 .gm_news-container {
-    height: calc(100vh - 55px);
-    overflow: auto;
-    padding: 1rem;
-    margin: 0;
-    flex: 1;
-    list-style: none;
+  overflow: auto;
+  padding: 1rem;
+  margin: 0;
+  flex: 1;
+  list-style: none;
 }
 
 .ui.message.gm_news-post p.gm_news-date {
-    margin-top: 0;
-    margin-bottom: 1em;
-    font-size: .75em;
+  margin-top: 0;
+  margin-bottom: 1em;
+  font-size: 0.75em;
 }
 
 .gm_news-title {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 /* Yellbox */
 
 .gm_yell-container {
-    color: white;
-    overflow: auto;
-    background-color: #120D37;
-    margin: 0;
-    height: calc(100vh - 55px);
-    width: 400px;
-    min-height: 150px;
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    user-select: none;
-    list-style: none;
+  min-height: 15vh;
+  color: white;
+  overflow: auto;
+  background-color: #120d37;
+  margin: 0;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  user-select: none;
+  list-style: none;
 }
 
 .gm_yell-name {
-    color: #7AF;
+  color: #7af;
 }
 
 .gm_yell-text {
-    color: white;
+  color: white;
 }
 
 /* Tools */
 
 .gm_tools {
-    margin: 1rem;
-    display: flex;
+  margin: 1rem;
+  display: flex;
 }
 
 .eden_pagination-dropdown {
-    margin: 4px;
+  margin: 4px;
 }
 
 .gm_whosonline {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    max-height: calc(100vh - 2rem - 55px);
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  max-height: calc(100vh - 2rem - 55px);
 }
 
 .gm_players-online {
-    max-height: 80%;
-    overflow: auto;
+  max-height: 80%;
+  overflow: auto;
 }
 
 .gm_profile-buttons {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .gm_linkshell {
-    margin-left: 6px;
-    display: flex;
-    font-size: 14px;
+  margin-left: 6px;
+  display: flex;
+  font-size: 14px;
 }
 
 .gm_online-avatar.ui.image {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .gm_online-count.ui.segments {
-    margin: 0 .5em 1rem .5em;
+  margin: 0 0.5em 1rem 0.5em;
 }
 
 .gm_tools-content {
-    flex: 1;
-    padding: 0 1rem;
-    max-height: calc(100vh - 3rem - 55px);
-    overflow: hidden;
+  flex: 1;
+  padding: 0 1rem;
+  max-height: calc(100vh - 3rem - 55px);
+  overflow: hidden;
 }
 
 .gm_tools-container {
-    height: calc(100% - 4rem);
-    max-height: calc(100% - 4rem);
-    overflow: auto;
+  height: calc(100% - 4rem);
+  max-height: calc(100% - 4rem);
+  overflow: auto;
 }
 
 .gm_item-header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .gm_item-header-button.ui.blue.basic.button.active {
-    background-color: #2185D0 !important;
-    color: #FFF !important;
+  background-color: #2185d0 !important;
+  color: #fff !important;
 }
 
 .gm_item-name {
-    display: inline-flex;
-    align-items: center;
+  display: inline-flex;
+  align-items: center;
 }
 
-.gm_itemsearch_row.ui.segment.item, .gm_charsearch_row.ui.segment.item {
-    padding: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+.gm_itemsearch_row.ui.segment.item,
+.gm_charsearch_row.ui.segment.item {
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .gm_itemsearch_row.ui.segment.item:hover {
-    transform: translateY(-1px);
-    background-color: #F8F8F8;
+  transform: translateY(-1px);
+  background-color: #f8f8f8;
 }
 
 .gm_field-change.ui.modal.transition.visible.active {
-    width: 400px;
+  width: 400px;
 }
 
 .gm_player-header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .gm_player-header-left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 /* Install */
 
 .gm_install.ui.segment {
-    width: fit-content;
-    margin: 1rem auto;
-    max-width: 1200px;
+  width: fit-content;
+  margin: 1rem auto;
+  max-width: 1200px;
 }
 
 /* Rules */
 
 .ui.message.gm_rules-section {
-    margin: 2em;
+  margin: 2em;
 }
 
 /* About */
 
 .gm_code-block {
-    white-space: pre-wrap;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 9.5px;
+  white-space: pre-wrap;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 9.5px;
 }
 
 /* Links */
 
 .gm_links.ui.cards {
-    max-width: 800px;
-    margin: auto;
+  max-width: 800px;
+  margin: auto;
 }
 
 /* General */
 
-.ui.ui.ui img.gm_image-spacer, .ui.list>.item>.image:only-child, .ui.list>.item>img.image.gm_image-spacer {
-    margin-right: 5px;
+.ui.ui.ui img.gm_image-spacer,
+.ui.list > .item > .image:only-child,
+.ui.list > .item > img.image.gm_image-spacer {
+  margin-right: 5px;
 }
 
 @media only screen and (max-width: 900px) {
-    .gm_tools {
-        flex-direction: column;
-    }
-    .gm_whosonline {
-        width: 100%;
-    }
-    .gm_tools-content {
-        width: 100%;
-        padding: 7px;
-    }
-    .gm_players-online.ui.cards {
-        display: none;
-    }
-    .gm_item-header {
-        flex-direction: column;
-
-    }
-    .gm_item-header > * {
-        margin: 10px 0;
-    }
+  .gm_tools {
+    flex-direction: column;
+  }
+  .gm_whosonline {
+    width: 100%;
+  }
+  .gm_tools-content {
+    width: 100%;
+    padding: 7px;
+  }
+  .gm_players-online.ui.cards {
+    display: none;
+  }
+  .gm_item-header {
+    flex-direction: column;
+  }
+  .gm_item-header > * {
+    margin: 10px 0;
+  }
 }

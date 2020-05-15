@@ -16,7 +16,7 @@ class App extends Component {
         updatedEmail: '',
         updatedPassword: '',
       },
-      config: {},
+      config: { install: {}, links: [], posts: [], rules: {} },
     };
 
     this.setContext = this.setContext.bind(this);
