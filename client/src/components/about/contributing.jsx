@@ -4,10 +4,8 @@ import Setup from './setup';
 
 function Contributing() {
   const setupContent = () => <Setup />;
-  const writingBcnmsContent = () => (
-    <p>&quot;Writing BCNMs&quot; coming soon...</p>
-  );
-  const edenDocsContent = () => <p>&quot;Eden Docs&quot; coming soon...</p>;
+  const writingBcnmsContent = () => <p>Under development.</p>;
+  const edenDocsContent = () => <p>Under development.</p>;
 
   const [activeKey, setActiveKey] = useState('setup');
   const [activeContent, setActiveContent] = useState(setupContent);
