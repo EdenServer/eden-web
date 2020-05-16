@@ -194,10 +194,6 @@
 
 /* Rules */
 
-.ui.message.gm_rules-section {
-  margin: 2em;
-}
-
 /* About */
 
 .gm_code-block {
@@ -210,9 +206,9 @@
 
 /* Links */
 
-.gm_links.ui.cards {
-  max-width: 800px;
-  margin: auto;
+.link-card:hover {
+  position: relative;
+  top: -5px;
 }
 
 /* General */
