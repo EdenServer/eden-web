@@ -124,6 +124,7 @@ const getCharCrafts = async (query, charid) => {
     });
     return crafts;
   } catch (error) {
+    console.error("Error while getting character crafts", error);
     return {};
   }
 };
@@ -135,6 +136,7 @@ const getCharAH = async (query, charname, limit = 10) => {
             WHERE sell_date != 0 AND (seller_name = ? OR buyer_name = ?) ORDER BY sell_date DESC LIMIT ?;`;
     return await query(statement, [charname, charname, limit]);
   } catch (error) {
+    console.error("Error while getting character AH", error);
     return [];
   }
 };
@@ -147,6 +149,7 @@ const getCharBazaar = async (query, charname) => {
             WHERE bazaar != 0 AND charname = ? ORDER BY b.name ASC`;
     return await query(statement, [charname]);
   } catch (error) {
+    console.error("Error while getting character bazaar", error);
     return [];
   }
 };
@@ -226,12 +229,13 @@ const getCharEquip = async (query, charname) => {
     const statement = `SELECT equipslotid, b.itemid, b.name, i.signature FROM char_equip AS e
             JOIN char_stats AS s ON s.charid = e.charid AND s.mjob = e.jobid
             JOIN char_inventory AS i ON e.charid = i.charid AND e.containerid = i.location AND e.slotid = i.slot
-            JOIN item_basic AS b ON i.itemId = b.itemid 
+            JOIN item_basic AS b ON i.itemId = b.itemid
             JOIN chars AS c ON c.charid = s.charid
             WHERE charname = ? AND deleted IS NULL;`;
     const response = await query(statement, [charname]);
     return mapEquipToObject(response);
   } catch (error) {
+    console.error("Error while getting character equipement", error);
     return {};
   }
 };
@@ -291,6 +295,7 @@ const getCharData = async (query, charname) => {
       return null;
     }
   } catch (error) {
+    console.error("Error while fetching characters", error);
     return {};
   }
 };
@@ -327,6 +332,7 @@ const fetchChars = async (
       })),
     };
   } catch (error) {
+    console.error("Error while fetching characters", error);
     return { total: 0, chars: [] };
   }
 };
