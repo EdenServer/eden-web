@@ -6,6 +6,7 @@
   "scripts": {
     "format:server": "prettier --write 'index.ts' 'api/**/*.{ts,js,jsx}'",
     "format": "npm-run-all --parallel format:*",
+    "ci:client": "cd client && npm ci",
     "dev:client": "cd client && npm start",
     "dev:server": "ts-node-dev index.ts",
     "dev": "npm-run-all --parallel --print-label dev:*",
