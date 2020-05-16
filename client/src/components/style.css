@@ -206,9 +206,9 @@
 
 /* Links */
 
-.gm_links.ui.cards {
-  max-width: 800px;
-  margin: auto;
+.link-card:hover {
+  position: relative;
+  top: -5px;
 }
 
 /* General */

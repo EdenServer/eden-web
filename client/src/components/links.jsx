@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, CardColumns, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 import PropTypes from 'prop-types';
 
@@ -11,11 +11,15 @@ function Links(props) {
       <Row>
         {links.map(link => (
           <Col xs={12} md={6} lg={4} xl={3} className="my-2 my-md-3">
-            <Card key={link.url} className="h-100">
+            <Card key={link.url} className="h-100 link-card">
               <Card.Header>
                 <div className="d-flex flex-row justify-content-between">
                   <Card.Title>
-                    <a href={link.url} className="stretched-link text-dark">
+                    <a
+                      href={link.url}
+                      className="stretched-link text-dark"
+                      style={{ textDecoration: 'none' }}
+                    >
                       {link.header}
                     </a>
                   </Card.Title>
