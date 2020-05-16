@@ -26,6 +26,8 @@ router.get('/status', async (req, res) => {
       const online = await req.app.locals.query(query);
       return res.status(200).send(online[0].ct.toString());
     }
+
+    return res.status(400).send();
   } catch (error) {
     console.error(error);
     res.status(404).send();
