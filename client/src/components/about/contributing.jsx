@@ -41,13 +41,13 @@ function Contributing() {
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link eventKey="bcnms" href="#writing-bcnms">
+            <Nav.Link disabled eventKey="bcnms" href="#writing-bcnms">
               Writing BCNMs
             </Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link eventKey="docs" href="#eden-docs">
+            <Nav.Link disabled eventKey="docs" href="#eden-docs">
               Eden Docs
             </Nav.Link>
           </Nav.Item>
