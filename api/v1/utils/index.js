@@ -6,10 +6,10 @@ const items = require('./items');
 const yells = require('./yells');
 
 module.exports = {
-    accounts,
-    cache,
-    chars,
-    db,
-    items,
-    yells,
+  accounts,
+  cache,
+  chars,
+  db,
+  items,
+  yells,
 };
