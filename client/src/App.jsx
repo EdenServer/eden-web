@@ -106,7 +106,7 @@ class App extends Component {
 
     return (
       <>
-        <div className="gm_main h-100">
+        <div className="gm_main h-100 bg-light">
           <SiteNavbar links={links} />
           {config && Object.keys(config).length === 0 && (
             <div className="alert alert-warning m-0 text-center">

@@ -8,7 +8,7 @@ function Home(props) {
   const { posts } = props;
 
   return (
-    <Row noGutters className="h-100">
+    <Row noGutters className="min-vh-100">
       <Col xs={12} lg={4}>
         <Yells className="my-3 my-lg-0" />
       </Col>

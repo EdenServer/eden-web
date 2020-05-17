@@ -9,21 +9,25 @@ import Rules from './rules';
 import About from './about';
 import Contact from './contact';
 import './style.css';
+import SiteFooter from './SiteFooter/SiteFooter';
 
 const Page = props => {
   const { config } = props;
 
   return (
-    <Router className="h-100" primary={false}>
-      <Home path="/home" posts={config.posts} />
-      <Install path="/install" info={config.install} />
-      <Tools path="/tools" />
-      <Links path="/links" links={config.links} />
-      <Rules path="/rules" list={config.rules} />
-      <About path="/about" />
-      <Contact path="/contact" />
-      <Redirect from="/" to="/home" />
-    </Router>
+    <div className="bg-light">
+      <Router primary={false}>
+        <Home path="/home" posts={config.posts} />
+        <Install path="/install" info={config.install} />
+        <Tools path="/tools" />
+        <Links path="/links" links={config.links} />
+        <Rules path="/rules" list={config.rules} />
+        <About path="/about" />
+        <Contact path="/contact" />
+        <Redirect from="/" to="/home" />
+      </Router>
+      <SiteFooter className="mt-5" />
+    </div>
   );
 };
 

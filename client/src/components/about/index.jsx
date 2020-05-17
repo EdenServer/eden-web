@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import InfoDisplay from '../InfoDisplay';
 import Contributing from './contributing';
 
-export default () => {
+const About = () => {
   return (
     <>
       <InfoDisplay
@@ -173,3 +173,5 @@ export default () => {
     </>
   );
 };
+
+export default About;
