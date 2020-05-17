@@ -1,4 +1,14 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHome,
+  faDesktop,
+  faWrench,
+  faLink,
+  faGavel,
+  faInfoCircle,
+  faPhone,
+} from '@fortawesome/free-solid-svg-icons';
 import * as api from './api';
 
 import LandingPage from './components/page';
@@ -50,13 +60,48 @@ class App extends Component {
   render() {
     const { ready, config, apiNoResponse } = this.state;
     const links = [
-      { key: 'site-link-home', to: '/home', text: 'Home', icon: '' },
-      { key: 'site-link-install', to: '/install', text: 'Install', icon: '' },
-      { key: 'site-link-tools', to: '/tools', text: 'Tools', icon: '' },
-      { key: 'site-link-links', to: '/links', text: 'Links', icon: '' },
-      { key: 'site-links-rules', to: '/rules', text: 'Rules', icon: '' },
-      { key: 'site-links-about', to: '/about', text: 'About', icon: '' },
-      { key: 'site-links-contact', to: '/contact', text: 'Contact', icon: '' },
+      {
+        key: 'site-link-home',
+        to: '/home',
+        text: 'Home',
+        icon: <FontAwesomeIcon icon={faHome} />,
+      },
+      {
+        key: 'site-link-install',
+        to: '/install',
+        text: 'Install',
+        icon: <FontAwesomeIcon icon={faDesktop} />,
+      },
+      {
+        key: 'site-link-tools',
+        to: '/tools',
+        text: 'Tools',
+        icon: <FontAwesomeIcon icon={faWrench} />,
+      },
+      {
+        key: 'site-link-links',
+        to: '/links',
+        text: 'Links',
+        icon: <FontAwesomeIcon icon={faLink} />,
+      },
+      {
+        key: 'site-links-rules',
+        to: '/rules',
+        text: 'Rules',
+        icon: <FontAwesomeIcon icon={faGavel} />,
+      },
+      {
+        key: 'site-links-about',
+        to: '/about',
+        text: 'About',
+        icon: <FontAwesomeIcon icon={faInfoCircle} />,
+      },
+      {
+        key: 'site-links-contact',
+        to: '/contact',
+        text: 'Contact',
+        icon: <FontAwesomeIcon icon={faPhone} />,
+      },
     ];
 
     return (

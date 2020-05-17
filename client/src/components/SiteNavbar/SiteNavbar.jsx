@@ -15,8 +15,9 @@ const SiteNavbar = props => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav>
           {links.map(link => (
-            <NavLink as={Link} to={link.to} key={link.key}>
-              {link.icon ? <i className="" /> : null} {link.text}
+            <NavLink as={Link} to={link.to} key={link.key} className="mr-3">
+              {link.icon ? <span className="mr-1">{link.icon}</span> : null}{' '}
+              {link.text}
             </NavLink>
           ))}
         </Nav>
@@ -32,7 +33,7 @@ SiteNavbar.propTypes = {
       key: PropTypes.string || PropTypes.number,
       to: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-      icon: PropTypes.string.isRequired,
+      icon: PropTypes.node,
     })
   ).isRequired,
 };
