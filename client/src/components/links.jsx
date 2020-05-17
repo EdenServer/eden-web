@@ -10,8 +10,8 @@ function Links(props) {
     <Container fluid className="my-3">
       <Row>
         {links.map(link => (
-          <Col xs={12} md={6} xl={3} className="my-2 my-md-3">
-            <Card key={link.url} className="h-100 link-card">
+          <Col xs={12} md={6} xl={3} className="my-2 my-md-3" key={link.url}>
+            <Card className="h-100 link-card">
               <Card.Header>
                 <div className="d-flex flex-row justify-content-between">
                   <Card.Title>

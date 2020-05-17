@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Card, ListGroup } from 'react-bootstrap';
+import { Link } from '@reach/router';
+import { Card } from 'react-bootstrap';
 import InfoDisplay from './InfoDisplay';
 
 function install(props) {

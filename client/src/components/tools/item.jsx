@@ -1,6 +1,13 @@
 import React from 'react';
-import { Accordion, Icon, Segment, Image, Header, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import {
+  Accordion,
+  Icon,
+  Segment,
+  Image,
+  Header,
+  Button,
+} from 'semantic-ui-react';
+import { Link } from '@reach/router';
 
 import images from '../../images';
 import Ah from './item/ah';
@@ -8,102 +15,166 @@ import Bazaar from './item/bazaar';
 // import Crafts from './item/crafts';
 
 const charToElement = (char, line, i) => {
-    switch (char) {
-        case '':
-            return <img key={`desc_ln_${line}_pos_${i}`} alt="fire" src={images.weather.fire} />;
-        case '':
-            return <img key={`desc_ln_${line}_pos_${i}`} alt="ice" src={images.weather.ice} />;
-        case '':
-            return <img key={`desc_ln_${line}_pos_${i}`} alt="wind" src={images.weather.wind} />;
-        case '':
-            return <img key={`desc_ln_${line}_pos_${i}`} alt="earth" src={images.weather.earth} />;
-        case '':
-            return <img key={`desc_ln_${line}_pos_${i}`} alt="thunder" src={images.weather.thunder} />;
-        case '':
-            return <img key={`desc_ln_${line}_pos_${i}`} alt="water" src={images.weather.water} />;
-        case '':
-            return <img key={`desc_ln_${line}_pos_${i}`} alt="light" src={images.weather.light} />;
-        case '':
-            return <img key={`desc_ln_${line}_pos_${i}`} alt="dark" src={images.weather.dark} />;
-        default:
-    }
+  switch (char) {
+    case '':
+      return (
+        <img
+          key={`desc_ln_${line}_pos_${i}`}
+          alt="fire"
+          src={images.weather.fire}
+        />
+      );
+    case '':
+      return (
+        <img
+          key={`desc_ln_${line}_pos_${i}`}
+          alt="ice"
+          src={images.weather.ice}
+        />
+      );
+    case '':
+      return (
+        <img
+          key={`desc_ln_${line}_pos_${i}`}
+          alt="wind"
+          src={images.weather.wind}
+        />
+      );
+    case '':
+      return (
+        <img
+          key={`desc_ln_${line}_pos_${i}`}
+          alt="earth"
+          src={images.weather.earth}
+        />
+      );
+    case '':
+      return (
+        <img
+          key={`desc_ln_${line}_pos_${i}`}
+          alt="thunder"
+          src={images.weather.thunder}
+        />
+      );
+    case '':
+      return (
+        <img
+          key={`desc_ln_${line}_pos_${i}`}
+          alt="water"
+          src={images.weather.water}
+        />
+      );
+    case '':
+      return (
+        <img
+          key={`desc_ln_${line}_pos_${i}`}
+          alt="light"
+          src={images.weather.light}
+        />
+      );
+    case '':
+      return (
+        <img
+          key={`desc_ln_${line}_pos_${i}`}
+          alt="dark"
+          src={images.weather.dark}
+        />
+      );
+    default:
+  }
 
-    return '';
-}
+  return '';
+};
 
 const descriptionWithElements = (description, line) => {
-    const elements = /|||||||/;
-    const render = [];
-    let lastStop = 0;
-    for (let i = 0; i < description.length; i++) {
-        const isElement = elements.test(description[i]);
-        if (i === description.length - 1) {
-            render.push(<span key={`desc_ln_${line}_pos_${i + 1}`}>{description.slice(lastStop, i + 1)}</span>)
-        } else if (isElement) {
-            if (i !== lastStop) {
-                render.push(<span key={`desc_ln_${line}_pos_${i + 1}`}>{description.slice(lastStop, i)}</span>)
-            }
-            render.push(charToElement(description[i], line, i));
-            lastStop = i + 1;
-        }
+  const elements = /|||||||/;
+  const render = [];
+  let lastStop = 0;
+  for (let i = 0; i < description.length; i++) {
+    const isElement = elements.test(description[i]);
+    if (i === description.length - 1) {
+      render.push(
+        <span key={`desc_ln_${line}_pos_${i + 1}`}>
+          {description.slice(lastStop, i + 1)}
+        </span>
+      );
+    } else if (isElement) {
+      if (i !== lastStop) {
+        render.push(
+          <span key={`desc_ln_${line}_pos_${i + 1}`}>
+            {description.slice(lastStop, i)}
+          </span>
+        );
+      }
+      render.push(charToElement(description[i], line, i));
+      lastStop = i + 1;
     }
-    return (
-        <React.Fragment>
-            {render}
-        </React.Fragment>
-    );
-}
+  }
+  return <>{render}</>;
+};
 
 export default ({ item, stack, setStack }) => {
-    const [ah, setAh] = React.useState(false);
-    const [bazaar, setBazaar] = React.useState(false);
-    const [crafts, setCrafts] = React.useState(false);
-    const isStack = stack === 'true' ? true : false;
+  const [ah, setAh] = React.useState(false);
+  const [bazaar, setBazaar] = React.useState(false);
+  const [crafts, setCrafts] = React.useState(false);
+  const isStack = stack === 'true';
 
-    return (
-        <Segment>
-            <Header>
-                <div className="gm_item-header">
-                    <div className="gm_item-name">
-                        <Image src={images.item(item.id)} />
-                        {item.name}
-                    </div>
-                    {item.stackable && (
-                        <Button as={Link} to={`/tools?item=${encodeURIComponent(item.key)}&stack=${!isStack}`} circular color="teal">
-                            <Icon name={!isStack ? 'boxes' : 'box'} />
-                            {!isStack ? 'Show Stacks' : 'Show Singles'}
-                        </Button>
-                    )}
-                </div>
-                <div className="eden_item-description">
-                    {item.desc.split('\n').map((s, i) => <p key={`desc_ln_${i}`}>{descriptionWithElements(s, i)}<br/></p>)}
-                    {item.armor && <p>{item.armor}</p>}
-                </div>
-            </Header>
-            <Accordion fluid styled>
-                <Accordion.Title active={ah} onClick={() => setAh(!ah)} >
-                    <Icon name='dropdown' />
-                    Auction House
-                </Accordion.Title>
-                <Accordion.Content active={ah}>
-                    <Ah name={item.key} stack={isStack} />
-                </Accordion.Content>
-                <Accordion.Title active={bazaar} onClick={() => setBazaar(!bazaar)} >
-                    <Icon name='dropdown' />
-                    Bazaar
-                </Accordion.Title>
-                <Accordion.Content active={bazaar}>
-                    <Bazaar name={item.key} />
-                </Accordion.Content>
-                <Accordion.Title active={crafts} onClick={() => setCrafts(!crafts)} >
-                    <Icon name='dropdown' />
-                    Crafting
-                </Accordion.Title>
-                <Accordion.Content active={crafts}>
-                    {/* <Crafts name={item.key} /> */}
-                    In Development
-                </Accordion.Content>
-            </Accordion>
-        </Segment>
-    );
+  return (
+    <Segment>
+      <Header>
+        <div className="gm_item-header">
+          <div className="gm_item-name">
+            <Image src={images.item(item.id)} />
+            {item.name}
+          </div>
+          {item.stackable && (
+            <Button
+              as={Link}
+              to={`/tools?item=${encodeURIComponent(
+                item.key
+              )}&stack=${!isStack}`}
+              circular
+              color="teal"
+            >
+              <Icon name={!isStack ? 'boxes' : 'box'} />
+              {!isStack ? 'Show Stacks' : 'Show Singles'}
+            </Button>
+          )}
+        </div>
+        <div className="eden_item-description">
+          {item.desc.split('\n').map((s, i) => (
+            <p key={`desc_ln_${i}`}>
+              {descriptionWithElements(s, i)}
+              <br />
+            </p>
+          ))}
+          {item.armor && <p>{item.armor}</p>}
+        </div>
+      </Header>
+      <Accordion fluid styled>
+        <Accordion.Title active={ah} onClick={() => setAh(!ah)}>
+          <Icon name="dropdown" />
+          Auction House
+        </Accordion.Title>
+        <Accordion.Content active={ah}>
+          <Ah name={item.key} stack={isStack} />
+        </Accordion.Content>
+        <Accordion.Title active={bazaar} onClick={() => setBazaar(!bazaar)}>
+          <Icon name="dropdown" />
+          Bazaar
+        </Accordion.Title>
+        <Accordion.Content active={bazaar}>
+          <Bazaar name={item.key} />
+        </Accordion.Content>
+        <Accordion.Title active={crafts} onClick={() => setCrafts(!crafts)}>
+          <Icon name="dropdown" />
+          Crafting
+        </Accordion.Title>
+        <Accordion.Content active={crafts}>
+          {/* <Crafts name={item.key} /> */}
+          In Development
+        </Accordion.Content>
+      </Accordion>
+    </Segment>
+  );
 };

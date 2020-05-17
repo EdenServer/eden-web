@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import Menu from './menu';
-import Hamburger from './hamburger';
+import { Router, Redirect } from '@reach/router';
 import Home from './home';
 import Install from './install';
 import Links from './links';
@@ -13,70 +11,30 @@ import Contact from './contact';
 import './style.css';
 
 const Page = props => {
-  const { location, config } = props;
-  const [active, setActive] = React.useState(false);
-
-  const changePage = (_e, data) => {
-    localStorage.getItem('page', data.to);
-    setActive(false);
-  };
+  const { config } = props;
 
   return (
-    <div className="gm_main h-100">
-      <div className="gm_banner">
-        <Hamburger active={active} toggle={() => setActive(!active)} />
-        <h2 className="gm_banner_text">Eden</h2>
-      </div>
-      {config && Object.keys(config).length === 0 && (
-        <div className="alert alert-warning m-0 text-center">
-          <span>
-            Website tools are currently down. Please check again later.
-          </span>
-        </div>
-      )}
-      <Menu
-        active={active}
-        selection={location.pathname}
-        onClick={changePage}
-      />
-      <Switch>
-        <Route
-          exact
-          path="/install"
-          render={() => <Install info={config.install} />}
-        />
-        <Route exact path="/tools" render={() => <Tools />} />
-        <Route
-          exact
-          path="/links"
-          render={() => <Links links={config.links} />}
-        />
-        <Route
-          exact
-          path="/rules"
-          render={() => <Rules list={config.rules} />}
-        />
-        <Route exact path="/about" render={About} />
-        <Route
-          exact
-          path="/home"
-          render={() => <Home posts={config.posts} />}
-        />
-        <Route exact path="/contact" render={() => <Contact />} />
-        <Redirect from="/" to={localStorage.getItem('page') || '/home'} />
-      </Switch>
-    </div>
+    <Router className="h-100" primary={false}>
+      <Home path="/home" posts={config.posts} />
+      <Install path="/install" info={config.install} />
+      <Tools path="/tools" />
+      <Links path="/links" links={config.links} />
+      <Rules path="/rules" list={config.rules} />
+      <About path="/about" />
+      <Contact path="/contact" />
+      <Redirect from="/" to="/home" />
+    </Router>
   );
 };
 
 Page.propTypes = {
-  location: PropTypes.shape({
-    hash: PropTypes.string,
-    key: PropTypes.string,
-    pathname: PropTypes.string,
-    search: PropTypes.string,
-    // state: ???
-  }).isRequired,
+  // location: PropTypes.shape({
+  //   hash: PropTypes.string,
+  //   key: PropTypes.string,
+  //   pathname: PropTypes.string,
+  //   search: PropTypes.string,
+  //   // state: ???
+  // }).isRequired,
 
   config: PropTypes.shape({
     install: PropTypes.shape({
@@ -112,4 +70,4 @@ Page.propTypes = {
   }).isRequired,
 };
 
-export default withRouter(Page);
+export default Page;
