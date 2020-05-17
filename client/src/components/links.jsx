@@ -7,7 +7,7 @@ function Links(props) {
   const { links } = props;
 
   return (
-    <Container fluid className="my-3">
+    <Container>
       <Row>
         {links.map(link => (
           <Col xs={12} md={6} xl={3} className="my-2 my-md-3" key={link.url}>

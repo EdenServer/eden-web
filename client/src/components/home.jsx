@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import Yells from './yellbox';
 import News from './newsbox';
 
@@ -8,12 +8,14 @@ function Home(props) {
   const { posts } = props;
 
   return (
-    <Row noGutters className="min-vh-100">
-      <Col xs={12} lg={4}>
-        <Yells className="my-3 my-lg-0" />
-      </Col>
-      <Col>{posts && <News posts={posts} />}</Col>
-    </Row>
+    <Container fluid>
+      <Row className="min-vh-100" className="flex-column-reverse flex-lg-row">
+        <Col>{posts && <News posts={posts} />}</Col>
+        <Col xs={12} lg={5}>
+          <Yells className="my-3 my-lg-0" />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
