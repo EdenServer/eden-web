@@ -16,15 +16,14 @@ const Page = props => {
 
   return (
     <div className="bg-light">
-      <Router primary={false}>
-        <Home path="/home" posts={config.posts} />
+      <Router primary={false} className="py-3">
+        <Home path="/" posts={config.posts} />
         <Install path="/install" info={config.install} />
         <Tools path="/tools" />
         <Links path="/links" links={config.links} />
         <Rules path="/rules" list={config.rules} />
         <About path="/about" />
         <Contact path="/contact" />
-        <Redirect from="/" to="/home" />
       </Router>
       <SiteFooter className="mt-5" />
     </div>
@@ -32,14 +31,6 @@ const Page = props => {
 };
 
 Page.propTypes = {
-  // location: PropTypes.shape({
-  //   hash: PropTypes.string,
-  //   key: PropTypes.string,
-  //   pathname: PropTypes.string,
-  //   search: PropTypes.string,
-  //   // state: ???
-  // }).isRequired,
-
   config: PropTypes.shape({
     install: PropTypes.shape({
       bootloader: PropTypes.string.isRequired,

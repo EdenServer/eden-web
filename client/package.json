@@ -1,7 +1,7 @@
 {
   "name": "client",
   "proxy": "http://localhost:8081",
-  "homepage": "/public",
+  "homepage": "/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

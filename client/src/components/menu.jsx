@@ -11,7 +11,7 @@ export default ({ active, selection, onClick }) => {
     <Menu className="gm_menu" vertical>
       <Menu.Item
         as={Link}
-        to="/home"
+        to="/"
         active={selection === '/home'}
         onClick={onClick}
       >

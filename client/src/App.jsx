@@ -62,7 +62,7 @@ class App extends Component {
     const links = [
       {
         key: 'site-link-home',
-        to: '/home',
+        to: '/',
         text: 'Home',
         icon: <FontAwesomeIcon icon={faHome} />,
       },
@@ -106,7 +106,7 @@ class App extends Component {
 
     return (
       <>
-        <div className="gm_main h-100 bg-light">
+        <div className="gm_main h-100">
           <SiteNavbar links={links} />
           {config && Object.keys(config).length === 0 && (
             <div className="alert alert-warning m-0 text-center">
