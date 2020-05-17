@@ -15,7 +15,7 @@ const Page = props => {
   const { config } = props;
 
   return (
-    <div className="bg-light">
+    <div className="site-content-background">
       <Router primary={false} className="py-3">
         <Home path="/" posts={config.posts} />
         <Install path="/install" info={config.install} />
