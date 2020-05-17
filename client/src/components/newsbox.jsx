@@ -3,7 +3,7 @@ import InfoDisplay from '../components/InfoDisplay';
 import Card from 'react-bootstrap/Card';
 
 const News = ({ posts }) => (
-  <ul>
+  <>
     {posts.map((post, i) => (
       <div
         key={`news_${i}`}
@@ -11,7 +11,6 @@ const News = ({ posts }) => (
       >
         <InfoDisplay
           header={<h2>{post.title}</h2>}
-          as="li"
           footer={
             <span>
               {new Date(post.date).toLocaleString()} by {post.author}
@@ -22,7 +21,7 @@ const News = ({ posts }) => (
         </InfoDisplay>
       </div>
     ))}
-  </ul>
+  </>
 );
 
 export default News;

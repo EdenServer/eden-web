@@ -11,8 +11,8 @@ function Home(props) {
     <Container fluid>
       <Row className="min-vh-100" className="flex-column-reverse flex-lg-row">
         <Col>{posts && <News posts={posts} />}</Col>
-        <Col xs={12} lg={5}>
-          <Yells className="my-3 my-lg-0" />
+        <Col xs={12} lg={5} className="mb-3 mb-lg-0">
+          <Yells />
         </Col>
       </Row>
     </Container>
