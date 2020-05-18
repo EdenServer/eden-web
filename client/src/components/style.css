@@ -1,8 +1,23 @@
 /* General */
 
-.site-content-background {
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background-color: #e6e6e6;
 }
+
+.gm_main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.gm_content {
+  flex: 1;
+}
+
 
 /* Banner */
 

@@ -13,6 +13,7 @@ import * as api from './api';
 
 import LandingPage from './components/page';
 import SiteNavbar from './components/SiteNavbar/SiteNavbar';
+import SiteFooter from './components/SiteFooter/SiteFooter';
 
 class App extends Component {
   constructor(props) {
@@ -108,20 +109,23 @@ class App extends Component {
       <>
         <div className="gm_main h-100">
           <SiteNavbar links={links} />
-          {config && Object.keys(config).length === 0 && (
-            <div className="alert alert-warning m-0 text-center">
-              <span>
-                Website tools are currently down. Please check again later.
-              </span>
-            </div>
-          )}
-          {ready && (
-            <LandingPage
-              config={config}
-              apiNoResponse={apiNoResponse}
-              className="h-100"
-            />
-          )}
+          <div className="gm_content">
+            {config && Object.keys(config).length === 0 && (
+              <div className="alert alert-warning m-0 text-center">
+                <span>
+                  Website tools are currently down. Please check again later.
+                </span>
+              </div>
+            )}
+            {ready && (
+              <LandingPage
+                config={config}
+                apiNoResponse={apiNoResponse}
+                className="h-100"
+              />
+            )}
+          </div>
+          <SiteFooter className="mt-5" />
         </div>
       </>
     );

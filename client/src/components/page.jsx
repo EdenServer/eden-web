@@ -9,13 +9,12 @@ import Rules from './rules';
 import About from './about';
 import Contact from './contact';
 import './style.css';
-import SiteFooter from './SiteFooter/SiteFooter';
 
 const Page = props => {
   const { config } = props;
 
   return (
-    <div className="site-content-background">
+    <div>
       <Router primary={false} className="py-3">
         <Home path="/" posts={config.posts} />
         <Install path="/install" info={config.install} />
@@ -25,7 +24,6 @@ const Page = props => {
         <About path="/about" />
         <Contact path="/contact" />
       </Router>
-      <SiteFooter className="mt-5" />
     </div>
   );
 };
