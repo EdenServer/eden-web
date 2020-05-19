@@ -1,9 +1,9 @@
 .eden_item-description {
-    margin-left: 32px;
-    font-size: 14px;
+  margin-left: 32px;
+  font-size: 14px;
 }
 
 .eden_item-description > p {
-    margin-bottom: 0;
-    max-width: 350px;
+  margin-bottom: 0;
+  max-width: 350px;
 }
