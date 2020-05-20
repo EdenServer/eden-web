@@ -4,8 +4,8 @@
   "description": "Online tools for use with the Eden game server.",
   "main": "index.js",
   "scripts": {
-    "format:server": "prettier --write 'index.ts' 'api/**/*.{ts,js,jsx}'",
-    "format": "npm-run-all --parallel format:*",
+    "format": "prettier --write '**/*.{ts,tsx,js,jsx}'",
+    "check": "prettier --check '**/*.{ts,tsx,js,jsx}'",
     "ci:client": "cd client && npm ci",
     "dev:client": "cd client && npm start",
     "dev:server": "ts-node-dev index.ts",
