@@ -235,7 +235,7 @@ const getCharEquip = async (query, charname) => {
     const response = await query(statement, [charname]);
     return mapEquipToObject(response);
   } catch (error) {
-    console.error("Error while getting character equipement", error);
+    console.error("Error while getting character equipment", error);
     return {};
   }
 };
