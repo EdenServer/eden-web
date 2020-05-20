@@ -12,7 +12,7 @@ export default ({ active, selection, onClick }) => {
       <Menu.Item
         as={Link}
         to="/"
-        active={selection === '/home'}
+        active={selection === '/'}
         onClick={onClick}
       >
         News
