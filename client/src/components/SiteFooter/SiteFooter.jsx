@@ -5,14 +5,12 @@ const SiteFooter = () => {
   return (
     <Container fluid className="w-100 bg-dark text-light text-center py-3">
       <Row>
-        <Col>
+        <Col xs={12} lg>
           <p className="h4 p-3">
             <b>EDEN</b> | Classic FFXI Server
           </p>
         </Col>
-      </Row>
-      <Row>
-        <Col>
+        <Col xs={12} lg>
           <p className="text-light">
             <small>
               All FINAL FANTASY® XI content and images © 2002-2020{' '}
