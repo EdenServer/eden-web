@@ -20,7 +20,7 @@ const loadItems = async query => {
             LEFT JOIN item_weapon AS w ON b.itemid = w.itemid;`;
     return await query(statement);
   } catch (error) {
-    console.error("Error while loading items", error);
+    console.error('Error while loading items', error);
     return [];
   }
 };
@@ -41,7 +41,7 @@ const loadItemKeys = async query => {
     );
     return map;
   } catch (error) {
-    console.error("Error while loading item keys", error);
+    console.error('Error while loading item keys', error);
     return {};
   }
 };
@@ -53,7 +53,7 @@ const getRecipeFor = async (query, itemname) => {
             WHERE b.name = ?;`;
     return await query(statement, [itemname]);
   } catch (error) {
-    console.error("Error while getting specific recipe", error);
+    console.error('Error while getting specific recipe', error);
     return [];
   }
 };
@@ -66,7 +66,7 @@ const getLastSold = async (query, itemname, stack = 0, count = 10) => {
             ORDER BY sell_date DESC LIMIT ?;`;
     return await query(statement, [itemname, stack, count]);
   } catch (error) {
-    console.error("Error while getting last sold", error);
+    console.error('Error while getting last sold', error);
     return [];
   }
 };
@@ -79,7 +79,7 @@ const getBazaars = async (query, itemname) => {
             WHERE bazaar != 0 AND b.name = ? ORDER BY charname ASC;`;
     return await query(statement, [itemname]);
   } catch (error) {
-    console.error("Error while getting bazaars", error);
+    console.error('Error while getting bazaars', error);
     return [];
   }
 };

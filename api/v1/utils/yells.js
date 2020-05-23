@@ -75,7 +75,7 @@ const getYells = async (query, limit = 30) => {
       ),
     }));
   } catch (error) {
-    console.error("Error while getting yells", error);
+    console.error('Error while getting yells', error);
     return [];
   }
 };
