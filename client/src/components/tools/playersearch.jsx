@@ -1,7 +1,7 @@
 import React from 'react';
 import { Segment, Input, List, Image } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
 
+import { navigate } from '@reach/router';
 import Pagination from '../pagination';
 import Player from './player';
 import apiUtil from '../../apiUtil';
@@ -54,7 +54,7 @@ const Playersearch = ({ history, charname }) => {
         json: true,
       },
       (error, data) => {
-        history.push(`/tools?player=${player}`);
+        navigate(`/tools?player=${player}`);
         setTotal(0);
         setResults([]);
         setPlayer(data);
@@ -119,4 +119,4 @@ const Playersearch = ({ history, charname }) => {
   );
 };
 
-export default withRouter(Playersearch);
+export default Playersearch;

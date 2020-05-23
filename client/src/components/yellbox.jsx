@@ -27,7 +27,7 @@ class Yells extends React.PureComponent {
     const { yells } = this.state;
 
     return (
-      <ul className="gm_yell-container h-100">
+      <ul className="gm_yell-container h-100 rounded">
         {yells.map((yell, i) => (
           <li key={`yell_${i}`} className="gm_yell-message">
             <span className="gm_yell-name">

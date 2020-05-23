@@ -1,13 +1,12 @@
 import React from 'react';
 import { Segment, Input, List, Image } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
-
 import images from '../../images';
 import Pagination from '../pagination';
 import Item from './item';
 import apiUtil from '../../apiUtil';
 
 import './item/itemStyles.css';
+import { navigate } from '@reach/router';
 
 const Itemsearch = ({ history, itemname, itemstack }) => {
   const [search, setSearch] = React.useState(itemname || '');
@@ -51,9 +50,7 @@ const Itemsearch = ({ history, itemname, itemstack }) => {
 
     setLoading(true);
     apiUtil.get({ url: `api/v1/items/${item}`, json: true }, (error, data) => {
-      history.push(
-        `/tools?item=${encodeURIComponent(data.key)}&stack=${stack}`
-      );
+      navigate(`/tools?item=${encodeURIComponent(data.key)}&stack=${stack}`);
       setTotal(0);
       setResults([]);
       setItem(data);
@@ -114,4 +111,4 @@ const Itemsearch = ({ history, itemname, itemstack }) => {
   );
 };
 
-export default withRouter(Itemsearch);
+export default Itemsearch;

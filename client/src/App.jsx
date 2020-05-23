@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHome,
+  faDesktop,
+  faWrench,
+  faLink,
+  faGavel,
+  faInfoCircle,
+  faPhone,
+} from '@fortawesome/free-solid-svg-icons';
 import * as api from './api';
 
 import LandingPage from './components/page';
+import SiteNavbar from './components/SiteNavbar/SiteNavbar';
+import SiteFooter from './components/SiteFooter/SiteFooter';
 
 class App extends Component {
   constructor(props) {
@@ -49,14 +60,73 @@ class App extends Component {
 
   render() {
     const { ready, config, apiNoResponse } = this.state;
+    const links = [
+      {
+        key: 'site-link-home',
+        to: '/',
+        text: 'Home',
+        icon: <FontAwesomeIcon icon={faHome} />,
+      },
+      {
+        key: 'site-link-install',
+        to: '/install',
+        text: 'Install',
+        icon: <FontAwesomeIcon icon={faDesktop} />,
+      },
+      {
+        key: 'site-link-tools',
+        to: '/tools',
+        text: 'Tools',
+        icon: <FontAwesomeIcon icon={faWrench} />,
+      },
+      {
+        key: 'site-link-links',
+        to: '/links',
+        text: 'Links',
+        icon: <FontAwesomeIcon icon={faLink} />,
+      },
+      {
+        key: 'site-links-rules',
+        to: '/rules',
+        text: 'Rules',
+        icon: <FontAwesomeIcon icon={faGavel} />,
+      },
+      {
+        key: 'site-links-about',
+        to: '/about',
+        text: 'About',
+        icon: <FontAwesomeIcon icon={faInfoCircle} />,
+      },
+      {
+        key: 'site-links-contact',
+        to: '/contact',
+        text: 'Contact',
+        icon: <FontAwesomeIcon icon={faPhone} />,
+      },
+    ];
 
     return (
       <>
-        {ready && (
-          <Router>
-            <LandingPage config={config} apiNoResponse={apiNoResponse} />
-          </Router>
-        )}
+        <div className="gm_main h-100">
+          <SiteNavbar links={links} />
+          <div className="gm_content">
+            {config && Object.keys(config).length === 0 && (
+              <div className="alert alert-warning m-0 text-center">
+                <span>
+                  Website tools are currently down. Please check again later.
+                </span>
+              </div>
+            )}
+            {ready && (
+              <LandingPage
+                config={config}
+                apiNoResponse={apiNoResponse}
+                className="h-100"
+              />
+            )}
+          </div>
+          <SiteFooter className="mt-5" />
+        </div>
       </>
     );
   }

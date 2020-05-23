@@ -1,15 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Menu } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
 
+import { createHistory, navigate } from '@reach/router';
 import Accounts from './accounts';
 import Whosonline from './whosonline';
 import Itemsearch from './tools/itemsearch';
 import Playersearch from './tools/playersearch';
 
-const Tools = props => {
-  const { history } = props;
+const Tools = () => {
+  const history = createHistory(window);
   const [tab, setTab] = React.useState(
     localStorage.getItem('tools.tab') || 'account'
   );
@@ -23,7 +22,7 @@ const Tools = props => {
   else if (player) selected = 'chars';
 
   const updateTab = tab => () => {
-    history.push('/tools');
+    navigate('/tools');
     localStorage.setItem('tools.tab', tab);
     setTab(tab);
   };
@@ -56,9 +55,4 @@ const Tools = props => {
   );
 };
 
-Tools.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  history: PropTypes.object.isRequired, // this comes from <Router> ('react-router')
-};
-
-export default withRouter(Tools);
+export default Tools;

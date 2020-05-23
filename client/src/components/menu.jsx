@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 import { Menu, Icon } from 'semantic-ui-react';
 
 export default ({ active, selection, onClick }) => {
@@ -11,8 +11,8 @@ export default ({ active, selection, onClick }) => {
     <Menu className="gm_menu" vertical>
       <Menu.Item
         as={Link}
-        to="/home"
-        active={selection === '/home'}
+        to="/"
+        active={selection === '/'}
         onClick={onClick}
       >
         News

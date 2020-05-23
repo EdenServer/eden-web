@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, Loader } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 import apiUtil from '../../../apiUtil';
 
 export default ({ name }) => {

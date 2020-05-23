@@ -7,7 +7,7 @@ import {
   Header,
   Button,
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 
 import images from '../../images';
 import Ah from './item/ah';

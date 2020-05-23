@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Loader } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 import apiUtil from '../../../apiUtil';
 import images from '../../../images';
 

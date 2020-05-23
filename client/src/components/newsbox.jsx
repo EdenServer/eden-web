@@ -1,20 +1,27 @@
 import React from 'react';
-import { Message } from 'semantic-ui-react';
+import InfoDisplay from '../components/InfoDisplay';
+import Card from 'react-bootstrap/Card';
 
 const News = ({ posts }) => (
-  <ul className="gm_news-container">
+  <>
     {posts.map((post, i) => (
-      <Message className="gm_news-post" as="li" key={`news_${i}`}>
-        <Message.Header>
-          <h3 className="gm_news-title">{post.title}</h3>
-          <p className="gm_news-date">
-            {new Date(post.date).toLocaleString()} by {post.author}
-          </p>
-        </Message.Header>
-        {post.message}
-      </Message>
+      <div
+        key={`news_${i}`}
+        className={i === 0 || i === posts.length - 1 ? '' : 'my-3'}
+      >
+        <InfoDisplay
+          header={<h2>{post.title}</h2>}
+          footer={
+            <span>
+              {new Date(post.date).toLocaleString()} by {post.author}
+            </span>
+          }
+        >
+          <Card.Text className="text-justify">{post.message}</Card.Text>
+        </InfoDisplay>
+      </div>
     ))}
-  </ul>
+  </>
 );
 
 export default News;

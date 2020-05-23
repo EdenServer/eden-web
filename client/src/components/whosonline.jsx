@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Image, Segment, Icon, Loader } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 
 import Pagination from './pagination';
 import apiUtil from '../apiUtil';

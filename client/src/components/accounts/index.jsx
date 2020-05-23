@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { createHistory } from '@reach/router';
 import Login from './login';
 import Register from './register';
 import Profile from './profile';
@@ -11,7 +11,9 @@ const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+")
 class Account extends React.Component {
   constructor(props) {
     super(props);
-    const params = new URLSearchParams(this.props.history.location.search);
+    const history = createHistory(window);
+    const params = new URLSearchParams(history.location.search);
+    
     this.state = {
       profile: {},
       signup: params.get('user') === 'register',
@@ -201,4 +203,4 @@ class Account extends React.Component {
   }
 }
 
-export default withRouter(Account);
+export default Account;
