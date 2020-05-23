@@ -26,5 +26,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run ci:client
+    - run: npm run check
     # Setting CI=false here, because when true, create-react-app treats warnings as errors, and we have a few warnings at the moment
     - run: CI=false npm run build --if-present
