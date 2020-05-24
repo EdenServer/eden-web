@@ -98,7 +98,7 @@ function install(props) {
 
       <Row className="my-3">
         <Col>
-          <InfoDisplay title="HOW TO RUN 2 FFXI INSTALLS">
+          <InfoDisplay title="How to run two FFXI installs (Coming from or switching to) retail or another private server)">
             <Card.Text>
               <p></p>
               <p>Big thanks to @Devi Ltti#5459 (Discord)  for a much better .bat that doesn't require editting file paths!    </p>
