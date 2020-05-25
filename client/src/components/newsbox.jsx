@@ -10,7 +10,7 @@ const News = ({ posts }) => (
         className={i === 0 || i === posts.length - 1 ? '' : 'my-3'}
       >
         <InfoDisplay
-          header={<h2>{post.title}</h2>}
+          title={post.title}
           footer={
             <span>
               {new Date(post.date).toLocaleString()} by {post.author}
