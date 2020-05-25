@@ -8,14 +8,9 @@ function Home(props) {
   const { posts } = props;
 
   return (
-    <Container fluid>
-      <Row className="min-vh-100" className="flex-column-reverse flex-lg-row">
-        <Col>{posts && <News posts={posts} />}</Col>
-        <Col xs={12} lg={5} className="mb-3 mb-lg-0">
-          <Yells />
-        </Col>
-      </Row>
-    </Container>
+    <Row className="min-vh-100" className="flex-column-reverse flex-lg-row">
+      <Col>{posts && <News posts={posts} />}</Col>
+    </Row>
   );
 }
 

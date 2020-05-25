@@ -9,22 +9,31 @@ import Rules from './rules';
 import About from './about';
 import Contact from './contact';
 import './style.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import YellBox from './yellbox';
 
 const Page = props => {
   const { config } = props;
 
   return (
-    <div>
-      <Router primary={false} className="py-3">
-        <Home path="/" posts={config.posts} />
-        <Install path="/install" info={config.install} />
-        <Tools path="/tools" />
-        <Links path="/links" links={config.links} />
-        <Rules path="/rules" list={config.rules} />
-        <About path="/about" />
-        <Contact path="/contact" />
-      </Router>
-    </div>
+    <Container fluid className="h-100">
+      <Row className="h-100 flex-column-reverse flex-lg-row">
+        <Col>
+          <Router primary={false}>
+            <Home path="/" posts={config.posts} />
+            <Install path="/install" info={config.install} />
+            <Tools path="/tools" />
+            <Links path="/links" links={config.links} />
+            <Rules path="/rules" list={config.rules} />
+            <About path="/about" />
+            <Contact path="/contact" />
+          </Router>
+        </Col>
+        <Col lg={4} className="mb-3 mb-lg-0">
+          <YellBox />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
