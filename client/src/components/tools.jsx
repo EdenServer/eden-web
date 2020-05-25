@@ -27,17 +27,23 @@ const Tools = () => {
     setTab(tab);
   };
 
+  // This is a temporary override until account management tools are ready.
+  // This variable and the conditional rendering below can be removed at that point.
+  const showAccountManagementTools = false;
+
   return (
     <div className="gm_tools">
       <Whosonline />
       <div className="gm_tools-content">
         <Menu pointing>
-          <Menu.Item
-            active={selected === 'account'}
-            onClick={updateTab('account')}
-          >
-            User Management
-          </Menu.Item>
+          {showAccountManagementTools && (
+            <Menu.Item
+              active={selected === 'account'}
+              onClick={updateTab('account')}
+            >
+              User Management
+            </Menu.Item>
+          )}
           <Menu.Item active={selected === 'items'} onClick={updateTab('items')}>
             Item Search
           </Menu.Item>
