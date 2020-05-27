@@ -9,12 +9,7 @@ export default ({ active, selection, onClick }) => {
 
   return (
     <Menu className="gm_menu" vertical>
-      <Menu.Item
-        as={Link}
-        to="/"
-        active={selection === '/'}
-        onClick={onClick}
-      >
+      <Menu.Item as={Link} to="/" active={selection === '/'} onClick={onClick}>
         News
         <Icon name="home" />
       </Menu.Item>
