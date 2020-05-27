@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Router, Redirect } from '@reach/router';
+import { Container, Row, Col } from 'react-bootstrap';
 import Home from './home';
 import Install from './install';
 import Links from './links';
@@ -9,14 +10,13 @@ import Rules from './rules';
 import About from './about';
 import Contact from './contact';
 import './style.css';
-import { Container, Row, Col } from 'react-bootstrap';
 import YellBox from './yellbox';
 
 const Page = props => {
   const { config } = props;
 
   return (
-    <Container fluid className="h-100">
+    <Container className="h-100">
       <Row className="h-100 flex-column-reverse flex-lg-row">
         <Col>
           <Router primary={false}>
@@ -28,9 +28,6 @@ const Page = props => {
             <About path="/about" />
             <Contact path="/contact" />
           </Router>
-        </Col>
-        <Col lg={4} className="mb-3 mb-lg-0">
-          <YellBox />
         </Col>
       </Row>
     </Container>
