@@ -1,56 +1,56 @@
 {
-    "name": "eden-web",
-    "version": "1.0.0",
-    "description": "Online tools for use with the Eden game server.",
-    "main": "index.js",
-    "scripts": {
-        "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
-        "check": "prettier --check '**/*.{ts,tsx,js,jsx}'",
-        "ci:client": "cd client && npm ci",
-        "dev:client": "cd client && npm start",
-        "dev:server": "ts-node-dev index.ts",
-        "dev": "npm-run-all --parallel --print-label dev:*",
-        "clean": "rm -rf build",
-        "build:client": "cd client && npm run build && mv build ../build/public",
-        "build:server": "tsc",
-        "build": "npm-run-all --print-label clean --parallel build:*",
-        "start": "node build/index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/EdenServer/eden-web.git"
-    },
-    "keywords": [],
-    "author": "Scott Lassen",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/EdenServer/eden-web/issues"
-    },
-    "homepage": "https://github.com/EdenServer/eden-web#readme",
-    "dependencies": {
-        "body-parser": "1.19.0",
-        "discord.js": "11.5.1",
-        "express": "4.17.1",
-        "jsonwebtoken": "8.5.1",
-        "lightenv": "1.1.0",
-        "mysql2": "2.1.0",
-        "portscanner": "2.2.0",
-        "request": "2.88.0"
-    },
-    "_devDependencies": {
-        "eslint": "6.8.0",
-        "eslint-config-airbnb-base": "14.0.0",
-        "eslint-plugin-import": "2.20.0"
-    },
-    "devDependencies": {
-        "@types/express": "^4.17.6",
-        "@types/mysql2": "github:types/mysql2",
-        "@types/node": "^13.13.9",
-        "npm-run-all": "^4.1.5",
-        "prettier": "^2.0.5",
-        "ts-node": "^8.10.1",
-        "ts-node-dev": "^1.0.0-pre.44",
-        "typescript": "^3.9.3"
-    }
+  "name": "eden-web",
+  "version": "1.0.0",
+  "description": "Online tools for use with the Eden game server.",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write '**/*.{ts,tsx,js,jsx}'",
+    "check": "prettier --check '**/*.{ts,tsx,js,jsx}'",
+    "ci:client": "cd client && npm ci",
+    "dev:client": "cd client && npm start",
+    "dev:server": "ts-node-dev index.ts",
+    "dev": "npm-run-all --parallel --print-label dev:*",
+    "clean": "rm -rf build",
+    "build:client": "cd client && npm run build && mv build ../build/public",
+    "build:server": "tsc",
+    "build": "npm-run-all --print-label clean --parallel build:*",
+    "start": "node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdenServer/eden-web.git"
+  },
+  "keywords": [],
+  "author": "Scott Lassen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdenServer/eden-web/issues"
+  },
+  "homepage": "https://github.com/EdenServer/eden-web#readme",
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "discord.js": "11.5.1",
+    "express": "4.17.1",
+    "jsonwebtoken": "8.5.1",
+    "lightenv": "1.1.0",
+    "mysql2": "2.1.0",
+    "portscanner": "2.2.0",
+    "request": "2.88.0"
+  },
+  "_devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.20.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/mysql2": "github:types/mysql2",
+    "@types/node": "^13.13.5",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  }
 }
