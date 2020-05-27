@@ -1,3 +1,5 @@
+import { features } from './config';
+
 const jwt = require('jsonwebtoken');
 const request = require('request');
 const { Router } = require('express');
@@ -53,6 +55,12 @@ router.get('/profile', validate, async (req, res) => {
 });
 
 router.post('/register', (req, res) => {
+  if (!features.registration) {
+    return res
+      .status(403)
+      .send({ message: 'This action is currently disabled in server config.' });
+  }
+
   const disallowedIP = [];
 
   const {
@@ -188,6 +196,12 @@ router.post('/register', (req, res) => {
 });
 
 router.put('/email', validate, async (req, res) => {
+  if (!features.changeEmail) {
+    return res
+      .status(403)
+      .send({ message: 'This action is currently disabled in server config.' });
+  }
+
   try {
     const statement = 'UPDATE accounts SET `email` = ? WHERE id = ?;';
     const result = await req.app.locals.query(statement, [
@@ -204,6 +218,12 @@ router.put('/email', validate, async (req, res) => {
 });
 
 router.put('/password', validate, async (req, res) => {
+  if (!features.changePassword) {
+    return res
+      .status(403)
+      .send({ message: 'This action is currently disabled in server config.' });
+  }
+
   try {
     const statement =
       'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ?;';
@@ -221,6 +241,12 @@ router.put('/password', validate, async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+  if (!features.login) {
+    return res
+      .status(403)
+      .send({ message: 'This action is currently disabled in server config.' });
+  }
+
   try {
     const { user, pass } = req.headers;
     const statement =

@@ -1,4 +1,10 @@
 module.exports = {
+  features: {
+    login: false,
+    registration: false,
+    changePassword: false,
+    changeEmail: false,
+  },
   posts: [
     {
       date: '2020-02-19T23:27:48.649Z',
