@@ -18,7 +18,7 @@ const Page = props => {
       <Router primary={false} className="py-3">
         <Home path="/" posts={config.posts} />
         <Install path="/install" info={config.install} />
-        <Tools path="/tools" />
+        <Tools path="/tools" features={config.features} />
         <Links path="/links" links={config.links} />
         <Rules path="/rules" list={config.rules} />
         <About path="/about" />
@@ -30,6 +30,12 @@ const Page = props => {
 
 Page.propTypes = {
   config: PropTypes.shape({
+    features: PropTypes.shape({
+      login: PropTypes.bool,
+      registration: PropTypes.bool,
+      changePassword: PropTypes.bool,
+      changeEmail: PropTypes.bool,
+    }),
     install: PropTypes.shape({
       bootloader: PropTypes.string.isRequired,
       discord: PropTypes.string.isRequired,
@@ -60,7 +66,18 @@ Page.propTypes = {
       terms: PropTypes.arrayOf(PropTypes.string),
       yells: PropTypes.arrayOf(PropTypes.string),
     }),
-  }).isRequired,
+  }),
+};
+
+Page.defaultProps = {
+  config: {
+    features: {
+      login: true,
+      registration: true,
+      changePassword: true,
+      changeEmail: true,
+    },
+  },
 };
 
 export default Page;

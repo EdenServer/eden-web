@@ -1,5 +1,6 @@
 import React from 'react';
 import { createHistory } from '@reach/router';
+import PropTypes from 'prop-types';
 import Login from './login';
 import Register from './register';
 import Profile from './profile';
@@ -170,6 +171,7 @@ class Account extends React.Component {
 
   render() {
     const { error, profile, loading, signup, verify } = this.state;
+    const { features } = this.props;
     const authorized = !!profile.id;
 
     if (loading) {
@@ -193,6 +195,7 @@ class Account extends React.Component {
           login={this.login}
           error={Object.keys(error).length > 0}
           changePage={this.changePage}
+          features={features}
         />
       );
     }
@@ -202,5 +205,19 @@ class Account extends React.Component {
     );
   }
 }
+
+Account.propTypes = {
+  features: PropTypes.shape({
+    login: PropTypes.bool,
+    registration: PropTypes.bool,
+  }),
+};
+
+Account.defaultProps = {
+  features: {
+    login: true,
+    registration: true,
+  },
+};
 
 export default Account;

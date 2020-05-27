@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import { createHistory, navigate } from '@reach/router';
 import Accounts from './accounts';
@@ -7,7 +8,8 @@ import Whosonline from './whosonline';
 import Itemsearch from './tools/itemsearch';
 import Playersearch from './tools/playersearch';
 
-const Tools = () => {
+const Tools = props => {
+  const { features } = props;
   const history = createHistory(window);
   const [tab, setTab] = React.useState(
     localStorage.getItem('tools.tab') || 'account'
@@ -29,7 +31,7 @@ const Tools = () => {
 
   // This is a temporary override until account management tools are ready.
   // This variable and the conditional rendering below can be removed at that point.
-  const showAccountManagementTools = false;
+  const showAccountManagementTools = features.login && features.registration;
 
   return (
     <div className="gm_tools">
@@ -51,7 +53,7 @@ const Tools = () => {
             Player Search
           </Menu.Item>
         </Menu>
-        {selected === 'account' && <Accounts />}
+        {selected === 'account' && <Accounts features={features} />}
         {(item || selected === 'items') && (
           <Itemsearch itemname={item} itemstack={stack} />
         )}
@@ -59,6 +61,20 @@ const Tools = () => {
       </div>
     </div>
   );
+};
+
+Tools.propTypes = {
+  features: PropTypes.shape({
+    login: PropTypes.bool,
+    registration: PropTypes.bool,
+  }),
+};
+
+Tools.defaultProps = {
+  features: {
+    login: true,
+    registration: true,
+  },
 };
 
 export default Tools;
