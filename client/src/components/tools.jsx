@@ -33,6 +33,7 @@ const Tools = () => {
       <div className="gm_tools-content">
         <Menu pointing>
           <Menu.Item
+            disabled
             active={selected === 'account'}
             onClick={updateTab('account')}
           >
@@ -45,7 +46,7 @@ const Tools = () => {
             Player Search
           </Menu.Item>
         </Menu>
-        {selected === 'account' && <Accounts />}
+        {/* {selected === 'account' && <Accounts />} */}
         {(item || selected === 'items') && (
           <Itemsearch itemname={item} itemstack={stack} />
         )}
