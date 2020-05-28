@@ -1,11 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from '@reach/router';
-import { Card, Container, Row, Col } from 'react-bootstrap';
-import InfoDisplay from './InfoDisplay';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "@reach/router";
+import { Card, Container, Row, Col } from "react-bootstrap";
+import InfoDisplay from "./InfoDisplay";
 
 function install(props) {
   const { info } = props;
+  /*
+Original revised until website account registration works
+
+<Card.Text>
+              You&apos;ll need to follow one of the sections below to get Eden
+              setup to play. But you&apos;ll also need to register an account on
+              the website. You can do that via the{" "}
+              <Link to="/tools?user=register">tools page</Link>.
+
+*/
 
   return (
     <Container>
@@ -17,11 +27,16 @@ function install(props) {
               get a sense of allowed modifications and actions taken against
               rulebreakers.
             </Card.Text>
+
             <Card.Text>
               You&apos;ll need to follow one of the sections below to get Eden
-              setup to play. But you&apos;ll also need to register an account on
-              the website. You can do that via the{' '}
-              <Link to="/tools?user=register">tools page</Link>.
+              setup to play. Additionally, To register an account, you'll be
+              prompted at the login screen after installing and you will need a
+              registration code obtained from an established player, often given
+              out on
+              <a href={info.discord} rel="noopener noreferrer" target="_blank">
+                our Discord server.
+              </a>{" "}
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -30,17 +45,17 @@ function install(props) {
         <Col>
           <InfoDisplay title="Fresh Install 64-bit systems">
             <Card.Text>
-              First, you&apos;ll need to{' '}
+              First, you&apos;ll need to{" "}
               <a href={info.source1} rel="noopener noreferrer" target="_blank">
                 download the Eden Installer v4.1
-              </a>{' '}
+              </a>{" "}
               to connect to Eden. You do not need to install retail FFXI
               first—this install will take care of everything.
             </Card.Text>
             <Card.Text>
               The files included in this installer were downloaded directly from
               SquareEnix&apos;s freely distributed client. If the first link is
-              full you can use the{' '}
+              full you can use the{" "}
               <a href={info.source2} rel="noopener noreferrer" target="_blank">
                 alternative download.
               </a>
@@ -55,14 +70,14 @@ function install(props) {
                 install guide resource:
               </p>
               <p>
-                {' '}
+                {" "}
                 <a
                   href="https://bit.ly/EdenInstallGuide"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {' '}
-                  Installation Guide - https://bit.ly/EdenInstallGuide{' '}
+                  {" "}
+                  Installation Guide - https://bit.ly/EdenInstallGuide{" "}
                 </a>
               </p>
             </Card.Text>
@@ -73,7 +88,7 @@ function install(props) {
       <Row className="my-3">
         <Col>
           <InfoDisplay title="Helpful Install/Setup Links">
-            <p></p>{' '}
+            <p></p>{" "}
             <Card.Text>
               NOTE: Per the Installation Guide below, if you're a new player you
               need the Eden Installer <u>AND</u> the Bootloader Download links.
@@ -82,15 +97,15 @@ function install(props) {
               <p></p> <p></p> <p></p>
               <p>
                 <strong>Main Links:</strong>
-              </p>{' '}
+              </p>{" "}
               <p>
                 <a
                   href="https://bit.ly/EdenInstallGuide"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {' '}
-                  Installation Guide - https://bit.ly/EdenInstallGuide{' '}
+                  {" "}
+                  Installation Guide - https://bit.ly/EdenInstallGuide{" "}
                 </a>
               </p>
               <p>
@@ -108,51 +123,51 @@ function install(props) {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {' '}
+                  {" "}
                   Backup Eden Installer - https://bit.ly/355DqNs
                 </a>
-              </p>{' '}
+              </p>{" "}
               <p>
                 <a
                   href="https://bit.ly/edenxiloader "
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {' '}
+                  {" "}
                   Bootloader Download - https://bit.ly/edenxiloader
                 </a>
-              </p>{' '}
+              </p>{" "}
               <p>
                 <a
                   href="https://bit.ly/2wqgcVm "
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {' '}
+                  {" "}
                   Troubleshooting Guide - https://bit.ly/2wqgcVm
                 </a>
-              </p>{' '}
+              </p>{" "}
               <p>
                 <a
                   href="https://bit.ly/3dhwQqV "
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {' '}
+                  {" "}
                   日本語版のインストール方法 | Japanese Installation Guide -
                   https://bit.ly/3dhwQqV
                 </a>
-              </p>{' '}
+              </p>{" "}
               <p>
                 <a
                   href="https://bit.ly/38hH4Uo "
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {' '}
+                  {" "}
                   Bug-Reporting - https://bit.ly/38hH4Uo
                 </a>
-                '{' '}
+                '{" "}
               </p>
               <p>
                 <strong>Common Issues</strong>
@@ -174,7 +189,7 @@ function install(props) {
                 >
                   FFXI Error Codes - https://bit.ly/3co3d6U
                 </a>
-              </p>{' '}
+              </p>{" "}
               <p>
                 <a
                   href="https://bit.ly/2Iaezh5 "
@@ -195,7 +210,7 @@ function install(props) {
               </p>
               <p>
                 <strong>Discord Resources</strong>
-              </p>{' '}
+              </p>{" "}
               <p>
                 <a
                   href="https://bit.ly/FFOSwitchMon "
@@ -204,7 +219,7 @@ function install(props) {
                 >
                   FOSwitchMon - https://bit.ly/FFOSwitchMon
                 </a>
-              </p>{' '}
+              </p>{" "}
               <p>
                 <a
                   href="https://bit.ly/2W92twS "
@@ -213,7 +228,7 @@ function install(props) {
                 >
                   Running two installs - https://bit.ly/2W92twS
                 </a>
-              </p>{' '}
+              </p>{" "}
               <p>
                 <a
                   href="https://bit.ly/38Wxw1H "
@@ -223,7 +238,7 @@ function install(props) {
                   Era Accurate .dat Changes - https://bit.ly/38Wxw1H
                 </a>
               </p>
-              <p></p> <p></p>{' '}
+              <p></p> <p></p>{" "}
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -236,55 +251,55 @@ function install(props) {
               <p></p>
               <p>
                 Big thanks to @Devi Ltti#5459 (Discord) for a much better .bat
-                that doesn't require editting file paths!{' '}
+                that doesn't require editting file paths!{" "}
               </p>
               <p>
                 <p>
                   NOTE1: Switching from one private server to another only
                   requires steps 1-4. If you're switching between Retail and
                   Eden AND installed Retail BEFORE using the Eden installer,
-                  follow steps 1-5.{' '}
+                  follow steps 1-5.{" "}
                 </p>
                 <p>
                   NOTE2: In the text below, I will refer to your other FFXI
-                  install as "OtherInstall". Eden will simply be called "Eden".{' '}
+                  install as "OtherInstall". Eden will simply be called "Eden".{" "}
                 </p>
                 <p></p>
                 <p>
                   1) Install Eden using the installer (See
                   #install-support-links ) to a location other than where you
-                  have OtherInstall located.{' '}
+                  have OtherInstall located.{" "}
                 </p>
                 <p>
                   2) Download the .bat file attached to this post and place 1
                   copy of it in your OtherInstall location, and 1 copy in your
                   Eden install location. Specifically, it needs to go into the
-                  \PlayOnline\SquareEnix\ folder for each install.{' '}
+                  \PlayOnline\SquareEnix\ folder for each install.{" "}
                 </p>
                 <p>
                   3) If you want to play on Eden, simply run the .bat (AS
                   ADMINISTRATOR) in your Eden install location. If you want to
                   switch to OtherInstall, run the .bat that's in your
-                  OtherInstall location.{' '}
+                  OtherInstall location.{" "}
                 </p>
                 <p>
                   4) Make sure to re-target which loader you want by editting
                   the profile that you use. Simply click the red button with the
                   3 white dots to the right of the "File:" line and navigate to
                   where the loader is for OtherInstall. Make sure to select "All
-                  files" to the right of "File Name:" so you can see the loader.{' '}
+                  files" to the right of "File Name:" so you can see the loader.{" "}
                 </p>
                 <p>
                   5) (SEE NOTE1) If you installed Retail BEFORE using the Eden
                   installer, once you switch BACK to retail you'll have to
                   update via Retail's PlayOnline. This will only happen once.
-                  From then on you'll be able to switch back and forth as usual.{' '}
+                  From then on you'll be able to switch back and forth as usual.{" "}
                 </p>
               </p>
               <p>
                 <a href="https://cdn.discordapp.com/attachments/496834102666723339/706766555345584128/Switch.bat">
-                  {' '}
-                  Switch.bat Download{' '}
+                  {" "}
+                  Switch.bat Download{" "}
                 </a>
               </p>
             </Card.Text>
@@ -296,7 +311,7 @@ function install(props) {
         <Col>
           <InfoDisplay title="Returning / Migrating from another private server">
             <Card.Text>
-              You will need to download{' '}
+              You will need to download{" "}
               <a
                 href={info.bootloader}
                 rel="noopener noreferrer"
@@ -304,10 +319,10 @@ function install(props) {
               >
                 our modified bootloader
               </a>
-              . You may want to visit our tech-support channel on{' '}
+              . You may want to visit our tech-support channel on{" "}
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord server
-              </a>{' '}
+              </a>{" "}
               if you&apos;re having trouble.
             </Card.Text>
 
@@ -323,8 +338,8 @@ function install(props) {
               </li>
 
               <li>
-                Move <b>edenxi.exe</b> to your Ashita <b>ffxi-bootmod</b>{' '}
-                directory. The default folder for this is{' '}
+                Move <b>edenxi.exe</b> to your Ashita <b>ffxi-bootmod</b>{" "}
+                directory. The default folder for this is{" "}
                 <b>~\\Program Files (x86)\PlayOnline\Ashita\ffxi-bootmod</b>
               </li>
 
@@ -338,14 +353,14 @@ function install(props) {
               </li>
 
               <li>
-                In the File section you will see something like{' '}
-                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed to{' '}
+                In the File section you will see something like{" "}
+                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed to{" "}
                 <b>.\\ffxi-bootmod\\edenxi.exe</b>
               </li>
 
               <li>
-                Command should include <b>--server play.edenxi.com --hairpin</b>{' '}
-                and may optionally include{' '}
+                Command should include <b>--server play.edenxi.com --hairpin</b>{" "}
+                and may optionally include{" "}
                 <b>--user MYUSERNAME --pass MYPASSWORD</b> arguments so that you
                 can automatically login.
               </li>
@@ -362,20 +377,20 @@ function install(props) {
               <p></p>
               <li>
                 Having issues connecting (3101, 3001, 0033, stuck on
-                "Downloading Data", etc)? Grab{' '}
+                "Downloading Data", etc)? Grab{" "}
                 <a href="https://cdn.discordapp.com/attachments/496834102666723339/606667670867148811/NetworkFix.bat">
-                  {' '}
+                  {" "}
                   this .bat file
-                </a>{' '}
+                </a>{" "}
                 and run as admin (It will refresh your internet connection). If
                 you're wary of files, I get that. Download it, right-click and
                 select "Edit", open with Notepad and you can see everything that
-                it does. If this doesn't fix your issue, a{' '}
+                it does. If this doesn't fix your issue, a{" "}
                 <u>computer restart</u> is your next best bet.
               </li>
               <p></p>
               <li>
-                {' '}
+                {" "}
                 If you are controlling multiple characters with one controller
                 and don't know how to turn this option off, navigate to your
                 Playonline folder --> SquareEnix --> FINAL FANTASY XI -->
@@ -393,7 +408,7 @@ function install(props) {
               </li>
               <p></p>
               <li>
-                {' '}
+                {" "}
                 Q: I'm trying to play on a private server, when I log into the
                 launcher, it just says sending data then closing..?
               </li>
@@ -413,17 +428,17 @@ function install(props) {
               <p></p>
               <li>
                 Request a GM in game: Help Desk > Help Desk > I can't move >
-                Other > I would like to call a GM{' '}
-              </li>{' '}
+                Other > I would like to call a GM{" "}
+              </li>{" "}
               <p></p>
               <li>
-                {' '}
+                {" "}
                 Setting up a Controller --> Navigate to
                 \PlayOnline\SquareEnix\FINAL FANTASY XI\ToolsUS -> Open
                 FFXiPadConfig -> Alternate Setup E -> Configure from there as
                 you want
-              </li>{' '}
-              <p></p>{' '}
+              </li>{" "}
+              <p></p>{" "}
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -443,10 +458,10 @@ install.propTypes = {
 
 install.defaultProps = {
   info: {
-    bootloader: '',
-    discord: '',
-    source1: '',
-    source2: '',
+    bootloader: "",
+    discord: "",
+    source1: "",
+    source2: "",
   },
 };
 
