@@ -1,0 +1,31 @@
+// READ ME:
+// - This file is for modifying the default Bootstrap styles site-wide.
+// - Exercise caution when modifying the theme. Changes affect the whole site and all future UI work.
+// - Be aware of the scope of your changes. For example, the 'primary' colour affects many different Bootstrap classes, some of which may not be in use currently.
+// - Only change the theme when a Bootstrap style needs to be changed site-wide, not for individual changes.
+
+// Examples of theme changes:
+// - Increase the border radius on all Cards
+// - Change the colour palette (i.e. make 'text-primary', 'btn-primary' etc elements red)
+// - Increase the font size of <h1>s
+
+// Bootstrap theming docs: https://getbootstrap.com/docs/4.5/getting-started/theming/
+
+// Bootstrap SASS variable overrides:
+// - Put any variable overrides here but above the Bootstrap import
+
+// EXAMPLE:
+// $body-bg: #000;
+// $body-color: #111;
+
+// EXAMPLE:
+// $theme-colors: (
+//   'primary': #0074d9,
+//   'danger': #ff4136,
+// );
+
+$body-bg: #e6e6e6;
+
+// Import Bootstrap
+// - This import must go below all SASS variable overrides
+@import 'node_modules/bootstrap/scss/bootstrap';
