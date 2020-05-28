@@ -13,7 +13,7 @@ class Account extends React.Component {
     super(props);
     const history = createHistory(window);
     const params = new URLSearchParams(history.location.search);
-    
+
     this.state = {
       profile: {},
       signup: params.get('user') === 'register',

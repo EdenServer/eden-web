@@ -25,7 +25,7 @@ const Page = props => {
             <Links path="/links" links={config.links} />
             <Rules path="/rules" list={config.rules} />
             <About path="/about" />
-            <Contact path="/contact" />
+            {/* <Contact path="/contact" /> */}
           </Router>
         </Col>
       </Row>

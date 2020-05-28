@@ -4,18 +4,19 @@
   "description": "Online tools for use with the Eden game server.",
   "main": "index.js",
   "scripts": {
-    "format": "prettier --write '**/*.{ts,tsx,js,jsx}'",
-    "check": "prettier --check '**/*.{ts,tsx,js,jsx}'",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
+    "check": "prettier --check \"**/*.{ts,tsx,js,jsx}\"",
     "ci:client": "cd client && npm ci",
     "dev:client": "cd client && npm start",
     "dev:server": "ts-node-dev index.ts",
     "dev": "npm-run-all --parallel --print-label dev:*",
-    "clean": "rm -rf build",
-    "build:client": "cd client && npm run build && mv build ../build/public",
+    "clean": "rimraf build",
+    "build:client": "cd client && npm run build && move-cli build ../build/public",
     "build:server": "tsc",
     "build": "npm-run-all --print-label clean --parallel build:*",
     "start": "node build/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:e2e": "JEST_PUPPETEER_CONFIG=tests/e2e/jest-puppeteer.config.js jest --runInBand -c tests/e2e/jest.config.js",
+    "test": "npm-run-all --print-label test:*"
   },
   "repository": {
     "type": "git",
@@ -44,11 +45,20 @@
     "eslint-plugin-import": "2.20.0"
   },
   "devDependencies": {
+    "@types/expect-puppeteer": "^4.4.1",
     "@types/express": "^4.17.6",
+    "@types/jest-environment-puppeteer": "^4.3.1",
     "@types/mysql2": "github:types/mysql2",
     "@types/node": "^13.13.5",
+    "@types/puppeteer": "^3.0.0",
+    "jest": "^24.9.0",
+    "jest-puppeteer": "^3.9.0",
     "npm-run-all": "^4.1.5",
+    "move-cli": "^1.2.1",
+    "puppeteer": "^3.1.0",
     "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.0.0",
     "ts-node": "^8.10.1",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
