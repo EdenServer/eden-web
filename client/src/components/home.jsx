@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Row, Col, Container } from 'react-bootstrap';
-import Yells from './yellbox';
-import News from './newsbox';
+import React from "react";
+import PropTypes from "prop-types";
+import { Row, Col, Container } from "react-bootstrap";
+import Yells from "./yellbox";
+import News from "./newsbox";
 
 function Home(props) {
   const { posts } = props;

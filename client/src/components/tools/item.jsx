@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Accordion,
   Icon,
@@ -6,17 +6,17 @@ import {
   Image,
   Header,
   Button,
-} from 'semantic-ui-react';
-import { Link } from '@reach/router';
+} from "semantic-ui-react";
+import { Link } from "@reach/router";
 
-import images from '../../images';
-import Ah from './item/ah';
-import Bazaar from './item/bazaar';
+import images from "../../images";
+import Ah from "./item/ah";
+import Bazaar from "./item/bazaar";
 // import Crafts from './item/crafts';
 
 const charToElement = (char, line, i) => {
   switch (char) {
-    case '':
+    case "":
       return (
         <img
           key={`desc_ln_${line}_pos_${i}`}
@@ -24,7 +24,7 @@ const charToElement = (char, line, i) => {
           src={images.weather.fire}
         />
       );
-    case '':
+    case "":
       return (
         <img
           key={`desc_ln_${line}_pos_${i}`}
@@ -32,7 +32,7 @@ const charToElement = (char, line, i) => {
           src={images.weather.ice}
         />
       );
-    case '':
+    case "":
       return (
         <img
           key={`desc_ln_${line}_pos_${i}`}
@@ -40,7 +40,7 @@ const charToElement = (char, line, i) => {
           src={images.weather.wind}
         />
       );
-    case '':
+    case "":
       return (
         <img
           key={`desc_ln_${line}_pos_${i}`}
@@ -48,7 +48,7 @@ const charToElement = (char, line, i) => {
           src={images.weather.earth}
         />
       );
-    case '':
+    case "":
       return (
         <img
           key={`desc_ln_${line}_pos_${i}`}
@@ -56,7 +56,7 @@ const charToElement = (char, line, i) => {
           src={images.weather.thunder}
         />
       );
-    case '':
+    case "":
       return (
         <img
           key={`desc_ln_${line}_pos_${i}`}
@@ -64,7 +64,7 @@ const charToElement = (char, line, i) => {
           src={images.weather.water}
         />
       );
-    case '':
+    case "":
       return (
         <img
           key={`desc_ln_${line}_pos_${i}`}
@@ -72,7 +72,7 @@ const charToElement = (char, line, i) => {
           src={images.weather.light}
         />
       );
-    case '':
+    case "":
       return (
         <img
           key={`desc_ln_${line}_pos_${i}`}
@@ -83,7 +83,7 @@ const charToElement = (char, line, i) => {
     default:
   }
 
-  return '';
+  return "";
 };
 
 const descriptionWithElements = (description, line) => {
@@ -117,7 +117,7 @@ export default ({ item, stack, setStack }) => {
   const [ah, setAh] = React.useState(false);
   const [bazaar, setBazaar] = React.useState(false);
   const [crafts, setCrafts] = React.useState(false);
-  const isStack = stack === 'true';
+  const isStack = stack === "true";
 
   return (
     <Segment>
@@ -136,13 +136,13 @@ export default ({ item, stack, setStack }) => {
               circular
               color="teal"
             >
-              <Icon name={!isStack ? 'boxes' : 'box'} />
-              {!isStack ? 'Show Stacks' : 'Show Singles'}
+              <Icon name={!isStack ? "boxes" : "box"} />
+              {!isStack ? "Show Stacks" : "Show Singles"}
             </Button>
           )}
         </div>
         <div className="eden_item-description">
-          {item.desc.split('\n').map((s, i) => (
+          {item.desc.split("\n").map((s, i) => (
             <p key={`desc_ln_${i}`}>
               {descriptionWithElements(s, i)}
               <br />

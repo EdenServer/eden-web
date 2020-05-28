@@ -1,16 +1,16 @@
-import React from 'react';
-import { Button, Loader } from 'semantic-ui-react';
-import { Link } from '@reach/router';
-import apiUtil from '../../../apiUtil';
-import images from '../../../images';
+import React from "react";
+import { Button, Loader } from "semantic-ui-react";
+import { Link } from "@reach/router";
+import apiUtil from "../../../apiUtil";
+import images from "../../../images";
 
-const emptySlot = slotid => (
+const emptySlot = (slotid) => (
   <div className="equipslot">
     <img alt={`eq${slotid}`} src={images.equipslot(slotid)} />
   </div>
 );
 
-const itemSlot = equip => (
+const itemSlot = (equip) => (
   <div title={equip.name} className="equipslot">
     <Link to={`/tools?item=${encodeURIComponent(equip.name)}`}>
       <img

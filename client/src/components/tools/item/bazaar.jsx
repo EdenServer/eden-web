@@ -1,7 +1,7 @@
-import React from 'react';
-import { Table, Loader } from 'semantic-ui-react';
-import { Link } from '@reach/router';
-import apiUtil from '../../../apiUtil';
+import React from "react";
+import { Table, Loader } from "semantic-ui-react";
+import { Link } from "@reach/router";
+import apiUtil from "../../../apiUtil";
 
 export default ({ name }) => {
   const [error, setError] = React.useState(false);

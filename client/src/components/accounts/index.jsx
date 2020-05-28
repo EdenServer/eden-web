@@ -1,9 +1,9 @@
-import React from 'react';
-import { createHistory } from '@reach/router';
-import Login from './login';
-import Register from './register';
-import Profile from './profile';
-import apiUtil from '../../apiUtil';
+import React from "react";
+import { createHistory } from "@reach/router";
+import Login from "./login";
+import Register from "./register";
+import Profile from "./profile";
+import apiUtil from "../../apiUtil";
 
 // eslint-disable-next-line no-useless-escape
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -16,7 +16,7 @@ class Account extends React.Component {
 
     this.state = {
       profile: {},
-      signup: params.get('user') === 'register',
+      signup: params.get("user") === "register",
       error: {},
       verify: null,
       loading: true,
@@ -36,14 +36,14 @@ class Account extends React.Component {
   }
 
   fetchProfile() {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      apiUtil.get({ url: '/api/v1/accounts/profile' }, (error, res) => {
+      apiUtil.get({ url: "/api/v1/accounts/profile" }, (error, res) => {
         if (error) {
           this.setState({ loading: false });
         } else if (res.status === 200) {
-          res.json().then(data => {
-            localStorage.setItem('jwt', data.jwt);
+          res.json().then((data) => {
+            localStorage.setItem("jwt", data.jwt);
             this.setState({ profile: data.profile, loading: false });
           });
         } else {
@@ -58,7 +58,7 @@ class Account extends React.Component {
   login(username, password) {
     apiUtil.post(
       {
-        url: '/api/v1/accounts/login',
+        url: "/api/v1/accounts/login",
         headers: {
           user: username,
           pass: password,
@@ -66,29 +66,29 @@ class Account extends React.Component {
       },
       (error, res) => {
         if (error) {
-          this.setState({ error: { server: 'Invalid username or password.' } });
+          this.setState({ error: { server: "Invalid username or password." } });
         } else if (res.status === 200) {
           res
             .text()
-            .then(data => {
-              localStorage.setItem('jwt', data);
+            .then((data) => {
+              localStorage.setItem("jwt", data);
               this.setState({ error: {} });
               this.fetchProfile();
             })
-            .catch(err => {
+            .catch((err) => {
               this.setState({
-                error: { server: 'Invalid username or password.' },
+                error: { server: "Invalid username or password." },
               });
             });
         } else {
-          this.setState({ error: { server: 'Invalid username or password.' } });
+          this.setState({ error: { server: "Invalid username or password." } });
         }
       }
     );
   }
 
   logout() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem("jwt");
     this.setState({ profile: {}, signup: false, error: false });
   }
 
@@ -101,13 +101,13 @@ class Account extends React.Component {
     const errors = {};
 
     // cycle through each of the inputs and output a map
-    Object.entries(inputGroup).forEach(input => {
+    Object.entries(inputGroup).forEach((input) => {
       info[input[0]] = input[1].value;
     });
 
     if (info.username.length < 6 || info.username.length > 15) {
       errors.username =
-        'Your username should have between 6 and 15 characters.';
+        "Your username should have between 6 and 15 characters.";
     } else {
       delete errors.username;
     }
@@ -118,7 +118,7 @@ class Account extends React.Component {
     }
     if (info.password.length < 6) {
       errors.password =
-        'Your password should have between 6 and 15 characters.';
+        "Your password should have between 6 and 15 characters.";
     } else {
       delete errors.password;
     }
@@ -129,7 +129,7 @@ class Account extends React.Component {
     }
     if (!emailRegex.test(info.email)) {
       errors.email =
-        'Please enter a valid email. This is used to recover your account if lost.';
+        "Please enter a valid email. This is used to recover your account if lost.";
     } else {
       delete errors.email;
     }
@@ -144,16 +144,16 @@ class Account extends React.Component {
     } else {
       apiUtil.post(
         {
-          url: '/api/v1/accounts/register',
+          url: "/api/v1/accounts/register",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
+            Accept: "application/json",
+            "Content-Type": "application/json",
           },
           body: info,
           json: true,
         },
         (error, data) => {
-          if (data.status === 'SUCCESS') {
+          if (data.status === "SUCCESS") {
             this.login(info.username, info.password);
             this.setState({ error: false, signup: false });
           } else {
@@ -165,7 +165,7 @@ class Account extends React.Component {
   }
 
   changePage() {
-    this.setState(state => ({ signup: !state.signup, error: {} }));
+    this.setState((state) => ({ signup: !state.signup, error: {} }));
   }
 
   render() {

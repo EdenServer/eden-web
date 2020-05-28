@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Router, Redirect } from '@reach/router';
-import Home from './home';
-import Install from './install';
-import Links from './links';
-import Tools from './tools';
-import Rules from './rules';
-import About from './about';
-import Contact from './contact';
-import './style.css';
+import React from "react";
+import PropTypes from "prop-types";
+import { Router, Redirect } from "@reach/router";
+import Home from "./home";
+import Install from "./install";
+import Links from "./links";
+import Tools from "./tools";
+import Rules from "./rules";
+import About from "./about";
+import Contact from "./contact";
+import "./style.css";
 
-const Page = props => {
+const Page = (props) => {
   const { config } = props;
 
   return (

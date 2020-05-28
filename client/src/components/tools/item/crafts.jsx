@@ -1,15 +1,15 @@
-import React from 'react';
-import { Image, Card, List, Loader } from 'semantic-ui-react';
-import apiUtil from '../../apiUtil';
-import images from '../../images';
+import React from "react";
+import { Image, Card, List, Loader } from "semantic-ui-react";
+import apiUtil from "../../apiUtil";
+import images from "../../images";
 
-const formatString = string =>
+const formatString = (string) =>
   string
-    .split('_')
-    .map(str => {
+    .split("_")
+    .map((str) => {
       return `${str.substr(0, 1).toUpperCase()}${str.substr(1, str.length)}`;
     })
-    .join(' ');
+    .join(" ");
 
 const Recipe = ({ recipe, index }) => {
   const { requirements } = recipe;
@@ -36,7 +36,7 @@ const Recipe = ({ recipe, index }) => {
               <List.Content>
                 <Image src={images.item(ingredient.itemid)} />
                 {`${formatString(ingredient.name)} ${
-                  ingredient.count === 1 ? '' : `(${ingredient.count})`
+                  ingredient.count === 1 ? "" : `(${ingredient.count})`
                 }`}
               </List.Content>
             </List.Item>
@@ -48,10 +48,10 @@ const Recipe = ({ recipe, index }) => {
           {Object.values(recipe.results).map((result, i) => (
             <List.Item key={`res_${index}_${i}`}>
               <List.Content>
-                {`${result.type === 'Normal' ? 'NQ' : result.type}: `}
+                {`${result.type === "Normal" ? "NQ" : result.type}: `}
                 <Image src={images.item(result.itemid)} />
                 {`${formatString(result.name)} ${
-                  result.count === 1 ? '' : `(${result.count})`
+                  result.count === 1 ? "" : `(${result.count})`
                 }`}
               </List.Content>
             </List.Item>

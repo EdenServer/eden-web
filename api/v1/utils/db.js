@@ -1,4 +1,4 @@
-module.exports = db => (statement, values = []) =>
+module.exports = (db) => (statement, values = []) =>
   new Promise(async (resolve, reject) => {
     db.execute(statement, values, (error, value) => {
       if (error) {

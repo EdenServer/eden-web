@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Nav, Navbar, NavLink } from 'react-bootstrap';
-import { Link } from '@reach/router';
+import React from "react";
+import PropTypes from "prop-types";
+import { Nav, Navbar, NavLink } from "react-bootstrap";
+import { Link } from "@reach/router";
 
-const SiteNavbar = props => {
+const SiteNavbar = (props) => {
   const { links } = props;
 
   return (
@@ -14,9 +14,9 @@ const SiteNavbar = props => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav>
-          {links.map(link => (
+          {links.map((link) => (
             <NavLink as={Link} to={link.to} key={link.key} className="mr-3">
-              {link.icon ? <span className="mr-1">{link.icon}</span> : null}{' '}
+              {link.icon ? <span className="mr-1">{link.icon}</span> : null}{" "}
               {link.text}
             </NavLink>
           ))}

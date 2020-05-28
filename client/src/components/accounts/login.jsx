@@ -1,9 +1,9 @@
-import React from 'react';
-import { Form, Button, Message } from 'semantic-ui-react';
+import React from "react";
+import { Form, Button, Message } from "semantic-ui-react";
 
 export default ({ error, login, changePage }) => {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
   return (
     <Form error={error}>
       <Message
@@ -17,7 +17,7 @@ export default ({ error, login, changePage }) => {
           placeholder="Username"
           name="username"
           value={username}
-          onChange={e => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
         />
       </Form.Field>
       <Form.Field error={error}>
@@ -27,7 +27,7 @@ export default ({ error, login, changePage }) => {
           type="password"
           name="password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Field>
       <Form.Field>

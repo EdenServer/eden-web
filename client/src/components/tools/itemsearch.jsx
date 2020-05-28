@@ -1,25 +1,25 @@
-import React from 'react';
-import { Segment, Input, List, Image } from 'semantic-ui-react';
-import images from '../../images';
-import Pagination from '../pagination';
-import Item from './item';
-import apiUtil from '../../apiUtil';
+import React from "react";
+import { Segment, Input, List, Image } from "semantic-ui-react";
+import images from "../../images";
+import Pagination from "../pagination";
+import Item from "./item";
+import apiUtil from "../../apiUtil";
 
-import './item/itemStyles.css';
-import { navigate } from '@reach/router';
+import "./item/itemStyles.css";
+import { navigate } from "@reach/router";
 
 const Itemsearch = ({ history, itemname, itemstack }) => {
-  const [search, setSearch] = React.useState(itemname || '');
+  const [search, setSearch] = React.useState(itemname || "");
   const [results, setResults] = React.useState([]);
   const [item, setItem] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [total, setTotal] = React.useState(0);
   const [initial, setInitial] = React.useState(false);
 
-  const handleSearch = e => {
-    if (e.key === 'Escape') {
-      setSearch(itemname || '');
-    } else if (e.key === 'Enter' && search) {
+  const handleSearch = (e) => {
+    if (e.key === "Escape") {
+      setSearch(itemname || "");
+    } else if (e.key === "Enter" && search) {
       setLoading(true);
       fetchItems({ search, limit: 10, offset: 0 });
     }
@@ -74,7 +74,7 @@ const Itemsearch = ({ history, itemname, itemstack }) => {
         loading={loading}
         value={search}
         onKeyUp={handleSearch}
-        onChange={e => setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value)}
       />
       {item ? (
         <Item item={item} stack={itemstack} />
@@ -104,7 +104,7 @@ const Itemsearch = ({ history, itemname, itemstack }) => {
         <Segment>
           {initial
             ? `No results for "${search}".`
-            : 'Begin searching an item by typing in the search box above.'}
+            : "Begin searching an item by typing in the search box above."}
         </Segment>
       )}
     </Segment>

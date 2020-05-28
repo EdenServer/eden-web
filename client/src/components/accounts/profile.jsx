@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Segment,
   Label,
@@ -11,14 +11,14 @@ import {
   Modal,
   Form,
   Input,
-} from 'semantic-ui-react';
-import apiUtil from '../../apiUtil';
-import images from '../../images';
+} from "semantic-ui-react";
+import apiUtil from "../../apiUtil";
+import images from "../../images";
 
 export default ({ user, logout, reload }) => {
   const [modalOpen, setModalOpen] = React.useState(null);
-  const [email, setEmail] = React.useState(user.email || '');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState(user.email || "");
+  const [password, setPassword] = React.useState("");
   const lastLogin = new Date(user.timelastmodify);
 
   const updateField = (field, value) => {
@@ -33,14 +33,14 @@ export default ({ user, logout, reload }) => {
         } else if (res.status === 200) {
           res
             .text()
-            .then(jwt => {
-              localStorage.setItem('jwt', jwt);
+            .then((jwt) => {
+              localStorage.setItem("jwt", jwt);
               reload();
               setModalOpen(null);
             })
-            .catch(err => console.error(err));
+            .catch((err) => console.error(err));
         } else {
-          console.error('Unable to change password.');
+          console.error("Unable to change password.");
         }
       }
     );
@@ -51,8 +51,8 @@ export default ({ user, logout, reload }) => {
       <Modal
         className="gm_field-change"
         closeOnDimmerClick
-        open={modalOpen === 'email'}
-        onClose={() => setModalOpen('email')}
+        open={modalOpen === "email"}
+        onClose={() => setModalOpen("email")}
       >
         <Modal.Header>
           <Label color="blue" attached="top">
@@ -63,13 +63,13 @@ export default ({ user, logout, reload }) => {
               <Input
                 placeholder="new email"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Field>
             <Button negative onClick={() => setModalOpen(null)}>
               Cancel
             </Button>
-            <Button primary onClick={() => updateField('email', email)}>
+            <Button primary onClick={() => updateField("email", email)}>
               Save
             </Button>
           </Form>
@@ -78,7 +78,7 @@ export default ({ user, logout, reload }) => {
       <Modal
         className="gm_field-change"
         closeOnDimmerClick
-        open={modalOpen === 'password'}
+        open={modalOpen === "password"}
         onClose={() => setModalOpen(null)}
       >
         <Modal.Header>
@@ -91,13 +91,13 @@ export default ({ user, logout, reload }) => {
                 maxLength={15}
                 placeholder="new password"
                 value={password}
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Field>
             <Button negative onClick={() => setModalOpen(null)}>
               Cancel
             </Button>
-            <Button primary onClick={() => updateField('password', password)}>
+            <Button primary onClick={() => updateField("password", password)}>
               Save
             </Button>
           </Form>
@@ -108,7 +108,7 @@ export default ({ user, logout, reload }) => {
           <List.Item icon="user" content={user.login} />
           <List.Item
             icon="envelope"
-            content={user.email || 'no recovery email'}
+            content={user.email || "no recovery email"}
           />
           <List.Item
             icon="clock"
@@ -139,8 +139,8 @@ export default ({ user, logout, reload }) => {
                   <Card.Description>
                     <Icon
                       name="power off"
-                      color={char.online ? 'green' : 'red'}
-                    />{' '}
+                      color={char.online ? "green" : "red"}
+                    />{" "}
                     {char.title}
                   </Card.Description>
                 </Card.Content>
@@ -149,10 +149,10 @@ export default ({ user, logout, reload }) => {
           </Card.Group>
         )}
         <div className="gm_profile-buttons">
-          <Button onClick={() => setModalOpen('email')}>
-            {user.email ? 'Change' : 'Add'} Email
+          <Button onClick={() => setModalOpen("email")}>
+            {user.email ? "Change" : "Add"} Email
           </Button>
-          <Button onClick={() => setModalOpen('password')}>
+          <Button onClick={() => setModalOpen("password")}>
             Change Password
           </Button>
           <Button floated="right" color="red" onClick={logout}>

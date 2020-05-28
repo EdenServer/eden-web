@@ -1,11 +1,11 @@
-import React from 'react';
-import { Dropdown, Pagination } from 'semantic-ui-react';
+import React from "react";
+import { Dropdown, Pagination } from "semantic-ui-react";
 
 const options = [
-  { text: '10', value: 10 },
-  { text: '50', value: 50 },
-  { text: '100', value: 100 },
-  { text: '250', value: 250 },
+  { text: "10", value: 10 },
+  { text: "50", value: 50 },
+  { text: "100", value: 100 },
+  { text: "250", value: 250 },
 ];
 
 export default ({
@@ -49,13 +49,13 @@ export default ({
         onPageChange={updateActivePage}
       />
       <div className="eden_pagination-dropdown">
-        Displaying{' '}
+        Displaying{" "}
         <Dropdown
           inline
           options={options}
           onChange={updatePerPage}
           defaultValue={perPage}
-        />{' '}
+        />{" "}
         results per page
       </div>
     </>

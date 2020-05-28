@@ -1,5 +1,5 @@
-import React from 'react';
-import apiUtil from '../apiUtil';
+import React from "react";
+import apiUtil from "../apiUtil";
 
 class Yells extends React.PureComponent {
   constructor(props) {
@@ -9,7 +9,7 @@ class Yells extends React.PureComponent {
   }
 
   yells() {
-    apiUtil.get({ url: '/api/v1/misc/yells', json: true }, (error, yells) => {
+    apiUtil.get({ url: "/api/v1/misc/yells", json: true }, (error, yells) => {
       if (!error) this.setState({ yells });
     });
   }
@@ -32,7 +32,7 @@ class Yells extends React.PureComponent {
           <li key={`yell_${i}`} className="gm_yell-message">
             <span className="gm_yell-name">
               [{new Date(yell.date).toLocaleTimeString()}] {yell.speaker}
-            </span>{' '}
+            </span>{" "}
             : &nbsp;
             <span className="gm_yell-text">{yell.message}</span>
           </li>

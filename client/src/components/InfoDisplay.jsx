@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Card from 'react-bootstrap/Card';
+import React from "react";
+import PropTypes from "prop-types";
+import Card from "react-bootstrap/Card";
 
 function InfoDisplay(props) {
   const { header, title, children, footer } = props;
@@ -32,7 +32,7 @@ InfoDisplay.propTypes = {
 
 InfoDisplay.defaultProps = {
   header: null,
-  title: '',
+  title: "",
   footer: null,
 };
 

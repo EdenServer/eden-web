@@ -1,23 +1,23 @@
-import 'lightenv';
-import bodyParser from 'body-parser';
-import express from 'express';
-import mysql from 'mysql2';
-import path from 'path';
-import Cache from './api/v1/utils/cache';
-import preparedStatement from './api/v1/utils/db';
-import { loadItemKeys, loadItems } from './api/v1/utils/items';
-import api from './api';
+import "lightenv";
+import bodyParser from "body-parser";
+import express from "express";
+import mysql from "mysql2";
+import path from "path";
+import Cache from "./api/v1/utils/cache";
+import preparedStatement from "./api/v1/utils/db";
+import { loadItemKeys, loadItems } from "./api/v1/utils/items";
+import api from "./api";
 
 const port = process.env.PORT || 8081;
 const app = express();
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/api', api);
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+app.use("/api", api);
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 app.locals.cache = new Cache({ interval: 120000 }); // 2 minutes

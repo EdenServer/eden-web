@@ -1,20 +1,20 @@
-import React from 'react';
-import { Table, Loader } from 'semantic-ui-react';
-import { Link } from '@reach/router';
-import apiUtil from '../../../apiUtil';
+import React from "react";
+import { Table, Loader } from "semantic-ui-react";
+import { Link } from "@reach/router";
+import apiUtil from "../../../apiUtil";
 
-const formatItem = itemname => {
+const formatItem = (itemname) => {
   return (
     <Link to={`/tools?item=${encodeURIComponent(itemname)}`}>
       {itemname
-        .split('_')
-        .map(string => {
+        .split("_")
+        .map((string) => {
           return `${string.substr(0, 1).toUpperCase()}${string.substr(
             1,
             string.length
           )}`;
         })
-        .join(' ')}
+        .join(" ")}
     </Link>
   );
 };

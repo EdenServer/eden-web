@@ -1,55 +1,55 @@
-import React from 'react';
-import { Form, Button, Message, Dropdown } from 'semantic-ui-react';
-import Reaptcha from 'reaptcha';
-import apiUtil from '../apiUtil';
+import React from "react";
+import { Form, Button, Message, Dropdown } from "semantic-ui-react";
+import Reaptcha from "reaptcha";
+import apiUtil from "../apiUtil";
 
 const subjects = [
   {
-    key: 'report',
-    value: 'report',
-    text: 'I want to report a violation of the Eden terms and conditions',
+    key: "report",
+    value: "report",
+    text: "I want to report a violation of the Eden terms and conditions",
   },
   {
-    key: 'appeal',
-    value: 'appeal',
-    text: 'I want to appeal my suspension or ban to the GM team',
+    key: "appeal",
+    value: "appeal",
+    text: "I want to appeal my suspension or ban to the GM team",
   },
   {
-    key: 'support',
-    value: 'support',
-    text: 'I need to talk to someone regarding an install or configuration',
+    key: "support",
+    value: "support",
+    text: "I need to talk to someone regarding an install or configuration",
   },
   {
-    key: 'password',
-    value: 'password',
-    text: 'I need to talk to someone regarding my lost login info',
+    key: "password",
+    value: "password",
+    text: "I need to talk to someone regarding my lost login info",
   },
   {
-    key: 'corruption',
-    value: 'corruption',
-    text: 'I want to report a case of GM corruption',
+    key: "corruption",
+    value: "corruption",
+    text: "I want to report a case of GM corruption",
   },
   {
-    key: 'other',
-    value: 'other',
-    text: 'I need to talk to someone regarding something else',
+    key: "other",
+    value: "other",
+    text: "I need to talk to someone regarding something else",
   },
 ];
 
 const Contact = () => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
   const [subject, setSubject] = React.useState(null);
-  const [message, setMessage] = React.useState('');
+  const [message, setMessage] = React.useState("");
   const [verify, setVerify] = React.useState(null);
 
   const contact = () => {
     apiUtil.post(
       {
-        url: '/api/v1/misc/contact',
+        url: "/api/v1/misc/contact",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: {
           name,
@@ -61,14 +61,14 @@ const Contact = () => {
       },
       (error, res) => {
         if (!error && res.status !== 400) {
-          alert('submitted request');
-          setName('');
-          setEmail('');
+          alert("submitted request");
+          setName("");
+          setEmail("");
           setSubject(null);
-          setMessage('');
+          setMessage("");
           setVerify(null);
         } else {
-          alert('not submitted request');
+          alert("not submitted request");
         }
       }
     );
@@ -83,7 +83,7 @@ const Contact = () => {
             <input
               placeholder="Character Name (optional)"
               value={name}
-              onChange={e => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
           </Form.Field>
           <Form.Field>
@@ -91,7 +91,7 @@ const Contact = () => {
             <input
               placeholder="Email (optional)"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Field>
         </Form.Group>
@@ -111,13 +111,13 @@ const Contact = () => {
           <textarea
             placeholder="Message (required)"
             value={message}
-            onChange={e => setMessage(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
           />
         </Form.Field>
         <Form.Field>
           <Reaptcha
             sitekey="6LdRetoUAAAAADZCMb3UVu28kka1IDVTeZLTWY3w"
-            onVerify={key => setVerify(key)}
+            onVerify={(key) => setVerify(key)}
           />
         </Form.Field>
         <Button disabled={!verify || message.length < 15} onClick={contact}>
