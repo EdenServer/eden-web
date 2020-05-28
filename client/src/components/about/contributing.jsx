@@ -27,7 +27,7 @@ function Contributing() {
   }, [activeKey]);
 
   return (
-    <Card bg="light">
+    <Card>
       <Card.Header>
         <Nav
           variant="Tabs"
