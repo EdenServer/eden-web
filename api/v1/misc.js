@@ -49,6 +49,7 @@ router.get('/yells', async (req, res) => {
 });
 
 router.post('/contact', (req, res) => {
+  return res.status(404).send();
   const { name, email, message, verify, subject } = req.body;
   let group = null;
   switch (subject) {
