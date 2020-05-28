@@ -10,7 +10,6 @@ import Rules from './rules';
 import About from './about';
 import Contact from './contact';
 import './style.css';
-import YellBox from './yellbox';
 
 const Page = props => {
   const { config } = props;
