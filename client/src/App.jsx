@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faHome,
+  faNewspaper,
   faDesktop,
   faWrench,
   faLink,
@@ -64,8 +64,8 @@ class App extends Component {
       {
         key: 'site-link-home',
         to: '/',
-        text: 'Home',
-        icon: <FontAwesomeIcon icon={faHome} />,
+        text: 'News',
+        icon: <FontAwesomeIcon icon={faNewspaper} />,
       },
       {
         key: 'site-link-install',

@@ -12,7 +12,7 @@ const SiteNavbar = props => {
         <span className="gm_banner_text">Eden</span>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav>
           {links.map(link => (
             <NavLink as={Link} to={link.to} key={link.key} className="mr-3">
