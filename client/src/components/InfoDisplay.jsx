@@ -6,7 +6,7 @@ function InfoDisplay(props) {
   const { header, title, children, footer } = props;
 
   return (
-    <Card bg="light">
+    <Card>
       {header && <Card.Header>{header}</Card.Header>}
       <Card.Body>
         {title && (
