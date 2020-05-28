@@ -1,3 +1,5 @@
+# Eden Web
+
 ## Description
 
 This website was written by Godmode from the Eden Server with inspiration from FFXIAH and Arcanus.
@@ -17,10 +19,12 @@ This website was written by Godmode from the Eden Server with inspiration from F
 ## Running
 
 ### Production
+
 1. Build the project by performing `npm run build` in the root directory.
 2. Then run `npm start` from the root directory.
 
 ### Development
+
 1. Run `npm run dev` in the root directory.
 
 ### Linting & Code Formatting
@@ -31,38 +35,41 @@ The 'client' React app is setup with its own ESLint and Prettier config, plus a 
 
 Ideally the 'client' React app should be able to function on its own without at the API. Therefore it should handle its own dependencies in terms of node modules and any configuration. Please ensure that any npm packages required for 'client' are installed at the 'client' level and not at the root API level.
 
-## TODO
+## Styling
 
-1. Fix eslint with react scripts. Enable by removing leading \_ on .eslintrc.js and \_devDependencies
+The front-end primarily uses Bootstrap v4.5^ alongside 'react-bootstrap' components. 'Semantic UI' is also used in some places.
 
-(UPDATE: ESLint config has since been added to the Client app directly, so need to set this up just to handle the API and check that this is not conflicting with the Client linting.)
-
+Bootstrap theme customisation is setup and lives in 'index.scss', which is imported into 'index.js'.
 
 ## Local database setup
 
 Software:
-* [MariaDB](https://mariadb.org/): The database itself, take note of the password you set as it will be used to access it later!
-* [HeidiSQL](https://www.heidisql.com/): A good GUI to manage the database.
+
+- [MariaDB](https://mariadb.org/): The database itself, take note of the password you set as it will be used to access it later!
+- [HeidiSQL](https://www.heidisql.com/): A good GUI to manage the database.
 
 ### Create the database
+
 1. Open HeidiSQL and click on "New" (bottom left) to create a new session.
-    * Use the password you set during the MariaDB installation.
+   - Use the password you set during the MariaDB installation.
 2. Once connected to the session, right click on your session to the left, click "Create new > Database" and name it `eden_web`.
 
 ### Setup the necessary tables and data
+
 1. Select the newly created `eden_web` database on the left (it will get a green tick mark).
 2. Navigate to "File > Run SQL file...", and then select every `.sql` file from the `sql\tables` of this project, and click Open.
 3. Once it's done running the SQL files, your tables will be setup, and you can see the result by hitting the Refresh button (or F5) in HeidiSQL.
 
-
 ### Adding character and misc. other data
-In `sql\queries\samples` you can find example SQL scripts for adding content to the website. Copy the ones you need to use from the `sql\queries` folder, and modify them as you see fit. 
+
+In `sql\queries\samples` you can find example SQL scripts for adding content to the website. Copy the ones you need to use from the `sql\queries` folder, and modify them as you see fit.
 Any new files within the `sql\queries` folder are ignored by git, so you can make as many changes as you want to the scripts you have there.
 
 The SQL scripts can be run in the same way as when you were setting up the tables and data:
+
 1. Select the `eden_web` database on the left (it will get a green tick mark).
 1. Navigate to "File > Run SQL file...", and then select the `.sql` file(s) you want to run from the `sql\queries` folder, and click Open.
-2. Once it's done running the SQL file(s), you can see the result by hitting the Refresh button (or F5) in HeidiSQL.
+1. Once it's done running the SQL file(s), you can see the result by hitting the Refresh button (or F5) in HeidiSQL.
 
 ### ENV variables for your local MariaDB
 
@@ -75,6 +82,7 @@ MYSQLPORT=3306
 ```
 
 ## License
+
 Copyright (c) 2020 Eden Server
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
