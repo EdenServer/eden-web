@@ -1,9 +1,9 @@
-import React from "react";
-import { Form, Button, Message } from "semantic-ui-react";
+import React from 'react';
+import { Form, Button, Message } from 'semantic-ui-react';
 
-export default ({ error, login, changePage }) => {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+export default ({ error, login, changePage, features }) => {
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
   return (
     <Form error={error}>
       <Message
@@ -11,36 +11,44 @@ export default ({ error, login, changePage }) => {
         header="Invalid Credentials"
         content="Check your username and password and try again."
       />
-      <Form.Field error={error}>
-        <label>Username</label>
-        <input
-          placeholder="Username"
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </Form.Field>
-      <Form.Field error={error}>
-        <label>Password</label>
-        <input
-          placeholder="Password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </Form.Field>
+      {features.login && (
+        <>
+          <Form.Field error={error}>
+            <label>Username</label>
+            <input
+              placeholder="Username"
+              name="username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field error={error}>
+            <label>Password</label>
+            <input
+              placeholder="Password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </Form.Field>
+        </>
+      )}
       <Form.Field>
-        <Button
-          floated="right"
-          primary
-          onClick={() => login(username, password)}
-        >
-          Login
-        </Button>
-        <Button size="mini" basic onClick={changePage}>
-          New Account
-        </Button>
+        {features.login && (
+          <Button
+            floated="right"
+            primary
+            onClick={() => login(username, password)}
+          >
+            Login
+          </Button>
+        )}
+        {features.registration && (
+          <Button size="mini" basic onClick={changePage}>
+            New Account
+          </Button>
+        )}
       </Form.Field>
     </Form>
   );

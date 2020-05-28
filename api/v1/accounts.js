@@ -1,6 +1,8 @@
-const jwt = require("jsonwebtoken");
-const request = require("request");
-const { Router } = require("express");
+import { features } from './config';
+
+const jwt = require('jsonwebtoken');
+const request = require('request');
+const { Router } = require('express');
 
 const router = Router();
 
@@ -8,11 +10,11 @@ const {
   formatAvatar,
   formatJobString,
   titleIdToString,
-} = require("./utils/chars");
-const { getJWTForAccountId } = require("./utils/accounts");
+} = require('./utils/chars');
+const { getJWTForAccountId } = require('./utils/accounts');
 
 const validate = (req, res, next) => {
-  const token = req.headers.authorization.replace(/^Bearer\s/, "");
+  const token = req.headers.authorization.replace(/^Bearer\s/, '');
   jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
     if (!error) {
       req.jwt = decoded;
@@ -23,7 +25,7 @@ const validate = (req, res, next) => {
   });
 };
 
-router.get("/profile", validate, async (req, res) => {
+router.get('/profile', validate, async (req, res) => {
   try {
     const statement = `SELECT *, IF(accounts_sessions.charid IS NULL, 0, 1) AS online FROM chars
             JOIN char_stats ON chars.charid = char_stats.charid
@@ -31,7 +33,7 @@ router.get("/profile", validate, async (req, res) => {
             LEFT JOIN accounts_sessions on chars.charid = accounts_sessions.charid
             WHERE chars.accid = ? AND deleted IS NULL;`;
     const results = await req.app.locals.query(statement, [req.jwt.id]);
-    const chars = results.map((char) => ({
+    const chars = results.map(char => ({
       name: char.charname,
       online: char.online,
       title: titleIdToString(char.title),
@@ -52,7 +54,13 @@ router.get("/profile", validate, async (req, res) => {
   }
 });
 
-router.post("/register", (req, res) => {
+router.post('/register', (req, res) => {
+  if (!features.registration) {
+    return res
+      .status(403)
+      .send({ message: 'This action is currently disabled in server config.' });
+  }
+
   const disallowedIP = [];
 
   const {
@@ -73,9 +81,9 @@ router.post("/register", (req, res) => {
    */
   try {
     const tests = [
-      req.headers.referer === "https://www.edenxi.com/tools" ||
-        req.headers.referer === "https://edenxi.com/tools",
-      !disallowedIP.includes(req.headers["x-forwarded-for"]),
+      req.headers.referer === 'https://www.edenxi.com/tools' ||
+        req.headers.referer === 'https://edenxi.com/tools',
+      !disallowedIP.includes(req.headers['x-forwarded-for']),
       password === confirmPassword,
       username.toLowerCase() === confirmUsername.toLowerCase(),
       email.toLowerCase() === confirmEmail.toLowerCase(),
@@ -87,26 +95,26 @@ router.post("/register", (req, res) => {
 
     if (!!tests.includes(false)) {
       res.json({
-        status: "ERROR",
+        status: 'ERROR',
         errors: {
           server:
-            "Your browser sent bad data. Please try again on a different browser.",
+            'Your browser sent bad data. Please try again on a different browser.',
         },
       });
     } else {
       // All pre-tests have passed. Validate the Recaptcha3.
       request(
         {
-          url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${verify}&remoteip=${req.headers["x-forwarded-for"]}`,
-          method: "POST",
+          url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${verify}&remoteip=${req.headers['x-forwarded-for']}`,
+          method: 'POST',
           body: {},
           json: true,
         },
         async (error, resp) => {
           if (error) {
             return res.json({
-              status: "ERROR",
-              errors: { server: "An unknown error occured. (1)" },
+              status: 'ERROR',
+              errors: { server: 'An unknown error occured. (1)' },
             });
           }
 
@@ -115,7 +123,7 @@ router.post("/register", (req, res) => {
             try {
               // attempt to register the account
               const statement =
-                "INSERT INTO accounts (`login`,`password`,`email`,`email2`) VALUES (?, PASSWORD(?), ?, ?);";
+                'INSERT INTO accounts (`login`,`password`,`email`,`email2`) VALUES (?, PASSWORD(?), ?, ?);';
               const results = await req.app.locals.query(statement, [
                 username,
                 password,
@@ -139,7 +147,7 @@ router.post("/register", (req, res) => {
                   timelastmodify,
                 } = jwt.decode(token);
                 return res.json({
-                  status: "SUCCESS",
+                  status: 'SUCCESS',
                   jwt: token,
                   profile: Object.assign({
                     id,
@@ -153,26 +161,26 @@ router.post("/register", (req, res) => {
                 });
               } else {
                 return res.json({
-                  status: "ERROR",
+                  status: 'ERROR',
                   errors: {
-                    server: "Username already taken. Try something else.",
+                    server: 'Username already taken. Try something else.',
                   },
                 });
               }
             } catch (error) {
               return res.json({
-                status: "ERROR",
+                status: 'ERROR',
                 errors: {
-                  server: "Username already taken. Try something else.",
+                  server: 'Username already taken. Try something else.',
                 },
               });
             }
           } else {
             return res.json({
-              status: "ERROR",
+              status: 'ERROR',
               errors: {
                 server:
-                  "Here be bots! You failed the ReCAPTCHA test. Make sure to fill out the form with valid data within a couple minutes.",
+                  'Here be bots! You failed the ReCAPTCHA test. Make sure to fill out the form with valid data within a couple minutes.',
               },
             });
           }
@@ -181,15 +189,21 @@ router.post("/register", (req, res) => {
     }
   } catch (err) {
     return res.json({
-      status: "ERROR",
-      errors: { server: "An unknown error occured. (2)" },
+      status: 'ERROR',
+      errors: { server: 'An unknown error occured. (2)' },
     });
   }
 });
 
-router.put("/email", validate, async (req, res) => {
+router.put('/email', validate, async (req, res) => {
+  if (!features.changeEmail) {
+    return res
+      .status(403)
+      .send({ message: 'This action is currently disabled in server config.' });
+  }
+
   try {
-    const statement = "UPDATE accounts SET `email` = ? WHERE id = ?;";
+    const statement = 'UPDATE accounts SET `email` = ? WHERE id = ?;';
     const result = await req.app.locals.query(statement, [
       req.headers.email,
       req.jwt.id,
@@ -203,10 +217,16 @@ router.put("/email", validate, async (req, res) => {
   }
 });
 
-router.put("/password", validate, async (req, res) => {
+router.put('/password', validate, async (req, res) => {
+  if (!features.changePassword) {
+    return res
+      .status(403)
+      .send({ message: 'This action is currently disabled in server config.' });
+  }
+
   try {
     const statement =
-      "UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ?;";
+      'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ?;';
     const result = await req.app.locals.query(statement, [
       req.headers.password,
       req.jwt.id,
@@ -220,11 +240,17 @@ router.put("/password", validate, async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
+  if (!features.login) {
+    return res
+      .status(403)
+      .send({ message: 'This action is currently disabled in server config.' });
+  }
+
   try {
     const { user, pass } = req.headers;
     const statement =
-      "SELECT * FROM accounts WHERE `login` = ? AND `password` = PASSWORD(?) AND status = 1;";
+      'SELECT * FROM accounts WHERE `login` = ? AND `password` = PASSWORD(?) AND status = 1;';
     const results = await req.app.locals.query(statement, [user, pass]);
     if (results.length === 1) {
       const token = await getJWTForAccountId(
