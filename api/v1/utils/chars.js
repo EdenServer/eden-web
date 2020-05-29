@@ -1,9 +1,9 @@
-const { titles } = require("../lists");
+const { titles } = require('../lists');
 
-const titleIdToString = (titleid) => {
+const titleIdToString = titleid => {
   const title = titles[titleid];
   if (!title) {
-    return "Error";
+    return 'Error';
   }
 
   return title;
@@ -11,33 +11,33 @@ const titleIdToString = (titleid) => {
 
 const jobIdToString = {
   0: null,
-  1: "WAR",
-  2: "MNK",
-  3: "WHM",
-  4: "BLM",
-  5: "RDM",
-  6: "THF",
-  7: "PLD",
-  8: "DRK",
-  9: "BST",
-  10: "BRD",
-  11: "RNG",
-  12: "SAM",
-  13: "NIN",
-  14: "DRG",
-  15: "SMN",
-  16: "BLU",
-  17: "COR",
-  18: "PUP",
-  19: "DNC",
-  20: "SCH",
-  21: "GEO",
-  22: "RUN",
+  1: 'WAR',
+  2: 'MNK',
+  3: 'WHM',
+  4: 'BLM',
+  5: 'RDM',
+  6: 'THF',
+  7: 'PLD',
+  8: 'DRK',
+  9: 'BST',
+  10: 'BRD',
+  11: 'RNG',
+  12: 'SAM',
+  13: 'NIN',
+  14: 'DRG',
+  15: 'SMN',
+  16: 'BLU',
+  17: 'COR',
+  18: 'PUP',
+  19: 'DNC',
+  20: 'SCH',
+  21: 'GEO',
+  22: 'RUN',
 };
 
-const formatJobString = (char) => {
+const formatJobString = char => {
   if ((char.nameflags & 4096) === 4096) {
-    return "?/?";
+    return '?/?';
   }
 
   let job = `${jobIdToString[char.mjob]}${char.mlvl}`;
@@ -48,52 +48,52 @@ const formatJobString = (char) => {
   return job;
 };
 
-const formatAvatar = (char) => {
-  const race = ["", "hm", "hf", "em", "ef", "tm", "tf", "mf", "gm"][char.race];
+const formatAvatar = char => {
+  const race = ['', 'hm', 'hf', 'em', 'ef', 'tm', 'tf', 'mf', 'gm'][char.race];
   const face = Math.floor((char.face + 2) / 2);
-  const hair = ["a", "b"][char.face % 2];
+  const hair = ['a', 'b'][char.face % 2];
   return `${race}${face}${hair}`;
 };
 
-const skillIdToCraft = (skillid) => {
+const skillIdToCraft = skillid => {
   switch (skillid) {
     case 48:
-      return "Fishing";
+      return 'Fishing';
     case 49:
-      return "Woodworking";
+      return 'Woodworking';
     case 50:
-      return "Smithing";
+      return 'Smithing';
     case 51:
-      return "Goldsmithing";
+      return 'Goldsmithing';
     case 52:
-      return "Clothcraft";
+      return 'Clothcraft';
     case 53:
-      return "Leathercraft";
+      return 'Leathercraft';
     case 54:
-      return "Bonecraft";
+      return 'Bonecraft';
     case 55:
-      return "Alchemy";
+      return 'Alchemy';
     case 56:
-      return "Cooking";
+      return 'Cooking';
     case 57:
-      return "Synergy";
+      return 'Synergy';
     default:
   }
 
-  return "Error";
+  return 'Error';
 };
 
-const addExtraCharData = (chars) => {
+const addExtraCharData = chars => {
   const online = {};
   const all = {};
 
-  Object.keys(chars.online).forEach((charname) => {
+  Object.keys(chars.online).forEach(charname => {
     const char = chars.online[charname];
     online[charname] = Object.assign({}, char, {
       avatar: formatAvatar(char),
     });
   });
-  Object.keys(chars.all).forEach((charname) => {
+  Object.keys(chars.all).forEach(charname => {
     const char = chars.all[charname];
     all[charname] = Object.assign({}, char, { avatar: formatAvatar(char) });
   });
@@ -119,12 +119,12 @@ const getCharCrafts = async (query, charid) => {
       Cooking: 0,
       Synergy: 0,
     };
-    response.forEach((row) => {
+    response.forEach(row => {
       crafts[skillIdToCraft(row.skillid)] = row.value / 10;
     });
     return crafts;
   } catch (error) {
-    console.error("Error while getting character crafts", error);
+    console.error('Error while getting character crafts', error);
     return {};
   }
 };
@@ -136,7 +136,7 @@ const getCharAH = async (query, charname, limit = 10) => {
             WHERE sell_date != 0 AND (seller_name = ? OR buyer_name = ?) ORDER BY sell_date DESC LIMIT ?;`;
     return await query(statement, [charname, charname, limit]);
   } catch (error) {
-    console.error("Error while getting character AH", error);
+    console.error('Error while getting character AH', error);
     return [];
   }
 };
@@ -149,56 +149,56 @@ const getCharBazaar = async (query, charname) => {
             WHERE bazaar != 0 AND charname = ? ORDER BY b.name ASC`;
     return await query(statement, [charname]);
   } catch (error) {
-    console.error("Error while getting character bazaar", error);
+    console.error('Error while getting character bazaar', error);
     return [];
   }
 };
 
-const equipSlotIdToKey = (equipslotid) => {
+const equipSlotIdToKey = equipslotid => {
   switch (equipslotid) {
     case 0:
-      return "main";
+      return 'main';
     case 1:
-      return "sub";
+      return 'sub';
     case 2:
-      return "ranged";
+      return 'ranged';
     case 3:
-      return "ammo";
+      return 'ammo';
     case 4:
-      return "head";
+      return 'head';
     case 5:
-      return "body";
+      return 'body';
     case 6:
-      return "hands";
+      return 'hands';
     case 7:
-      return "legs";
+      return 'legs';
     case 8:
-      return "feet";
+      return 'feet';
     case 9:
-      return "neck";
+      return 'neck';
     case 10:
-      return "waist";
+      return 'waist';
     case 11:
-      return "ear1";
+      return 'ear1';
     case 12:
-      return "ear2";
+      return 'ear2';
     case 13:
-      return "ring1";
+      return 'ring1';
     case 14:
-      return "ring2";
+      return 'ring2';
     case 15:
-      return "back";
+      return 'back';
     case 16:
-      return "ls1";
+      return 'ls1';
     case 17:
-      return "ls2";
+      return 'ls2';
     default:
   }
 
-  return "error";
+  return 'error';
 };
 
-const mapEquipToObject = (equip) => {
+const mapEquipToObject = equip => {
   // Build an array of equipment or null slots
   let baseEquip = {
     main: { equipslotid: 0 },
@@ -220,7 +220,7 @@ const mapEquipToObject = (equip) => {
     ls1: { equipslotid: 16 },
     ls2: { equipslotid: 17 },
   };
-  equip.forEach((e) => (baseEquip[equipSlotIdToKey(e.equipslotid)] = e));
+  equip.forEach(e => (baseEquip[equipSlotIdToKey(e.equipslotid)] = e));
   return baseEquip;
 };
 
@@ -235,7 +235,7 @@ const getCharEquip = async (query, charname) => {
     const response = await query(statement, [charname]);
     return mapEquipToObject(response);
   } catch (error) {
-    console.error("Error while getting character equipment", error);
+    console.error('Error while getting character equipment', error);
     return {};
   }
 };
@@ -295,14 +295,14 @@ const getCharData = async (query, charname) => {
       return null;
     }
   } catch (error) {
-    console.error("Error while fetching characters", error);
+    console.error('Error while fetching characters', error);
     return {};
   }
 };
 
 const fetchChars = async (
   query,
-  { search = "", limit = 500, online = false, offset = 0 }
+  { search = '', limit = 500, online = false, offset = 0 }
 ) => {
   try {
     const total = await query(
@@ -324,7 +324,7 @@ const fetchChars = async (
     ]);
     return {
       total: total[0].ct,
-      chars: results.map((char) => ({
+      chars: results.map(char => ({
         charname: char.charname,
         title: titles[char.title],
         jobString: formatJobString(char),
@@ -332,7 +332,7 @@ const fetchChars = async (
       })),
     };
   } catch (error) {
-    console.error("Error while fetching characters", error);
+    console.error('Error while fetching characters', error);
     return { total: 0, chars: [] };
   }
 };

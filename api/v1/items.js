@@ -1,14 +1,14 @@
-const { Router } = require("express");
+const { Router } = require('express');
 
 const router = Router();
 
-const lists = require("./lists");
-const utils = require("./utils");
+const lists = require('./lists');
+const utils = require('./utils');
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
-    const { search = "", limit = 10, offset = 0 } = req.query;
-    const items = Object.values(lists.items).filter((i) => {
+    const { search = '', limit = 10, offset = 0 } = req.query;
+    const items = Object.values(lists.items).filter(i => {
       if (i.name.toLowerCase().indexOf(search.toLowerCase()) !== -1) {
         if (!req.app.locals.itemKeys[i.id]) {
           console.warn(`itemid ${i.id} does not have an entry in itemKeys`);
@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 
     return {
       total: items.length,
-      items: items.splice(offset, limit).map((item) => {
+      items: items.splice(offset, limit).map(item => {
         const key = req.app.locals.itemKeys[item.id].key;
         return {
           id: item.id,
@@ -38,9 +38,9 @@ router.get("/", async (req, res) => {
   res.send(cache);
 });
 
-router.get("/:itemname/ah", async (req, res) => {
-  const { itemname = "" } = req.params;
-  const stack = req.query.stack === "true" ? 1 : 0;
+router.get('/:itemname/ah', async (req, res) => {
+  const { itemname = '' } = req.params;
+  const stack = req.query.stack === 'true' ? 1 : 0;
   const cache = await req.app.locals.cache.fetch(
     `${req.originalUrl}?stack=${stack}`,
     () => {
@@ -56,9 +56,9 @@ router.get("/:itemname/ah", async (req, res) => {
   res.send(cache);
 });
 
-router.get("/:itemname/crafts", async (req, res) => {
+router.get('/:itemname/crafts', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
-    const { itemname = "" } = req.params;
+    const { itemname = '' } = req.params;
     return utils.items.getRecipeFor(
       req.app.locals.query,
       decodeURIComponent(itemname)
@@ -68,9 +68,9 @@ router.get("/:itemname/crafts", async (req, res) => {
   res.send(cache);
 });
 
-router.get("/:itemname/bazaar", async (req, res) => {
+router.get('/:itemname/bazaar', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
-    const { itemname = "" } = req.params;
+    const { itemname = '' } = req.params;
     return utils.items.getBazaars(
       req.app.locals.query,
       decodeURIComponent(itemname)
@@ -80,10 +80,10 @@ router.get("/:itemname/bazaar", async (req, res) => {
   res.send(cache);
 });
 
-router.get("/:itemname", async (req, res) => {
+router.get('/:itemname', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
-    const { itemname = "" } = req.params;
-    const item = Object.values(req.app.locals.items).filter((i) => {
+    const { itemname = '' } = req.params;
+    const item = Object.values(req.app.locals.items).filter(i => {
       return (
         i.name.toLowerCase() === decodeURIComponent(itemname).toLowerCase()
       );

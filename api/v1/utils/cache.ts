@@ -29,7 +29,7 @@ export default class Cache {
 
   async fetch(options: FetchOptions | string, update: () => any): Promise<any> {
     const now = Date.now();
-    const key = typeof options === "object" ? options.key : options;
+    const key = typeof options === 'object' ? options.key : options;
     let cacheEntry = this.store[key];
 
     if (!cacheEntry) {
@@ -43,7 +43,7 @@ export default class Cache {
             return null;
           }),
       };
-      if (typeof options === "object" && options.interval) {
+      if (typeof options === 'object' && options.interval) {
         cacheEntry.interval = options.interval;
         cacheEntry.nextUpdate = now;
       }
