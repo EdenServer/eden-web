@@ -6,6 +6,16 @@ import InfoDisplay from './InfoDisplay';
 
 function install(props) {
   const { info } = props;
+  /*
+Original revised until website account registration works
+
+<Card.Text>
+              You&apos;ll need to follow one of the sections below to get Eden
+              setup to play. But you&apos;ll also need to register an account on
+              the website. You can do that via the{" "}
+              <Link to="/tools?user=register">tools page</Link>.
+
+*/
 
   return (
     <Container>
@@ -17,11 +27,16 @@ function install(props) {
               get a sense of allowed modifications and actions taken against
               rulebreakers.
             </Card.Text>
+
             <Card.Text>
               You&apos;ll need to follow one of the sections below to get Eden
-              setup to play. But you&apos;ll also need to register an account on
-              the website. You can do that via the{' '}
-              <Link to="/tools?user=register">tools page</Link>.
+              setup to play. Additionally, To register an account, you'll be
+              prompted at the login screen after installing and you will need a
+              registration code obtained from an established player, often given
+              out on
+              <a href={info.discord} rel="noopener noreferrer" target="_blank">
+                our Discord server.
+              </a>{' '}
             </Card.Text>
           </InfoDisplay>
         </Col>
