@@ -1,24 +1,24 @@
-import React from "react";
-import { Segment, Input, List, Image } from "semantic-ui-react";
+import React from 'react';
+import { Segment, Input, List, Image } from 'semantic-ui-react';
 
-import { navigate } from "@reach/router";
-import Pagination from "../pagination";
-import Player from "./player";
-import apiUtil from "../../apiUtil";
-import images from "../../images";
+import { navigate } from '@reach/router';
+import Pagination from '../pagination';
+import Player from './player';
+import apiUtil from '../../apiUtil';
+import images from '../../images';
 
 const Playersearch = ({ history, charname }) => {
-  const [search, setSearch] = React.useState(charname || "");
+  const [search, setSearch] = React.useState(charname || '');
   const [results, setResults] = React.useState([]);
   const [player, setPlayer] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [total, setTotal] = React.useState(0);
   const [initial, setInitial] = React.useState(false);
 
-  const handleSearch = (e) => {
-    if (e.key === "Escape") {
-      setSearch(charname || "");
-    } else if (e.key === "Enter" && search) {
+  const handleSearch = e => {
+    if (e.key === 'Escape') {
+      setSearch(charname || '');
+    } else if (e.key === 'Enter' && search) {
       setLoading(true);
       fetchPlayers({ search, limit: 10, offset: 0 });
     }
@@ -44,7 +44,7 @@ const Playersearch = ({ history, charname }) => {
     );
   };
 
-  const fetchPlayer = (player) => {
+  const fetchPlayer = player => {
     if (!player) return;
 
     setLoading(true);
@@ -78,7 +78,7 @@ const Playersearch = ({ history, charname }) => {
         loading={loading}
         value={search}
         onKeyUp={handleSearch}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={e => setSearch(e.target.value)}
       />
       {player ? (
         <Player player={player} />
@@ -112,7 +112,7 @@ const Playersearch = ({ history, charname }) => {
         <Segment>
           {initial
             ? `No results for "${search}".`
-            : "Begin searching for a player by typing in the search box above."}
+            : 'Begin searching for a player by typing in the search box above.'}
         </Segment>
       )}
     </Segment>

@@ -1,6 +1,6 @@
-import React from "react";
-import { Button, Loader } from "semantic-ui-react";
-import apiUtil from "../../../apiUtil";
+import React from 'react';
+import { Button, Loader } from 'semantic-ui-react';
+import apiUtil from '../../../apiUtil';
 
 export default ({ name }) => {
   const [error, setError] = React.useState(false);
@@ -45,7 +45,7 @@ export default ({ name }) => {
       <h6>Crafts</h6>
       <table>
         <tbody>
-          {Object.keys(crafts).map((craftname) => (
+          {Object.keys(crafts).map(craftname => (
             <tr key={craftname}>
               <td>{`${craftname}:`}</td>
               <td>{crafts[craftname]}</td>

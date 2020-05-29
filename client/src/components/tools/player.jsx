@@ -1,13 +1,13 @@
-import React from "react";
-import { Segment, Icon, Image, Header } from "semantic-ui-react";
+import React from 'react';
+import { Segment, Icon, Image, Header } from 'semantic-ui-react';
 
-import Jobs from "./player/jobs";
-import Equipment from "./player/equipment";
-import Crafts from "./player/crafts";
-import Sales from "./player/sales";
-import images from "../../images";
+import Jobs from './player/jobs';
+import Equipment from './player/equipment';
+import Crafts from './player/crafts';
+import Sales from './player/sales';
+import images from '../../images';
 
-import "./player/playerStyles.css";
+import './player/playerStyles.css';
 
 const Linkshell = ({ ls }) => {
   if (!ls || !ls.itemid) {
@@ -43,7 +43,7 @@ export default ({ player }) => {
           <div className="eden_player-header-right">
             <Linkshell ls={equip && equip.ls1} />
             <Linkshell ls={equip && equip.ls2} />
-            <Icon name="power off" color={player.online ? "green" : "red"} />
+            <Icon name="power off" color={player.online ? 'green' : 'red'} />
           </div>
         </div>
       </Header>

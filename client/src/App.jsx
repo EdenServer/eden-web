@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faNewspaper,
   faDesktop,
@@ -8,12 +8,12 @@ import {
   faGavel,
   faInfoCircle,
   faPhone,
-} from "@fortawesome/free-solid-svg-icons";
-import * as api from "./api";
+} from '@fortawesome/free-solid-svg-icons';
+import * as api from './api';
 
-import LandingPage from "./components/page";
-import SiteNavbar from "./components/SiteNavbar/SiteNavbar";
-import SiteFooter from "./components/SiteFooter/SiteFooter";
+import LandingPage from './components/page';
+import SiteNavbar from './components/SiteNavbar/SiteNavbar';
+import SiteFooter from './components/SiteFooter/SiteFooter';
 
 class App extends Component {
   constructor(props) {
@@ -24,8 +24,8 @@ class App extends Component {
       profile: {
         emailModalOpen: false,
         passwordModalOpen: false,
-        updatedEmail: "",
-        updatedPassword: "",
+        updatedEmail: '',
+        updatedPassword: '',
       },
       config: { install: {}, links: [], posts: [], rules: {} },
     };
@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   setContext(updatedContext) {
-    this.setState((state) => {
+    this.setState(state => {
       return { ...state, ...updatedContext };
     });
   }
@@ -50,7 +50,7 @@ class App extends Component {
   async getConfig() {
     await api
       .getConfig()
-      .then((response) => this.setConfig(response.data))
+      .then(response => this.setConfig(response.data))
       .catch(() => this.handleErrorOnGetConfig());
   }
 
@@ -62,45 +62,45 @@ class App extends Component {
     const { ready, config, apiNoResponse } = this.state;
     const links = [
       {
-        key: "site-link-home",
-        to: "/",
-        text: "News",
+        key: 'site-link-home',
+        to: '/',
+        text: 'News',
         icon: <FontAwesomeIcon icon={faNewspaper} />,
       },
       {
-        key: "site-link-install",
-        to: "/install",
-        text: "Install",
+        key: 'site-link-install',
+        to: '/install',
+        text: 'Install',
         icon: <FontAwesomeIcon icon={faDesktop} />,
       },
       {
-        key: "site-link-tools",
-        to: "/tools",
-        text: "Tools",
+        key: 'site-link-tools',
+        to: '/tools',
+        text: 'Tools',
         icon: <FontAwesomeIcon icon={faWrench} />,
       },
       {
-        key: "site-link-links",
-        to: "/links",
-        text: "Links",
+        key: 'site-link-links',
+        to: '/links',
+        text: 'Links',
         icon: <FontAwesomeIcon icon={faLink} />,
       },
       {
-        key: "site-links-rules",
-        to: "/rules",
-        text: "Rules",
+        key: 'site-links-rules',
+        to: '/rules',
+        text: 'Rules',
         icon: <FontAwesomeIcon icon={faGavel} />,
       },
       {
-        key: "site-links-about",
-        to: "/about",
-        text: "About",
+        key: 'site-links-about',
+        to: '/about',
+        text: 'About',
         icon: <FontAwesomeIcon icon={faInfoCircle} />,
       },
       {
-        key: "site-links-contact",
-        to: "/contact",
-        text: "Contact",
+        key: 'site-links-contact',
+        to: '/contact',
+        text: 'Contact',
         icon: <FontAwesomeIcon icon={faPhone} />,
       },
     ];

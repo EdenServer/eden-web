@@ -1,7 +1,7 @@
-import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 function Links(props) {
   const { links } = props;
@@ -9,7 +9,7 @@ function Links(props) {
   return (
     <Container>
       <Row>
-        {links.map((link) => (
+        {links.map(link => (
           <Col xs={12} md={6} xl={3} className="my-2 my-md-3" key={link.url}>
             <Card className="h-100 link-card">
               <Card.Header>
@@ -18,13 +18,13 @@ function Links(props) {
                     <a
                       href={link.url}
                       className="stretched-link text-dark"
-                      style={{ textDecoration: "none" }}
+                      style={{ textDecoration: 'none' }}
                     >
                       {link.header}
                     </a>
                   </Card.Title>
                   {link.image && (
-                    <img alt="" src={link.image} style={{ maxWidth: "35px" }} />
+                    <img alt="" src={link.image} style={{ maxWidth: '35px' }} />
                   )}
                 </div>
               </Card.Header>

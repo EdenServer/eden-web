@@ -1,8 +1,8 @@
-import React from "react";
-import { Accordion, Icon } from "semantic-ui-react";
+import React from 'react';
+import { Accordion, Icon } from 'semantic-ui-react';
 
-import Ah from "./ah";
-import Bazaar from "./bazaar";
+import Ah from './ah';
+import Bazaar from './bazaar';
 
 export default ({ name }) => {
   const [ah, setAh] = React.useState(false);

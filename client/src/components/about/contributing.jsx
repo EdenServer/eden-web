@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { Card, Nav } from "react-bootstrap";
-import Setup from "./setup";
+import React, { useState, useEffect } from 'react';
+import { Card, Nav } from 'react-bootstrap';
+import Setup from './setup';
 
 function Contributing() {
   const setupContent = () => <Setup />;
   const writingBcnmsContent = () => <p>Under development.</p>;
   const edenDocsContent = () => <p>Under development.</p>;
 
-  const [activeKey, setActiveKey] = useState("setup");
+  const [activeKey, setActiveKey] = useState('setup');
   const [activeContent, setActiveContent] = useState(setupContent);
 
   useEffect(() => {
     switch (activeKey) {
-      case "setup":
+      case 'setup':
         setActiveContent(setupContent());
         break;
-      case "bcnms":
+      case 'bcnms':
         setActiveContent(writingBcnmsContent());
         break;
-      case "docs":
+      case 'docs':
         setActiveContent(edenDocsContent());
         break;
       default:
-        setActiveContent("");
+        setActiveContent('');
     }
   }, [activeKey]);
 
@@ -31,7 +31,7 @@ function Contributing() {
       <Card.Header>
         <Nav
           variant="Tabs"
-          onSelect={(k) => setActiveKey(k)}
+          onSelect={k => setActiveKey(k)}
           activeKey={activeKey}
         >
           <Nav.Item>

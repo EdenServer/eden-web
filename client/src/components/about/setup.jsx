@@ -1,6 +1,6 @@
-import React from "react";
-import { Card } from "semantic-ui-react";
-import { block1 } from "./text";
+import React from 'react';
+import { Card } from 'semantic-ui-react';
+import { block1 } from './text';
 
 export default () => (
   <div>

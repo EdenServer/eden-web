@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "@reach/router";
-import { Menu, Icon } from "semantic-ui-react";
+import React from 'react';
+import { Link } from '@reach/router';
+import { Menu, Icon } from 'semantic-ui-react';
 
 export default ({ active, selection, onClick }) => {
   if (!active) {
@@ -9,14 +9,14 @@ export default ({ active, selection, onClick }) => {
 
   return (
     <Menu className="gm_menu" vertical>
-      <Menu.Item as={Link} to="/" active={selection === "/"} onClick={onClick}>
+      <Menu.Item as={Link} to="/" active={selection === '/'} onClick={onClick}>
         News
         <Icon name="home" />
       </Menu.Item>
       <Menu.Item
         as={Link}
         to="/install"
-        active={selection === "/install"}
+        active={selection === '/install'}
         onClick={onClick}
       >
         Install
@@ -25,7 +25,7 @@ export default ({ active, selection, onClick }) => {
       <Menu.Item
         as={Link}
         to="/tools"
-        active={selection === "/tools"}
+        active={selection === '/tools'}
         onClick={onClick}
       >
         Tools
@@ -34,7 +34,7 @@ export default ({ active, selection, onClick }) => {
       <Menu.Item
         as={Link}
         to="/links"
-        active={selection === "/links"}
+        active={selection === '/links'}
         onClick={onClick}
       >
         Links
@@ -43,7 +43,7 @@ export default ({ active, selection, onClick }) => {
       <Menu.Item
         as={Link}
         to="/rules"
-        active={selection === "/rules"}
+        active={selection === '/rules'}
         onClick={onClick}
       >
         Rules
@@ -52,7 +52,7 @@ export default ({ active, selection, onClick }) => {
       <Menu.Item
         as={Link}
         to="/about"
-        active={selection === "/about"}
+        active={selection === '/about'}
         onClick={onClick}
       >
         FAQ
@@ -61,19 +61,19 @@ export default ({ active, selection, onClick }) => {
       <Menu.Item
         as={Link}
         to="/contact"
-        active={selection === "/contact"}
+        active={selection === '/contact'}
         onClick={onClick}
       >
         Contact
         <Icon name="phone" />
       </Menu.Item>
       <Menu.Item className="gm_menu-credits">
-        <div style={{ fontSize: "10px" }}>
+        <div style={{ fontSize: '10px' }}>
           All FINAL FANTASY® XI content and images © 2002-2020 SQUARE ENIX CO.,
           LTD. All Rights Reserved.
         </div>
         <br />
-        <div style={{ fontSize: "10px" }}>
+        <div style={{ fontSize: '10px' }}>
           FINAL FANTASY® is a registered trademark of SQUARE ENIX CO., LTD. All
           Rights Reserved.
         </div>

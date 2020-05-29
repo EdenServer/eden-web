@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const SiteFooter = () => {
   return (
@@ -13,15 +13,15 @@ const SiteFooter = () => {
         <Col xs={12} lg className="my-auto">
           <p className="text-light">
             <small>
-              All FINAL FANTASY® XI content and images © 2002-2020{" "}
+              All FINAL FANTASY® XI content and images © 2002-2020{' '}
               <a href="https://www.square-enix.com/" className="text-white">
                 SQUARE ENIX
-              </a>{" "}
+              </a>{' '}
               CO., LTD. All Rights Reserved. <br /> FINAL FANTASY® is a
-              registered trademark of{" "}
+              registered trademark of{' '}
               <a href="https://www.square-enix.com/" className="text-white">
                 SQUARE ENIX
-              </a>{" "}
+              </a>{' '}
               CO., LTD. All Rights Reserved.
             </small>
           </p>

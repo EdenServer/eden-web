@@ -1,9 +1,9 @@
-import React from "react";
-import { Form, Button, Message } from "semantic-ui-react";
-import Reaptcha from "reaptcha";
+import React from 'react';
+import { Form, Button, Message } from 'semantic-ui-react';
+import Reaptcha from 'reaptcha';
 
-const useField = (name) => {
-  const [getter, setter] = React.useState("");
+const useField = name => {
+  const [getter, setter] = React.useState('');
 
   return {
     name,
@@ -11,17 +11,17 @@ const useField = (name) => {
     fluid: true,
     value: getter,
     placeholder: name,
-    onChange: (e) => setter(e.target.value),
+    onChange: e => setter(e.target.value),
   };
 };
 
 export default ({ error, register, changePage, verify, verified }) => {
-  const username = useField("Username");
-  const password = useField("Password");
-  const email = useField("Email");
-  const confirmUsername = useField("Confirm Username");
-  const confirmPassword = useField("Confirm Password");
-  const confirmEmail = useField("Confirm Email");
+  const username = useField('Username');
+  const password = useField('Password');
+  const email = useField('Email');
+  const confirmUsername = useField('Confirm Username');
+  const confirmPassword = useField('Confirm Password');
+  const confirmEmail = useField('Confirm Email');
   const inputGroup = {
     username,
     password,
@@ -61,7 +61,7 @@ export default ({ error, register, changePage, verify, verified }) => {
       </Form.Field>
       <Reaptcha
         sitekey="6LdRetoUAAAAADZCMb3UVu28kka1IDVTeZLTWY3w"
-        onVerify={(key) => verify(key)}
+        onVerify={key => verify(key)}
       />
     </Form>
   );

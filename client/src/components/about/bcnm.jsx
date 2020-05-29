@@ -1,6 +1,6 @@
-import React from "react";
-import { Card } from "semantic-ui-react";
-import { block10, block11, block12, block13, block14 } from "./text";
+import React from 'react';
+import { Card } from 'semantic-ui-react';
+import { block10, block11, block12, block13, block14 } from './text';
 
 export default () => (
   <div>
@@ -71,7 +71,7 @@ export default () => (
     <ul>
       <li>scripts/globals/bcnm.lua</li>
       <li>
-        scripts/zones/{`{zonename}`}/bcnms/{"{bcnmname"}
+        scripts/zones/{`{zonename}`}/bcnms/{'{bcnmname'}
       </li>
       <li>sql/mob_spawn_points.sql</li>
       <li>sql/bcnm_battlefield.sql</li>

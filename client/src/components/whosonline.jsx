@@ -1,10 +1,10 @@
-import React from "react";
-import { Card, Image, Segment, Icon, Loader } from "semantic-ui-react";
-import { Link } from "@reach/router";
+import React from 'react';
+import { Card, Image, Segment, Icon, Loader } from 'semantic-ui-react';
+import { Link } from '@reach/router';
 
-import Pagination from "./pagination";
-import apiUtil from "../apiUtil";
-import images from "../images";
+import Pagination from './pagination';
+import apiUtil from '../apiUtil';
+import images from '../images';
 
 const Player = ({ player }) => (
   <Card as={Link} to={`/tools?player=${player.charname}`}>
@@ -29,7 +29,7 @@ class Whosonline extends React.PureComponent {
     this.state = {
       status: null,
       players: [],
-      online: "0",
+      online: '0',
       loading: false,
     };
 
@@ -52,7 +52,7 @@ class Whosonline extends React.PureComponent {
 
   componentDidMount() {
     // fetch server status
-    apiUtil.get({ url: "/api/v1/misc/status" }, async (error, res) => {
+    apiUtil.get({ url: '/api/v1/misc/status' }, async (error, res) => {
       const status = res.status === 200;
       if (status) {
         const online = await res.text();
@@ -71,8 +71,8 @@ class Whosonline extends React.PureComponent {
       <div className="gm_whosonline">
         <Segment.Group className="gm_online-count" raised>
           <Segment>
-            <Icon name="power off" color={status === true ? "green" : "red"} />{" "}
-            Eden is {status === true ? "online" : "offline"}
+            <Icon name="power off" color={status === true ? 'green' : 'red'} />{' '}
+            Eden is {status === true ? 'online' : 'offline'}
           </Segment>
           <Segment>{online} Characters Online</Segment>
           <Pagination
@@ -81,7 +81,7 @@ class Whosonline extends React.PureComponent {
             changePage={this.fetchChars}
           />
         </Segment.Group>
-        <Loader active={loading} inline style={{ width: "100%" }} />
+        <Loader active={loading} inline style={{ width: '100%' }} />
         {!loading && players.length > 0 && (
           <Card.Group className="gm_players-online" centered itemsPerRow={1}>
             {players.map((p, i) => (
