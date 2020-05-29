@@ -38,14 +38,13 @@ const Tools = props => {
       <Whosonline />
       <div className="gm_tools-content">
         <Menu pointing>
-          {showAccountManagementTools && (
-            <Menu.Item
-              active={selected === 'account'}
-              onClick={updateTab('account')}
-            >
-              User Management
-            </Menu.Item>
-          )}
+          <Menu.Item
+            disabled
+            active={selected === 'account'}
+            onClick={updateTab('account')}
+          >
+            User Management
+          </Menu.Item>
           <Menu.Item active={selected === 'items'} onClick={updateTab('items')}>
             Item Search
           </Menu.Item>
@@ -53,7 +52,9 @@ const Tools = props => {
             Player Search
           </Menu.Item>
         </Menu>
-        {selected === 'account' && <Accounts features={features} />}
+
+        {/* {selected === 'account' && <Accounts />} */}
+
         {(item || selected === 'items') && (
           <Itemsearch itemname={item} itemstack={stack} />
         )}

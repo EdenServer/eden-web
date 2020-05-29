@@ -97,12 +97,12 @@ class App extends Component {
         text: 'About',
         icon: <FontAwesomeIcon icon={faInfoCircle} />,
       },
-      {
-        key: 'site-links-contact',
-        to: '/contact',
-        text: 'Contact',
-        icon: <FontAwesomeIcon icon={faPhone} />,
-      },
+      // {
+      //   key: 'site-links-contact',
+      //   to: '/contact',
+      //   text: 'Contact',
+      //   icon: <FontAwesomeIcon icon={faPhone} />,
+      // },
     ];
 
     return (
