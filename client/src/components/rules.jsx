@@ -6,7 +6,16 @@ import { Container, Row, Col } from 'react-bootstrap';
 import './style.css';
 
 const Rules = ({ list }) => {
-  const { terms, rules, disallowedashita, allowedashita, disallowedwindower, allowedwindower, yells, discord } = list;
+  const {
+    terms,
+    rules,
+    disallowedashita,
+    allowedashita,
+    disallowedwindower,
+    allowedwindower,
+    yells,
+    discord,
+  } = list;
 
   return (
     <Container>
@@ -28,10 +37,9 @@ const Rules = ({ list }) => {
         <Col>
           <InfoDisplay title="Formal Rules">
             <Card.Text>
-              Listed here is a list of formal rules.It will be expanded upon
-              and modified in the future so please stay as current as
-              realistically possible with them.If you see someone breaking the
-              rules,{' '}
+              Listed here is a list of formal rules.It will be expanded upon and
+              modified in the future so please stay as current as realistically
+              possible with them.If you see someone breaking the rules,{' '}
               <b>
                 <u>please do not report them in public forums like Discord </u>
               </b>{' '}
@@ -333,26 +341,37 @@ const Rules = ({ list }) => {
             <Card.Text>
               <p>Allowed plugins and other third party softwares.</p>
               <p> </p>
-              <table border="0px"><p> </p>
+              <table border="0px">
+                <p> </p>
                 <p>
                   <br></br>
-                  <center><h4>
-                    <strong>Allowed / Disallowed Ashita Plugins </strong><p> </p></h4>
+                  <center>
+                    <h4>
+                      <strong>Allowed / Disallowed Ashita Plugins </strong>
+                      <p> </p>
+                    </h4>
                   </center>
-                </p><td class="modrulestable"><p> </p>
+                </p>
+                <td class="modrulestable">
+                  <p> </p>
                   <center>
                     <strong>Allowed</strong>
                   </center>
                   <p> </p>
                   <p> </p>
                   <p> </p>
-                  <p> </p><ol>
+                  <p> </p>
+                  <ol>
                     {allowedashita.map((t, i) => (
-                      <td class="modrulestable" key={`term_${i}`}> {t} </td>
+                      <td class="modrulestable" key={`term_${i}`}>
+                        {' '}
+                        {t}{' '}
+                      </td>
                     ))}
                   </ol>
                 </td>
-                <td class="modrulestable"><p> </p>
+                <td class="modrulestable">
+                  <p> </p>
                   <p></p>
                   <p> </p>
                   <p> </p>
@@ -360,44 +379,62 @@ const Rules = ({ list }) => {
                   <center>
                     <strong>Disallowed</strong>
                   </center>
-                  <p> </p> <ol>
+                  <p> </p>{' '}
+                  <ol>
                     {disallowedashita.map((t, i) => (
-                      <td class="modrulestable" key={`term_${i}`}> {t} </td>
+                      <td class="modrulestable" key={`term_${i}`}>
+                        {' '}
+                        {t}{' '}
+                      </td>
                     ))}
                   </ol>
                   <p> </p>
                   <p> </p>
                 </td>
-                <tr><p> </p><p> </p>
+                <tr>
+                  <p> </p>
+                  <p> </p>
                   <center>
-                    <h4>  <strong>Allowed / Disallowed Windower Plugins</strong></h4>
+                    <h4>
+                      {' '}
+                      <strong>Allowed / Disallowed Windower Plugins</strong>
+                    </h4>
                   </center>
-                  <p> </p><p> </p>
+                  <p> </p>
+                  <p> </p>
 
-
-                  <td class="modrulestable"><p> </p>
+                  <td class="modrulestable">
+                    <p> </p>
                     <center>
                       <strong>Allowed</strong>
                     </center>
-                    <p> </p><p> </p>
+                    <p> </p>
+                    <p> </p>
 
                     <ol>
                       {allowedwindower.map((t, i) => (
-                        <td class="modrulestable" key={`term_${i}`}> {t} </td>
+                        <td class="modrulestable" key={`term_${i}`}>
+                          {' '}
+                          {t}{' '}
+                        </td>
                       ))}
                     </ol>
                     <p> </p>
                   </td>
                 </tr>
                 <tr>
-
-                  <td class="modrulestable"><p> </p>
+                  <td class="modrulestable">
+                    <p> </p>
                     <center>
                       <strong>Disallowed</strong>
                     </center>
-                    <p> </p><ol>
+                    <p> </p>
+                    <ol>
                       {disallowedwindower.map((t, i) => (
-                        <td class="modrulestable" key={`term_${i}`}> {t} </td>
+                        <td class="modrulestable" key={`term_${i}`}>
+                          {' '}
+                          {t}{' '}
+                        </td>
                       ))}
                     </ol>
                     <p> </p>
@@ -503,7 +540,7 @@ const Rules = ({ list }) => {
           </InfoDisplay>
         </Col>
       </Row>
-    </Container >
+    </Container>
   );
 };
 Rules.propTypes = {
