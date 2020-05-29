@@ -7,6 +7,33 @@ body {
   padding: 0;
 }
 
+
+table.modrulestable, tr.modrulestable, td.modrulestable  {
+  border-collapse: seperate;
+  border: 1px solid rgb(31, 31, 31);
+  border-color: gray;
+  border-width: 0px 1px 1px 0px;
+  border-spacing: 3px;
+  padding: 3px;
+}
+
+tr.modrulestable {
+  display: block;
+}
+td.modrulestable  {
+  display: inline-block;
+}
+
+table.punishtable, tr.punishtable, td.punishtable  {
+  border-collapse: collapse;
+  border: 1px solid rgb(31, 31, 31);
+  border-color: gray;
+  border-width: 1px 1px 1px 1px;
+  border-spacing: 25px;
+  padding: 10px;
+}
+
+
 .gm_main {
   display: flex;
   flex-direction: column;
