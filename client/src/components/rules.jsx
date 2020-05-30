@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import InfoDisplay from './InfoDisplay';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 const Rules = ({ list }) => {
   const { terms, rules, disallowed, allowed, yells, discord } = list;
 
   return (
-    <Container>
+    <>
       <Row className="mb-3">
         <Col>
           <InfoDisplay title="Terms and Conditions">
@@ -153,7 +153,7 @@ const Rules = ({ list }) => {
           </InfoDisplay>
         </Col>
       </Row>
-    </Container>
+    </>
   );
 };
 

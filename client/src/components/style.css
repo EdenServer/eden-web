@@ -86,6 +86,7 @@ body {
 
 .gm_yell-container {
   min-height: 15vh;
+  max-height: 960px;
   color: white;
   overflow: auto;
   background-color: #120d37;

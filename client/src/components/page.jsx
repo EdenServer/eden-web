@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Router, Redirect } from '@reach/router';
+import { Container, Row, Col } from 'react-bootstrap';
 import Home from './home';
 import Install from './install';
 import Links from './links';
@@ -14,17 +15,21 @@ const Page = props => {
   const { config } = props;
 
   return (
-    <div>
-      <Router primary={false} className="py-3">
-        <Home path="/" posts={config.posts} />
-        <Install path="/install" info={config.install} />
-        <Tools path="/tools" />
-        <Links path="/links" links={config.links} />
-        <Rules path="/rules" list={config.rules} />
-        <About path="/about" />
-        {/* <Contact path="/contact" /> */}
-      </Router>
-    </div>
+    <Container className="h-100">
+      <Row className="h-100 flex-column-reverse flex-lg-row">
+        <Col>
+          <Router primary={false}>
+            <Home path="/" posts={config.posts} />
+            <Install path="/install" info={config.install} />
+            <Tools path="/tools" />
+            <Links path="/links" links={config.links} />
+            <Rules path="/rules" list={config.rules} />
+            <About path="/about" />
+            {/* <Contact path="/contact" /> */}
+          </Router>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
