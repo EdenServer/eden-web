@@ -7,7 +7,7 @@ import { Row, Col, Table } from 'react-bootstrap';
 const Rules = ({ list }) => {
   const { terms, rules, software, yells, discord } = list;
 
-  const seperateLines = (string) => {
+  const seperateLines = string => {
     const lines = string.split('\n');
     if (lines.length <= 1) return string;
 
@@ -104,8 +104,8 @@ const Rules = ({ list }) => {
               A non-exhaustive list of plugins and other third-party software.
               To be absolutely safe stick the the approved list or ask a staff
               member to update the list. Any software that is an addon or plugin
-              will be listed as its Ashita name and any known Windower equivilent
-              will be listed seperately.
+              will be listed as its Ashita name and any known Windower
+              equivilent will be listed seperately.
             </Card.Text>
             <Table striped bordered>
               <thead>
@@ -119,7 +119,13 @@ const Rules = ({ list }) => {
                 {software.list.map((s, i) => (
                   <tr key={`addon_${i}`}>
                     <td>{s.item}</td>
-                    <td>{s.windower || <small><i>n/a</i></small>}</td>
+                    <td>
+                      {s.windower || (
+                        <small>
+                          <i>n/a</i>
+                        </small>
+                      )}
+                    </td>
                     <td>{s.allowed ? <b>Allowed</b> : <b>Disallowed</b>}</td>
                   </tr>
                 ))}
@@ -147,16 +153,19 @@ const Rules = ({ list }) => {
         <Col>
           <InfoDisplay title="Discord Rules">
             <Card.Text>
-              These rules may be adjusted from time to time. It is the player's responsibility to
-              keep up to date with the rules for the service they are using. It is at the moderators
-              discretion if a player has crossed the line. If a Staff or Moderator asks a player to
-              do something, that player needs to follow the request. If they feel this request is not
-              appropriate, contact Shoruto with a screenshot of the request. If a player feels a
-              staff member is talking inappropriately to another player, contact Shoruto or Juul
-              with a screenshot of the inappropriate chat. Our moderators won't be able to see
-              all rule violations--if a player happens to see someone breaking one of our rules or has
-              crossed the line somewhere else, please let a moderator know in a private message with a
-              screenshot of the chat that you feel broke the rule.
+              These rules may be adjusted from time to time. It is the player's
+              responsibility to keep up to date with the rules for the service
+              they are using. It is at the moderators discretion if a player has
+              crossed the line. If a Staff or Moderator asks a player to do
+              something, that player needs to follow the request. If they feel
+              this request is not appropriate, contact Shoruto with a screenshot
+              of the request. If a player feels a staff member is talking
+              inappropriately to another player, contact Shoruto or Juul with a
+              screenshot of the inappropriate chat. Our moderators won't be able
+              to see all rule violations--if a player happens to see someone
+              breaking one of our rules or has crossed the line somewhere else,
+              please let a moderator know in a private message with a screenshot
+              of the chat that you feel broke the rule.
             </Card.Text>
             <ol>
               {discord.list.map((t, i) => (
