@@ -14,9 +14,8 @@ function install(props) {
           <InfoDisplay title="Account Registration">
             <Card.Text>
               You&apos;ll need to follow one of the sections below to get Eden
-              setup to play. But you&apos;ll also need to register an account on
-              the website. You can do that via the{' '}
-              <Link to="/tools?user=register">tools page</Link>.
+              setup to play, but you will also need to register an account
+              through the bootloader.
             </Card.Text>
           </InfoDisplay>
         </Col>
