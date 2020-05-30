@@ -50,9 +50,16 @@ module.exports = {
         'GM interaction is limited here but if a GM messages you in game and you are active, respond within a reasonable time. Ignoring a GM is likely to get you jailed as we will likely think you are afk botting.',
       ],
       violations: [
-        { rule: 'Using Bots to include Fish Botting and Claim Botting', consequence: 'Banned' },
+        {
+          rule: 'Using Bots to include Fish Botting and Claim Botting',
+          consequence: 'Banned',
+        },
         { rule: 'Pos Hacking / Speed Hacking', consequence: 'Banned' },
-        { rule: 'Harassment', consequence: '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned' },
+        {
+          rule: 'Harassment',
+          consequence:
+            '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned',
+        },
       ],
     },
     software: {
@@ -67,19 +74,45 @@ module.exports = {
         { item: 'HideConsole', allowed: true },
         { item: 'Recast', windower: 'Renamer', allowed: true },
         { item: 'Timestamp', allowed: true },
-        { item: 'Shorthand (only for actions on players -- NOT allowed for claiming)', allowed: true },
-        { item: 'Renamer (only using the lists we provide -- NOT for custom naming of mobs)', allowed: true },
-        { item: 'Any modified bootloader or a bootloader downloaded from any source other than edenxi.com' },
+        {
+          item:
+            'Shorthand (only for actions on players -- NOT allowed for claiming)',
+          allowed: true,
+        },
+        {
+          item:
+            'Renamer (only using the lists we provide -- NOT for custom naming of mobs)',
+          allowed: true,
+        },
+        {
+          item:
+            'Any modified bootloader or a bootloader downloaded from any source other than edenxi.com',
+        },
         { item: 'AuctionHelper / Auction House assistants' },
         { item: 'Multisend / Servo' },
-        { item: 'Minimap and other map overlays that interact with the world  (Show NPCs, players, etc)' },
+        {
+          item:
+            'Minimap and other map overlays that interact with the world  (Show NPCs, players, etc)',
+        },
         { item: 'Allmaps' },
-        { item: 'Scripts ran unattended. (If a GM speaks to you and you do not reply within a certain time frame, you may be jailed.)' },
+        {
+          item:
+            'Scripts ran unattended. (If a GM speaks to you and you do not reply within a certain time frame, you may be jailed.)',
+        },
         { item: 'Shorthand (when used to claim)' },
         { item: 'LightLuggage' },
-        { item: 'Fishing/exp/healing bots or any other bots that automate player actions' },
-        { item: 'Claim tools or character enhancement tools like flee or warp hacks.' },
-        { item: 'WatchDog (or anything that gives you abilities you shouldn\'t have access to)' },
+        {
+          item:
+            'Fishing/exp/healing bots or any other bots that automate player actions',
+        },
+        {
+          item:
+            'Claim tools or character enhancement tools like flee or warp hacks.',
+        },
+        {
+          item:
+            "WatchDog (or anything that gives you abilities you shouldn't have access to)",
+        },
       ],
     },
     yells: {
@@ -90,16 +123,16 @@ module.exports = {
         'Asking a legitimate FFXI question in yell is fine. Replies to questions should be sent in /tells, not in /yell.',
         "Yell rules may change from time to time. If this happens we will give at least a week's notice before we start enforcing the updated rules.",
         'Adding on irrelevant banter not related to the purpose of a yell. Example: “WTS pebbles also Godmode sux” is not allowed.',
-      ]
+      ],
     },
     discord: {
       updated: '5/22/2020',
       list: [
-        'Please be respectful to each other. Consider this phrase when typing, treat others as you would want to be treated. You wouldn\'t want someone yelling at you or belittling you so you don\'t need to do it to another person.',
+        "Please be respectful to each other. Consider this phrase when typing, treat others as you would want to be treated. You wouldn't want someone yelling at you or belittling you so you don't need to do it to another person.",
         'Please keep the cursing at a minimum. Some people prefer not to read constant cursing. We know sometimes a word or two will slip out in the heat of the moment and that is ok but if it becomes a habit we will go to you in private about it.',
         'Do not post nudity of any kind.',
         'Do not give out any personal information in public. If you must send it do so via a PM. There are too many people that will take advantage of this personal information.',
-        'Most importantly we want you all to have fun while you use our discord. We know you won\'t agree with everything we implement and that is ok. We do ask that you follow our rules. If you feel you won\'t be able to then we kindly thank you for using our Discord and ask you to move on to somewhere else to chat.',
+        "Most importantly we want you all to have fun while you use our discord. We know you won't agree with everything we implement and that is ok. We do ask that you follow our rules. If you feel you won't be able to then we kindly thank you for using our Discord and ask you to move on to somewhere else to chat.",
         'Any attempt evading a mute will result in an immediate ban.',
       ],
     },
