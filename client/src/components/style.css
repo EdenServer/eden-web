@@ -176,6 +176,10 @@ body {
   align-items: center;
 }
 
+.gm_clickable {
+  cursor: pointer;
+}
+
 .gm_itemsearch_row.ui.segment.item,
 .gm_charsearch_row.ui.segment.item {
   padding: 5px;

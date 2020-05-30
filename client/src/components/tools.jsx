@@ -3,9 +3,9 @@ import { Menu } from 'semantic-ui-react';
 
 import { createHistory, navigate } from '@reach/router';
 import Accounts from './accounts';
-import Whosonline from './whosonline';
 import Itemsearch from './tools/itemsearch';
 import Playersearch from './tools/playersearch';
+import OnlineList from './tools/OnlineList';
 
 const Tools = () => {
   const history = createHistory(window);
@@ -29,7 +29,6 @@ const Tools = () => {
 
   return (
     <div className="gm_tools">
-      <Whosonline />
       <div className="gm_tools-content">
         <Menu pointing>
           <Menu.Item
@@ -39,6 +38,12 @@ const Tools = () => {
           >
             User Management
           </Menu.Item>
+          <Menu.Item
+            active={selected === 'online'}
+            onClick={updateTab('online')}
+          >
+            Who's Online
+          </Menu.Item>
           <Menu.Item active={selected === 'items'} onClick={updateTab('items')}>
             Item Search
           </Menu.Item>
@@ -47,6 +52,7 @@ const Tools = () => {
           </Menu.Item>
         </Menu>
         {/* {selected === 'account' && <Accounts />} */}
+        {selected === 'online' && <OnlineList />}
         {(item || selected === 'items') && (
           <Itemsearch itemname={item} itemstack={stack} />
         )}
