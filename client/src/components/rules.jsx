@@ -2,10 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import InfoDisplay from './InfoDisplay';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Table } from 'react-bootstrap';
 
 const Rules = ({ list }) => {
-  const { terms, rules, disallowed, allowed, yells, discord } = list;
+  const { terms, rules, software, yells, discord } = list;
+
+  const seperateLines = (string) => {
+    const lines = string.split('\n');
+    if (lines.length <= 1) return string;
+
+    return lines.map(l => <p className="gm_lineseperate">{l}</p>);
+  };
 
   return (
     <>
@@ -13,10 +20,11 @@ const Rules = ({ list }) => {
         <Col>
           <InfoDisplay title="Terms and Conditions">
             <ol>
-              {terms.map((t, i) => (
+              {terms.list.map((t, i) => (
                 <li key={`term_${i}`}>{t}</li>
               ))}
             </ol>
+            <small>Updated {terms.updated}</small>
           </InfoDisplay>
         </Col>
       </Row>
@@ -64,44 +72,60 @@ const Rules = ({ list }) => {
               </b>
             </Card.Text>
             <ol>
-              {rules.map((t, i) => (
+              {rules.list.map((t, i) => (
                 <li key={`term_${i}`}>{t}</li>
               ))}
             </ol>
+            <Table striped bordered>
+              <thead>
+                <tr>
+                  <th>Rule</th>
+                  <th>Consequence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rules.violations.map((v, i) => (
+                  <tr key={`violation_${i}`}>
+                    <td>{v.rule}</td>
+                    <td>{seperateLines(v.consequence)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+            <small>Updated {rules.updated}</small>
           </InfoDisplay>
         </Col>
       </Row>
 
       <Row className="my-3">
         <Col>
-          <InfoDisplay title="Disallowed third-party software">
+          <InfoDisplay title="Third-party software">
             <Card.Text>
-              A list of disallowed plugins and other third-party software. This
-              is not an exhastive list, to be absolutely safe stick the the
-              approved list or ask a staff member to update the list. Ashita and
-              its plugins are listed first but Windower and its addon/plugin
-              alternative are also disallowed.
+              A non-exhaustive list of plugins and other third-party software.
+              To be absolutely safe stick the the approved list or ask a staff
+              member to update the list. Any software that is an addon or plugin
+              will be listed as its Ashita name and any known Windower equivilent
+              will be listed seperately.
             </Card.Text>
-            <ol>
-              {disallowed.map((t, i) => (
-                <li key={`term_${i}`}>{t}</li>
-              ))}
-            </ol>
-          </InfoDisplay>
-        </Col>
-      </Row>
-
-      <Row className="my-3">
-        <Col>
-          <InfoDisplay title="Allowed third-party software">
-            <Card.Text>
-              A list of allowed plugins and other third-party software.
-            </Card.Text>
-            <ol>
-              {allowed.map((t, i) => (
-                <li key={`term_${i}`}>{t}</li>
-              ))}
-            </ol>
+            <Table striped bordered>
+              <thead>
+                <tr>
+                  <th>Software/Addon</th>
+                  <th>Windower</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {software.list.map((s, i) => (
+                  <tr key={`addon_${i}`}>
+                    <td>{s.item}</td>
+                    <td>{s.windower || <small><i>n/a</i></small>}</td>
+                    <td>{s.allowed ? <b>Allowed</b> : <b>Disallowed</b>}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+            <small>Updated {software.updated}</small>
           </InfoDisplay>
         </Col>
       </Row>
@@ -110,10 +134,11 @@ const Rules = ({ list }) => {
         <Col>
           <InfoDisplay title="Yell Rules">
             <ol>
-              {yells.map((t, i) => (
+              {yells.list.map((t, i) => (
                 <li key={`term_${i}`}>{t}</li>
               ))}
             </ol>
+            <small>Updated {yells.updated}</small>
           </InfoDisplay>
         </Col>
       </Row>
@@ -121,11 +146,24 @@ const Rules = ({ list }) => {
       <Row className="my-3">
         <Col>
           <InfoDisplay title="Discord Rules">
+            <Card.Text>
+              These rules may be adjusted from time to time. It is the player's responsibility to
+              keep up to date with the rules for the service they are using. It is at the moderators
+              discretion if a player has crossed the line. If a Staff or Moderator asks a player to
+              do something, that player needs to follow the request. If they feel this request is not
+              appropriate, contact Shoruto with a screenshot of the request. If a player feels a
+              staff member is talking inappropriately to another player, contact Shoruto or Juul
+              with a screenshot of the inappropriate chat. Our moderators won't be able to see
+              all rule violations--if a player happens to see someone breaking one of our rules or has
+              crossed the line somewhere else, please let a moderator know in a private message with a
+              screenshot of the chat that you feel broke the rule.
+            </Card.Text>
             <ol>
-              {discord.map((t, i) => (
+              {discord.list.map((t, i) => (
                 <li key={`term_${i}`}>{t}</li>
               ))}
             </ol>
+            <small>Updated {discord.updated}</small>
           </InfoDisplay>
         </Col>
       </Row>

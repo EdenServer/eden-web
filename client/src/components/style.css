@@ -213,6 +213,10 @@ body {
 
 /* Rules */
 
+p.gm_lineseperate {
+  margin-bottom: 0;
+}
+
 /* About */
 
 .gm_code-block {
