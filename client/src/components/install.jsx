@@ -28,7 +28,7 @@ function install(props) {
             <Card.Text>
               First, you&apos;ll need to{' '}
               <a href={info.source1} rel="noopener noreferrer" target="_blank">
-                download the Eden Installer v4.1
+                download the Eden Installer v5.0
               </a>{' '}
               to connect to Eden. You do not need to install retail FFXI
               first—this install will take care of everything.
