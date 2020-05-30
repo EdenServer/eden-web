@@ -66,6 +66,11 @@ const Itemsearch = ({ history, itemname, itemstack }) => {
     if (itemname) fetchMemoizedItem(encodeURIComponent(itemname), getStack);
   }, [itemname, itemstack]);
 
+  const searchInput = React.useRef(null);
+  React.useEffect(() => {
+    searchInput.current.focus();
+  }, []);
+
   return (
     <Segment className="gm_tools-container">
       <Input
@@ -73,6 +78,7 @@ const Itemsearch = ({ history, itemname, itemstack }) => {
         placeholder="Search..."
         loading={loading}
         value={search}
+        ref={searchInput}
         onKeyUp={handleSearch}
         onChange={e => setSearch(e.target.value)}
       />

@@ -70,6 +70,11 @@ const Playersearch = ({ history, charname }) => {
     if (charname) fetchMemoizedPlayer(charname);
   }, [charname]);
 
+  const searchInput = React.useRef(null);
+  React.useEffect(() => {
+    searchInput.current.focus();
+  }, []);
+
   return (
     <Segment className="gm_tools-container">
       <Input
@@ -77,6 +82,7 @@ const Playersearch = ({ history, charname }) => {
         placeholder="Search..."
         loading={loading}
         value={search}
+        ref={searchInput}
         onKeyUp={handleSearch}
         onChange={e => setSearch(e.target.value)}
       />
