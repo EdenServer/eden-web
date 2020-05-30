@@ -6,6 +6,7 @@ import Accounts from './accounts';
 import Whosonline from './whosonline';
 import Itemsearch from './tools/itemsearch';
 import Playersearch from './tools/playersearch';
+import YellTab from './tools/YellTab';
 
 const Tools = () => {
   const history = createHistory(window);
@@ -45,12 +46,16 @@ const Tools = () => {
           <Menu.Item active={selected === 'chars'} onClick={updateTab('chars')}>
             Player Search
           </Menu.Item>
+          <Menu.Item active={selected === 'yells'} onClick={updateTab('yells')}>
+            Yells
+          </Menu.Item>
         </Menu>
         {/* {selected === 'account' && <Accounts />} */}
         {(item || selected === 'items') && (
           <Itemsearch itemname={item} itemstack={stack} />
         )}
         {(player || selected === 'chars') && <Playersearch charname={player} />}
+        {selected === 'yells' && <YellTab />}
       </div>
     </div>
   );
