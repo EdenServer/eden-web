@@ -151,6 +151,8 @@ body {
 .gm_tools-content {
   flex: 1;
   padding: 0 1rem;
+  max-height: calc(100vh - 3rem - 55px);
+  overflow: hidden;
 }
 
 .gm_tools-container {
