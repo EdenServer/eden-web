@@ -17,6 +17,7 @@ const Tools = () => {
   const item = params.get('item');
   const stack = params.get('stack');
   const player = params.get('player');
+  const yells = params.get('yells');
 
   let selected = tab;
   if (item) selected = 'items';
@@ -32,36 +33,36 @@ const Tools = () => {
     <div className="gm_tools">
       <div className="gm_tools-content">
         <Menu pointing>
-          <Menu.Item
-            disabled
-            active={selected === 'account'}
-            onClick={updateTab('account')}
-          >
-            User Management
-          </Menu.Item>
+          {' '}
           <Menu.Item
             active={selected === 'online'}
             onClick={updateTab('online')}
           >
             Who's Online
           </Menu.Item>
+          <Menu.Item
+            active={selected === 'account'}
+            onClick={updateTab('account')}
+          >
+            User Management
+          </Menu.Item>
           <Menu.Item active={selected === 'items'} onClick={updateTab('items')}>
             Item Search
           </Menu.Item>
           <Menu.Item active={selected === 'chars'} onClick={updateTab('chars')}>
             Player Search
-          </Menu.Item>
+          </Menu.Item>{' '}
           <Menu.Item active={selected === 'yells'} onClick={updateTab('yells')}>
             Yells
           </Menu.Item>
         </Menu>
-        {/* {selected === 'account' && <Accounts />} */}
         {selected === 'online' && <OnlineList />}
+        {selected === 'account' && <Accounts />}
         {(item || selected === 'items') && (
           <Itemsearch itemname={item} itemstack={stack} />
         )}
         {(player || selected === 'chars') && <Playersearch charname={player} />}
-        {selected === 'yells' && <YellTab />}
+        {yells || (selected === 'yells' && <YellTab />)}
       </div>
     </div>
   );

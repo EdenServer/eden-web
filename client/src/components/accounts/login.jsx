@@ -34,11 +34,15 @@ export default ({ error, login, changePage }) => {
         <Button
           floated="right"
           primary
+          disabled
           onClick={() => login(username, password)}
         >
-          Login
+          Login (coming soon)
         </Button>
-        <Button size="mini" basic onClick={changePage}>
+        <Button size="mini" disabled basic onClick={changePage}>
+          Account recovery(coming soon)
+        </Button>{' '}
+        <Button primary basic onClick={changePage}>
           New Account
         </Button>
       </Form.Field>

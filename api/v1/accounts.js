@@ -22,7 +22,6 @@ const validate = (req, res, next) => {
     }
   });
 };
-
 router.get('/profile', validate, async (req, res) => {
   try {
     const statement = `SELECT *, IF(accounts_sessions.charid IS NULL, 0, 1) AS online FROM chars
@@ -52,7 +51,7 @@ router.get('/profile', validate, async (req, res) => {
   }
 });
 
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
   const disallowedIP = [];
 
   const {
@@ -63,6 +62,7 @@ router.post('/register', (req, res) => {
     confirmPassword,
     confirmEmail,
     verify,
+    code,
   } = req.body;
 
   /** common origins attemping to register
@@ -72,6 +72,10 @@ router.post('/register', (req, res) => {
    * http://play.edenxi.com/tools
    */
   try {
+    const servercodequery = 'SELECT code FROM code;';
+    const servercode = await req.app.locals.query(servercodequery);
+    const codebool = [servercode === code];
+
     const tests = [
       req.headers.referer === 'https://www.edenxi.com/tools' ||
         req.headers.referer === 'https://edenxi.com/tools',
@@ -83,14 +87,25 @@ router.post('/register', (req, res) => {
       password.length >= 6 && password.length <= 15,
       !!username,
       !!verify,
+      servercode === code,
     ];
-
     if (!!tests.includes(false)) {
       res.json({
         status: 'ERROR',
         errors: {
           server:
             'Your browser sent bad data. Please try again on a different browser.',
+        },
+      });
+    }
+    //bypassed verify test for development
+    //verify !getcode
+    if (!codebool) {
+      return res.json({
+        status: 'ERROR',
+        errors: {
+          server:
+            'Invalid registration code. Obtain one from an established player or by asking for one on the Eden Discord.',
         },
       });
     } else {
@@ -102,7 +117,7 @@ router.post('/register', (req, res) => {
           body: {},
           json: true,
         },
-        async (error, resp) => {
+        async error => {
           if (error) {
             return res.json({
               status: 'ERROR',
@@ -155,7 +170,7 @@ router.post('/register', (req, res) => {
                 return res.json({
                   status: 'ERROR',
                   errors: {
-                    server: 'Username already taken. Try something else.',
+                    server: 'Username already taken. Try something else. (1)',
                   },
                 });
               }
@@ -163,7 +178,7 @@ router.post('/register', (req, res) => {
               return res.json({
                 status: 'ERROR',
                 errors: {
-                  server: 'Username already taken. Try something else.',
+                  server: 'Username already taken. Try something else. (2)',
                 },
               });
             }

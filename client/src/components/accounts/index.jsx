@@ -138,7 +138,12 @@ class Account extends React.Component {
     } else {
       delete errors.confirmEmail;
     }
-
+    if (info.code == null) {
+      errors.code =
+        'You need a registration code. Obtain one from an established player, or try asking on our Discord.';
+    } else {
+      delete errors.code;
+    }
     if (Object.keys(errors).length > 0) {
       this.setState({ error: errors });
     } else {

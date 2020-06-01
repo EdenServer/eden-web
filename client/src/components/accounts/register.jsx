@@ -22,6 +22,7 @@ export default ({ error, register, changePage, verify, verified }) => {
   const confirmUsername = useField('Confirm Username');
   const confirmPassword = useField('Confirm Password');
   const confirmEmail = useField('Confirm Email');
+  const code = useField('Code');
   const inputGroup = {
     username,
     password,
@@ -29,6 +30,7 @@ export default ({ error, register, changePage, verify, verified }) => {
     confirmUsername,
     confirmPassword,
     confirmEmail,
+    code,
   };
 
   return (
@@ -46,17 +48,19 @@ export default ({ error, register, changePage, verify, verified }) => {
         <Form.Input error={!!error.email} {...email} />
         <Form.Input error={!!error.confirmEmail} {...confirmEmail} />
       </Form.Group>
+      <Form.Group widths="equal">
+        <Form.Input error={!!error.code} {...code} />
+      </Form.Group>
       <Form.Field>
         <Button
           floated="right"
-          primary
           disabled={!verified}
           onClick={() => register(inputGroup)}
         >
           Register
         </Button>
-        <Button size="mini" basic onClick={changePage}>
-          Existing Account
+        <Button size="mini" disabled basic onClick={changePage}>
+          Existing Account (coming soon)
         </Button>
       </Form.Field>
       <Reaptcha
