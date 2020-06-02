@@ -14,9 +14,8 @@ function install(props) {
           <InfoDisplay title="Account Registration">
             <Card.Text>
               You&apos;ll need to follow one of the sections below to get Eden
-              setup to play. But you&apos;ll also need to register an account on
-              the website. You can do that via the{' '}
-              <Link to="/tools?user=register">tools page</Link>.
+              setup to play, but you will also need to register an account
+              through the bootloader.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -28,7 +27,7 @@ function install(props) {
             <Card.Text>
               First, you&apos;ll need to{' '}
               <a href={info.source1} rel="noopener noreferrer" target="_blank">
-                download the Eden Installer v4.1
+                download the Eden Installer v5.0
               </a>{' '}
               to connect to Eden. You do not need to install retail FFXI
               first—this install will take care of everything.

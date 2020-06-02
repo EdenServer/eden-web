@@ -1,11 +1,11 @@
 module.exports = {
   posts: [
     {
-      date: '2020-02-19T23:27:48.649Z',
-      author: 'Godmode',
-      title: 'Welcome back!',
+      date: '2020-05-31T00:00:00.000Z',
+      author: 'Cygon',
+      title: 'Website is back online!',
       message:
-        "The new website tools are now live. Please bear with us as some issues arise that were not found during testing. The website is not optimized for smaller views (i.e. mobile) but someone can submit a pull request for styling it. Constructive feedback, bug reports, and feature requests on all parts is appreciated and can be submited via an issue on this GitHub repo. Please find that I wrote the new website using a clean and minimalist design approach and it may take some time to learn to navigate it if you are used to the old website. Pages can be found in the menu by clicking the icon in the top left corner. If you're an artist and would like to contribute some designs to the website please create a ticket or PR with designs. I will not be actively contributing to this project other than reviewing pull requests.",
+        "Eden's new and improved website and tools are now live with Godmode's redesign. A big thank you and shout out to Ino Uno, Caliburn, and Lumi for polishing the design and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submited via an issue in the website GitHub (https://github.com/EdenServer/eden-web/issues). If you are an artist and would like to contribute some designs to the website please create a ticket or pull request.",
     },
   ],
   rules: {
@@ -59,6 +59,38 @@ module.exports = {
           rule: 'Harassment',
           consequence:
             '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned',
+        },
+        {
+          rule: 'Navmesh Abuse',
+          consequence:
+            '1st-3rd Violation: Homepointed\n4th Violation: 2 Week Suspension\n5th Violation: 1 Month Suspension',
+        },
+        {
+          rule: 'Intentional MPK',
+          consequence:
+            '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned\n',
+        },
+        {
+          rule: 'RMT (Buying and Selling)',
+          consequence: 'Banned',
+        },
+        {
+          rule: 'Too many characters online',
+          consequence:
+            '1st Violation: Warning\n2nd Violation: 2 Week Suspension\n3rd Violation: 2 Month Suspension\n4th Violation: Banned\n',
+        },
+        {
+          rule: 'Gardening on more than 3 characters',
+          consequence:
+            '1st Violation: Warning and emptied pots\n2nd Violation: 1 Month Suspension and emptied pots\n3rd Violation: 3 Month Suspension and emptied pots\n4th Violation: Banned\n',
+        },
+        {
+          rule: 'Severe Exploits',
+          consequence: 'Banned',
+        },
+        {
+          rule: 'Inappropriate Character Names',
+          consequence: 'Randomly Assigned Character Name',
         },
       ],
     },
@@ -219,9 +251,9 @@ module.exports = {
     },
   ],
   install: {
-    source1: '',
-    source2: '',
-    bootloader: '',
+    source1: 'https://bit.ly/EdenV5Installer',
+    source2: 'https://bit.ly/EdenV5BackupInstaller',
+    bootloader: 'https://bit.ly/EdenXILoader',
     discord: 'https://discord.gg/MWtDws8',
   },
 };
