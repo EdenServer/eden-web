@@ -144,6 +144,7 @@ class Account extends React.Component {
     } else {
       delete errors.code;
     }
+
     if (Object.keys(errors).length > 0) {
       this.setState({ error: errors });
     } else {

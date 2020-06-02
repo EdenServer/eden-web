@@ -22,6 +22,7 @@ const validate = (req, res, next) => {
     }
   });
 };
+
 router.get('/profile', validate, async (req, res) => {
   try {
     const statement = `SELECT *, IF(accounts_sessions.charid IS NULL, 0, 1) AS online FROM chars
@@ -51,7 +52,7 @@ router.get('/profile', validate, async (req, res) => {
   }
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (error, req, res) => {
   const disallowedIP = [];
 
   const {
@@ -89,6 +90,7 @@ router.post('/register', async (req, res) => {
       !!verify,
       servercode === code,
     ];
+    4;
     if (!!tests.includes(false)) {
       res.json({
         status: 'ERROR',

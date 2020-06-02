@@ -18,6 +18,7 @@ const Tools = () => {
   const stack = params.get('stack');
   const player = params.get('player');
   const yells = params.get('yells');
+  const online = params.get('online');
 
   let selected = tab;
   if (item) selected = 'items';
@@ -35,29 +36,29 @@ const Tools = () => {
         <Menu pointing>
           {' '}
           <Menu.Item
-            active={selected === 'online'}
-            onClick={updateTab('online')}
-          >
-            Who's Online
-          </Menu.Item>
-          <Menu.Item
             active={selected === 'account'}
             onClick={updateTab('account')}
           >
             User Management
+          </Menu.Item>
+          <Menu.Item
+            active={selected === 'online'}
+            onClick={updateTab('online')}
+          >
+            Who's Online
           </Menu.Item>
           <Menu.Item active={selected === 'items'} onClick={updateTab('items')}>
             Item Search
           </Menu.Item>
           <Menu.Item active={selected === 'chars'} onClick={updateTab('chars')}>
             Player Search
-          </Menu.Item>{' '}
+          </Menu.Item>
           <Menu.Item active={selected === 'yells'} onClick={updateTab('yells')}>
             Yells
           </Menu.Item>
         </Menu>
-        {selected === 'online' && <OnlineList />}
         {selected === 'account' && <Accounts />}
+        {(online || selected === 'online') && <OnlineList />}
         {(item || selected === 'items') && (
           <Itemsearch itemname={item} itemstack={stack} />
         )}

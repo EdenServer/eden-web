@@ -23,6 +23,7 @@ export default ({ error, register, changePage, verify, verified }) => {
   const confirmPassword = useField('Confirm Password');
   const confirmEmail = useField('Confirm Email');
   const code = useField('Code');
+  const discord = useField('Discord Handle i.e Name#1234');
   const inputGroup = {
     username,
     password,
@@ -31,6 +32,7 @@ export default ({ error, register, changePage, verify, verified }) => {
     confirmPassword,
     confirmEmail,
     code,
+    discord,
   };
 
   return (
@@ -50,6 +52,7 @@ export default ({ error, register, changePage, verify, verified }) => {
       </Form.Group>
       <Form.Group widths="equal">
         <Form.Input error={!!error.code} {...code} />
+        <Form.Input {...discord} />
       </Form.Group>
       <Form.Field>
         <Button
