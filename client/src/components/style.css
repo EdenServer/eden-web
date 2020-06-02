@@ -86,6 +86,7 @@ body {
 
 .gm_yell-container {
   min-height: 15vh;
+  max-height: 960px;
   color: white;
   overflow: auto;
   background-color: #120d37;
@@ -150,8 +151,6 @@ body {
 .gm_tools-content {
   flex: 1;
   padding: 0 1rem;
-  max-height: calc(100vh - 3rem - 55px);
-  overflow: hidden;
 }
 
 .gm_tools-container {
@@ -173,6 +172,10 @@ body {
 .gm_item-name {
   display: inline-flex;
   align-items: center;
+}
+
+.gm_clickable {
+  cursor: pointer;
 }
 
 .gm_itemsearch_row.ui.segment.item,
@@ -211,6 +214,10 @@ body {
 }
 
 /* Rules */
+
+p.gm_lineseperate {
+  margin-bottom: 0;
+}
 
 /* About */
 

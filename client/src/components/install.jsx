@@ -8,7 +8,7 @@ function install(props) {
   const { info } = props;
 
   return (
-    <Container>
+    <>
       <Row className="mb-3">
         <Col>
           <InfoDisplay title="Account Registration">
@@ -108,7 +108,7 @@ function install(props) {
           </InfoDisplay>
         </Col>
       </Row>
-    </Container>
+    </>
   );
 }
 

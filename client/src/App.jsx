@@ -109,7 +109,7 @@ class App extends Component {
       <>
         <div className="gm_main h-100">
           <SiteNavbar links={links} />
-          <div className="gm_content">
+          <div className="gm_content my-3">
             {config && Object.keys(config).length === 0 && (
               <div className="alert alert-warning m-0 text-center">
                 <span>

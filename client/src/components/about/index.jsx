@@ -2,11 +2,11 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import InfoDisplay from '../InfoDisplay';
 import Contributing from './contributing';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 const About = () => {
   return (
-    <Container>
+    <>
       <Row className="mb-3">
         <Col>
           <InfoDisplay
@@ -190,7 +190,7 @@ const About = () => {
           </InfoDisplay>
         </Col>
       </Row>
-    </Container>
+    </>
   );
 };
 
