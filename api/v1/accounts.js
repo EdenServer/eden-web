@@ -64,6 +64,7 @@ router.post('/register', async (error, req, res) => {
     confirmEmail,
     verify,
     code,
+    discord,
   } = req.body;
 
   /** common origins attemping to register
@@ -132,12 +133,13 @@ router.post('/register', async (error, req, res) => {
             try {
               // attempt to register the account
               const statement =
-                'INSERT INTO accounts (`login`,`password`,`email`,`email2`) VALUES (?, PASSWORD(?), ?, ?);';
+                'INSERT INTO accounts (`login`,`password`,`email`,`email2`,`discord`) VALUES (?, PASSWORD(?), ?, ?,?);';
               const results = await req.app.locals.query(statement, [
                 username,
                 password,
                 email,
                 email,
+                discord,
               ]);
               if (results.affectedRows) {
                 const infoStatement = `SELECT id FROM accounts WHERE login = ?;`;
@@ -152,6 +154,7 @@ router.post('/register', async (error, req, res) => {
                   id,
                   login,
                   email,
+                  discord,
                   timecreate,
                   timelastmodify,
                 } = jwt.decode(token);
@@ -162,6 +165,7 @@ router.post('/register', async (error, req, res) => {
                     id,
                     login,
                     email,
+                    discord,
                     timecreate,
                     timelastmodify,
                     chars: [],
