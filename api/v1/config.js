@@ -60,6 +60,38 @@ module.exports = {
           consequence:
             '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned',
         },
+        {
+          rule: 'Navmesh Abuse',
+          consequence:
+            '1st-3rd Violation: Homepointed\n4th Violation: 2 Week Suspension\n5th Violation: 1 Month Suspension',
+        },
+        {
+          rule: 'Intentional MPK',
+          consequence:
+            '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned\n',
+        },
+        {
+          rule: 'RMT (Buying and Selling)',
+          consequence: 'Banned',
+        },
+        {
+          rule: 'Too many characters online',
+          consequence:
+            '1st Violation: Warning\n2nd Violation: 2 Week Suspension\n3rd Violation: 2 Month Suspension\n4th Violation: Banned\n',
+        },
+        {
+          rule: 'Gardening on more than 3 characters',
+          consequence:
+            '1st Violation: Warning and emptied pots\n2nd Violation: 1 Month Suspension and emptied pots\n3rd Violation: 3 Month Suspension and emptied pots\n4th Violation: Banned\n',
+        },
+        {
+          rule: 'Severe Exploits',
+          consequence: 'Banned',
+        },
+        {
+          rule: 'Inappropriate Character Names',
+          consequence: 'Randomly Assigned Character Name',
+        },
       ],
     },
     software: {
