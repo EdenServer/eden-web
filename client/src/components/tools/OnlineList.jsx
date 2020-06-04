@@ -101,10 +101,10 @@ class OnlineList extends React.PureComponent {
               <Table.Body>
                 {loading && (
                   <Table.Row>
-                    <Table.Cell colspan="3">
+                    <Table.Cell colSpan="3">
                       <Loader
                         active={loading}
-                        centered
+                        centered="true"
                         inline
                         style={{ width: '100%' }}
                       />
