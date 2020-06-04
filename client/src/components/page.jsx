@@ -21,7 +21,7 @@ const Page = props => {
           <Router primary={false}>
             <Home path="/" posts={config.posts} />
             <Install path="/install" info={config.install} />
-            <Tools path="/tools" />
+            <Tools path="/tools/*" />
             <Links path="/links" links={config.links} />
             <Rules path="/rules" list={config.rules} />
             <About path="/about" />

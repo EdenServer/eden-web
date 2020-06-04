@@ -8,7 +8,7 @@ export default ({ name }) => {
 
   const fetchCrafts = () => {
     setCrafts(null);
-    apiUtil.get({ url: `api/v1/chars/${name}/crafts` }, async (error, res) => {
+    apiUtil.get({ url: `/api/v1/chars/${name}/crafts` }, async (error, res) => {
       try {
         if (!error && res.status === 200) {
           setCrafts(await res.json());

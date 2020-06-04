@@ -1,75 +1,74 @@
+import { navigate, useMatch } from '@reach/router';
 import React from 'react';
-import { Segment, Input, List, Image } from 'semantic-ui-react';
+import { Image, Input, List, Segment } from 'semantic-ui-react';
+import apiUtil from '../../apiUtil';
 import images from '../../images';
 import Pagination from '../pagination';
 import Item from './item';
-import apiUtil from '../../apiUtil';
-
 import './item/itemStyles.css';
-import { navigate } from '@reach/router';
 
-const Itemsearch = ({ history, itemname, itemstack }) => {
-  const [search, setSearch] = React.useState(itemname || '');
+const Itemsearch = ({ history }) => {
+  const params = new URLSearchParams(history.location.search);
+  const searchParam = params.get('search');
+  const itemname = useMatch(':itemname')?.itemname;
+
+  const [search, setSearch] = React.useState(searchParam || '');
   const [results, setResults] = React.useState([]);
-  const [item, setItem] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [total, setTotal] = React.useState(0);
   const [initial, setInitial] = React.useState(false);
+  const [lastSearch, setLastSearch] = React.useState(null);
 
   const handleSearch = e => {
     if (e.key === 'Escape') {
-      setSearch(itemname || '');
+      setSearch(itemname || search || '');
     } else if (e.key === 'Enter' && search) {
-      setLoading(true);
-      fetchItems({ search, limit: 10, offset: 0 });
+      navigate(`/tools/item?search=${search}`);
     }
   };
 
-  const fetchItems = ({ search = itemname, limit, offset }) => {
+  const chooseResult = result => {
+    setSearch(result.name);
+    navigate(`/tools/item/${result.key}`);
+  };
+
+  const fetchItems = ({ search, limit, offset }) => {
+    setLastSearch(search);
     apiUtil.get(
       {
-        url: `api/v1/items?search=${search}&limit=${limit}&offset=${offset}`,
+        url: `/api/v1/items?search=${search}&limit=${limit}&offset=${offset}`,
         json: true,
       },
       (error, json) => {
         if (json.total === 1) {
-          fetchItem(json.items[0].key);
+          chooseResult(json.items[0]);
         } else {
           setInitial(true);
           setTotal(json.total);
           setResults(json.items);
           setLoading(false);
-          setItem(null);
         }
       }
     );
   };
 
-  const fetchItem = (item, stack = false) => {
-    if (!item) return;
-
-    setLoading(true);
-    apiUtil.get({ url: `api/v1/items/${item}`, json: true }, (error, data) => {
-      navigate(`/tools?item=${encodeURIComponent(data.key)}&stack=${stack}`);
-      setTotal(0);
-      setResults([]);
-      setItem(data);
-      setSearch(data.name);
-      setLoading(false);
-    });
-  };
-
-  const fetchMemoizedItem = React.useCallback(fetchItem);
-
-  React.useEffect(() => {
-    const getStack = itemstack !== null ? itemstack : false;
-    if (itemname) fetchMemoizedItem(encodeURIComponent(itemname), getStack);
-  }, [itemname, itemstack]);
-
   const searchInput = React.useRef(null);
   React.useEffect(() => {
-    searchInput.current.focus();
-  }, []);
+    if (!itemname) {
+      setSearch(searchParam || '');
+      searchInput.current.focus();
+
+      if (searchParam === null) {
+        // Reset search if no search param given
+        setInitial(false);
+        setTotal(0);
+        setResults([]);
+      } else if (searchParam !== lastSearch) {
+        // Search if the current search param isn't the last searched
+        fetchItems({ search: searchParam, limit: 10, offset: 0 });
+      }
+    }
+  }, [itemname, searchParam]);
 
   return (
     <Segment className="gm_tools-container">
@@ -82,8 +81,8 @@ const Itemsearch = ({ history, itemname, itemstack }) => {
         onKeyUp={handleSearch}
         onChange={e => setSearch(e.target.value)}
       />
-      {item ? (
-        <Item item={item} stack={itemstack} />
+      {itemname ? (
+        <Item itemname={itemname} history={history} setLoading={setLoading} />
       ) : (
         <>
           <Pagination
@@ -97,7 +96,7 @@ const Itemsearch = ({ history, itemname, itemstack }) => {
                 as={Segment}
                 key={`result_${i}`}
                 className="gm_itemsearch_row gm_image-spacer"
-                onClick={() => fetchItem(result.key)}
+                onClick={() => chooseResult(result)}
               >
                 <Image src={images.item(result.id)} />
                 {result.name}
@@ -106,7 +105,7 @@ const Itemsearch = ({ history, itemname, itemstack }) => {
           </List>
         </>
       )}
-      {!item && results.length === 0 && (
+      {!itemname && results.length === 0 && (
         <Segment>
           {initial
             ? `No results for "${search}".`

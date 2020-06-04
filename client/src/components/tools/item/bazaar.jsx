@@ -9,7 +9,7 @@ export default ({ name }) => {
 
   const fetchBazaar = () => {
     setBazaar(null);
-    apiUtil.get({ url: `api/v1/items/${name}/bazaar` }, async (error, res) => {
+    apiUtil.get({ url: `/api/v1/items/${name}/bazaar` }, async (error, res) => {
       try {
         if (!error && res.status === 200) {
           setBazaar(await res.json());
@@ -49,7 +49,7 @@ export default ({ name }) => {
         {bazaar.map((sell, i) => (
           <Table.Row key={`ah_history_${i}`}>
             <Table.Cell>
-              <Link to={`/tools?player=${sell.charname}`}>{sell.charname}</Link>
+              <Link to={`/tools/player/${sell.charname}`}>{sell.charname}</Link>
             </Table.Cell>
             <Table.Cell>{`${sell.bazaar.toLocaleString()}g`}</Table.Cell>
           </Table.Row>

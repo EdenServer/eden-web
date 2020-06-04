@@ -19,7 +19,7 @@ const OnlineTableHeader = () => (
 const PlayerRow = ({ player }) => (
   <Table.Row
     className="gm_clickable"
-    onClick={() => navigate(`/tools?player=${player.charname}`)}
+    onClick={() => navigate(`/tools/player/${player.charname}`)}
   >
     <Table.Cell>
       <Image

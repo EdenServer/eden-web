@@ -1,79 +1,75 @@
 import React from 'react';
 import { Segment, Input, List, Image } from 'semantic-ui-react';
 
-import { navigate } from '@reach/router';
+import { navigate, useMatch } from '@reach/router';
 import Pagination from '../pagination';
 import Player from './player';
 import apiUtil from '../../apiUtil';
 import images from '../../images';
 
-const Playersearch = ({ history, charname }) => {
-  const [search, setSearch] = React.useState(charname || '');
+const Playersearch = ({ history }) => {
+  const params = new URLSearchParams(history.location.search);
+  const searchParam = params.get('search');
+  const charname = useMatch(':charname')?.charname;
+
+  const [search, setSearch] = React.useState(charname || searchParam || '');
   const [results, setResults] = React.useState([]);
-  const [player, setPlayer] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [total, setTotal] = React.useState(0);
   const [initial, setInitial] = React.useState(false);
 
+  const [lastSearch, setLastSearch] = React.useState(null);
+
   const handleSearch = e => {
     if (e.key === 'Escape') {
-      setSearch(charname || '');
+      setSearch(charname || search || '');
     } else if (e.key === 'Enter' && search) {
-      setLoading(true);
-      fetchPlayers({ search, limit: 10, offset: 0 });
+      navigate(`/tools/player?search=${search}`);
     }
   };
 
+  const chooseResult = result => {
+    setSearch(result.charname);
+    navigate(`/tools/player/${result.charname}`);
+  };
+
   const fetchPlayers = ({ search = charname, limit, offset }) => {
+    setLastSearch(search);
     apiUtil.get(
       {
-        url: `api/v1/chars?search=${search}&online=false&limit=${limit}&offset=${offset}`,
+        url: `/api/v1/chars?search=${search}&online=false&limit=${limit}&offset=${offset}`,
         json: true,
       },
       (error, json) => {
         if (json.total === 1) {
-          fetchPlayer(json.chars[0].charname);
+          chooseResult(json.chars[0]);
         } else {
           setInitial(true);
           setTotal(json.total);
           setResults(json.chars);
           setLoading(false);
-          setPlayer(null);
         }
       }
     );
   };
 
-  const fetchPlayer = player => {
-    if (!player) return;
-
-    setLoading(true);
-    apiUtil.get(
-      {
-        url: `api/v1/chars/${player}`,
-        json: true,
-      },
-      (error, data) => {
-        navigate(`/tools?player=${player}`);
-        setTotal(0);
-        setResults([]);
-        setPlayer(data);
-        setSearch(data.name);
-        setLoading(false);
-      }
-    );
-  };
-
-  const fetchMemoizedPlayer = React.useCallback(fetchPlayer);
-
-  React.useEffect(() => {
-    if (charname) fetchMemoizedPlayer(charname);
-  }, [charname]);
-
   const searchInput = React.useRef(null);
   React.useEffect(() => {
-    searchInput.current.focus();
-  }, []);
+    if (!charname) {
+      setSearch(searchParam || '');
+      searchInput.current.focus();
+
+      if (searchParam === null) {
+        // Reset search if no search param given
+        setInitial(false);
+        setTotal(0);
+        setResults([]);
+      } else if (searchParam !== lastSearch) {
+        // Search if the current search param isn't the last searched
+        fetchPlayers({ search: searchParam, limit: 10, offset: 0 });
+      }
+    }
+  }, [charname, searchParam]);
 
   return (
     <Segment className="gm_tools-container">
@@ -86,8 +82,13 @@ const Playersearch = ({ history, charname }) => {
         onKeyUp={handleSearch}
         onChange={e => setSearch(e.target.value)}
       />
-      {player ? (
-        <Player player={player} />
+      {charname ? (
+        <Player
+          charname={charname}
+          history={history}
+          setLoading={setLoading}
+          setSearch={setSearch}
+        />
       ) : (
         <>
           <Pagination
@@ -101,7 +102,7 @@ const Playersearch = ({ history, charname }) => {
                 as={Segment}
                 key={`result_${i}`}
                 className="gm_charsearch_row"
-                onClick={() => fetchPlayer(result.charname)}
+                onClick={() => chooseResult(result)}
               >
                 <Image
                   className="gm_online-avatar gm_image-spacer"
@@ -114,7 +115,7 @@ const Playersearch = ({ history, charname }) => {
           </List>
         </>
       )}
-      {!player && results.length === 0 && (
+      {!charname && results.length === 0 && (
         <Segment>
           {initial
             ? `No results for "${search}".`
