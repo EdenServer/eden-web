@@ -33,6 +33,11 @@ const Page = props => {
   );
 };
 
+const ListWithUpdated = PropTypes.shape({
+  updated: PropTypes.string.isRequired,
+  list: PropTypes.arrayOf(PropTypes.string),
+});
+
 Page.propTypes = {
   config: PropTypes.shape({
     install: PropTypes.shape({
@@ -58,12 +63,12 @@ Page.propTypes = {
       })
     ),
     rules: PropTypes.shape({
-      allowed: PropTypes.arrayOf(PropTypes.string),
-      disallowed: PropTypes.arrayOf(PropTypes.string),
-      discord: PropTypes.arrayOf(PropTypes.string),
-      rules: PropTypes.arrayOf(PropTypes.string),
-      terms: PropTypes.arrayOf(PropTypes.string),
-      yells: PropTypes.arrayOf(PropTypes.string),
+      allowed: ListWithUpdated,
+      disallowed: ListWithUpdated,
+      discord: ListWithUpdated,
+      rules: ListWithUpdated,
+      terms: ListWithUpdated,
+      yells: ListWithUpdated,
     }),
   }).isRequired,
 };
