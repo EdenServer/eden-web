@@ -1,36 +1,47 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
 
-import { createHistory, Link, Router } from '@reach/router';
+import { createHistory, Link, Router, useMatch } from '@reach/router';
 import Accounts from './accounts';
 import Itemsearch from './tools/itemsearch';
 import Playersearch from './tools/playersearch';
 import OnlineList from './tools/OnlineList';
 import YellTab from './tools/YellTab';
 
+const TabItem = ({ to, activeTab, disabled = false, children }) => (
+  <Menu.Item
+    as={disabled ? undefined : Link}
+    to={disabled ? undefined : to}
+    active={to === activeTab}
+    disabled={disabled}
+  >
+    {children}
+  </Menu.Item>
+);
+
 const Tools = () => {
   const history = createHistory(window);
+  const activeTab = useMatch(':tab/*')?.tab || 'online';
 
   return (
     <div className="gm_tools">
       <div className="gm_tools-content">
         <Menu pointing>
-          <Menu.Item disabled>
-            {/*as={Link} to="account" */}
+          <TabItem to="account" disabled={true} activeTab={activeTab}>
             User Management
-          </Menu.Item>
-          <Menu.Item as={Link} to="online">
+          </TabItem>
+          <TabItem to="online" activeTab={activeTab}>
             Who's Online
-          </Menu.Item>
-          <Menu.Item as={Link} to="item">
+          </TabItem>
+          <TabItem to="item" activeTab={activeTab}>
             Item Search
-          </Menu.Item>
-          <Menu.Item as={Link} to="player">
+          </TabItem>
+          <TabItem to="player" activeTab={activeTab}>
             Player Search
-          </Menu.Item>
-          <Menu.Item as={Link} to="yells">
+          </TabItem>
+          <TabItem to="yells" activeTab={activeTab}>
             Yells
-          </Menu.Item>
+          </TabItem>
         </Menu>
         <Router>
           <OnlineList path="/" />
