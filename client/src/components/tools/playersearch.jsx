@@ -64,6 +64,7 @@ const Playersearch = ({ history }) => {
         setInitial(false);
         setTotal(0);
         setResults([]);
+        setLastSearch(null);
       } else if (searchParam !== lastSearch) {
         // Search if the current search param isn't the last searched
         fetchPlayers({ search: searchParam, limit: 10, offset: 0 });
