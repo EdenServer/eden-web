@@ -1,13 +1,13 @@
+import { navigate } from '@reach/router';
 import React from 'react';
-import { Segment, Icon, Image, Header } from 'semantic-ui-react';
-
-import Jobs from './player/jobs';
-import Equipment from './player/equipment';
-import Crafts from './player/crafts';
-import Sales from './player/sales';
+import { Header, Icon, Image, Segment, Loader } from 'semantic-ui-react';
+import apiUtil from '../../apiUtil';
 import images from '../../images';
-
+import Crafts from './player/crafts';
+import Equipment from './player/equipment';
+import Jobs from './player/jobs';
 import './player/playerStyles.css';
+import Sales from './player/sales';
 
 const Linkshell = ({ ls }) => {
   if (!ls || !ls.itemid) {
@@ -22,8 +22,41 @@ const Linkshell = ({ ls }) => {
   );
 };
 
-export default ({ player }) => {
+export default ({ charname, setLoading, setSearch }) => {
+  const [player, setPlayer] = React.useState(null);
   const [equip, setEquip] = React.useState(null);
+
+  const fetchPlayer = player => {
+    if (!player) return;
+
+    setLoading(true);
+    apiUtil.get(
+      {
+        url: `/api/v1/chars/${player}`,
+        json: true,
+      },
+      (error, data) => {
+        setPlayer(data);
+        setSearch(data.name);
+        setLoading(false);
+      }
+    );
+  };
+
+  const fetchMemoizedPlayer = React.useCallback(fetchPlayer);
+
+  React.useEffect(() => {
+    if (charname) fetchMemoizedPlayer(charname);
+  }, [charname]);
+
+  if (!player) {
+    return (
+      <Segment>
+        <Loader inline style={{ width: '100%' }} />
+      </Segment>
+    );
+  }
+
   return (
     <Segment>
       <Header>

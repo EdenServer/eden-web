@@ -5,7 +5,7 @@ import apiUtil from '../../../apiUtil';
 
 const formatItem = itemname => {
   return (
-    <Link to={`/tools?item=${encodeURIComponent(itemname)}`}>
+    <Link to={`/tools/item/${encodeURIComponent(itemname)}`}>
       {itemname
         .split('_')
         .map(string => {
@@ -25,7 +25,7 @@ export default ({ name }) => {
 
   const fetchBazaar = () => {
     setBazaar(null);
-    apiUtil.get({ url: `api/v1/chars/${name}/bazaar` }, async (error, res) => {
+    apiUtil.get({ url: `/api/v1/chars/${name}/bazaar` }, async (error, res) => {
       if (res.status === 200) {
         setBazaar(await res.json());
         setError(false);

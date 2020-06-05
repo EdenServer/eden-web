@@ -9,7 +9,7 @@ export default ({ name, stack }) => {
 
   const fetchAh = () => {
     apiUtil.get(
-      { url: `api/v1/items/${name}/ah?stack=${stack}` },
+      { url: `/api/v1/items/${name}/ah?stack=${stack}` },
       async (error, res) => {
         try {
           if (!error && res.status === 200) {
@@ -63,12 +63,12 @@ export default ({ name, stack }) => {
             <Table.Row key={`ah_history_${i}`}>
               <Table.Cell>{`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}</Table.Cell>
               <Table.Cell>
-                <Link to={`/tools?player=${history.seller_name}`}>
+                <Link to={`/tools/player/${history.seller_name}`}>
                   {history.seller_name}
                 </Link>
               </Table.Cell>
               <Table.Cell>
-                <Link to={`/tools?player=${history.buyer_name}`}>
+                <Link to={`/tools/player/${history.buyer_name}`}>
                   {history.buyer_name}
                 </Link>
               </Table.Cell>
