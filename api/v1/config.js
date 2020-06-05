@@ -254,6 +254,6 @@ module.exports = {
     source1: 'https://bit.ly/EdenV5Installer',
     source2: 'https://bit.ly/EdenV5BackupInstaller',
     bootloader: 'https://bit.ly/EdenXILoader',
-    discord: 'https://discord.gg/MWtDws8',
+    discord: 'https://discord.gg/N49F7wJ', // Taken from #information Discord channel on 6/5/2020.
   },
 };

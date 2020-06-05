@@ -15,7 +15,14 @@ function install(props) {
             <Card.Text>
               You&apos;ll need to follow one of the sections below to get Eden
               setup to play, but you will also need to register an account
-              through the bootloader.
+              through the bootloader. Registration requires a 5-digit code that
+              can be obtained from existing players who have accumulated 120
+              hours (5 days) of playtime and main job is level 15 or greater.
+              The easiest way to get a registration code is to join
+              <a href={info.discord} rel="noopener noreferrer" target="_blank">
+                our Discord
+              </a>{' '}
+              and then ask in the #new-players channel.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -121,6 +128,7 @@ install.propTypes = {
   }),
 };
 
+// Is this dead code?  I see these values defined in config.js
 install.defaultProps = {
   info: {
     bootloader: '',
