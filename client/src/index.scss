@@ -26,6 +26,10 @@
 
 $body-bg: #e6e6e6;
 
+$theme-colors: (
+  'primary': #120d37,
+);
+
 // Import Bootstrap
 // - This import must go below all SASS variable overrides
 @import 'node_modules/bootstrap/scss/bootstrap';
