@@ -5,7 +5,7 @@ module.exports = {
       author: 'Cygon',
       title: 'Website is back online!',
       message:
-        "Eden's new and improved website and tools are now live with Godmode's redesign. A big thank you and shout out to Ino Uno, Caliburn, and Lumi for polishing the design and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submited via an issue in the website GitHub (https://github.com/EdenServer/eden-web/issues). If you are an artist and would like to contribute some designs to the website please create a ticket or pull request.",
+        "Eden's new and improved website and tools are now live with Godmode's redesign. A big thank you and shout out to Ino Uno, Caliburn, and Lumi for polishing the design and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submited via an issue in [the website GitHub](https://github.com/EdenServer/eden-web/issues). If you are an artist and would like to contribute some designs to the website please create a ticket or pull request.",
     },
   ],
   rules: {
