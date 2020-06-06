@@ -1,5 +1,5 @@
 import React from 'react';
-import { createHistory, navigate } from '@reach/router';
+import { createHistory, Link, Router, useMatch } from '@reach/router';
 import Accounts from './accounts';
 import Itemsearch from './tools/itemsearch';
 import Playersearch from './tools/playersearch';
@@ -7,25 +7,20 @@ import OnlineList from './tools/OnlineList';
 import YellTab from './tools/YellTab';
 import { Nav } from 'react-bootstrap';
 
+const TabItem = ({ to, activeTab, disabled = false, children }) => (
+  <Menu.Item
+    as={disabled ? undefined : Link}
+    to={disabled ? undefined : to}
+    active={to === activeTab}
+    disabled={disabled}
+  >
+    {children}
+  </Menu.Item>
+);
+
 const Tools = () => {
   const history = createHistory(window);
-  const [tab, setTab] = React.useState(
-    localStorage.getItem('tools.tab') || 'account'
-  );
-  const params = new URLSearchParams(history.location.search);
-  const item = params.get('item');
-  const stack = params.get('stack');
-  const player = params.get('player');
-
-  let selected = tab;
-  if (item) selected = 'items';
-  else if (player) selected = 'chars';
-
-  const updateTab = tab => () => {
-    navigate('/tools');
-    localStorage.setItem('tools.tab', tab);
-    setTab(tab);
-  };
+  const activeTab = useMatch(':tab/*')?.tab || 'online';
 
   return (
     <div className="gm_tools">
@@ -33,6 +28,7 @@ const Tools = () => {
         <Nav fill variant="tabs">
           <Nav.Item>
             <Nav.Link
+              to="account"
               disabled
               active={selected === 'account'}
               onClick={updateTab('account')}
@@ -44,6 +40,7 @@ const Tools = () => {
 
           <Nav.Item>
             <Nav.Link
+              to="online"
               active={selected === 'online'}
               onClick={updateTab('online')}
               eventKey="2"
@@ -53,6 +50,7 @@ const Tools = () => {
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
+              to="item"
               active={selected === 'items'}
               onClick={updateTab('items')}
               eventKey="3"
@@ -63,6 +61,7 @@ const Tools = () => {
 
           <Nav.Item>
             <Nav.Link
+              to="player"
               active={selected === 'chars'}
               onClick={updateTab('chars')}
               eventKey="4"
@@ -73,6 +72,7 @@ const Tools = () => {
 
           <Nav.Item>
             <Nav.Link
+              to="yells"
               active={selected === 'yells'}
               onClick={updateTab('yells')}
               eventKey="5"
@@ -81,13 +81,14 @@ const Tools = () => {
             </Nav.Link>
           </Nav.Item>
         </Nav>
-        {/* {selected === 'account' && <Accounts />} */}
-        {selected === 'online' && <OnlineList />}
-        {(item || selected === 'items') && (
-          <Itemsearch itemname={item} itemstack={stack} />
-        )}
-        {(player || selected === 'chars') && <Playersearch charname={player} />}
-        {selected === 'yells' && <YellTab />}
+        <Router>
+          <OnlineList path="/" />
+          <OnlineList path="online" />
+          {/* <Accounts path="account" /> */}
+          <Itemsearch path="item/*" history={history} />
+          <Playersearch path="player/*" history={history} />
+          <YellTab path="yells" />
+        </Router>
       </div>
     </div>
   );

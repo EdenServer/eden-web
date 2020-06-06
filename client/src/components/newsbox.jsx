@@ -1,6 +1,7 @@
 import React from 'react';
 import InfoDisplay from '../components/InfoDisplay';
 import Card from 'react-bootstrap/Card';
+import ReactMarkdown from 'react-markdown';
 
 const News = ({ posts }) => (
   <>
@@ -17,7 +18,9 @@ const News = ({ posts }) => (
             </span>
           }
         >
-          <Card.Text className="text-justify">{post.message}</Card.Text>
+          <Card.Text className="text-justify">
+            <ReactMarkdown source={post.message} />
+          </Card.Text>
         </InfoDisplay>
       </div>
     ))}

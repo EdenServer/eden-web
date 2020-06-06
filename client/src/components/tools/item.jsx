@@ -1,17 +1,19 @@
+import { Link } from '@reach/router';
 import React from 'react';
 import {
   Accordion,
-  Icon,
-  Segment,
-  Image,
-  Header,
   Button,
+  Header,
+  Icon,
+  Image,
+  Loader,
+  Segment,
 } from 'semantic-ui-react';
-import { Link } from '@reach/router';
-
+import apiUtil from '../../apiUtil';
 import images from '../../images';
 import Ah from './item/ah';
 import Bazaar from './item/bazaar';
+
 // import Crafts from './item/crafts';
 
 const charToElement = (char, line, i) => {
@@ -113,11 +115,45 @@ const descriptionWithElements = (description, line) => {
   return <>{render}</>;
 };
 
-export default ({ item, stack, setStack }) => {
+export default ({ history, itemname, setLoading }) => {
+  const params = new URLSearchParams(history.location.search);
+  const stack = params.get('stack');
+
+  const [item, setItem] = React.useState(null);
   const [ah, setAh] = React.useState(false);
   const [bazaar, setBazaar] = React.useState(false);
   const [crafts, setCrafts] = React.useState(false);
   const isStack = stack === 'true';
+
+  const fetchItem = (itemname, stack = false) => {
+    if (!itemname) return;
+
+    setLoading(true);
+    apiUtil.get(
+      { url: `/api/v1/items/${itemname}`, json: true },
+      (error, data) => {
+        setItem(data);
+        setLoading(false);
+      }
+    );
+  };
+
+  const fetchMemoizedItem = React.useCallback(fetchItem);
+
+  React.useEffect(() => {
+    const getStack = stack !== null ? stack : false;
+    if (itemname) {
+      fetchMemoizedItem(encodeURIComponent(itemname), getStack);
+    }
+  }, [itemname, stack]);
+
+  if (!item) {
+    return (
+      <Segment>
+        <Loader inline style={{ width: '100%' }} />
+      </Segment>
+    );
+  }
 
   return (
     <Segment>
@@ -130,9 +166,9 @@ export default ({ item, stack, setStack }) => {
           {item.stackable && (
             <Button
               as={Link}
-              to={`/tools?item=${encodeURIComponent(
+              to={`/tools/item/${encodeURIComponent(
                 item.key
-              )}&stack=${!isStack}`}
+              )}?stack=${!isStack}`}
               circular
               color="teal"
             >
