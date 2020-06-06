@@ -7,16 +7,22 @@ import OnlineList from './tools/OnlineList';
 import YellTab from './tools/YellTab';
 import { Nav } from 'react-bootstrap';
 
-const TabItem = ({ to, activeTab, disabled = false, children }) => (
-  <Menu.Item
-    as={disabled ? undefined : Link}
-    to={disabled ? undefined : to}
-    active={to === activeTab}
-    disabled={disabled}
-  >
-    {children}
-  </Menu.Item>
-);
+const TabItem = ({ to, activeTab, disabled = false, children }) => {
+  console.log(to);
+  console.log(activeTab);
+  return (
+    <Nav.Item>
+      <Nav.Link
+        as={disabled ? undefined : Link}
+        to={disabled ? undefined : to}
+        active={to === activeTab}
+        disabled={disabled}
+      >
+        {children}
+      </Nav.Link>
+    </Nav.Item>
+  );
+};
 
 const Tools = () => {
   const history = createHistory(window);
@@ -25,61 +31,26 @@ const Tools = () => {
   return (
     <div className="gm_tools">
       <div className="gm_tools-content bg-light py-3">
-        <Nav fill variant="tabs">
-          <Nav.Item>
-            <Nav.Link
-              to="account"
-              disabled
-              active={selected === 'account'}
-              onClick={updateTab('account')}
-              eventKey="1"
-            >
-              User Management
-            </Nav.Link>
-          </Nav.Item>
+        <Nav fill variant="tabs" className="mb-3">
+          <TabItem to="account" activeTab={activeTab} eventKey="1">
+            User Management
+          </TabItem>
 
-          <Nav.Item>
-            <Nav.Link
-              to="online"
-              active={selected === 'online'}
-              onClick={updateTab('online')}
-              eventKey="2"
-            >
-              Who's Online
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link
-              to="item"
-              active={selected === 'items'}
-              onClick={updateTab('items')}
-              eventKey="3"
-            >
-              Item Search
-            </Nav.Link>
-          </Nav.Item>
+          <TabItem to="online" activeTab={activeTab} eventKey="2">
+            Who's Online
+          </TabItem>
 
-          <Nav.Item>
-            <Nav.Link
-              to="player"
-              active={selected === 'chars'}
-              onClick={updateTab('chars')}
-              eventKey="4"
-            >
-              Player Search
-            </Nav.Link>
-          </Nav.Item>
+          <TabItem to="item" activeTab={activeTab} eventKey="3">
+            Item Search
+          </TabItem>
 
-          <Nav.Item>
-            <Nav.Link
-              to="yells"
-              active={selected === 'yells'}
-              onClick={updateTab('yells')}
-              eventKey="5"
-            >
-              Yells
-            </Nav.Link>
-          </Nav.Item>
+          <TabItem to="player" activeTab={activeTab} eventKey="4">
+            Player Search
+          </TabItem>
+
+          <TabItem to="yells" activeTab={activeTab} eventKey="5">
+            Yells
+          </TabItem>
         </Nav>
         <Router>
           <OnlineList path="/" />
