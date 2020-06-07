@@ -12,7 +12,7 @@ const emptySlot = slotid => (
 
 const itemSlot = equip => (
   <div title={equip.name} className="equipslot">
-    <Link to={`/tools?item=${encodeURIComponent(equip.name)}`}>
+    <Link to={`/tools/item/${encodeURIComponent(equip.name)}`}>
       <img
         alt={`eq${equip.equipslotid}`}
         src={images.item(equip.itemid)}
@@ -28,7 +28,7 @@ export default ({ name, job, ranks, callback }) => {
 
   const fetchEquip = () => {
     setEquip(null);
-    apiUtil.get({ url: `api/v1/chars/${name}/equip` }, async (error, res) => {
+    apiUtil.get({ url: `/api/v1/chars/${name}/equip` }, async (error, res) => {
       try {
         if (!error && res.status === 200) {
           const data = await res.json();

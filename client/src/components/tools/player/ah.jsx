@@ -5,7 +5,7 @@ import apiUtil from '../../../apiUtil';
 
 const formatItem = itemname => {
   return (
-    <Link to={`/tools?item=${encodeURIComponent(itemname)}`}>
+    <Link to={`/tools/item/${encodeURIComponent(itemname)}`}>
       {itemname
         .split('_')
         .map(string => {
@@ -22,7 +22,7 @@ const formatItem = itemname => {
 const formatPlayerLink = (player, target) => {
   if (player === target) return player;
 
-  return <Link to={`/tools?player=${target}`}>{target}</Link>;
+  return <Link to={`/tools/player/${target}`}>{target}</Link>;
 };
 
 export default ({ name }) => {
@@ -31,7 +31,7 @@ export default ({ name }) => {
 
   const fetchAh = () => {
     setAh(null);
-    apiUtil.get({ url: `api/v1/chars/${name}/ah` }, async (error, res) => {
+    apiUtil.get({ url: `/api/v1/chars/${name}/ah` }, async (error, res) => {
       try {
         if (!error && res.status === 200) {
           setAh(await res.json());

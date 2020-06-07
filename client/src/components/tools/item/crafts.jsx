@@ -69,7 +69,7 @@ const Crafting = ({ name }) => {
 
   const fetchCrafts = () => {
     setCrafts(null);
-    apiUtil.get({ url: `api/v1/items/${name}/crafts` }, async (error, res) => {
+    apiUtil.get({ url: `/api/v1/items/${name}/crafts` }, async (error, res) => {
       try {
         if (!error && res.status === 200) {
           setCrafts(await res.json());
