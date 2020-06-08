@@ -171,7 +171,7 @@ module.exports = {
   },
   links: [
     {
-      url: 'https://discord.gg/MWtDws8', // Taken from #information Discord channel on 6/5/2020.
+      url: 'https://discord.gg/MWtDws8',
       image:
         'https://vignette.wikia.nocookie.net/ffxi/images/0/08/Flag.jpg/revision/latest?cb=20060211183144',
       header: 'Eden Discord',
