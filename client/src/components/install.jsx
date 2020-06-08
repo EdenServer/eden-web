@@ -67,8 +67,8 @@ function install(props) {
               >
                 our modified bootloader
               </a>
-              &nbsp;if your client version is older than our 5.0 installer. You may
-              want to visit our tech-support channel on&nbsp;
+              &nbsp;if your client version is older than our 5.0 installer. You
+              may want to visit our tech-support channel on&nbsp;
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord server
               </a>
@@ -103,13 +103,14 @@ function install(props) {
 
               <li>
                 In the File section you may see something like&nbsp;
-                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed to&nbsp;
+                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed
+                to&nbsp;
                 <b>.\\ffxi-bootmod\\edenxi.exe</b>
               </li>
 
               <li>
-                Command should include <b>--server play.edenxi.com --hairpin</b>&nbsp;
-                and may optionally include&nbsp;
+                Command should include <b>--server play.edenxi.com --hairpin</b>
+                &nbsp; and may optionally include&nbsp;
                 <b>--user MYUSERNAME --pass MYPASSWORD</b> arguments so that you
                 can automatically login.
               </li>
