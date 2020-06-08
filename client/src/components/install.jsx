@@ -78,7 +78,7 @@ function install(props) {
             <ul>
               <li>
                 You can run the bootloader by itself to play on Eden, but
-                suggested use is with Ashita (or Windower).
+                suggested use is with Ashita.
               </li>
 
               <li>

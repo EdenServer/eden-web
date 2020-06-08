@@ -194,10 +194,10 @@ module.exports = {
     },
     {
       url: 'https://github.com/EdenServer/eden-web/issues',
-      image: 'https://static.ffxiah.com/images/icon/17001.png',
+      image: 'https://static.ffxiah.com/images/icon/17005.png',
       header: 'Website Bugs',
       description:
-        'Eden refines rules, information, an dconnection details occassionally. Chime in if you found an error!',
+        'In addition to technical bugs, Eden refines rules, information, and connection details occassionally. Chime in if you found an error!',
     },
     {
       url: 'https://ffxiclopedia.wikia.com/wiki/Main_Page',
