@@ -18,11 +18,11 @@ function install(props) {
               through the bootloader. Registration requires a 5-digit code that
               can be obtained from existing players who have accumulated 120
               hours (5 days) of playtime and main job is level 15 or greater.
-              The easiest way to get a registration code is to join&nbsp;
+              The easiest way to get a registration code is to join{' '}
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord
               </a>
-              &nbsp;and then ask in the #new-players channel.
+              {' '}and then ask in the #new-players channel.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -32,17 +32,17 @@ function install(props) {
         <Col>
           <InfoDisplay title="Fresh Install 64-bit systems" className="my-3">
             <Card.Text>
-              First, you&apos;ll need to&nbsp;
+              First, you&apos;ll need to{' '}
               <a href={info.source1} rel="noopener noreferrer" target="_blank">
                 download the Eden Installer v5.0
               </a>
-              &nbsp;to connect to Eden. You do not need to install retail FFXI
+              {' '}to connect to Eden. You do not need to install retail FFXI
               first—this install will take care of everything.
             </Card.Text>
             <Card.Text>
               The files included in this installer were downloaded directly from
               SQUARE ENIX CO., LTD&apos;s freely distributed client. If the
-              first link is full you can use the&nbsp;
+              first link is full you can use the{' '}
               <a href={info.source2} rel="noopener noreferrer" target="_blank">
                 alternative download
               </a>
@@ -59,7 +59,7 @@ function install(props) {
             className="mt-3"
           >
             <Card.Text>
-              You will need to download&nbsp;
+              You will need to download{' '}
               <a
                 href={info.bootloader}
                 rel="noopener noreferrer"
@@ -67,12 +67,12 @@ function install(props) {
               >
                 our modified bootloader
               </a>
-              &nbsp;if your client version is older than our 5.0 installer. You
-              may want to visit our tech-support channel on&nbsp;
+              {' '}if your client version is older than our 5.0 installer. You
+              may want to visit our tech-support channel on{' '}
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord server
               </a>
-              &nbsp;if you&apos;re having trouble.
+              {' '}if you&apos;re having trouble.
             </Card.Text>
 
             <ul>
@@ -88,7 +88,7 @@ function install(props) {
 
               <li>
                 Move <b>edenxi.exe</b> to your Ashita <b>ffxi-bootmod</b>
-                &nbsp;directory. The default folder for this is&nbsp;
+                {' '}directory. The default folder for this is{' '}
                 <b>~\\Program Files (x86)\PlayOnline\Ashita\ffxi-bootmod</b>
               </li>
 
@@ -102,15 +102,15 @@ function install(props) {
               </li>
 
               <li>
-                In the File section you may see something like&nbsp;
+                In the File section you may see something like{' '}
                 <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed
-                to&nbsp;
+                to{' '}
                 <b>.\\ffxi-bootmod\\edenxi.exe</b>
               </li>
 
               <li>
                 Command should include <b>--server play.edenxi.com --hairpin</b>
-                &nbsp; and may optionally include&nbsp;
+                {' '} and may optionally include{' '}
                 <b>--user MYUSERNAME --pass MYPASSWORD</b> arguments so that you
                 can automatically login.
               </li>
