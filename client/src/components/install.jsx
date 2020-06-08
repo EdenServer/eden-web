@@ -41,11 +41,12 @@ function install(props) {
             </Card.Text>
             <Card.Text>
               The files included in this installer were downloaded directly from
-              SquareEnix&apos;s freely distributed client. If the first link is
-              full you can use the{' '}
+              SQUARE ENIX CO., LTD&apos;s freely distributed client. If the first
+              link is full you can use the{' '}
               <a href={info.source2} rel="noopener noreferrer" target="_blank">
-                alternative download.
+                alternative download
               </a>
+              .
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -66,7 +67,8 @@ function install(props) {
               >
                 our modified bootloader
               </a>
-              . You may want to visit our tech-support channel on{' '}
+              if your client version is older than our 5.0 installer. You may
+              want to visit our tech-support channel on{' '}
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord server
               </a>{' '}
@@ -75,13 +77,13 @@ function install(props) {
 
             <ul>
               <li>
-                You can run the bootloader by itself to play on Eden but I
-                suggest to use Ashita.
+                You can run the bootloader by itself to play on Eden, but
+                suggested use is with Ashita (or Windower).
               </li>
 
               <li>
                 We do not officially support Windower, but you may find some
-                help getting it set up in our tech-support channel.
+                help getting it set up in our tech-support Discord channel.
               </li>
 
               <li>
@@ -91,16 +93,16 @@ function install(props) {
               </li>
 
               <li>
-                DO NOT rename <b>edenxi.exe</b> or it will not work
+                DO NOT rename <b>edenxi.exe</b> or it will not work.
               </li>
 
               <li>
-                Open your Ashita configuration but right clicking a profile and
-                then clicking &quot;Edit configuration&quot;
+                Open your Ashita configuration, by right-clicking a profile and
+                then clicking &quot;Edit configuration&quot;.
               </li>
 
               <li>
-                In the File section you will see something like{' '}
+                In the File section you may see something like{' '}
                 <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed to{' '}
                 <b>.\\ffxi-bootmod\\edenxi.exe</b>
               </li>
@@ -128,7 +130,6 @@ install.propTypes = {
   }),
 };
 
-// Is this dead code?  I see these values defined in config.js
 install.defaultProps = {
   info: {
     bootloader: '',

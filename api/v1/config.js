@@ -5,7 +5,7 @@ module.exports = {
       author: 'Cygon',
       title: 'Website is back online!',
       message:
-        "Eden's new and improved website and tools are now live with Godmode's redesign. A big thank you and shout out to Ino Uno, Caliburn, and Lumi for polishing the design and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submited via an issue in [the website GitHub](https://github.com/EdenServer/eden-web/issues). If you are an artist and would like to contribute some designs to the website please create a ticket or pull request.",
+        "Eden's new and improved website and tools are now live with Godmode's redesign. A big thank you and shout out to Ino Uno, Caliburn, and Lumi for polishing the functionality, design, and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submitted by creating an issue in [the website GitHub](https://github.com/EdenServer/eden-web/issues). If you are an artist and would like to contribute design or graphics please create an issue in GitHub or make a pull request with the new content.",
     },
   ],
   rules: {
@@ -171,7 +171,7 @@ module.exports = {
   },
   links: [
     {
-      url: 'https://discord.gg/N49F7wJ', // Taken from #information Discord channel on 6/5/2020.
+      url: 'https://discord.gg/MWtDws8', // Taken from #information Discord channel on 6/5/2020.
       image:
         'https://vignette.wikia.nocookie.net/ffxi/images/0/08/Flag.jpg/revision/latest?cb=20060211183144',
       header: 'Eden Discord',
@@ -191,6 +191,13 @@ module.exports = {
       header: 'Bug Reports',
       description:
         'Eden has bugs too. :( See what issues we have and chime in if you found a bug!',
+    },
+    {
+      url: 'https://github.com/EdenServer/eden-web/issues',
+      image: 'https://static.ffxiah.com/images/icon/17001.png',
+      header: 'Website Bugs',
+      description:
+        'Eden refines rules, information, an dconnection details occassionally. Chime in if you found an error!',
     },
     {
       url: 'https://ffxiclopedia.wikia.com/wiki/Main_Page',
@@ -254,6 +261,6 @@ module.exports = {
     source1: 'https://bit.ly/EdenV5Installer',
     source2: 'https://bit.ly/EdenV5BackupInstaller',
     bootloader: 'https://bit.ly/EdenXILoader',
-    discord: 'https://discord.gg/N49F7wJ', // Taken from #information Discord channel on 6/5/2020.
+    discord: 'https://discord.gg/MWtDws8',
   },
 };

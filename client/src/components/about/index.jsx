@@ -26,10 +26,10 @@ const About = () => {
             <Card.Text>
               Many past players of FFXI long for the days of a cooperative
               environment where "quality of life" was an afterthought. Because
-              there is no classic solution from SquareEnix, Eden was created to
-              fill that desire. Our vision is to recreate the 2007 era
-              experience as closely as possible with as very few deviations as
-              possible.
+              there is no classic solution from SQUARE ENIX CO., LTD, Eden was
+              created to fill that desire. Our vision is to recreate the 2007
+              era experience as closely as possible with as very few deviations
+              as possible.
             </Card.Text>
             <Card.Text>
               While all private servers have some deviation from era retail, we
@@ -72,7 +72,7 @@ const About = () => {
                 <tr>
                   <td>
                     The auction house has unlimited listings and items expire
-                    after 365 real life days
+                    after 90 real life days
                   </td>
                   <td>
                     The auction house is limited to 7 listings and items expire
