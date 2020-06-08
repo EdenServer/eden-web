@@ -21,8 +21,8 @@ function install(props) {
               The easiest way to get a registration code is to join&nbsp;
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord
-              </a>&nbsp;
-              and then ask in the #new-players channel.
+              </a>
+              &nbsp; and then ask in the #new-players channel.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -35,8 +35,8 @@ function install(props) {
               First, you&apos;ll need to&nbsp;
               <a href={info.source1} rel="noopener noreferrer" target="_blank">
                 download the Eden Installer v5.0
-              </a>&nbsp;
-              to connect to Eden. You do not need to install retail FFXI
+              </a>
+              &nbsp; to connect to Eden. You do not need to install retail FFXI
               first—this install will take care of everything.
             </Card.Text>
             <Card.Text>
@@ -66,13 +66,13 @@ function install(props) {
                 target="_blank"
               >
                 our modified bootloader
-              </a>&nbsp;
-              if your client version is older than our 5.0 installer. You may
-              want to visit our tech-support channel on&nbsp;
+              </a>
+              &nbsp; if your client version is older than our 5.0 installer. You
+              may want to visit our tech-support channel on&nbsp;
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord server
-              </a>&nbsp;
-              if you&apos;re having trouble.
+              </a>
+              &nbsp; if you&apos;re having trouble.
             </Card.Text>
 
             <ul>
@@ -103,13 +103,14 @@ function install(props) {
 
               <li>
                 In the File section you may see something like&nbsp;
-                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed to&nbsp;
+                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed
+                to&nbsp;
                 <b>.\\ffxi-bootmod\\edenxi.exe</b>
               </li>
 
               <li>
-                Command should include <b>--server play.edenxi.com --hairpin</b>&nbsp;
-                and may optionally include&nbsp;
+                Command should include <b>--server play.edenxi.com --hairpin</b>
+                &nbsp; and may optionally include&nbsp;
                 <b>--user MYUSERNAME --pass MYPASSWORD</b> arguments so that you
                 can automatically login.
               </li>
