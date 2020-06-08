@@ -44,7 +44,6 @@ const About = () => {
 
       <Row className="my-3">
         <Col>
-          {' '}
           <InfoDisplay title="How has Eden deviated from retail?">
             <Card.Text>
               There are a small handful of deviations from this though and
