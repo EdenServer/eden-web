@@ -41,8 +41,8 @@ function install(props) {
             </Card.Text>
             <Card.Text>
               The files included in this installer were downloaded directly from
-              SQUARE ENIX CO., LTD&apos;s freely distributed client. If the first
-              link is full you can use the{' '}
+              SQUARE ENIX CO., LTD&apos;s freely distributed client. If the
+              first link is full you can use the{' '}
               <a href={info.source2} rel="noopener noreferrer" target="_blank">
                 alternative download
               </a>
