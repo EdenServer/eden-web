@@ -15,7 +15,14 @@ function install(props) {
             <Card.Text>
               You&apos;ll need to follow one of the sections below to get Eden
               setup to play, but you will also need to register an account
-              through the bootloader.
+              through the bootloader. Registration requires a 5-digit code that
+              can be obtained from existing players who have accumulated 120
+              hours (5 days) of playtime and main job is level 15 or greater.
+              The easiest way to get a registration code is to join&nbsp;
+              <a href={info.discord} rel="noopener noreferrer" target="_blank">
+                our Discord
+              </a>
+              &nbsp; and then ask in the #new-players channel.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -25,20 +32,21 @@ function install(props) {
         <Col>
           <InfoDisplay title="Fresh Install 64-bit systems" className="my-3">
             <Card.Text>
-              First, you&apos;ll need to{' '}
+              First, you&apos;ll need to&nbsp;
               <a href={info.source1} rel="noopener noreferrer" target="_blank">
                 download the Eden Installer v5.0
-              </a>{' '}
-              to connect to Eden. You do not need to install retail FFXI
+              </a>
+              &nbsp; to connect to Eden. You do not need to install retail FFXI
               first—this install will take care of everything.
             </Card.Text>
             <Card.Text>
               The files included in this installer were downloaded directly from
-              SquareEnix&apos;s freely distributed client. If the first link is
-              full you can use the{' '}
+              SQUARE ENIX CO., LTD&apos;s freely distributed client. If the
+              first link is full you can use the&nbsp;
               <a href={info.source2} rel="noopener noreferrer" target="_blank">
-                alternative download.
+                alternative download
               </a>
+              .
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -51,7 +59,7 @@ function install(props) {
             className="mt-3"
           >
             <Card.Text>
-              You will need to download{' '}
+              You will need to download&nbsp;
               <a
                 href={info.bootloader}
                 rel="noopener noreferrer"
@@ -59,48 +67,50 @@ function install(props) {
               >
                 our modified bootloader
               </a>
-              . You may want to visit our tech-support channel on{' '}
+              &nbsp; if your client version is older than our 5.0 installer. You
+              may want to visit our tech-support channel on&nbsp;
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord server
-              </a>{' '}
-              if you&apos;re having trouble.
+              </a>
+              &nbsp; if you&apos;re having trouble.
             </Card.Text>
 
             <ul>
               <li>
-                You can run the bootloader by itself to play on Eden but I
-                suggest to use Ashita.
+                You can run the bootloader by itself to play on Eden, but
+                suggested use is with Ashita.
               </li>
 
               <li>
                 We do not officially support Windower, but you may find some
-                help getting it set up in our tech-support channel.
+                help getting it set up in our tech-support Discord channel.
               </li>
 
               <li>
-                Move <b>edenxi.exe</b> to your Ashita <b>ffxi-bootmod</b>{' '}
-                directory. The default folder for this is{' '}
+                Move <b>edenxi.exe</b> to your Ashita <b>ffxi-bootmod</b>&nbsp;
+                directory. The default folder for this is&nbsp;
                 <b>~\\Program Files (x86)\PlayOnline\Ashita\ffxi-bootmod</b>
               </li>
 
               <li>
-                DO NOT rename <b>edenxi.exe</b> or it will not work
+                DO NOT rename <b>edenxi.exe</b> or it will not work.
               </li>
 
               <li>
-                Open your Ashita configuration but right clicking a profile and
-                then clicking &quot;Edit configuration&quot;
+                Open your Ashita configuration, by right-clicking a profile and
+                then clicking &quot;Edit configuration&quot;.
               </li>
 
               <li>
-                In the File section you will see something like{' '}
-                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed to{' '}
+                In the File section you may see something like&nbsp;
+                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed
+                to&nbsp;
                 <b>.\\ffxi-bootmod\\edenxi.exe</b>
               </li>
 
               <li>
-                Command should include <b>--server play.edenxi.com --hairpin</b>{' '}
-                and may optionally include{' '}
+                Command should include <b>--server play.edenxi.com --hairpin</b>
+                &nbsp; and may optionally include&nbsp;
                 <b>--user MYUSERNAME --pass MYPASSWORD</b> arguments so that you
                 can automatically login.
               </li>

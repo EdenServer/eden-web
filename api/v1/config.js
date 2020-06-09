@@ -1,11 +1,11 @@
 module.exports = {
   posts: [
     {
-      date: '2020-05-31T00:00:00.000Z',
+      date: '2020-06-14T00:00:00.000Z',
       author: 'Cygon',
       title: 'Website is back online!',
       message:
-        "Eden's new and improved website and tools are now live with Godmode's redesign. A big thank you and shout out to Ino Uno, Caliburn, and Lumi for polishing the design and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submited via an issue in [the website GitHub](https://github.com/EdenServer/eden-web/issues). If you are an artist and would like to contribute some designs to the website please create a ticket or pull request.",
+        "Eden's new and improved website and tools are now live with Godmode's redesign. A big thank you and shout out to Ino Uno, Caliburn, and Lumi for polishing the functionality, design, and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submitted by creating an issue in [the website GitHub](https://github.com/EdenServer/eden-web/issues). If you are an artist and would like to contribute design or graphics please create an issue in GitHub or make a pull request with the new content.",
     },
   ],
   rules: {
@@ -191,6 +191,13 @@ module.exports = {
       header: 'Bug Reports',
       description:
         'Eden has bugs too. :( See what issues we have and chime in if you found a bug!',
+    },
+    {
+      url: 'https://github.com/EdenServer/eden-web/issues',
+      image: 'https://static.ffxiah.com/images/icon/17005.png',
+      header: 'Website Bugs',
+      description:
+        'In addition to technical bugs, Eden refines rules, information, and connection details occassionally. Chime in if you found an error!',
     },
     {
       url: 'https://ffxiclopedia.wikia.com/wiki/Main_Page',
