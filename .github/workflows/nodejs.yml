@@ -12,10 +12,11 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
+        os: [ windows-latest, ubuntu-latest ]
         node-version: [10.x, 12.x]
 
     steps:
@@ -28,5 +29,7 @@ jobs:
     - run: npm run ci:client
     - run: npm run check
     # Setting CI=false here, because when true, create-react-app treats warnings as errors, and we have a few warnings at the moment
-    - run: CI=false npm run build
+    - env:
+        CI: false
+      run: npm run build
     - run: npm test
