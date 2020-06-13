@@ -26,8 +26,8 @@ const Tools = () => {
   return (
     <div className="gm_tools">
       <div className="gm_tools-content">
-        <Menu pointing>
-          <TabItem to="account" disabled={true} activeTab={activeTab}>
+        <Menu pointing className="wrapped">
+          <TabItem to="account" disabled activeTab={activeTab}>
             User Management
           </TabItem>
           <TabItem to="online" activeTab={activeTab}>

@@ -265,3 +265,9 @@ p.gm_lineseperate {
     margin: 10px 0;
   }
 }
+
+.wrapped {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
