@@ -33,3 +33,10 @@ $theme-colors: (
 // Import Bootstrap
 // - This import must go below all SASS variable overrides
 @import 'node_modules/bootstrap/scss/bootstrap';
+
+// CSS overrides
+// - This must got below the Bootstrap import
+
+.nav-tabs .nav-link {
+  border: 1px solid #e6e6e6;
+}
