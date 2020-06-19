@@ -74,7 +74,7 @@ router.post('/register', (req, res) => {
   try {
     const tests = [
       req.headers.referer === 'https://www.edenxi.com/tools' ||
-      req.headers.referer === 'https://edenxi.com/tools',
+        req.headers.referer === 'https://edenxi.com/tools',
       !disallowedIP.includes(req.headers['x-forwarded-for']),
       password === confirmPassword,
       username.toLowerCase() === confirmUsername.toLowerCase(),
