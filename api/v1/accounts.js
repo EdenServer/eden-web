@@ -25,7 +25,7 @@ const validate = (req, res, next) => {
 
 router.get('/profile', validate, async (req, res) => {
   try {
-    const statement = `SELECT *, IF(accounts_sessions.charid IS NULL, 0, 1) AS online FROM chars
+    const statement = `SELECT *, IF(accounts_sessions.charid IS NULL, 0, 1) AS \`online\` FROM chars
             JOIN char_stats ON chars.charid = char_stats.charid
             JOIN char_look ON chars.charid = char_look.charid
             LEFT JOIN accounts_sessions on chars.charid = accounts_sessions.charid
@@ -74,7 +74,7 @@ router.post('/register', (req, res) => {
   try {
     const tests = [
       req.headers.referer === 'https://www.edenxi.com/tools' ||
-        req.headers.referer === 'https://edenxi.com/tools',
+      req.headers.referer === 'https://edenxi.com/tools',
       !disallowedIP.includes(req.headers['x-forwarded-for']),
       password === confirmPassword,
       username.toLowerCase() === confirmUsername.toLowerCase(),

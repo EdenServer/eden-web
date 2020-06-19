@@ -242,7 +242,7 @@ const getCharEquip = async (query, charname) => {
 
 const getCharData = async (query, charname) => {
   try {
-    const statement = `SELECT *, chars.charid AS charid, chars.accid AS accid, IF(accounts_sessions.charid IS NULL, 0, 1) AS isOnline FROM chars
+    const statement = `SELECT *, chars.charid AS charid, chars.accid AS accid, IF(accounts_sessions.charid IS NULL, 0, 1) AS \`isOnline\` FROM chars
             JOIN char_stats ON chars.charid = char_stats.charid
             JOIN char_look ON chars.charid = char_look.charid
             JOIN char_jobs ON chars.charid = char_jobs.charid
@@ -309,7 +309,7 @@ const fetchChars = async (
       `SELECT COUNT(*) AS ct FROM chars WHERE gmlevel = 0 AND charname LIKE ?;`,
       [`${search}%`]
     );
-    const statement = `SELECT *, chars.charid AS charid, chars.accid AS accid, IF(accounts_sessions.charid IS NULL, 0, 1) AS isOnline FROM chars
+    const statement = `SELECT *, chars.charid AS charid, chars.accid AS accid, IF(accounts_sessions.charid IS NULL, 0, 1) AS \`isOnline\` FROM chars
             JOIN char_stats ON chars.charid = char_stats.charid
             JOIN char_look ON chars.charid = char_look.charid
             JOIN char_jobs ON chars.charid = char_jobs.charid
