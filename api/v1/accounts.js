@@ -25,7 +25,7 @@ const validate = (req, res, next) => {
 
 router.get('/profile', validate, async (req, res) => {
   try {
-    const statement = `SELECT *, IF(accounts_sessions.charid IS NULL, 0, 1) AS online FROM chars
+    const statement = `SELECT *, IF(accounts_sessions.charid IS NULL, 0, 1) AS \`online\` FROM chars
             JOIN char_stats ON chars.charid = char_stats.charid
             JOIN char_look ON chars.charid = char_look.charid
             LEFT JOIN accounts_sessions on chars.charid = accounts_sessions.charid
