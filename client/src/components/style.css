@@ -108,6 +108,16 @@ body {
   color: white;
 }
 
+.gm_autotranslate-start {
+  color: lightgreen;
+  font-weight: bold;
+}
+
+.gm_autotranslate-end {
+  color: red;
+  font-weight: bold;
+}
+
 /* Tools */
 
 .gm_tools {
