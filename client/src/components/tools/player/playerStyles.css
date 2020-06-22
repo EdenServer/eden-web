@@ -1,5 +1,7 @@
 .eden_profile-content {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .gm_player-title {
