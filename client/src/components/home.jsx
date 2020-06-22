@@ -8,7 +8,7 @@ function Home(props) {
   const { posts } = props;
 
   return (
-    <Row className="min-vh-100 flex-column-reverse flex-lg-row">
+    <Row className="min-vh-100 flex-column flex-lg-row">
       <Col>{posts && <News posts={posts} />}</Col>
       <Col lg={4} className="mb-3 mb-lg-0">
         <YellBox />
