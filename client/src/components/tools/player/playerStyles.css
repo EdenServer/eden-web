@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+@media only screen and (max-width: 800px) {
+  .eden_profile-content {
+    flex-direction: column;
+  }
+}
+
 .gm_player-title {
   font-size: 14px;
   font-style: italic;
