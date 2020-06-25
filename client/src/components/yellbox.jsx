@@ -1,5 +1,6 @@
 import React from 'react';
 import apiUtil from '../apiUtil';
+import YellText from './YellText';
 
 class Yells extends React.PureComponent {
   constructor(props) {
@@ -30,11 +31,7 @@ class Yells extends React.PureComponent {
       <ul className="gm_yell-container h-100 rounded">
         {yells.map((yell, i) => (
           <li key={`yell_${i}`} className="gm_yell-message">
-            <span className="gm_yell-name">
-              [{new Date(yell.date).toLocaleTimeString()}] {yell.speaker}
-            </span>{' '}
-            : &nbsp;
-            <span className="gm_yell-text">{yell.message}</span>
+            <YellText {...yell} />
           </li>
         ))}
       </ul>
