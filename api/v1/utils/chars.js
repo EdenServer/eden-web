@@ -315,7 +315,7 @@ const fetchChars = async (
             JOIN char_jobs ON chars.charid = char_jobs.charid
             LEFT JOIN accounts_sessions on chars.charid = accounts_sessions.charid
             LEFT JOIN accounts ON chars.accid = accounts.id
-            WHERE chars.deleted IS NULL AND gmlevel = 0 AND charname LIKE ? AND status < 5
+            WHERE chars.deleted IS NULL AND gmlevel = 0 AND charname LIKE ? AND status = 1
             HAVING isOnline IN (1,?) ORDER BY chars.charname ASC LIMIT ? OFFSET ?;`;
     const results = await query(statement, [
       `${search}%`,
