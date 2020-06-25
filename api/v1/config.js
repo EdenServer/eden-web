@@ -1,11 +1,32 @@
 module.exports = {
   posts: [
     {
-      date: '2020-06-14T00:00:00.000Z',
+      date: '2020-06-20T09:35:00.000Z',
       author: 'Cygon',
       title: 'Website is back online!',
       message:
-        "Eden's new and improved website and tools are now live with Godmode's redesign. A big thank you and shout out to Ino Uno, Caliburn, and Lumi for polishing the functionality, design, and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submitted by creating an issue in [the website GitHub](https://github.com/EdenServer/eden-web/issues). If you are an artist and would like to contribute design or graphics please create an issue in GitHub or make a pull request with the new content.",
+        "Eden's new and improved website and tools are now live with **Godmode's** redesign. A big thank you and shout out to **Ino Uno, Caliburn, and Lumi** for polishing the functionality, design, and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submitted by creating an issue in [the website GitHub](https://github.com/EdenServer/eden-web/issues).  \n  \nIf you are an artist and would like to contribute design or graphics please create an issue in GitHub or make a pull request with the new content.",
+    },
+    {
+      date: '2020-05-31T00:00:00.000Z',
+      author: 'Cygon',
+      title: 'Crash Investigations',
+      message:
+        'We have heard your voices about crash related issues on Eden, especially with **Dynamis** and **Assault** zones and are still working to shore up a few more of them. It is taking an extended period to resolve the problems because we cannot reproduce them in test and need to explore code fixes over time. There are several expected crash fixes live right now and we are gathering data on their effectiveness. In the next few weeks, we hope to conclude our focused crash investigations, and then get back to more new content and more bug fixes.',
+    },
+    {
+      date: '2020-05-02T00:00:00.000Z',
+      author: 'Cygon',
+      title: 'Registration Codes',
+      message:
+        'A new system has been implemented to provide existing players and staff a way to obtain registration codes for new players.  \n  \nThe purpose of this system is to prevent abuse of account creation. Similar to `!unstuck`, the `!getcode` command may be used by any player meeting both of the following criteria:  \n  \n- accumulated 120 hours (5 days) of playtime and  \n- main job level 15 or greater.  \n  \nThe `!getcode` command will return a **5 digit, one-time use registration code** that should be given to new players wishing to create an account (or existing players wishing to create alternate accounts). When a registration code is successfully used to create an account, a new code will take its place.  \n  \nExisting players providing registration codes to new players will not be punished if the new player becomes banned for rule violations. However, requesting a registration code repeatedly for the purpose of mass account creation is prohibited, even if done over the course of several weeks.',
+    },
+    {
+      date: '2020-04-11T00:00:00.000Z',
+      author: 'Aiko',
+      title: 'Linked Account Appeal Process',
+      message:
+        'Pursuant to the announcement of Eden to be more welcoming / forgiving of player transgressions, we are opening up an appeals processes for players whose accounts were permanently banned due to being linked to another account that was found guilty of committing bannable offenses.  \n  \nThe account belonging to the character caught breaking rules will always experience the punishment appropriate for the rule that was broken, regardless of which person was in control at the time. We highly recommend you do not share your account under any circumstances.  \n  \nThe burden of proof is on the player(s) involved. It will be up to them to provide adequate proof that it was a different person who was caught cheating AND that you were unaware / had no reasonable way of suspecting that player may have been cheating. You should not be sharing an account with someone whom you know is cheating, or even someone whom you suspect might be cheating. If you later discover they are cheating and have previously shared your account with them, report this behavior immediately via in-game helpdesk ticket. Reporting this behavior when you discover it is encouraged and will drastically improve your chances of a favorable outcome.  \n  \nAt this time we are only considering appeals for accounts which were granted permanent bans due to being linked to the account of an offender.  \n  \nAppeals can be directed to [gmteam.edenxi@gmail.com](mailto:gmteam.edenxi@gmail.com)',
     },
   ],
   rules: {
@@ -15,7 +36,7 @@ module.exports = {
         'You will be watched from time to time by the active/hidden GM team that patrols and responds to reports for cheating.',
         'Like most online games, Eden will collect and store data from you such as IP addresses, MAC addresses, and other unique device identifiers to help curb cheating.',
         'You will follow the server rules listed below. ALL rules may be met with punishment including up to a ban on all Eden content.',
-        'You will not engage in any manner to profit from the work of SQUARE ENIX CO., LTD. or the Eden staff. This includes the selling of accounts, gil or items.',
+        'You will not engage in any manner to profit from the work of SQUARE ENIX CO., LTD. or the Eden staff. This includes the selling of accounts, gil, or items.',
         'These terms may change at any time. Each time you connect to Eden you are bound to the terms as they are posted here.',
         'You acknowledge that we are not affiliated in any way with SQUARE ENIX CO., LTD.',
         'You acknowledge that SQUARE ENIX CO., LTD. is the owner of all FINAL FANTASY® XI content and images with all rights reserved.',
@@ -26,27 +47,23 @@ module.exports = {
       updated: '5/22/2020',
       list: [
         'Using a non-Eden bootloader--including using a modified version of the Eden bootloader--is NOT allowed. The bootloader must be downloaded from the official site or #annoucements channel in our official Discord otherwise there are no guarantees it is official.',
-        'Until a technical solution is implemented, no more than 8 monsters may be intentionally gathered to kill at the same time.',
-        'If something feels like it is broken, either not like it was on era retail or a potential exploit or too overpowered. (read: if something seems like it was not intentional from the development team) report it. Knowingly taking advantage of these activities is NOT allowed.',
+        'If something feels like it is broken, either not like it was on era retail or a potential exploit or too overpowered (read: if something seems like it was not intentional from the development team) report it. Knowingly taking advantage of these activities is NOT allowed.',
         'Each player is only allowed to have 2 characters logged in and active, with an additional third character confined to a city and idle. This character may only be used to bazaar or mule items while your other characters are logged in. (This will not be locked down by IP, but it will be actively patrolled.) Tri-boxing 3 or more active characters is NOT allowed.',
-        'Claim bots, modifying dats to claim, any type of targeting using mob id (such as /target 12345678) or using any other third party tools such as Shorthand or its Windower equivalent to claim is NOT allowed.',
+        'Claim bots, modifying dats to claim, any type of targeting using mob ID (such as /target 12345678) or using any other third party tools such as Shorthand or its Windower equivalent to claim is NOT allowed.',
         "Any scripts, bots, or addons that automate actions are NOT allowed. Macros using the /wait or <wait> feature within the game are OK. (Such as /lastsynth macros up to the game's maximum of 6 lines.)",
         "Account sharing is strongly discouraged and may be disallowed in the future. If one or more of your accounts are linked to a player that is caught cheating by either logging into an offending player's account or by that player logging into one of your accounts you will share the same punishment as the cheater--which is 9 out of 10 times a permanent ban.",
         'Not really a rule but be aware that players may be limited in the future to 3 characters. So create new ones at your own risk. It is undecided how additional characters would be handled if we imposed these limits.',
-        'Using known bugs (including terrain) or unpatched exploits to your advantage in a way that would not be possible in retail. For example: purposefully crawling on walls to avoid aggro using the current navmesh’s bugs is NOT allowed. (Note: this does not mean people are exploiting because they are standing on walls. It is a normal reaction to be on a wall. But climbing through tight spaces without oils and powders without aggro is obviously a bug and you will be banned for it.)',
-        'Testing known or possible exploits on the live server is not allowed unless permission is given from Godmode first. Like every other rule this includes GMs and developers too.',
-        "Holding a monster for the purpose of grieving other players or monopolizing the time it spawns is NOT allowed (note that since determining a player's intent is highly subjective to the GM addressing the ticket, if asked to begin damage by a GM you must start fighting the monster within a reasonable amount of time or you will forfeit the claim)",
-        "Reasonable is up to the GM team's discretion.",
-        'Holding to recover from a wipe is allowed.',
-        "Intention to kill with reinforcements on the way isn't holding.",
-        "Not so much a rule either but if you are aware of any non-era item/NM/recipe/et cetera please report it. And do expect the rewards obtained from it to be removed. I can't find every non-era thing at once but as I find them I will be removing them.",
+        'Using known bugs (including terrain) or unpatched exploits to your advantage in a way that would not be possible in retail. For example: purposefully crawling on walls to avoid aggro using the current navmesh’s bugs is NOT allowed. (Note: this does not mean people are exploiting because they are standing on walls. It is a normal reaction to be on a wall. But climbing through tight spaces without oils and powders without aggro is obviously a bug and you will be punished for it.)',
+        'Testing known or possible exploits on the live server is not allowed unless permission is given from a server administrator first. Like every other rule this includes GMs and developers too.',
+        "Holding a monster for the purpose of grieving other players or monopolizing the time it spawns is NOT allowed (note that since determining a player's intent is highly subjective to the GM addressing the ticket, if asked to begin damage by a GM you must start fighting the monster within a reasonable amount of time or you will forfeit the claim). To clarify, reasonable is up to the GM team's discretion, holding to recover from a wipe is allowed, intention to kill with reinforcements on the way isn't holding, and Darters in Dragon's Aery may be held alive 5 minutes from time of claim. Please see Discord and ask a GM for more information if you need it.",
+        "Not so much a rule either but if you are aware of any non-era item/NM/recipe/et cetera please report it. And do expect the rewards obtained from it to be removed. We can't find every non-era thing at once but as we find them they will be removed.",
         'Creating characters for the purpose of market manipulation is NOT allowed.',
         'Gardening is only allowed on up to 3 characters. (30 total plants.)',
-        'Hacking/exploiting/cheating of any kind including but not limited to buying items and selling back for more than you paid for is NOT allowed.',
-        'Spamming any public chat. (Linkshells and tells are the exception as they will only be subject to harassment reports.)',
+        'Hacking/exploiting/cheating of any kind including, but not limited to, buying items and selling back for more than you paid for is NOT allowed.',
+        'Spamming any public chat is NOT allowed. (Linkshells and tells are the exception as they will only be subject to harassment reports.)',
         'Harassment of any kind including offensive character or linkshell names is NOT allowed.',
         'Character names that depict cheating, could be considered sexually explicit, or any names that could be disallowed on retail are NOT allowed.',
-        'Use of or advertisement of any cheat program/addon or a non-approved addon/program on Eden or its media. There will be an allowed list and a non-allowed list. Those not in the approved list are discouraged from use as you may be penalized for using them. Use at your own risk. Those that are similar to a forbidden program are most likely forbidden as well.',
+        'Use of, or advertisement of, any cheat program/addon or a non-approved addon/program on Eden or its media is NOT allowed. There will be an allowed list and a non-allowed list. Those not in the approved list are discouraged from use as you may be penalized for using them. Use at your own risk. Those that are similar to a forbidden program are most likely forbidden as well.',
         'GM interaction is limited here but if a GM messages you in game and you are active, respond within a reasonable time. Ignoring a GM is likely to get you jailed as we will likely think you are afk botting.',
       ],
       violations: [
