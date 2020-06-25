@@ -1,5 +1,13 @@
 .eden_profile-content {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .eden_profile-content {
+    flex-direction: column;
+  }
 }
 
 .gm_player-title {
