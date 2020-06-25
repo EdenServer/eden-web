@@ -119,7 +119,7 @@ const Playersearch = ({ history }) => {
       {!charname && results.length === 0 && (
         <Segment>
           {initial
-            ? `No results for "${search}".`
+            ? `No results for "${searchParam}".`
             : 'Begin searching for a player by typing in the search box above.'}
         </Segment>
       )}
