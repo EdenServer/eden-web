@@ -1,7 +1,7 @@
 module.exports = {
   posts: [
     {
-      date: '2020-09-20T09:35:00.000Z',
+      date: '2020-06-20T09:35:00.000Z',
       author: 'Cygon',
       title: 'Website is back online!',
       message:
