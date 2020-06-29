@@ -306,7 +306,7 @@ const fetchChars = async (
 ) => {
   try {
     const total = await query(
-      `SELECT COUNT(*) AS ct FROM chars WHERE gmlevel = 0 AND charname LIKE ?;`,
+      `SELECT COUNT(*) AS ct FROM chars WHERE chars.deleted IS NULL AND gmlevel = 0 AND charname LIKE ? AND status < 5;`,
       [`${search}%`]
     );
     const statement = `SELECT *, chars.charid AS charid, chars.accid AS accid, IF(accounts_sessions.charid IS NULL, 0, 1) AS isOnline FROM chars
