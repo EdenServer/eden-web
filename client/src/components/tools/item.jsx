@@ -177,15 +177,17 @@ export default ({ history, itemname, setLoading }) => {
             </Button>
           )}
         </div>
-        <div className="eden_item-description">
-          {item.desc.split('\n').map((s, i) => (
-            <p key={`desc_ln_${i}`}>
-              {descriptionWithElements(s, i)}
-              <br />
-            </p>
-          ))}
-          {item.armor && <p>{item.armor}</p>}
-        </div>
+        {item.desc !== null && typeof item.desc !== 'undefined' &&
+          <div className="eden_item-description">
+            {item.desc.split('\n').map((s, i) => (
+              <p key={`desc_ln_${i}`}>
+                {descriptionWithElements(s, i)}
+                <br />
+              </p>
+            ))}
+            {item.armor && <p>{item.armor}</p>}
+          </div>
+        }
       </Header>
       <Accordion fluid styled>
         <Accordion.Title active={ah} onClick={() => setAh(!ah)}>
