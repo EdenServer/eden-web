@@ -178,11 +178,9 @@ export default ({ history, itemname, setLoading }) => {
           )}
         </div>
         <div className="eden_item-description">
-          {item.desc !== null &&
-            typeof item.desc !== 'undefined' &&
+          {item.desc &&
             item.desc.split('\n').map((s, i) => (
               <p key={`desc_ln_${i}`}>
-                {' '}
                 {descriptionWithElements(s, i)}
                 <br />
               </p>
