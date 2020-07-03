@@ -178,12 +178,13 @@ export default ({ history, itemname, setLoading }) => {
           )}
         </div>
         <div className="eden_item-description">
-          {item.desc.split('\n').map((s, i) => (
-            <p key={`desc_ln_${i}`}>
-              {descriptionWithElements(s, i)}
-              <br />
-            </p>
-          ))}
+          {item.desc &&
+            item.desc.split('\n').map((s, i) => (
+              <p key={`desc_ln_${i}`}>
+                {descriptionWithElements(s, i)}
+                <br />
+              </p>
+            ))}
           {item.armor && <p>{item.armor}</p>}
         </div>
       </Header>
