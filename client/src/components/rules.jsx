@@ -52,9 +52,9 @@ const Rules = ({ list }) => {
               doing something that would have gotten you banned or in trouble on
               retail, it is more than likely against the rules here too. If you
               are doing inappropriate things that you wouldn&apos;t do to your
-              friends--I would think twice about that too. Finally, if a GM asks
-              you to stop a behavior--saying &quot;it isn&apos;t in the
-              rules&quot; is not a valid excuse for ignoring the GM.
+              friends--please think twice about it. Finally, if a GM asks you
+              to stop a behavior--saying &quot;it isn&apos;t in the rules&quot;
+              is not a valid excuse for ignoring the GM.
             </Card.Text>
             <Card.Text>
               We give our GMs the responsibility to uphold rules in the essence

@@ -69,12 +69,12 @@ export default ({ active, selection, onClick }) => {
       </Menu.Item>
       <Menu.Item className="gm_menu-credits">
         <div style={{ fontSize: '10px' }}>
-          All FINAL FANTASY® XI content and images © 2002-2020 SQUARE ENIX CO.,
-          LTD. All Rights Reserved.
+          All FINAL FANTASY&reg; XI content and images &copy; 2002-2020 SQUARE ENIX
+          CO., LTD. All Rights Reserved.
         </div>
         <br />
         <div style={{ fontSize: '10px' }}>
-          FINAL FANTASY® is a registered trademark of SQUARE ENIX CO., LTD. All
+          FINAL FANTASY&reg; is a registered trademark of SQUARE ENIX CO., LTD. All
           Rights Reserved.
         </div>
       </Menu.Item>

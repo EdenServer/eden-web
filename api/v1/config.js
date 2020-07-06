@@ -39,7 +39,7 @@ module.exports = {
         'You will not engage in any manner to profit from the work of SQUARE ENIX CO., LTD. or the Eden staff. This includes the selling of accounts, gil, or items.',
         'These terms may change at any time. Each time you connect to Eden you are bound to the terms as they are posted here.',
         'You acknowledge that we are not affiliated in any way with SQUARE ENIX CO., LTD.',
-        'You acknowledge that SQUARE ENIX CO., LTD. is the owner of all FINAL FANTASY® XI content and images with all rights reserved.',
+        'You acknowledge that SQUARE ENIX CO., LTD. is the owner of all FINAL FANTASY&reg; XI content and images with all rights reserved.',
         'You acknowledge that Eden has no ownership over or affiliation with any of the content, images, registered trademarks or any other rights reserved by SQUARE ENIX CO., LTD.',
       ],
     },
