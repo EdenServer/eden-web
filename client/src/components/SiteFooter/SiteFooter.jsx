@@ -13,8 +13,7 @@ const SiteFooter = () => {
         <Col xs={12} lg className="my-auto">
           <p className="text-light">
             <small>
-              All FINAL FANTASY&reg; XI content and images &copy;
-              2002-2020{' '}
+              All FINAL FANTASY&reg; XI content and images &copy; 2002-2020{' '}
               <a href="https://www.square-enix.com/" className="text-white">
                 SQUARE ENIX
               </a>{' '}
