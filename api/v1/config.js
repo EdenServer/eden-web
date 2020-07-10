@@ -1,28 +1,35 @@
 module.exports = {
   posts: [
     {
-      date: '2020-06-20T09:35:00.000Z',
+      date: '2020-07-12T04:00:00.000Z',
+      author: 'Cygon',
+      title: 'Development Update and Timeline',
+      message:
+        '**Short-term** - Expected to be in the next few patches.  \n  \n- Limbus, initial zones  \n- Implementation of ToAU missions  \n- Audit of zone respawn times  \n- Quantify and investigate stuck delivery box items  \n- Fix to eliminate recurrence of stuck delivery box items  \n- Fix treasure pool issues, beyond those seen in Dynamis  \n  \n**Mid-term** - Probably after the next few patches.  \n  \n- Calculations to character weaponskills with complete physical difference (pDif) and level correction ratio (cRatio)  \n- Calculations to mob skills with complete physical difference (pDif) and level correction ratio (cRatio)  \n- Limbus, Omega and upper Temenos floors  \n- Implementation of more Assaults  \n- Implementation of Nyzul Isle Investigation  \n- Audit of mob spawn positions  \n- Fix long standing alliance and party bugs  \n- Lag improvements, specifically for congested zones  \n- Resolve the majority of stuck delivery box items with database scripting  \n- Implementation of password self-service feature in bootloader plug-in  \n  \n**Long-term** - Beyond the next several patches.  \n  \n- Calculations to magic hit rate  \n- Limbus, Ultima  \n- Implementation of Salvage  \n- Leftover stuck delivery box items on a case-by-case basis  \n  \n**On-going** - Data collection and resolution based on severity.  \n  \n- Fix Dynamis crashes and others  \n  \n*Note: Open GitHub issues will also appear in the timeline, but prioritization will be adhoc.*',
+    },
+    {
+      date: '2020-06-20T13:35:00.000Z',
       author: 'Cygon',
       title: 'Website is back online!',
       message:
         "Eden's new and improved website and tools are now live with **Godmode's** redesign. A big thank you and shout out to **Ino Uno, Caliburn, and Lumi** for polishing the functionality, design, and content. Constructive feedback, bug reports, and feature requests are appreciated and can be submitted by creating an issue in [the website GitHub](https://github.com/EdenServer/eden-web/issues).  \n  \nIf you are an artist and would like to contribute design or graphics please create an issue in GitHub or make a pull request with the new content.",
     },
     {
-      date: '2020-05-31T00:00:00.000Z',
+      date: '2020-05-31T04:00:00.000Z',
       author: 'Cygon',
       title: 'Crash Investigations',
       message:
         'We have heard your voices about crash related issues on Eden, especially with **Dynamis** and **Assault** zones and are still working to shore up a few more of them. It is taking an extended period to resolve the problems because we cannot reproduce them in test and need to explore code fixes over time. There are several expected crash fixes live right now and we are gathering data on their effectiveness. In the next few weeks, we hope to conclude our focused crash investigations, and then get back to more new content and more bug fixes.',
     },
     {
-      date: '2020-05-02T00:00:00.000Z',
+      date: '2020-05-02T04:00:00.000Z',
       author: 'Cygon',
       title: 'Registration Codes',
       message:
         'A new system has been implemented to provide existing players and staff a way to obtain registration codes for new players.  \n  \nThe purpose of this system is to prevent abuse of account creation. Similar to `!unstuck`, the `!getcode` command may be used by any player meeting both of the following criteria:  \n  \n- accumulated 120 hours (5 days) of playtime and  \n- main job level 15 or greater.  \n  \nThe `!getcode` command will return a **5 digit, one-time use registration code** that should be given to new players wishing to create an account (or existing players wishing to create alternate accounts). When a registration code is successfully used to create an account, a new code will take its place.  \n  \nExisting players providing registration codes to new players will not be punished if the new player becomes banned for rule violations. However, requesting a registration code repeatedly for the purpose of mass account creation is prohibited, even if done over the course of several weeks.',
     },
     {
-      date: '2020-04-11T00:00:00.000Z',
+      date: '2020-04-11T04:00:00.000Z',
       author: 'Aiko',
       title: 'Linked Account Appeal Process',
       message:
