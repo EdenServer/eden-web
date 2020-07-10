@@ -138,7 +138,7 @@ const Rules = ({ list }) => {
 
       <Row className="my-3">
         <Col>
-          <InfoDisplay title="Yell Rules">
+          <InfoDisplay title="Yell and Shout Rules">
             <ol>
               {yells.list.map((t, i) => (
                 <li key={`term_${i}`}>{t}</li>

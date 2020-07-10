@@ -167,11 +167,12 @@ module.exports = {
     yells: {
       updated: '7/12/2020',
       list: [
-        'Yell is a global chat. Do not yell profanity, hate messages, or any harassing statements. Violating this rule may result in mutes and/or an account ban depending on severity.',
-        'Do not banter back and forth between yourselves in yell. This includes replying in yell to someone who has violated these rules. Banter may result in mutes applied.',
+        'Yell is a global chat and has a 15 minute cooldown period. Shout is limited to a single zone with a large radius and has a 5 minute cooldown period, except in some instanced zones.',
+        'Zoning and logging off do not reset these cooldowns. New characters will have yell and shout cooldowns applied during the opening cutscene. Do not expect these limitations to change, as they are applied to prevent abuse.',
+        'Do not yell or shout profanity, hate messages, or any harassing statements. Violating this rule may result in mutes and/or an account ban depending on severity.',
+        'Do not banter back and forth between yourselves in yell (instead use shout for banter). This includes replying in yell to someone who has violated these rules. Banter in yell may result in mutes applied.',
         'Asking a legitimate FFXI question in yell is fine. However, replies to questions should not be sent in yell. Shout or tell is preferred.',
         'Adding on irrelevant banter not related to the purpose of a yell may result in a mute. Example: &quot;WTS pebbles also... player XYZ sux!&quot;',
-        'Yells are on a 15 minute cooldown. Zoning and logging off do not reset this cooldown. Shouts also have a cooldown of 5 minutes, except in some instanced zones. New characters have yell and shout cooldowns applied during the opening cutscene. Do not expect these limitations to change, as they are applied to prevent abuse.',
       ],
     },
     discord: {
