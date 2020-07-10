@@ -172,7 +172,7 @@ module.exports = {
         'Do not yell or shout profanity, hate messages, or any harassing statements. Violating this rule may result in mutes and/or an account ban depending on severity.',
         'Do not banter back and forth between yourselves in yell (instead use shout for banter). This includes replying in yell to someone who has violated these rules. Banter in yell may result in mutes applied.',
         'Asking a legitimate FFXI question in yell is fine. However, replies to questions should not be sent in yell. Shout or tell is preferred.',
-        'Adding on irrelevant banter not related to the purpose of a yell may result in a mute. Example: &quot;WTS pebbles also... player XYZ sux!&quot;',
+        'Adding on irrelevant banter not related to the purpose of a yell may result in a mute. Example: “WTS pebbles also... player XYZ sux!”',
       ],
     },
     discord: {
