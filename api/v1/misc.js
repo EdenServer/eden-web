@@ -1,3 +1,5 @@
+const parseMD = require('parse-md').default;
+const fs = require('fs');
 const { Router } = require('express');
 
 const router = Router();
@@ -136,6 +138,42 @@ router.get('/config', async (req, res) => {
   const cache = await req.app.locals.cache.fetch('/config', () => {
     return require('./config');
   });
+
+  res.send(cache);
+});
+
+router.get('/news', async (req, res) => {
+  const maxAmountOfPosts = 5;
+  const newsFolder = './news';
+
+  const cache = await req.app.locals.cache.fetch(
+    {
+      key: req.originalUrl,
+      interval: 300000, // 5 minutes
+    },
+    () => {
+      let posts = [];
+      let currentDate = new Date();
+
+      const files = fs.readdirSync(newsFolder);
+      files.forEach(file => {
+        const fileContents = fs.readFileSync(`${newsFolder}/${file}`, 'utf8');
+        let post = parseMD(fileContents);
+        let date = Date.parse(post.metadata.date);
+
+        if (date > currentDate) {
+          // news that's dated in the future shouldn't show up
+          return;
+        }
+
+        posts.push(post);
+      });
+
+      posts.sort((p1, p2) => p2.metadata.date - p1.metadata.date);
+      posts = posts.slice(0, maxAmountOfPosts);
+      return posts;
+    }
+  );
 
   res.send(cache);
 });
