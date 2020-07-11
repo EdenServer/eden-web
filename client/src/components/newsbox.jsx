@@ -32,7 +32,7 @@ const News = () => {
             title={metadata.title}
             footer={
               <span>
-                {metadata.date.toLocaleString()} by {metadata.author}
+                {new Date(metadata.date).toLocaleString()} by {metadata.author}
               </span>
             }
           >
