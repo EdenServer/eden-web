@@ -169,7 +169,7 @@ router.get('/news', async (req, res) => {
         posts.push(post);
       });
 
-      posts.sort((p1, p2) => p1.metadata.date < p2.metadata.date);
+      posts.sort((p1, p2) => p2.metadata.date - p1.metadata.date);
       posts = posts.slice(0, maxAmountOfPosts);
       return posts;
     }
