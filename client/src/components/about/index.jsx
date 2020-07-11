@@ -92,8 +92,9 @@ const About = () => {
                 </tr>
                 <tr>
                   <td>
-                    Wardrobe 1 is awarded upon attaining Rank 3 and Wardrobe 2
-                    upon attaining Rank 6
+                    Wardrobe 1 is awarded by talking to your Moogle after
+                    attaining Rank 3 and Wardrobe 2 by talking to your Moogle
+                    after attaining Rank 6
                   </td>
                   <td>Wardrobe 1 and Wardrobe 2 did not exist</td>
                   <td>economy</td>
