@@ -6,12 +6,13 @@ import News from './newsbox';
 import { useMediaQuery } from 'react-responsive';
 
 function Home(props) {
-  const { posts } = props;
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   return (
     <Row className="min-vh-100 flex-column flex-lg-row">
-      <Col>{posts && <News posts={posts} />}</Col>
+      <Col>
+        <News />
+      </Col>
       {!isTabletOrMobile && (
         <Col lg={4} className="mb-3 mb-lg-0">
           <YellBox />

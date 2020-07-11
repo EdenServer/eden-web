@@ -36,6 +36,7 @@
     "jsonwebtoken": "8.5.1",
     "lightenv": "1.1.0",
     "mysql2": "2.1.0",
+    "parse-md": "^2.0.4",
     "portscanner": "2.2.0",
     "request": "2.88.0"
   },

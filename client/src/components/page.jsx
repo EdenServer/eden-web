@@ -19,7 +19,7 @@ const Page = props => {
       <Row className="h-100 flex-column-reverse flex-lg-row">
         <Col>
           <Router primary={false}>
-            <Home path="/" posts={config.posts} />
+            <Home path="/" />
             <Install path="/install" info={config.install} />
             <Tools path="/tools/*" />
             <Links path="/links" links={config.links} />
