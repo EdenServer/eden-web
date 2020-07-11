@@ -22,19 +22,4 @@ function Home(props) {
   );
 }
 
-Home.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      author: PropTypes.string,
-      data: PropTypes.string,
-      message: PropTypes.string,
-      title: PropTypes.string,
-    })
-  ),
-};
-
-Home.defaultProps = {
-  posts: [],
-};
-
 export default Home;
