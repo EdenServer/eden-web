@@ -135,13 +135,14 @@ module.exports = {
       ],
     },
     yells: {
-      updated: '5/22/2020',
+      updated: '7/12/2020',
       list: [
-        'Do not yell profanity, hate messages or any harassing statements. This is a global chat. Violating this rule may result in a character ban as well.',
-        'Do not banter back and forth between yourselves. This includes replying in yell to someone who has violated the rules.',
-        'Asking a legitimate FFXI question in yell is fine. Replies to questions should be sent in /tells, not in /yell.',
-        "Yell rules may change from time to time. If this happens we will give at least a week's notice before we start enforcing the updated rules.",
-        'Adding on irrelevant banter not related to the purpose of a yell. Example: “WTS pebbles also Godmode sux” is not allowed.',
+        'Yell is a global chat and has a 15 minute cooldown period. Shout is limited to a single zone with a large radius and has a 5 minute cooldown period, except in some instanced zones.',
+        'Zoning and logging off do not reset these cooldowns. New characters will have yell and shout cooldowns applied during the opening cutscene. Do not expect these limitations to change, as they are applied to prevent abuse.',
+        'Do not yell or shout profanity, hate messages, or any harassing statements. Violating this rule may result in mutes and/or an account ban depending on severity.',
+        'Do not banter back and forth between yourselves in yell (instead use shout for banter). This includes replying in yell to someone who has violated these rules. Banter in yell may result in mutes applied.',
+        'Asking a legitimate FFXI question in yell is fine. However, replies to questions should not be sent in yell. Shout or tell is preferred.',
+        'Adding on irrelevant banter not related to the purpose of a yell may result in a mute. Example: “WTS pebbles also... player XYZ sux!”',
       ],
     },
     discord: {
