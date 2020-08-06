@@ -9,25 +9,6 @@ function install(props) {
 
   return (
     <>
-      <Row className="mb-3">
-        <Col>
-          <InfoDisplay title="Account Registration">
-            <Card.Text>
-              You&apos;ll need to follow one of the sections below to get Eden
-              setup to play, but you will also need to register an account
-              through the bootloader. Registration requires a 5-digit code that
-              can be obtained from existing players who have accumulated 120
-              hours (5 days) of playtime and main job is level 15 or greater.
-              The easiest way to get a registration code is to join&nbsp;
-              <a href={info.discord} rel="noopener noreferrer" target="_blank">
-                our Discord
-              </a>
-              &nbsp; and then ask in the #new-players channel.
-            </Card.Text>
-          </InfoDisplay>
-        </Col>
-      </Row>
-
       <Row className="my-3">
         <Col>
           <InfoDisplay title="Fresh Install 64-bit systems" className="my-3">
@@ -46,7 +27,27 @@ function install(props) {
               <a href={info.source2} rel="noopener noreferrer" target="_blank">
                 alternative download
               </a>
-              .
+              . After setup completes, verify that{' '}
+              <b>--server play.edenxi.com --hairpin</b> appears in your Ashita
+              profile, and then move to the Account Registration section below.
+            </Card.Text>
+          </InfoDisplay>
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
+        <Col>
+          <InfoDisplay title="Account Registration">
+            <Card.Text>
+              The bootloader (black login screen) supports registering an
+              account. Registration requires a 5-digit code that can be obtained
+              from existing players who have accumulated 120 hours (5 days) of
+              playtime and main job is level 15 or greater. The easiest way to
+              get a registration code is to join&nbsp;
+              <a href={info.discord} rel="noopener noreferrer" target="_blank">
+                our Discord
+              </a>
+              &nbsp; and then ask in the #new-players channel.
             </Card.Text>
           </InfoDisplay>
         </Col>
