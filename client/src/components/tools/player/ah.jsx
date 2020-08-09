@@ -14,7 +14,7 @@ const formatItem = (itemname, stacksize) => {
             string.length
           )}`;
         })
-        .join(' ') + (stacksize === '1' ? '' : " x" + stacksize)}
+        .join(' ') + (stacksize === '1' ? '' : ' x' + stacksize)}
     </Link>
   );
 };
@@ -76,7 +76,9 @@ export default ({ name }) => {
           return (
             <Table.Row key={`ah_history_${i}`}>
               <Table.Cell>{`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}</Table.Cell>
-              <Table.Cell>{formatItem(history.name, history.stack_size)}</Table.Cell>
+              <Table.Cell>
+                {formatItem(history.name, history.stack_size)}
+              </Table.Cell>
               <Table.Cell>
                 {formatPlayerLink(name, history.seller_name)}
               </Table.Cell>
