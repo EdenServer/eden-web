@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Loader } from 'semantic-ui-react';
+import { Table, Loader, Icon, Segment } from 'semantic-ui-react';
 import { Link } from '@reach/router';
 import apiUtil from '../../../apiUtil';
 
@@ -49,6 +49,10 @@ export default ({ name }) => {
         {bazaar.map((sell, i) => (
           <Table.Row key={`ah_history_${i}`}>
             <Table.Cell>
+              <Icon
+                name="power off"
+                color={sell.online_flag === 1 ? 'green' : 'red'}
+              />{' '}
               <Link to={`/tools/player/${sell.charname}`}>{sell.charname}</Link>
             </Table.Cell>
             <Table.Cell>{`${sell.bazaar.toLocaleString()}g`}</Table.Cell>
