@@ -71,7 +71,7 @@ const getLastSold = async (query, itemname, stack = 0, count = 10) => {
   }
 };
 
-const getBazaars = async (query, itemname, limit = 100) => {
+const getBazaars = async (query, itemname, limit = 300) => {
   try {
     const statement = `SELECT charname, bazaar, IF(s.charid IS NULL, 0, 1) AS online_flag FROM char_inventory AS i
             JOIN item_basic AS b ON b.itemid = i.itemid
