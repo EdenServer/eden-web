@@ -5,7 +5,12 @@ import apiUtil from '../../../apiUtil';
 
 const formatItem = (itemname, stacksize) => {
   return (
-    <Link to={`/tools/item/${encodeURIComponent(itemname)}`}>
+    <Link
+      to={
+        `/tools/item/${encodeURIComponent(itemname)}` +
+        (stacksize > 1 ? `?stack=true` : ``)
+      }
+    >
       {itemname
         .split('_')
         .map(string => {
