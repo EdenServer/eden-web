@@ -43,7 +43,7 @@ export default ({ name }) => {
         <Table.Row>
           <Table.Cell>
             {owners.map((owner, i) => (
-              <span>
+              <span key={owner.charname}>
                 <Link to={`/tools/player/${owner.charname}`}>
                   {owner.charname}
                 </Link>
