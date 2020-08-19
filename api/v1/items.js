@@ -84,8 +84,8 @@ router.get('/:itemname/owners', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
     const { itemname = '' } = req.params;
     return utils.items.getOwners(
-        req.app.locals.query,
-        decodeURIComponent(itemname)
+      req.app.locals.query,
+      decodeURIComponent(itemname)
     );
   });
 

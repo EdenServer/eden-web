@@ -42,12 +42,16 @@ export default ({ name }) => {
       <Table.Body>
         <Table.Row>
           <Table.Cell>
-        {owners.map((owner, i) => (
-            <span>
-              <Link to={`/tools/player/${owner.charname}`}>{owner.charname}</Link>{i+1 !== owners.length && ', '}</span>
-        ))}
+            {owners.map((owner, i) => (
+              <span>
+                <Link to={`/tools/player/${owner.charname}`}>
+                  {owner.charname}
+                </Link>
+                {i + 1 !== owners.length && ', '}
+              </span>
+            ))}
           </Table.Cell>
-          </Table.Row>
+        </Table.Row>
       </Table.Body>
     </Table>
   );

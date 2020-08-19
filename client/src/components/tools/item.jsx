@@ -14,7 +14,7 @@ import images from '../../images';
 import Ah from './item/ah';
 import Bazaar from './item/bazaar';
 import Owners from './item/owners';
-import owner from "../../owner";
+import owner from '../../owner';
 
 // import Crafts from './item/crafts';
 
@@ -193,13 +193,13 @@ export default ({ history, itemname, setLoading }) => {
       </Header>
       <Accordion fluid styled>
         {owner.owner_list.includes(item.key) && [
-            <Accordion.Title active={owners} onClick={() => setOwners(!owners)}>
-              <Icon name="dropdown" />
-              Owners
-            </Accordion.Title>,
-            <Accordion.Content active={owners}>
-             <Owners name={item.key} />
-            </Accordion.Content>
+          <Accordion.Title active={owners} onClick={() => setOwners(!owners)}>
+            <Icon name="dropdown" />
+            Owners
+          </Accordion.Title>,
+          <Accordion.Content active={owners}>
+            <Owners name={item.key} />
+          </Accordion.Content>,
         ]}
         <Accordion.Title active={ah} onClick={() => setAh(!ah)}>
           <Icon name="dropdown" />
