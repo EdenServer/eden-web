@@ -1,5 +1,6 @@
 export default {
-    relic_list: [
+    owner_list: [
+        // Relics
         'spharai',
         'mandau',
         'excalibur',
@@ -15,6 +16,30 @@ export default {
         'yoichinoyumi',
         'annihilator',
         'gjallarhorn',
-        'aegis'
+        'aegis',
+        // Mythics
+        'conqueror',
+        'glanzfaust',
+        'yagrush',
+        'laevateinn',
+        'murgleis',
+        'vajra',
+        'burtgang',
+        'liberator',
+        'aymur',
+        'carnwenhan',
+        'gastraphetes',
+        'kogarasumaru',
+        'nagi',
+        'ryunohige',
+        'nirvana',
+        'tizona',
+        'death_penalty',
+        'kenkonken',
+        'terpischore',
+        'tupsimati',
+        // Miscellaneous
+        'ebisu_fishing_rod',
+        'defending_ring'
     ]
 }

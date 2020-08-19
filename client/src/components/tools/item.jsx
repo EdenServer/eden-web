@@ -192,7 +192,7 @@ export default ({ history, itemname, setLoading }) => {
         </div>
       </Header>
       <Accordion fluid styled>
-        {owner.relic_list.includes(item.key) && [
+        {owner.owner_list.includes(item.key) && [
             <Accordion.Title active={owners} onClick={() => setOwners(!owners)}>
               <Icon name="dropdown" />
               Owners
