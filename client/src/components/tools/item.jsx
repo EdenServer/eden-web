@@ -124,9 +124,9 @@ export default ({ history, itemname, setLoading }) => {
   const [item, setItem] = React.useState(null);
   const [ah, setAh] = React.useState(false);
   const [bazaar, setBazaar] = React.useState(false);
+  const [owners, setOwners] = React.useState(false);
   const [crafts, setCrafts] = React.useState(false);
   const isStack = stack === 'true';
-  const owners = true;
 
   const fetchItem = (itemname, stack = false) => {
     if (!itemname) return;
@@ -192,8 +192,8 @@ export default ({ history, itemname, setLoading }) => {
         </div>
       </Header>
       <Accordion fluid styled>
-        {owner.relic_list.includes(item.id) && [
-            <Accordion.Title active={owners}>
+        {owner.relic_list.includes(item.key) && [
+            <Accordion.Title active={owners} onClick={() => setOwners(!owners)}>
               <Icon name="dropdown" />
               Owners
             </Accordion.Title>,

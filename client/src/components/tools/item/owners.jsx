@@ -39,19 +39,15 @@ export default ({ name }) => {
 
   return (
     <Table>
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell>Owner</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
       <Table.Body>
+        <Table.Row>
+          <Table.Cell>
         {owners.map((owner, i) => (
-          <Table.Row>
-            <Table.Cell>
-              <Link to={`/tools/player/${owner.charname}`}>{owner.charname}</Link>
-            </Table.Cell>
-          </Table.Row>
+            <span>
+              <Link to={`/tools/player/${owner.charname}`}>{owner.charname}</Link>&nbsp;&nbsp;</span>
         ))}
+          </Table.Cell>
+          </Table.Row>
       </Table.Body>
     </Table>
   );
