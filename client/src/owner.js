@@ -1,5 +1,5 @@
 export default {
-  owner_list: [
+  owner_item_list: [
     // Relics
     'spharai',
     'mandau',
