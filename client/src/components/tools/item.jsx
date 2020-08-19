@@ -13,6 +13,8 @@ import apiUtil from '../../apiUtil';
 import images from '../../images';
 import Ah from './item/ah';
 import Bazaar from './item/bazaar';
+import Owners from './item/owners';
+import owner from "../../owner";
 
 // import Crafts from './item/crafts';
 
@@ -124,6 +126,7 @@ export default ({ history, itemname, setLoading }) => {
   const [bazaar, setBazaar] = React.useState(false);
   const [crafts, setCrafts] = React.useState(false);
   const isStack = stack === 'true';
+  const owners = true;
 
   const fetchItem = (itemname, stack = false) => {
     if (!itemname) return;
@@ -189,6 +192,15 @@ export default ({ history, itemname, setLoading }) => {
         </div>
       </Header>
       <Accordion fluid styled>
+        {owner.relic_list.includes(item.id) && [
+            <Accordion.Title active={owners}>
+              <Icon name="dropdown" />
+              Owners
+            </Accordion.Title>,
+            <Accordion.Content active={owners}>
+             <Owners name={item.key} />
+            </Accordion.Content>
+        ]}
         <Accordion.Title active={ah} onClick={() => setAh(!ah)}>
           <Icon name="dropdown" />
           Auction House

@@ -80,6 +80,18 @@ router.get('/:itemname/bazaar', async (req, res) => {
   res.send(cache);
 });
 
+router.get('/:itemname/owners', async (req, res) => {
+  const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
+    const { itemname = '' } = req.params;
+    return utils.items.getOwners(
+        req.app.locals.query,
+        decodeURIComponent(itemname)
+    );
+  });
+
+  res.send(cache);
+});
+
 router.get('/:itemname', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
     const { itemname = '' } = req.params;

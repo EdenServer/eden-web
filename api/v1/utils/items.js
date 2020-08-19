@@ -84,6 +84,19 @@ const getBazaars = async (query, itemname) => {
   }
 };
 
+const getOwners = async (query, itemname) => {
+  try {
+    const statement = `SELECT DISTINCT charname FROM chars c 
+        JOIN char_inventory i  ON i.charid = c.charid 
+        JOIN item_basic b ON b.itemid = i.itemId 
+        WHERE b.name = ?;`;
+    return await query(statement, [itemname]);
+  } catch (error) {
+    console.error('Error while getting item owners', error);
+    return [];
+  }
+};
+
 const getJobs = (level, jobs, idToStr) => {
   if (level && jobs) {
     const vals = [];
@@ -104,5 +117,6 @@ module.exports = {
   getRecipeFor,
   getLastSold,
   getBazaars,
+  getOwners,
   getJobs,
 };
