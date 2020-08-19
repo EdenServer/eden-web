@@ -44,7 +44,7 @@ export default ({ name }) => {
           <Table.Cell>
         {owners.map((owner, i) => (
             <span>
-              <Link to={`/tools/player/${owner.charname}`}>{owner.charname}</Link>&nbsp;&nbsp;</span>
+              <Link to={`/tools/player/${owner.charname}`}>{owner.charname}</Link>{i+1 !== owners.length && ', '}</span>
         ))}
           </Table.Cell>
           </Table.Row>
