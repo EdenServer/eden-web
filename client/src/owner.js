@@ -38,7 +38,7 @@ export default {
     'kenkonken',
     'terpischore',
     'tupsimati',
-    // Misc
+    // Miscellaneous
     'ebisu_fishing_rod',
     'defending_ring',
   ],
