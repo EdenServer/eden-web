@@ -8,7 +8,7 @@ export default {
     'guttler',
     'bravura',
     'apocalypse',
-    'gugnir',
+    'gungnir',
     'kikoku',
     'amanomurakumo',
     'mjollnir',

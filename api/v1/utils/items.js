@@ -1,5 +1,3 @@
-import owner from '../../../client/src/owner';
-
 const loadItems = async query => {
   try {
     const statement = `SELECT *, b.itemid AS id, b.name AS name,
@@ -87,10 +85,6 @@ const getBazaars = async (query, itemname) => {
 };
 
 const getOwners = async (query, itemname) => {
-  // Ensure there's no abuse funny business
-  if (!owner.owner_item_list.includes(itemname)) {
-    return [];
-  }
   try {
     const statement = `SELECT DISTINCT charname FROM chars c 
         JOIN char_inventory i  ON i.charid = c.charid 
