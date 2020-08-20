@@ -89,7 +89,7 @@ const getOwners = async (query, itemname) => {
     const statement = `SELECT DISTINCT charname FROM chars c 
         JOIN char_inventory i  ON i.charid = c.charid 
         JOIN item_basic b ON b.itemid = i.itemId 
-        WHERE b.name = ?;`;
+        WHERE b.name = ? ORDER BY charname ASC;`;
     return await query(statement, [itemname]);
   } catch (error) {
     console.error('Error while getting item owners', error);
