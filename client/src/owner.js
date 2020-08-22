@@ -41,5 +41,6 @@ export default {
     // Miscellaneous
     'ebisu_fishing_rod',
     'defending_ring',
+    'maats_cap',
   ],
 };
