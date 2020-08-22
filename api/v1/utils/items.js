@@ -1,4 +1,4 @@
-import owner from "../../../client/src/owner";
+import owner from '../../../client/src/owner';
 
 const loadItems = async query => {
   try {
