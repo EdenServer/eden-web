@@ -39,9 +39,9 @@ const About = () => {
               that help us keep Eden running smooth.
             </Card.Text>
             <Card.Text>
-              Due to abuse, Eden has implemented a few customizations to
-              prevent what we consider attacks that disrupt player experience.
-              Read on to learn more about them.
+              Due to abuse, Eden has implemented a few customizations to prevent
+              what we consider attacks that disrupt player experience. Read on
+              to learn more about them.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -181,15 +181,11 @@ const About = () => {
 
       <Row className="mb-3">
         <Col>
-          <InfoDisplay
-            title={
-              "Auction House Restrictions"
-            }
-          >
+          <InfoDisplay title={'Auction House Restrictions'}>
             <Card.Text>
-              Characters attempting to bid an item for a price of 1,000 to
-              9,999 gil, must be either level 5 or greater OR accumulated 24
-              hours or more of playtime.
+              Characters attempting to bid an item for a price of 1,000 to 9,999
+              gil, must be either level 5 or greater OR accumulated 24 hours or
+              more of playtime.
             </Card.Text>
             <Card.Text>
               Characters attempting to bid an item for a price of 10,000 to
@@ -198,8 +194,8 @@ const About = () => {
             </Card.Text>
             <Card.Text>
               Characters attempting to bid an item for a price of 100,000 to
-              999,999 gil, must be either level 15 or greater OR accumulated
-              72 hours or greater of playtime.
+              999,999 gil, must be either level 15 or greater OR accumulated 72
+              hours or greater of playtime.
             </Card.Text>
             <Card.Text>
               Characters attempting to bid an item for a price greater than or
