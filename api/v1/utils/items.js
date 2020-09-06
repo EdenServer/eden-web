@@ -71,13 +71,14 @@ const getLastSold = async (query, itemname, stack = 0, count = 10) => {
   }
 };
 
-const getBazaars = async (query, itemname) => {
+const getBazaars = async (query, itemname, limit = 300) => {
   try {
-    const statement = `SELECT charname, bazaar FROM char_inventory AS i
+    const statement = `SELECT charname, bazaar, IF(s.charid IS NULL, 0, 1) AS online_flag FROM char_inventory AS i
             JOIN item_basic AS b ON b.itemid = i.itemid
             JOIN chars AS c ON c.charid = i.charid
-            WHERE bazaar != 0 AND b.name = ? ORDER BY charname ASC;`;
-    return await query(statement, [itemname]);
+            LEFT JOIN accounts_sessions s on c.charid = s.charid
+            WHERE bazaar != 0 AND b.name = ? ORDER BY CASE WHEN online_flag = 1 THEN 1 ELSE 2 END, bazaar, charname ASC LIMIT ?;`;
+    return await query(statement, [itemname, limit]);
   } catch (error) {
     console.error('Error while getting bazaars', error);
     return [];
