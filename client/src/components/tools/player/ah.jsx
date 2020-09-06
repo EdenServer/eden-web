@@ -19,7 +19,7 @@ const formatItem = (itemname, stacksize) => {
             string.length
           )}`;
         })
-        .join(' ') + (stacksize === '1' ? '' : ' x' + stacksize)}
+        .join(' ') + (parseInt(stacksize) === 1 ? '' : ' x' + stacksize)}
     </Link>
   );
 };
