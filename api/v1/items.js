@@ -80,12 +80,12 @@ router.get('/:itemname/bazaar', async (req, res) => {
   res.send(cache);
 });
 
-router.get('/:itemname/owners', async (req, res) => {
+router.get('/:itemid/owners', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
-    const { itemname = '' } = req.params;
+    const { itemid = 0 } = req.params;
     return utils.items.getOwners(
       req.app.locals.query,
-      decodeURIComponent(itemname)
+      parseInt(decodeURIComponent(itemid))
     );
   });
 

@@ -86,17 +86,16 @@ const getBazaars = async (query, itemname) => {
   }
 };
 
-const getOwners = async (query, itemname) => {
+const getOwners = async (query, itemid) => {
   // Prevent any funny business
-  if (!owner.owner_item_list.includes(itemname)) {
+  if (!owner.owner_item_list.includes(itemid)) {
     return [];
   }
   try {
-    const statement = `SELECT DISTINCT charname FROM chars c 
+    const statement = `SELECT charname FROM chars c 
         JOIN char_inventory i  ON i.charid = c.charid 
-        JOIN item_basic b ON b.itemid = i.itemId 
-        WHERE b.name = ? AND c.deleted IS NULL ORDER BY charname ASC;`;
-    return await query(statement, [itemname]);
+        WHERE i.itemid = ? AND c.deleted IS NULL ORDER BY charname ASC;`;
+    return await query(statement, [itemid]);
   } catch (error) {
     console.error('Error while getting item owners', error);
     return [];

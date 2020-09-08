@@ -3,27 +3,31 @@ import { Table, Loader } from 'semantic-ui-react';
 import { Link } from '@reach/router';
 import apiUtil from '../../../apiUtil';
 
-export default ({ name }) => {
+export default ({ itemid }) => {
   const [error, setError] = React.useState(false);
   const [owners, setOwners] = React.useState(null);
 
   const fetchOwners = () => {
+    console.log(itemid);
     setOwners(null);
-    apiUtil.get({ url: `/api/v1/items/${name}/owners` }, async (error, res) => {
-      try {
-        if (!error && res.status === 200) {
-          setOwners(await res.json());
-          setError(false);
-        } else {
+    apiUtil.get(
+      { url: `/api/v1/items/${itemid}/owners` },
+      async (error, res) => {
+        try {
+          if (!error && res.status === 200) {
+            setOwners(await res.json());
+            setError(false);
+          } else {
+            setError(true);
+          }
+        } catch (error) {
           setError(true);
         }
-      } catch (error) {
-        setError(true);
       }
-    });
+    );
   };
 
-  React.useEffect(fetchOwners, [name]);
+  React.useEffect(fetchOwners, [itemid]);
 
   if (error) {
     return <p>Error fetching item owners...</p>;
