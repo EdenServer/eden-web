@@ -54,7 +54,7 @@ export default ({
           inline
           options={options}
           onChange={updatePerPage}
-          defaultValue={perPage}
+          defaultValue={perPageDefault}
         />{' '}
         results per page
       </div>
