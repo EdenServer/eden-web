@@ -69,8 +69,8 @@ export default ({ active, selection, onClick }) => {
       </Menu.Item>
       <Menu.Item className="gm_menu-credits">
         <div style={{ fontSize: '10px' }}>
-          All FINAL FANTASY&reg; XI content and images &copy; 2002-2020 SQUARE
-          ENIX CO., LTD. All Rights Reserved.
+          All FINAL FANTASY&reg; XI content and images &copy; 2002-
+          {new Date().getFullYear()} SQUARE ENIX CO., LTD. All Rights Reserved.
         </div>
         <br />
         <div style={{ fontSize: '10px' }}>
