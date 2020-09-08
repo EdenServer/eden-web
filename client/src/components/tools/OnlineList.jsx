@@ -89,7 +89,7 @@ class OnlineList extends React.PureComponent {
         <Segment.Group className="gm_online-count" raised>
           <Segment>{online} Characters Online</Segment>
           <Pagination
-            perPageDefault={100}
+            perPageDefault={10}
             results={parseInt(online, 10)}
             changePage={this.fetchChars}
           />
