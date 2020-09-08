@@ -69,7 +69,7 @@ class OnlineList extends React.PureComponent {
       if (status) {
         const online = await res.text();
         this.setState({ status, online }, () => {
-          if (status) this.fetchChars({ limit: 100, offset: 0 });
+          if (status) this.fetchChars({ limit: 10, offset: 0 });
         });
       } else {
         this.setState({ status, online: 0 });
