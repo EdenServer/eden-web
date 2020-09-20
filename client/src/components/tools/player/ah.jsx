@@ -8,7 +8,7 @@ const formatItem = (itemname, stacksize) => {
     <Link
       to={
         `/tools/item/${encodeURIComponent(itemname)}` +
-        (stacksize > 1 ? `?stack=true` : ``)
+        (parseInt(stacksize) > 1 ? `?stack=true` : ``)
       }
     >
       {itemname
@@ -19,7 +19,7 @@ const formatItem = (itemname, stacksize) => {
             string.length
           )}`;
         })
-        .join(' ') + (stacksize === '1' ? '' : ' x' + stacksize)}
+        .join(' ') + (parseInt(stacksize) > 1 ? ` x${stacksize}` : '')}
     </Link>
   );
 };
