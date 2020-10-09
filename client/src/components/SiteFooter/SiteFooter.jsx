@@ -14,16 +14,11 @@ const SiteFooter = () => {
           <p className="text-light">
             <small>
               All FINAL FANTASY&reg; XI content and images &copy; 2002-
-              {new Date().getFullYear()}{' '}
-              <a href="https://www.square-enix.com/" className="text-white">
-                SQUARE ENIX
-              </a>{' '}
-              CO., LTD. All Rights Reserved. <br /> FINAL FANTASY&reg; is a
-              registered trademark of{' '}
-              <a href="https://www.square-enix.com/" className="text-white">
-                SQUARE ENIX
-              </a>{' '}
-              CO., LTD. All Rights Reserved.
+              {new Date().getFullYear()}
+              SQUARE ENIX CO., LTD. All Rights Reserved.
+              <br />
+              FINAL FANTASY&reg; is a registered trademark of SQUARE ENIX CO.,
+              LTD. All Rights Reserved.
             </small>
           </p>
         </Col>
