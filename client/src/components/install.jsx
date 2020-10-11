@@ -40,7 +40,7 @@ function install(props) {
           <InfoDisplay title="Account Registration">
             <Card.Text>
               The bootloader (black login screen) supports registering an
-              account. Registration requires a 5-digit code that can be obtained
+              account. Registration requires a 7-digit code that can be obtained
               from existing players who have accumulated 120 hours (5 days) of
               playtime and main job is level 15 or greater. The easiest way to
               get a registration code is to join&nbsp;
