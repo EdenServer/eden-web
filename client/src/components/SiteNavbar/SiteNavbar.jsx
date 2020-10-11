@@ -7,7 +7,7 @@ const SiteNavbar = props => {
   const { links } = props;
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar className="gm_nav" bg="dark" variant="dark" expand="lg">
       <Navbar.Brand as={Link} to="/" className="navbar-brand-override">
         <span className="gm_banner_text">Eden</span>
       </Navbar.Brand>

@@ -106,28 +106,26 @@ class App extends Component {
     ];
 
     return (
-      <>
-        <div className="gm_main h-100">
-          <SiteNavbar links={links} />
-          <div className="gm_content my-3">
-            {config && Object.keys(config).length === 0 && (
-              <div className="alert alert-warning m-0 text-center">
-                <span>
-                  Website tools are currently down. Please check again later.
-                </span>
-              </div>
-            )}
-            {ready && (
-              <LandingPage
-                config={config}
-                apiNoResponse={apiNoResponse}
-                className="h-100"
-              />
-            )}
+      <div className="gm_main h-100">
+        <SiteNavbar links={links} />
+        {config && Object.keys(config).length === 0 && (
+          <div className="alert alert-warning m-0 text-center">
+            <span>
+              Website tools are currently down. Please check again later.
+            </span>
           </div>
-          <SiteFooter className="mt-5" />
+        )}
+        <div className="gm_content my-3">
+          {ready && (
+            <LandingPage
+              config={config}
+              apiNoResponse={apiNoResponse}
+              className="h-100"
+            />
+          )}
         </div>
-      </>
+        <SiteFooter className="mt-5" />
+      </div>
     );
   }
 }
