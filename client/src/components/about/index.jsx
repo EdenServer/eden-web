@@ -180,33 +180,6 @@ const About = () => {
         </Col>
       </Row>
 
-      <Row className="mb-3">
-        <Col>
-          <InfoDisplay title={'Auction House Restrictions'}>
-            <Card.Text>
-              Characters attempting to bid an item for a price of 1,000 to 9,999
-              gil, must be either level 5 or greater OR accumulated 24 hours or
-              more of playtime.
-            </Card.Text>
-            <Card.Text>
-              Characters attempting to bid an item for a price of 10,000 to
-              99,999 gil, must be either level 10 or greater OR accumulated 48
-              hours or more of playtime.
-            </Card.Text>
-            <Card.Text>
-              Characters attempting to bid an item for a price of 100,000 to
-              999,999 gil, must be either level 15 or greater OR accumulated 72
-              hours or greater of playtime.
-            </Card.Text>
-            <Card.Text>
-              Characters attempting to bid an item for a price greater than or
-              equal to 1,000,000 gil, must be either level 20 or greater OR
-              accumulated 96 hours or greater of playtime.
-            </Card.Text>
-          </InfoDisplay>
-        </Col>
-      </Row>
-
       <Row className="mt-3">
         <Col>
           <InfoDisplay title="How can I help?">
