@@ -115,7 +115,7 @@ router.post('/register', (req, res) => {
             try {
               // attempt to register the account
               const statement =
-                'INSERT INTO accounts (`login`,`password`,`email`,`email2`) VALUES (?, CONCAT(\'*\', UPPER(SHA1(UNHEX(SHA1(?))))), ?, ?);';
+                "INSERT INTO accounts (`login`,`password`,`email`,`email2`) VALUES (?, CONCAT('*', UPPER(SHA1(UNHEX(SHA1(?))))), ?, ?);";
               const results = await req.app.locals.query(statement, [
                 username,
                 password,
@@ -206,7 +206,7 @@ router.put('/email', validate, async (req, res) => {
 router.put('/password', validate, async (req, res) => {
   try {
     const statement =
-      'UPDATE accounts SET `password` = CONCAT(\'*\', UPPER(SHA1(UNHEX(SHA1(?))))) WHERE id = ?;';
+      "UPDATE accounts SET `password` = CONCAT('*', UPPER(SHA1(UNHEX(SHA1(?))))) WHERE id = ?;";
     const result = await req.app.locals.query(statement, [
       req.headers.password,
       req.jwt.id,
@@ -224,7 +224,7 @@ router.post('/login', async (req, res) => {
   try {
     const { user, pass } = req.headers;
     const statement =
-      'SELECT * FROM accounts WHERE `login` = ? AND `password` = CONCAT(\'*\', UPPER(SHA1(UNHEX(SHA1(?))))) AND status = 1;';
+      "SELECT * FROM accounts WHERE `login` = ? AND `password` = CONCAT('*', UPPER(SHA1(UNHEX(SHA1(?))))) AND status = 1;";
     const results = await req.app.locals.query(statement, [user, pass]);
     if (results.length === 1) {
       const token = await getJWTForAccountId(

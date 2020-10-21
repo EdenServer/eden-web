@@ -1,20 +1,20 @@
 const jwt = require('jsonwebtoken');
 
 const privileges = [
-  'PLAYER',   // 1
-  'UNUSED1',  // 2
-  'UNUSED2',  // 4
-  'UNUSED3',  // 8
-  'UNUSED4',  // 16
-  'UNUSED5',  // 32
-  'UNUSED6',  // 64
-  'UNUSED7',  // 128
+  'PLAYER', // 1
+  'UNUSED1', // 2
+  'UNUSED2', // 4
+  'UNUSED3', // 8
+  'UNUSED4', // 16
+  'UNUSED5', // 32
+  'UNUSED6', // 64
+  'UNUSED7', // 128
 ];
 
-const getPrivileges = (mask) => {
+const getPrivileges = mask => {
   const userPrivileges = [];
   for (let i = 0; i < 8; i++) {
-    if (mask & Math.pow(2, i) === mask) {
+    if (mask & (Math.pow(2, i) === mask)) {
       userPrivileges.push(privileges[i]);
     }
   }
