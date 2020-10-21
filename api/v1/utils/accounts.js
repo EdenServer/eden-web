@@ -14,7 +14,7 @@ const privileges = [
 const getPrivileges = mask => {
   const userPrivileges = [];
   for (let i = 0; i < 8; i++) {
-    if (mask & (Math.pow(2, i) === mask)) {
+    if ((mask & Math.pow(2, i)) === mask) {
       userPrivileges.push(privileges[i]);
     }
   }
