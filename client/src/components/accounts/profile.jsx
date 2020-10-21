@@ -24,7 +24,7 @@ export default ({ user, logout, reload }) => {
   const updateField = (field, value) => {
     apiUtil.put(
       {
-        url: `api/v1/accounts/${field}`,
+        url: `/api/v1/accounts/${field}`,
         headers: { [field]: value },
       },
       (error, res) => {
