@@ -5,7 +5,7 @@ import InfoDisplay from './InfoDisplay';
 import { Row, Col, Table } from 'react-bootstrap';
 
 const Rules = ({ list }) => {
-  const { terms, rules, software, yells, discord } = list;
+  const { terms, rules, software, yells, search, discord } = list;
 
   const seperateLines = string => {
     const lines = string.split('\n');
@@ -151,6 +151,19 @@ const Rules = ({ list }) => {
 
       <Row className="my-3">
         <Col>
+          <InfoDisplay title="Bazaar Message and Search Comment Rules">
+            <ol>
+              {search.list.map((t, i) => (
+                <li key={`term_${i}`}>{t}</li>
+              ))}
+            </ol>
+            <small>Updated {search.updated}</small>
+          </InfoDisplay>
+        </Col>
+      </Row>
+
+      <Row className="my-3">
+        <Col>
           <InfoDisplay title="Discord Rules">
             <Card.Text>
               These rules may be adjusted from time to time. It is the player's
@@ -217,6 +230,7 @@ Rules.propTypes = {
     rules: ListWithUpdated,
     terms: ListWithUpdated,
     yells: ListWithUpdated,
+    search: ListWithUpdated,
   }).isRequired,
 };
 
@@ -227,6 +241,7 @@ Rules.defaultProps = {
   rules: {},
   terms: {},
   yells: {},
+  search: {},
 };
 
 export default Rules;
