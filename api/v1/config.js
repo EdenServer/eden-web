@@ -148,8 +148,8 @@ module.exports = {
     search: {
       updated: '12/14/2020',
       list: [
-          'Do not use profanity, include hate messages or any harassing statements. These are public facing channels.',
-      ]
+        'Do not use profanity, include hate messages or any harassing statements. These are public facing channels.',
+      ],
     },
     discord: {
       updated: '5/22/2020',
