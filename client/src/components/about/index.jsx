@@ -184,14 +184,18 @@ const About = () => {
         <Col>
           <InfoDisplay title="How can I help?">
             <Card.Text>
-              There are several ways to help. You can fill out bug reports,
-              report players who are cheating by using the in-game ticketing
-              system, volunteer as a staff member, contribute code, et. cetera.
-              If you'd like to contribute code, we could really use all the help
-              we can get! Below I've drafted up how to set up your own private
-              server here and create a basic BCNM.
+              There are several ways to help. You can fill out
+              <a href="https://github.com/EdenServer/community/issues">
+                bug reports
+              </a>
+              , report players who are cheating by using the in-game ticketing
+              system, volunteer as a staff member, contribute code, or help out
+              in the #tech-support discord channel. If you'd like to offer code,
+              we recommend submiting your work to
+              <a href="https://github.com/topaz-next/topaz"> Topaz-Next.</a>
+              and giving us a heads up in the #contributing channel in the Eden
+              Discord.
             </Card.Text>
-            <Contributing />
           </InfoDisplay>
         </Col>
       </Row>
