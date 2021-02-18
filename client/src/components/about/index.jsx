@@ -184,12 +184,17 @@ const About = () => {
         <Col>
           <InfoDisplay title="How can I help?">
             <Card.Text>
-              There are several ways to help. You can fill out <a href= "https://github.com/EdenServer/community/issues"> bug reports</a>,
-              report players who are cheating by using the in-game ticketing
-              system, volunteer as a staff member, contribute code, or 
-              help out in the #tech-support discord channel.
-              If you'd like to offer code, we recommend submiting your work to <a href="https://github.com/topaz-next/topaz"> Topaz-Next.</a>
-              and giving us a heads up in the #contributing channel on Eden Discord.
+              There are several ways to help. You can fill out
+              <a href="https://github.com/EdenServer/community/issues">
+                bug reports
+              </a>
+              , report players who are cheating by using the in-game ticketing
+              system, volunteer as a staff member, contribute code, or help out
+              in the #tech-support discord channel. If you'd like to offer code,
+              we recommend submiting your work to
+              <a href="https://github.com/topaz-next/topaz"> Topaz-Next.</a>
+              and giving us a heads up in the #contributing channel in the Eden
+              Discord.
             </Card.Text>
           </InfoDisplay>
         </Col>
