@@ -86,16 +86,35 @@ const getBazaars = async (query, itemname) => {
   }
 };
 
+var ownersCache = {};
+
+const refreshOwnersCache = async query => {
+  const statement = `SELECT i.itemid, charname FROM chars c
+        JOIN char_inventory i ON i.charid = c.charid
+        WHERE i.itemid IN (${owner.owner_item_list.join(',')})
+        AND c.deleted IS NULL
+        AND gmlevel = 0
+        ORDER BY charname ASC;`;
+
+  const result = await query(statement);
+
+  var updatedCache = {};
+  for (var row of result) {
+    if (!(row.itemid in updatedCache)) {
+      updatedCache[row.itemid] = [];
+    }
+    updatedCache[row.itemid].push(row.charname);
+  }
+  ownersCache = updatedCache;
+};
+
 const getOwners = async (query, itemid) => {
   // Prevent any funny business
   if (!owner.owner_item_list.includes(itemid)) {
     return [];
   }
   try {
-    const statement = `SELECT charname FROM chars c 
-        JOIN char_inventory i  ON i.charid = c.charid 
-        WHERE i.itemid = ? AND c.deleted IS NULL ORDER BY charname ASC;`;
-    return await query(statement, [itemid]);
+    return ownersCache[itemid];
   } catch (error) {
     console.error('Error while getting item owners', error);
     return [];
@@ -123,5 +142,6 @@ export {
   getLastSold,
   getBazaars,
   getOwners,
+  refreshOwnersCache,
   getJobs,
 };

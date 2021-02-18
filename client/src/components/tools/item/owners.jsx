@@ -47,10 +47,8 @@ export default ({ itemid }) => {
         <Table.Row>
           <Table.Cell>
             {owners.map((owner, i) => (
-              <span key={owner.charname}>
-                <Link to={`/tools/player/${owner.charname}`}>
-                  {owner.charname}
-                </Link>
+              <span key={owner}>
+                <Link to={`/tools/player/${owner}`}>{owner}</Link>
                 {i + 1 !== owners.length && ', '}
               </span>
             ))}

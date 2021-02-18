@@ -5,7 +5,11 @@ import mysql from 'mysql2';
 import path from 'path';
 import Cache from './api/v1/utils/cache';
 import preparedStatement from './api/v1/utils/db';
-import { loadItemKeys, loadItems } from './api/v1/utils/items';
+import {
+  loadItemKeys,
+  loadItems,
+  refreshOwnersCache,
+} from './api/v1/utils/items';
 import api from './api';
 
 const port = process.env.PORT || 8081;
@@ -36,6 +40,14 @@ app.locals.query = preparedStatement(app.locals.db);
   try {
     app.locals.items = await loadItems(app.locals.query);
     app.locals.itemKeys = await loadItemKeys(app.locals.query);
+
+    // Setup cached results and refreshing of them
+    await refreshOwnersCache(app.locals.query);
+    setInterval(
+      async () => await refreshOwnersCache(app.locals.query),
+      86400000 // Once every day
+    );
+
     // eslint-disable-next-line no-console
     app.listen(port, () => console.log(`Listening on port ${port}...`));
   } catch (error) {
