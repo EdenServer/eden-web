@@ -91,9 +91,11 @@ var ownersCache = {};
 const refreshOwnersCache = async query => {
   const statement = `SELECT i.itemid, charname FROM chars c
         JOIN char_inventory i ON i.charid = c.charid
+        JOIN accounts a ON a.id = c.accid
         WHERE i.itemid IN (${owner.owner_item_list.join(',')})
         AND c.deleted IS NULL
         AND gmlevel = 0
+        AND a.status <= 1
         ORDER BY charname ASC;`;
 
   const result = await query(statement);
