@@ -1,3 +1,5 @@
+import owner from '../../../client/src/owner';
+
 const loadItems = async query => {
   try {
     const statement = `SELECT *, b.itemid AS id, b.name AS name,
@@ -85,6 +87,43 @@ const getBazaars = async (query, itemname, limit = 300) => {
   }
 };
 
+var ownersCache = {};
+
+const refreshOwnersCache = async query => {
+  const statement = `SELECT i.itemid, charname FROM chars c
+        JOIN char_inventory i ON i.charid = c.charid
+        JOIN accounts a ON a.id = c.accid
+        WHERE i.itemid IN (${owner.owner_item_list.join(',')})
+        AND c.deleted IS NULL
+        AND gmlevel = 0
+        AND a.status <= 1
+        ORDER BY charname ASC;`;
+
+  const result = await query(statement);
+
+  var updatedCache = {};
+  for (var row of result) {
+    if (!(row.itemid in updatedCache)) {
+      updatedCache[row.itemid] = [];
+    }
+    updatedCache[row.itemid].push(row.charname);
+  }
+  ownersCache = updatedCache;
+};
+
+const getOwners = async (query, itemid) => {
+  // Prevent any funny business
+  if (!owner.owner_item_list.includes(itemid)) {
+    return [];
+  }
+  try {
+    return ownersCache[itemid];
+  } catch (error) {
+    console.error('Error while getting item owners', error);
+    return [];
+  }
+};
+
 const getJobs = (level, jobs, idToStr) => {
   if (level && jobs) {
     const vals = [];
@@ -99,11 +138,13 @@ const getJobs = (level, jobs, idToStr) => {
   }
 };
 
-module.exports = {
+export {
   loadItems,
   loadItemKeys,
   getRecipeFor,
   getLastSold,
   getBazaars,
+  getOwners,
+  refreshOwnersCache,
   getJobs,
 };
