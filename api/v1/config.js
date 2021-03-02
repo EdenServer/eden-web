@@ -165,7 +165,7 @@ module.exports = {
   },
   links: [
     {
-      url: 'https://discord.gg/MWtDws8',
+      url: 'https://discord.gg/S3EAWr2Jec',
       image:
         'https://vignette.wikia.nocookie.net/ffxi/images/0/08/Flag.jpg/revision/latest?cb=20060211183144',
       header: 'Eden Discord',
@@ -255,6 +255,6 @@ module.exports = {
     source1: 'https://bit.ly/EdenV5Installer',
     source2: 'https://bit.ly/EdenV5BackupInstaller',
     bootloader: 'https://bit.ly/EdenXILoader',
-    discord: 'https://discord.gg/MWtDws8',
+    discord: 'https://discord.gg/S3EAWr2Jec',
   },
 };
