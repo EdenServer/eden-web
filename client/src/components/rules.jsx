@@ -171,14 +171,14 @@ const Rules = ({ list }) => {
               they are using. It is at the moderators discretion if a player has
               crossed the line. If a Staff or Moderator asks a player to do
               something, that player needs to follow the request. If they feel
-              this request is not appropriate, contact Shoruto with a screenshot
-              of the request. If a player feels a staff member is talking
-              inappropriately to another player, contact Shoruto or Juul with a
+              this request is not appropriate, contact Rude or Juul with a of
+              the request. If a player feels a staff member is talking talking
+              inappropriately to another player, contact Rude or Juul with a
               screenshot of the inappropriate chat. Our moderators won't be able
-              to see all rule violations--if a player happens to see someone
-              breaking one of our rules or has crossed the line somewhere else,
-              please let a moderator know in a private message with a screenshot
-              of the chat that you feel broke the rule.
+              to see all rule violations--if a player happens to see breaking
+              one of our rules or has crossed the line somewhere else, please
+              let a moderator know in a private message with a screenshot of the
+              chat that you feel broke the rule.
             </Card.Text>
             <ol>
               {discord.list.map((t, i) => (
