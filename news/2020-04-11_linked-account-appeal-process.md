@@ -3,6 +3,7 @@ date: 2020-04-11T00:00:00.000Z
 author: Aiko
 title: Linked Account Appeal Process
 ---
+
 Pursuant to the announcement of Eden to be more welcoming / forgiving of player transgressions, we are opening up an appeals processes for players whose accounts were permanently banned due to being linked to another account that was found guilty of committing bannable offenses.
 
 The account belonging to the character caught breaking rules will always experience the punishment appropriate for the rule that was broken, regardless of which person was in control at the time. We highly recommend you do not share your account under any circumstances.

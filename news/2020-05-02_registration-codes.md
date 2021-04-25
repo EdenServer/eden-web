@@ -3,6 +3,7 @@ date: 2020-09-06T00:00:00.000Z
 author: Cygon
 title: Registration Codes (Updated)
 ---
+
 New players to Eden will require a registration code to create an account. The purpose of registration codes is to prevent abuse of account creation. Similar to `!unstuck`, the `!getcode` command may be used by any player meeting both of the following criteria:
 
 - accumulated 120 hours (5 days) of playtime and

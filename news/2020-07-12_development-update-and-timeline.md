@@ -3,6 +3,7 @@ date: 2020-07-12T04:00:00.000Z
 author: Cygon
 title: Development Update and Timeline
 ---
+
 **Short-term** - Expected to be in the next few patches.
 
 - Limbus, initial zones
@@ -36,4 +37,4 @@ title: Development Update and Timeline
 
 - Fix Dynamis crashes and others
 
-*Note: Open GitHub issues will also appear in the timeline, but prioritization will be adhoc.*
+_Note: Open GitHub issues will also appear in the timeline, but prioritization will be adhoc._
