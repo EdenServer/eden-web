@@ -7,7 +7,7 @@ import {
   faLink,
   faGavel,
   faInfoCircle,
-  faPhone,
+  faHome,
 } from '@fortawesome/free-solid-svg-icons';
 import * as api from './api';
 
@@ -64,6 +64,12 @@ class App extends Component {
       {
         key: 'site-link-home',
         to: '/',
+        text: 'Home',
+        icon: <FontAwesomeIcon icon={faHome} />,
+      },
+      {
+        key: 'site-link-news',
+        to: '/news',
         text: 'News',
         icon: <FontAwesomeIcon icon={faNewspaper} />,
       },

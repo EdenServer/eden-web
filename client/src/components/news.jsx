@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
 import YellBox from './yellbox';
-import TimeInfo from './timeinfo';
+import NewsBox from './newsbox';
 import { useMediaQuery } from 'react-responsive';
 
-function Home(props) {
+function News(props) {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   return (
     <Row className="min-vh-100 flex-column flex-lg-row">
       <Col>
-        <TimeInfo />
+        <NewsBox />
       </Col>
       {!isTabletOrMobile && (
         <Col lg={4} className="mb-3 mb-lg-0">
@@ -22,4 +21,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default News;

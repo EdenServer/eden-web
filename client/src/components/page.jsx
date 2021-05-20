@@ -8,7 +8,7 @@ import Links from './links';
 import Tools from './tools';
 import Rules from './rules';
 import About from './about';
-import Contact from './contact';
+import News from './news';
 import './style.css';
 
 const Page = props => {
@@ -19,7 +19,9 @@ const Page = props => {
       <Row className="h-100 flex-column-reverse flex-lg-row">
         <Col>
           <Router primary={false}>
-            <Home path="/" />
+            <News path="/" />
+            <Home path="/time" />
+            <News path="/news" />
             <Install path="/install" info={config.install} />
             <Tools path="/tools/*" />
             <Links path="/links" links={config.links} />
