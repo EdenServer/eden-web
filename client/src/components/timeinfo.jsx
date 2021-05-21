@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import InfoDisplay from './InfoDisplay';
-import Card from 'react-bootstrap/Card';
-import { Segment, Input, List, Image } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
+
+const weekDays = [
+  { name: "Firesday", color: "#DD0000" },
+  { name: "Earthsday", color: "#AAAA00" },
+  { name: "Watersday", color: "#0000DD" },
+  { name: "Windsday", color: "#00AA22" },
+  { name: "Iceday", color: "#7799FF" },
+  { name: "Lightningday", color: "#AA00AA" },
+  { name: "Lightsday", color: "#AAAAAA" },
+  { name: "Darksday", color: "#222222" },
+];
 
 function vanaTimeToDate(vanaTime) {
   return {
     year: Math.floor(vanaTime / 518400 + 886),
     month: (Math.floor(vanaTime / 43200) % 12) + 1,
     day: (Math.floor(vanaTime / 1440) % 30) + 1,
+    weekDay: Math.floor(vanaTime % 11520 / 1440),
     hour: Math.floor((vanaTime % 1440) / 60),
     minute: Math.floor(vanaTime % 60),
   };
@@ -112,12 +123,16 @@ function vanaDateToBallista(year, month, day) {
   return ballista;
 }
 
-function useInput({ type, value = '' }) {
+function useInput({ type, value = '', max = 100, style }) {
   const [inputValue, setValue] = useState(value);
   const input = (
-    <input value={inputValue} onChange={e => setValue(e.target.value)} type={type} />
+    <input value={inputValue} style={style} width="5" onChange={e => setValue(Math.max(0, Math.min(e.target.value, max)))} type={type} />
   );
   return [inputValue, input];
+}
+
+function padZeros(number, length) {
+  return number?.toString()?.padStart(length, 0);
 }
 
 const TimeInfo = () => {
@@ -127,11 +142,16 @@ const TimeInfo = () => {
   const [vanaYear, setVanaYear] = useState();
   const [vanaMonth, setVanaMonth] = useState();
   const [vanaDay, setVanaDay] = useState();
+  const [vanaWeekDay, setVanaWeekDay] = useState();
   const [vanaHour, setVanaHour] = useState();
   const [vanaMinute, setVanaMinute] = useState();
 
   const [upcomingBallista, setUpcomingBallista] = useState([]);
-  const [ballistaCount, ballistaCountInput] = useInput({ type: 'text', value: '5' });
+  const [ballistaCount, ballistaCountInput] = useInput({
+    type: 'text',
+    value: '5',
+    style: { border: '1px solid grey', width: '2.5em' },
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -146,6 +166,7 @@ const TimeInfo = () => {
     setVanaYear(vanaDate.year);
     setVanaMonth(vanaDate.month);
     setVanaDay(vanaDate.day);
+    setVanaWeekDay(vanaDate.weekDay);
     setVanaHour(vanaDate.hour);
     setVanaMinute(vanaDate.minute);
   }, [vanaDate]);
@@ -153,9 +174,11 @@ const TimeInfo = () => {
   useEffect(() => {
     const ballistas = [];
     const currentDate = { ...vanaDate };
+
+    // Go to next even day (when Ballista happens)
     incrementVanaDate(currentDate, 2 - (currentDate.day % 2));
 
-    let toShow = parseInt(ballistaCount);;
+    let toShow = parseInt(ballistaCount);
 
     for (let i = 0; i < toShow; i++) {
       const ballista = vanaDateToBallista(
@@ -174,45 +197,48 @@ const TimeInfo = () => {
 
   return (
     <InfoDisplay title={'Vanadiel time information'}>
-      <div>Real time: {new Date(now).toLocaleString()}</div>
-      <div>
-        Vanadiel time:{' '}
-        {`${vanaYear}/${vanaMonth}/${vanaDay} ${vanaHour}:${vanaMinute}`}
-      </div>
+
+      <table width="100%">
+        <tbody>
+          <tr>
+            <td>
+              <b>Vana'diel time:</b><br/>
+              <span style={{ color: weekDays[vanaWeekDay]?.color, fontWeight: "bold" }}>
+                {weekDays[vanaWeekDay]?.name}
+              </span>
+              {` – ${vanaYear}-${padZeros(vanaMonth, 2)}-${padZeros(vanaDay, 2)} ${padZeros(vanaHour, 2)}:${padZeros(vanaMinute, 2)}`}
+            </td>
+            <td>
+              <b>Earth time</b><br/>
+              {new Date(now).toLocaleString()}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
       <Segment>
         <h3>Upcoming official Ballista matches</h3>
         <div>To show: {ballistaCountInput}</div>
-        {upcomingBallista.map(ballista => (
-          <Segment key={ballista.startTime}>
-            <table width="100%">
-              <tbody>
-                <tr>
-                  <td>
-                    <b>Zone:</b> {ballista.zone}
-                  </td>
-                  <td>
-                    <b>Entry time:</b>{' '}
-                    {new Date(ballista.entryTime).toLocaleString()}
-                  </td>
+        <table width="100%" style={{ textAlign: "center", margin: "0.5em", padding: "0.5em" }} border="true">
+          <thead>
+            <tr>
+              <th>Entry / Start</th>
+              <th>Zone</th>
+              <th>Nations</th>
+              <th>Level cap</th>
+            </tr>
+          </thead>
+          <tbody>
+            {upcomingBallista.map(ballista => (
+                <tr key={ballista.startTime} >
+                  <td>{new Date(ballista.entryTime).toLocaleString()}<br/>{new Date(ballista.startTime).toLocaleString()}</td>
+                  <td>{ballista.zone}</td>
+                  <td>{ballista.team1}<br/>{ballista.team2}</td>
+                  <td>{ballista.levelCap == 0 ? 'None' : ballista.levelCap}</td>
                 </tr>
-                <tr>
-                  <td>
-                    <b>Nations:</b> {ballista.team1} vs {ballista.team2}
-                  </td>
-                  <td>
-                    <b>Start time:</b>{' '}
-                    {new Date(ballista.startTime).toLocaleString()}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>Level cap:</b> {ballista.levelCap == 0 ? 'None' : ballista.levelCap}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </Segment>
-        ))}
+              ))}
+          </tbody>
+        </table>
       </Segment>
     </InfoDisplay>
   );
