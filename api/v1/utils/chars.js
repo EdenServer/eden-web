@@ -105,7 +105,7 @@ const getCharCrafts = async (query, charid) => {
   try {
     const statement = `SELECT skillid, value, rank FROM char_skills AS s
             JOIN chars AS c ON c.charid = s.charid
-            WHERE skillid BETWEEN 48 AND 57 AND charname = ?;`;
+            WHERE skillid BETWEEN 48 AND 57 AND deleted IS null AND charname = ?;`;
     const response = await query(statement, [charid]);
     const crafts = {
       Fishing: 0,
