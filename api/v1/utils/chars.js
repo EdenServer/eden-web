@@ -241,6 +241,17 @@ const getCharEquip = async (query, charname) => {
   }
 };
 
+var titleCache = {};
+const refreshTitleCache = async query => {
+  const statement = `SELECT charid, title FROM char_stats`;
+  const result = await query(statement);
+  var updatedCache = {};
+  for (var row of result) {
+    updatedCache[row.charid] = row.title;
+  }
+  titleCache = updatedCache;
+};
+
 const getCharData = async (query, charname) => {
   try {
     const statement = `SELECT *, chars.charid AS charid, chars.accid AS accid, IF(accounts_sessions.charid IS NULL, 0, 1) AS \`isOnline\` FROM chars
@@ -259,7 +270,7 @@ const getCharData = async (query, charname) => {
         nation: char.nation,
         mentor: char.mentor,
         nameflags: char.nameflags, // TODO: put flag strings in array
-        title: titles[char.title],
+        title: titles[titleCache[char.charid]],
         bazzarMessage: char.bazzar_message,
         jobString: formatJobString(char),
         avatar: formatAvatar(char),
@@ -330,7 +341,6 @@ const fetchChars = async (
       total: total[0].ct,
       chars: results.map(char => ({
         charname: char.charname,
-        title: titles[char.title],
         jobString: formatJobString(char),
         avatar: formatAvatar(char),
       })),
@@ -350,6 +360,7 @@ module.exports = {
   getCharAH,
   getCharBazaar,
   getCharEquip,
+  refreshTitleCache,
   getCharData,
   fetchChars,
   skillIdToCraft,
