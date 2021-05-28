@@ -10,9 +10,7 @@ import {
   loadItems,
   refreshOwnersCache,
 } from './api/v1/utils/items';
-import {
-  refreshTitleCache
-} from './api/v1/utils/chars';
+import { refreshTitleCache } from './api/v1/utils/chars';
 import api from './api';
 
 const port = process.env.PORT || 8081;
