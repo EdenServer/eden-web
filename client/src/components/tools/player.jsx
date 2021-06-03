@@ -1,6 +1,6 @@
 import { navigate } from '@reach/router';
 import React from 'react';
-import { Header, Icon, Image, Segment, Loader } from 'semantic-ui-react';
+import { Header, Icon, Image, Segment, Loader, Table } from 'semantic-ui-react';
 import apiUtil from '../../apiUtil';
 import images from '../../images';
 import Crafts from './player/crafts';
@@ -76,7 +76,12 @@ export default ({ charname, setLoading, setSearch }) => {
           <div className="eden_player-header-right">
             <Linkshell ls={equip && equip.ls1} />
             <Linkshell ls={equip && equip.ls2} />
-            <Icon name="power off" color={player.online ? 'green' : 'red'} />
+            <Icon
+              size="small"
+              name={player.online === 1 ? 'circle' : 'circle outline'}
+              color={player.online === 1 ? 'green' : 'black'}
+              disabled={player.online !== 1}
+            />{' '}
           </div>
         </div>
       </Header>
