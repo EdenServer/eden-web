@@ -138,8 +138,10 @@ export default ({ user, logout, reload }) => {
                   <Card.Meta>{char.job}</Card.Meta>
                   <Card.Description>
                     <Icon
-                      name="power off"
-                      color={char.online ? 'green' : 'red'}
+                      size="small"
+                      name={char.online === 1 ? 'circle' : 'circle outline'}
+                      color={char.online === 1 ? 'green' : 'black'}
+                      disabled={char.online !== 1}
                     />{' '}
                     {char.title}
                   </Card.Description>
