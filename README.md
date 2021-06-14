@@ -59,6 +59,7 @@ Software:
 1. Select the newly created `eden_web` database on the left (it will get a green tick mark).
 2. Navigate to "File > Run SQL file...", and then select every `.sql` file from the `sql\tables` of this project, and click Open.
 3. Once it's done running the SQL files, your tables will be setup, and you can see the result by hitting the Refresh button (or F5) in HeidiSQL.
+4. In some cases you may need to run the following command substituting `MYSQLUSER` and `MYSQLPASS` with your credentials. `ALTER USER 'MYSQLUSER'@'localhost' IDENTIFIED WITH mysql_native_password BY 'MYSQLPASS';`
 
 ### Adding character and misc. other data
 
