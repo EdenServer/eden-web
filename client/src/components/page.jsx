@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Router, Redirect } from '@reach/router';
+import { Router } from '@reach/router';
 import { Container, Row, Col } from 'react-bootstrap';
 import Home from './home';
 import Install from './install';
@@ -19,7 +19,7 @@ const Page = props => {
       <Row className="h-100 flex-column-reverse flex-lg-row">
         <Col>
           <Router primary={false}>
-            <News path="/" />
+            <Home path="/" />
             <Home path="/time" />
             <News path="/news" />
             <Install path="/install" info={config.install} />

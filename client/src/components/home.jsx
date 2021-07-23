@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
 import YellBox from './yellbox';
-import TimeInfo from './timeinfo';
+import TimeInfo from './TimeInfo';
 import { useMediaQuery } from 'react-responsive';
 
 function Home(props) {
