@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import InfoDisplay from './InfoDisplay';
 import Ballista from './Ballista';
 
@@ -13,23 +16,61 @@ const weekDays = [
   { name: 'Darksday', color: '#222222' },
 ];
 
-function vanaTimeToDate(vanaTime) {
+const DaysInMoonCycle = 84;
+
+function getVanaDate(vanaEpoch) {
   return {
-    year: Math.floor(vanaTime / 518400 + 886),
-    month: (Math.floor(vanaTime / 43200) % 12) + 1,
-    day: (Math.floor(vanaTime / 1440) % 30) + 1,
-    weekDay: Math.floor((vanaTime % 11520) / 1440),
-    hour: Math.floor((vanaTime % 1440) / 60),
-    minute: Math.floor(vanaTime % 60),
+    year: Math.floor(vanaEpoch / 518400 + 886),
+    month: (Math.floor(vanaEpoch / 43200) % 12) + 1,
+    day: (Math.floor(vanaEpoch / 1440) % 30) + 1,
+    weekDay: Math.floor((vanaEpoch % 11520) / 1440),
+    hour: Math.floor((vanaEpoch % 1440) / 60),
+    minute: Math.floor(vanaEpoch % 60),
+    dayOfMoon: ((Math.floor(vanaEpoch / 1440) + 38) % DaysInMoonCycle) - DaysInMoonCycle / 2,
   };
 }
 
 function timestampToVanaDate(epochMs) {
-  return vanaTimeToDate(Math.floor(((epochMs - 1009810800000) * 25) / 60 / 1000));
+  return getVanaDate(Math.floor(((epochMs - 1009810800000) * 25) / 60 / 1000));
 }
 
 function padZeros(number, length) {
   return number?.toString()?.padStart(length, 0);
+}
+
+function getMoonPhase(vanaDate) {
+  return Math.round(100 * Math.abs((vanaDate.dayOfMoon * 2) / DaysInMoonCycle));
+}
+
+function getMoonName(vanaDate) {
+  if (vanaDate.dayOfMoon <= -40 || vanaDate.dayOfMoon >= 38) {
+    return 'Full Moon';
+  } else if (vanaDate.dayOfMoon <= -26) {
+    return 'Waning Gibbous';
+  } else if (vanaDate.dayOfMoon <= -19) {
+    return 'Last Quarter Moon';
+  } else if (vanaDate.dayOfMoon <= -5) {
+    return 'Waning Crescent';
+  } else if (vanaDate.dayOfMoon <= 2) {
+    return 'New Moon';
+  } else if (vanaDate.dayOfMoon <= 16) {
+    return 'Waxing Crescent';
+  } else if (vanaDate.dayOfMoon <= 23) {
+    return 'First Quarter Moon';
+  } else if (vanaDate.dayOfMoon <= 37) {
+    return 'Waxing Gibbous';
+  }
+
+  console.error('Invalid day for moon');
+  return '???';
+}
+
+function calculateMoon(vanaDate) {
+  return (
+    <span>
+      {getMoonName(vanaDate)} [{getMoonPhase(vanaDate)}% <FontAwesomeIcon icon={vanaDate.dayOfMoon >= 0 ? faAngleUp : faAngleDown} />]
+    </span>
+  );
 }
 
 const TimeInfo = () => {
@@ -42,6 +83,8 @@ const TimeInfo = () => {
   const [vanaWeekDay, setVanaWeekDay] = useState();
   const [vanaHour, setVanaHour] = useState();
   const [vanaMinute, setVanaMinute] = useState();
+
+  const [moon, setMoon] = useState();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -61,14 +104,21 @@ const TimeInfo = () => {
     setVanaMinute(vanaDate.minute);
   }, [vanaDate]);
 
+  useEffect(() => {
+    setMoon(calculateMoon(vanaDate));
+  }, [vanaDay]);
+
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+
+  const date = new Date(now);
   return (
     <>
-      <InfoDisplay title={'Vanadiel time information'}>
-        <table width="100%">
+      <InfoDisplay title={'Time information'}>
+        <table width="100%" style={{ fontSize: isTabletOrMobile ? '1em' : '1.2em' }}>
           <tbody>
             <tr>
               <td>
-                <b>Vana'diel time:</b>
+                <strong>Vana'diel</strong>
                 <br />
                 <span
                   style={{
@@ -78,13 +128,18 @@ const TimeInfo = () => {
                 >
                   {weekDays[vanaWeekDay]?.name}
                 </span>
-                {` – ${vanaYear}-${padZeros(vanaMonth, 2)}-${padZeros(vanaDay, 2)}`}
-                {` ${padZeros(vanaHour, 2)}:${padZeros(vanaMinute, 2)}`}
-              </td>
-              <td>
-                <b>Earth time</b>
+                {` – ${padZeros(vanaHour, 2)}:${padZeros(vanaMinute, 2)}`}
+                {`, ${vanaYear}-${padZeros(vanaMonth, 2)}-${padZeros(vanaDay, 2)}`}
                 <br />
-                {new Date(now).toLocaleString()}
+                {moon}
+              </td>
+
+              <td>
+                <strong>Earth</strong>
+                <br />
+                {date.toLocaleTimeString()}
+                <br />
+                {date.toLocaleString(undefined, { weekday: 'long' })} {date.toLocaleDateString()}
               </td>
             </tr>
           </tbody>
