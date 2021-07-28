@@ -146,7 +146,7 @@ const Ballista = React.memo(
       const currentDate = { ...vanaDate };
 
       // Go to next even day (when Ballista happens)
-      incrementVanaDate(currentDate, 2 - (currentDate.day % 2));
+      incrementVanaDate(currentDate, currentDate.day % 2);
 
       let toShow = parseInt(matchCount);
 
