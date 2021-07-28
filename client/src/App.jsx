@@ -69,8 +69,8 @@ class App extends Component {
       },
       {
         key: 'site-link-news',
-        to: '/news',
-        text: 'News',
+        to: '/posts',
+        text: 'Posts',
         icon: <FontAwesomeIcon icon={faNewspaper} />,
       },
       {

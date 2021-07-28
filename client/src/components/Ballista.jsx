@@ -182,18 +182,18 @@ const Ballista = React.memo(
 
       upcomingMatchesRows.push(
         <tr key={match.startTime}>
-          <td>
-            {formatTabs([
-              [<b>Entry:</b>, formatTime(match.entryStart), ' → ', formatTime(match.entryEnd)],
-              [<b>Match:</b>, formatTime(match.start), ' → ', formatTime(match.end)],
-            ])}
-          </td>
           <td>{match.zone}</td>
           <td>{match.levelCap == 0 ? 'None' : match.levelCap}</td>
           <td>
             <img src={match.team1.logoSrc} alt={match.team1.name} width={isTabletOrMobile ? '20px' : '32px'} />
             {isTabletOrMobile ? ' ' : ' vs '}
             <img src={match.team2.logoSrc} alt={match.team2.name} width={isTabletOrMobile ? '20px' : '32px'} />
+          </td>
+          <td>
+            {formatTabs([
+              [<b>Entry:</b>, formatTime(match.entryStart), ' → ', formatTime(match.entryEnd)],
+              [<b>Match:</b>, formatTime(match.start), ' → ', formatTime(match.end)],
+            ])}
           </td>
         </tr>
       );
@@ -204,10 +204,10 @@ const Ballista = React.memo(
         <table width="100%" style={{ textAlign: 'center', margin: '0.5em 0', padding: '0.5em' }} border="true">
           <thead>
             <tr>
-              <th>Time</th>
               <th>Zone</th>
               <th>Level cap</th>
               <th>Nations</th>
+              <th>Time</th>
             </tr>
           </thead>
           <tbody>{upcomingMatchesRows}</tbody>

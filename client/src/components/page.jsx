@@ -9,6 +9,7 @@ import Tools from './tools';
 import Rules from './rules';
 import About from './about';
 import News from './news';
+import ServerInfo from './ServerInfo';
 import './style.css';
 
 const Page = props => {
@@ -19,9 +20,9 @@ const Page = props => {
       <Row className="h-100 flex-column-reverse flex-lg-row">
         <Col>
           <Router primary={false}>
-            <Home path="/" />
-            <Home path="/time" />
-            <News path="/news" />
+            <Home path="/" discordLink={config.install.discord} />
+            <ServerInfo path="/info" />
+            <News path="/posts" />
             <Install path="/install" info={config.install} />
             <Tools path="/tools/*" />
             <Links path="/links" links={config.links} />
