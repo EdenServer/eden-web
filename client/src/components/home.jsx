@@ -14,8 +14,8 @@ function Home({ discordLink }) {
         <InfoDisplay title={'Welcome to Eden!'}>
           <Card.Text>
             Eden attempts to recreate the Treasures of Aht Urhgan era experience with a few quality-of-life additions. While FFXI is still a great game today,
-            it is vastly different than it was back in 2007. We don't aim to take the place of retail today, and we encourage you to subscribe to it, if nothing
-            else to finish the amazing storyline!
+            it is vastly different than it was back in 2007. We don't aim to take the place of retail today, and we encourage you to subscribe to it, if for
+            nothing else than to finish the amazing storyline!
           </Card.Text>
           <Card.Text>
             While all private servers have some deviation from era retail, we strive to be as close to possible, and as such do extensive research on everything
