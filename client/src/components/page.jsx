@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Router, Redirect } from '@reach/router';
+import { Router } from '@reach/router';
 import { Container, Row, Col } from 'react-bootstrap';
 import Home from './home';
 import Install from './install';
@@ -8,7 +8,8 @@ import Links from './links';
 import Tools from './tools';
 import Rules from './rules';
 import About from './about';
-import Contact from './contact';
+import News from './news';
+import ServerInfo from './ServerInfo';
 import './style.css';
 
 const Page = props => {
@@ -19,7 +20,9 @@ const Page = props => {
       <Row className="h-100 flex-column-reverse flex-lg-row">
         <Col>
           <Router primary={false}>
-            <Home path="/" />
+            <Home path="/" discordLink={config.install.discord} />
+            <ServerInfo path="/info" />
+            <News path="/posts" />
             <Install path="/install" info={config.install} />
             <Tools path="/tools/*" />
             <Links path="/links" links={config.links} />

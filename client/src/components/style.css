@@ -291,3 +291,7 @@ p.gm_lineseperate {
   text-align: center;
   display: block;
 }
+
+.tab-table td {
+  padding: 0 0.2em;
+}
