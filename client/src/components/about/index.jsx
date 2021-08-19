@@ -64,8 +64,18 @@ const About = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>PUP has a B- in h2h rating</td>
+                  <td>PUP has a B in h2h rating</td>
                   <td>PUP has a C+ in h2h rating</td>
+                  <td>balancing</td>
+                </tr>
+                <tr>
+                  <td>
+                    PUP Automatons have retail magic casting AI which give
+                    them a recast timer for each type of magic.
+                  </td>
+                  <td>
+                    The PUP's Automaton had a standard 1 recast timer.
+                  </td>
                   <td>balancing</td>
                 </tr>
                 <tr>
@@ -76,7 +86,7 @@ const About = () => {
                 <tr>
                   <td>
                     The auction house has unlimited listings and items expire
-                    after 90 real life days
+                    after 30 real life days
                   </td>
                   <td>
                     The auction house is limited to 7 listings and items expire
@@ -98,10 +108,11 @@ const About = () => {
                 <tr>
                   <td>
                     Wardrobe 1 is awarded by talking to your Moogle after
-                    attaining Rank 3 and Wardrobe 2 by talking to your Moogle
-                    after attaining Rank 6
+                    attaining Rank 3, Wardrobe 2 by talking to your Moogle
+                    after attaining Rank 6 and Wardrobe 3 by talking to
+                    your Moogle after completing the quest Apocalypse Nigh.
                   </td>
-                  <td>Wardrobe 1 and Wardrobe 2 did not exist</td>
+                  <td>Wardrobe 1, Wardrobe 2, and Wardrobe 3 did not exist</td>
                   <td>economy</td>
                 </tr>
                 <tr>
