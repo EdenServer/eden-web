@@ -42,7 +42,7 @@ function install(props) {
               The bootloader (black login screen) supports registering an
               account. Registration requires a 7-digit code that can be obtained
               from existing players who have accumulated 120 hours (5 days) of
-              playtime and main job is level 15 or greater. Make sure you have the game completely installed Eden before requesting one. The easiest way to
+              playtime and main job is level 15 or greater. Make sure you have Eden completely installed before requesting one. The easiest way to
               get a registration code is to join&nbsp;
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord
