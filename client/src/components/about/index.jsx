@@ -70,11 +70,11 @@ const About = () => {
                 </tr>
                 <tr>
                   <td>
-                    PUP Automatons have retail magic casting AI which give
-                    them a recast timer for each type of magic.
+                    PUP Automatons have retail magic casting AI which gives
+                    them a recast timer for each magic type
                   </td>
                   <td>
-                    The PUP's Automaton had a standard 1 recast timer.
+                    The PUP's Automaton had a standard 1 recast timer
                   </td>
                   <td>balancing</td>
                 </tr>
@@ -108,11 +108,11 @@ const About = () => {
                 <tr>
                   <td>
                     Wardrobe 1 is awarded by talking to your Moogle after
-                    attaining Rank 3, Wardrobe 2 by talking to your Moogle
+                    attaining Rank 3 Wardrobe 2 by talking to your Moogle
                     after attaining Rank 6 and Wardrobe 3 by talking to
-                    your Moogle after completing the quest Apocalypse Nigh.
+                    your Moogle after completing the quest Apocalypse Nigh
                   </td>
-                  <td>Wardrobe 1, Wardrobe 2, and Wardrobe 3 did not exist</td>
+                  <td>Wardrobe 1 Wardrobe 2 and Wardrobe 3 did not exist</td>
                   <td>economy</td>
                 </tr>
                 <tr>
