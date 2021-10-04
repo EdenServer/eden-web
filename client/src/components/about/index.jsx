@@ -107,7 +107,7 @@ const About = () => {
                   <td>Ranged att/acc adj</td>
                   <td>Some mobs windows would reset when a server was reset or crashed</td>
                   <td>economy</td>
-                </tr>                
+                </tr>
                 <tr>
                   <td>Level Sync</td>
                   <td>No Level Sync</td>
