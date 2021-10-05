@@ -104,8 +104,8 @@ const About = () => {
                   <td>economy</td>
                 </tr>
                 <tr>
-                  <td>Ranged att/acc adj</td>
-                  <td>Some mobs windows would reset when a server was reset or crashed</td>
+                  <td>Ranged att/acc distance correction does not exist.</td>
+                  <td>Ranged attack and accuracy was dependent on distance from target and weapon/ammo.</td>
                   <td>economy</td>
                 </tr>
                 <tr>
