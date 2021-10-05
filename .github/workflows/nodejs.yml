@@ -5,31 +5,30 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [master, develop]
   pull_request:
-    branches: [ master, develop ]
+    branches: [master, develop]
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [ windows-latest, ubuntu-latest ]
+        os: [windows-latest, ubuntu-latest]
         node-version: [10.x, 12.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run ci:client
-    - run: npm run check
-    # Setting CI=false here, because when true, create-react-app treats warnings as errors, and we have a few warnings at the moment
-    - env:
-        CI: false
-      run: npm run build
-    - run: npm test
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run ci:client
+      - run: npm run check
+      # Setting CI=false here, because when true, create-react-app treats warnings as errors, and we have a few warnings at the moment
+      - env:
+          CI: false
+        run: npm run build
+      - run: npm test
