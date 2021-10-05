@@ -9,10 +9,7 @@ const formatItem = itemname => {
       {itemname
         .split('_')
         .map(string => {
-          return `${string.substr(0, 1).toUpperCase()}${string.substr(
-            1,
-            string.length
-          )}`;
+          return `${string.substr(0, 1).toUpperCase()}${string.substr(1, string.length)}`;
         })
         .join(' ')}
     </Link>

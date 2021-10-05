@@ -5,11 +5,7 @@ import mysql from 'mysql2';
 import path from 'path';
 import Cache from './api/v1/utils/cache';
 import preparedStatement from './api/v1/utils/db';
-import {
-  loadItemKeys,
-  loadItems,
-  refreshOwnersCache,
-} from './api/v1/utils/items';
+import { loadItemKeys, loadItems, refreshOwnersCache } from './api/v1/utils/items';
 import { refreshTitleCache } from './api/v1/utils/chars';
 import api from './api';
 

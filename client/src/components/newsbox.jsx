@@ -24,10 +24,7 @@ const News = () => {
   return (
     <>
       {posts.map(({ metadata, content }, i) => (
-        <div
-          key={`news_${i}`}
-          className={i === 0 || i === posts.length - 1 ? '' : 'my-3'}
-        >
+        <div key={`news_${i}`} className={i === 0 || i === posts.length - 1 ? '' : 'my-3'}>
           <InfoDisplay
             title={metadata.title}
             footer={

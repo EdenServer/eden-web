@@ -17,8 +17,7 @@ const SiteFooter = () => {
               {new Date().getFullYear()}
               SQUARE ENIX CO., LTD. All Rights Reserved.
               <br />
-              FINAL FANTASY&reg; is a registered trademark of SQUARE ENIX CO.,
-              LTD. All Rights Reserved.
+              FINAL FANTASY&reg; is a registered trademark of SQUARE ENIX CO., LTD. All Rights Reserved.
             </small>
           </p>
         </Col>

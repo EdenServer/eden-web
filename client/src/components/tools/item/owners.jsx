@@ -10,21 +10,18 @@ export default ({ itemid }) => {
   const fetchOwners = () => {
     console.log(itemid);
     setOwners(null);
-    apiUtil.get(
-      { url: `/api/v1/items/${itemid}/owners` },
-      async (error, res) => {
-        try {
-          if (!error && res.status === 200) {
-            setOwners(await res.json());
-            setError(false);
-          } else {
-            setError(true);
-          }
-        } catch (error) {
+    apiUtil.get({ url: `/api/v1/items/${itemid}/owners` }, async (error, res) => {
+      try {
+        if (!error && res.status === 200) {
+          setOwners(await res.json());
+          setError(false);
+        } else {
           setError(true);
         }
+      } catch (error) {
+        setError(true);
       }
-    );
+    });
   };
 
   React.useEffect(fetchOwners, [itemid]);

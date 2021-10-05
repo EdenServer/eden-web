@@ -1,27 +1,6 @@
 import React from 'react';
 
-export default ({
-  WAR,
-  MNK,
-  WHM,
-  BLM,
-  RDM,
-  THF,
-  PLD,
-  DRK,
-  BST,
-  BRD,
-  RNG,
-  SAM,
-  NIN,
-  DRG,
-  SMN,
-  BLU,
-  COR,
-  PUP,
-  DNC,
-  SCH,
-}) => (
+export default ({ WAR, MNK, WHM, BLM, RDM, THF, PLD, DRK, BST, BRD, RNG, SAM, NIN, DRG, SMN, BLU, COR, PUP, DNC, SCH }) => (
   <div className="eden_player-jobs">
     <h6>Jobs</h6>
     <table>

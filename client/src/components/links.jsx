@@ -14,17 +14,11 @@ function Links(props) {
             <Card.Header>
               <div className="d-flex flex-row justify-content-between">
                 <Card.Title>
-                  <a
-                    href={link.url}
-                    className="stretched-link text-dark"
-                    style={{ textDecoration: 'none' }}
-                  >
+                  <a href={link.url} className="stretched-link text-dark" style={{ textDecoration: 'none' }}>
                     {link.header}
                   </a>
                 </Card.Title>
-                {link.image && (
-                  <img alt="" src={link.image} style={{ maxWidth: '35px' }} />
-                )}
+                {link.image && <img alt="" src={link.image} style={{ maxWidth: '35px' }} />}
               </div>
             </Card.Header>
             <Card.Body>

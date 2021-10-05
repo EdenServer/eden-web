@@ -16,8 +16,7 @@ const SiteNavbar = props => {
         <Nav>
           {links.map(link => (
             <NavLink as={Link} to={link.to} key={link.key} className="mr-3">
-              {link.icon ? <span className="mr-1">{link.icon}</span> : null}{' '}
-              {link.text}
+              {link.icon ? <span className="mr-1">{link.icon}</span> : null} {link.text}
             </NavLink>
           ))}
         </Nav>

@@ -25,15 +25,7 @@ export default ({ name }) => {
   React.useEffect(fetchCrafts, [name]);
 
   if (error) {
-    return (
-      <Button
-        circular
-        color="orange"
-        compact
-        icon="refresh"
-        onClick={fetchCrafts}
-      />
-    );
+    return <Button circular color="orange" compact icon="refresh" onClick={fetchCrafts} />;
   }
 
   if (!crafts) {

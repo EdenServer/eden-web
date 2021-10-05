@@ -86,19 +86,10 @@ const Itemsearch = ({ history }) => {
         <Item itemname={itemname} history={history} setLoading={setLoading} />
       ) : (
         <>
-          <Pagination
-            results={total}
-            changePage={fetchItems}
-            extra={{ search }}
-          />
+          <Pagination results={total} changePage={fetchItems} extra={{ search }} />
           <List>
             {results.map((result, i) => (
-              <List.Item
-                as={Segment}
-                key={`result_${i}`}
-                className="gm_itemsearch_row gm_image-spacer"
-                onClick={() => chooseResult(result)}
-              >
+              <List.Item as={Segment} key={`result_${i}`} className="gm_itemsearch_row gm_image-spacer" onClick={() => chooseResult(result)}>
                 <Image src={images.item(result.id)} />
                 {result.name}
               </List.Item>
@@ -107,11 +98,7 @@ const Itemsearch = ({ history }) => {
         </>
       )}
       {!itemname && results.length === 0 && (
-        <Segment>
-          {initial
-            ? `No results for "${searchParam}".`
-            : 'Begin searching an item by typing in the search box above.'}
-        </Segment>
+        <Segment>{initial ? `No results for "${searchParam}".` : 'Begin searching an item by typing in the search box above.'}</Segment>
       )}
     </Segment>
   );

@@ -84,32 +84,14 @@ const Playersearch = ({ history }) => {
         onChange={e => setSearch(e.target.value)}
       />
       {charname ? (
-        <Player
-          charname={charname}
-          history={history}
-          setLoading={setLoading}
-          setSearch={setSearch}
-        />
+        <Player charname={charname} history={history} setLoading={setLoading} setSearch={setSearch} />
       ) : (
         <>
-          <Pagination
-            results={total}
-            changePage={fetchPlayers}
-            extra={{ search }}
-          />
+          <Pagination results={total} changePage={fetchPlayers} extra={{ search }} />
           <List>
             {results.map((result, i) => (
-              <List.Item
-                as={Segment}
-                key={`result_${i}`}
-                className="gm_charsearch_row"
-                onClick={() => chooseResult(result)}
-              >
-                <Image
-                  className="gm_online-avatar gm_image-spacer"
-                  size="mini"
-                  src={images.avatar(result.avatar)}
-                />
+              <List.Item as={Segment} key={`result_${i}`} className="gm_charsearch_row" onClick={() => chooseResult(result)}>
+                <Image className="gm_online-avatar gm_image-spacer" size="mini" src={images.avatar(result.avatar)} />
                 {result.charname}
               </List.Item>
             ))}
@@ -117,11 +99,7 @@ const Playersearch = ({ history }) => {
         </>
       )}
       {!charname && results.length === 0 && (
-        <Segment>
-          {initial
-            ? `No results for "${searchParam}".`
-            : 'Begin searching for a player by typing in the search box above.'}
-        </Segment>
+        <Segment>{initial ? `No results for "${searchParam}".` : 'Begin searching for a player by typing in the search box above.'}</Segment>
       )}
     </Segment>
   );

@@ -4,11 +4,7 @@ const { Router } = require('express');
 
 const router = Router();
 
-const {
-  formatAvatar,
-  formatJobString,
-  titleIdToString,
-} = require('./utils/chars');
+const { formatAvatar, formatJobString, titleIdToString } = require('./utils/chars');
 const { getJWTForAccountId } = require('./utils/accounts');
 
 const validate = (req, res, next) => {
@@ -42,10 +38,7 @@ router.get('/profile', validate, async (req, res) => {
     const { id, login, email, timecreate, timelastmodify } = jwt.decode(token);
     res.send({
       jwt: token,
-      profile: Object.assign(
-        { id, login, email, timecreate, timelastmodify },
-        { chars }
-      ),
+      profile: Object.assign({ id, login, email, timecreate, timelastmodify }, { chars }),
     });
   } catch (error) {
     res.status(500).send();
@@ -55,15 +48,7 @@ router.get('/profile', validate, async (req, res) => {
 router.post('/register', (req, res) => {
   const disallowedIP = [];
 
-  const {
-    username,
-    password,
-    email,
-    confirmUsername,
-    confirmPassword,
-    confirmEmail,
-    verify,
-  } = req.body;
+  const { username, password, email, confirmUsername, confirmPassword, confirmEmail, verify } = req.body;
 
   /** common origins attemping to register
    * https://www.edenxi.com/tools
@@ -73,8 +58,7 @@ router.post('/register', (req, res) => {
    */
   try {
     const tests = [
-      req.headers.referer === 'https://www.edenxi.com/tools' ||
-        req.headers.referer === 'https://edenxi.com/tools',
+      req.headers.referer === 'https://www.edenxi.com/tools' || req.headers.referer === 'https://edenxi.com/tools',
       !disallowedIP.includes(req.headers['x-forwarded-for']),
       password === confirmPassword,
       username.toLowerCase() === confirmUsername.toLowerCase(),
@@ -89,8 +73,7 @@ router.post('/register', (req, res) => {
       res.json({
         status: 'ERROR',
         errors: {
-          server:
-            'Your browser sent bad data. Please try again on a different browser.',
+          server: 'Your browser sent bad data. Please try again on a different browser.',
         },
       });
     } else {
@@ -114,30 +97,13 @@ router.post('/register', (req, res) => {
           if (resp.body.success) {
             try {
               // attempt to register the account
-              const statement =
-                'INSERT INTO accounts (`login`,`password`,`email`,`email2`) VALUES (?, PASSWORD(?), ?, ?);';
-              const results = await req.app.locals.query(statement, [
-                username,
-                password,
-                email,
-                email,
-              ]);
+              const statement = 'INSERT INTO accounts (`login`,`password`,`email`,`email2`) VALUES (?, PASSWORD(?), ?, ?);';
+              const results = await req.app.locals.query(statement, [username, password, email, email]);
               if (results.affectedRows) {
                 const infoStatement = `SELECT id FROM accounts WHERE login = ?;`;
-                const info = await req.app.locals.query(infoStatement, [
-                  username,
-                ]);
-                const token = await getJWTForAccountId(
-                  req.app.locals.query,
-                  info[0].id
-                );
-                const {
-                  id,
-                  login,
-                  email,
-                  timecreate,
-                  timelastmodify,
-                } = jwt.decode(token);
+                const info = await req.app.locals.query(infoStatement, [username]);
+                const token = await getJWTForAccountId(req.app.locals.query, info[0].id);
+                const { id, login, email, timecreate, timelastmodify } = jwt.decode(token);
                 return res.json({
                   status: 'SUCCESS',
                   jwt: token,
@@ -171,8 +137,7 @@ router.post('/register', (req, res) => {
             return res.json({
               status: 'ERROR',
               errors: {
-                server:
-                  'Here be bots! You failed the ReCAPTCHA test. Make sure to fill out the form with valid data within a couple minutes.',
+                server: 'Here be bots! You failed the ReCAPTCHA test. Make sure to fill out the form with valid data within a couple minutes.',
               },
             });
           }
@@ -190,10 +155,7 @@ router.post('/register', (req, res) => {
 router.put('/email', validate, async (req, res) => {
   try {
     const statement = 'UPDATE accounts SET `email` = ? WHERE id = ?;';
-    const result = await req.app.locals.query(statement, [
-      req.headers.email,
-      req.jwt.id,
-    ]);
+    const result = await req.app.locals.query(statement, [req.headers.email, req.jwt.id]);
     if (result.affectedRows) {
       const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
       res.send(token);
@@ -205,12 +167,8 @@ router.put('/email', validate, async (req, res) => {
 
 router.put('/password', validate, async (req, res) => {
   try {
-    const statement =
-      'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ?;';
-    const result = await req.app.locals.query(statement, [
-      req.headers.password,
-      req.jwt.id,
-    ]);
+    const statement = 'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ?;';
+    const result = await req.app.locals.query(statement, [req.headers.password, req.jwt.id]);
     if (result.affectedRows) {
       const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
       res.send(token);
@@ -223,14 +181,10 @@ router.put('/password', validate, async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { user, pass } = req.headers;
-    const statement =
-      'SELECT * FROM accounts WHERE `login` = ? AND `password` = PASSWORD(?) AND status = 1;';
+    const statement = 'SELECT * FROM accounts WHERE `login` = ? AND `password` = PASSWORD(?) AND status = 1;';
     const results = await req.app.locals.query(statement, [user, pass]);
     if (results.length === 1) {
-      const token = await getJWTForAccountId(
-        req.app.locals.query,
-        results[0].id
-      );
+      const token = await getJWTForAccountId(req.app.locals.query, results[0].id);
       res.send(token);
     } else {
       res.status(401).send();

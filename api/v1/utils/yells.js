@@ -11,16 +11,16 @@ const hexToAscii = str => {
 };
 
 const hexMap = {
-  '0': '30',
-  '1': '31',
-  '2': '32',
-  '3': '33',
-  '4': '34',
-  '5': '35',
-  '6': '36',
-  '7': '37',
-  '8': '38',
-  '9': '39',
+  0: '30',
+  1: '31',
+  2: '32',
+  3: '33',
+  4: '34',
+  5: '35',
+  6: '36',
+  7: '37',
+  8: '38',
+  9: '39',
   A: '41',
   B: '42',
   C: '43',
@@ -43,9 +43,7 @@ const subAT = key => {
 };
 
 const parseMessage = (message, items) => {
-  const parsedText = message.replace(/FD[0-9A-F]{8}FD/g, str =>
-    subAT(str.substr(2, 8))
-  );
+  const parsedText = message.replace(/FD[0-9A-F]{8}FD/g, str => subAT(str.substr(2, 8)));
   const englishText = hexToAscii(parsedText);
   const after = englishText.replace(/{{[0-9A-F]{8}}}/g, str => {
     const itemid = str.substr(6, 4);
@@ -69,10 +67,7 @@ const getYells = async (query, limit = 30) => {
     return results.map(row => ({
       date: row.date * 1000,
       speaker: row.speaker,
-      message: parseMessage(
-        row.message.toString('hex').toUpperCase(),
-        lists.items
-      ),
+      message: parseMessage(row.message.toString('hex').toUpperCase(), lists.items),
     }));
   } catch (error) {
     console.error('Error while getting yells', error);

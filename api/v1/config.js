@@ -44,18 +44,15 @@ module.exports = {
         { rule: 'Pos Hacking / Speed Hacking', consequence: 'Banned' },
         {
           rule: 'Harassment',
-          consequence:
-            '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned',
+          consequence: '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned',
         },
         {
           rule: 'Navmesh Abuse',
-          consequence:
-            '1st-3rd Violation: Homepointed\n4th Violation: 2 Week Suspension\n5th Violation: 1 Month Suspension',
+          consequence: '1st-3rd Violation: Homepointed\n4th Violation: 2 Week Suspension\n5th Violation: 1 Month Suspension',
         },
         {
           rule: 'Intentional MPK',
-          consequence:
-            '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned\n',
+          consequence: '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned\n',
         },
         {
           rule: 'RMT (Buying and Selling)',
@@ -63,8 +60,7 @@ module.exports = {
         },
         {
           rule: 'Too many characters online',
-          consequence:
-            '1st Violation: Warning\n2nd Violation: 2 Week Suspension\n3rd Violation: 2 Month Suspension\n4th Violation: Banned\n',
+          consequence: '1st Violation: Warning\n2nd Violation: 2 Week Suspension\n3rd Violation: 2 Month Suspension\n4th Violation: Banned\n',
         },
         {
           rule: 'Gardening on more than 3 characters',
@@ -94,43 +90,35 @@ module.exports = {
         { item: 'Recast', windower: 'Renamer', allowed: true },
         { item: 'Timestamp', allowed: true },
         {
-          item:
-            'Shorthand (only for actions on players -- NOT allowed for claiming)',
+          item: 'Shorthand (only for actions on players -- NOT allowed for claiming)',
           allowed: true,
         },
         {
-          item:
-            'Renamer (only using the lists we provide -- NOT for custom naming of mobs)',
+          item: 'Renamer (only using the lists we provide -- NOT for custom naming of mobs)',
           allowed: true,
         },
         {
-          item:
-            'Any modified bootloader or a bootloader downloaded from any source other than edenxi.com',
+          item: 'Any modified bootloader or a bootloader downloaded from any source other than edenxi.com',
         },
         { item: 'AuctionHelper / Auction House assistants' },
         { item: 'Multisend / Servo' },
         {
-          item:
-            'Minimap and other map overlays that interact with the world  (Show NPCs, players, etc)',
+          item: 'Minimap and other map overlays that interact with the world  (Show NPCs, players, etc)',
         },
         { item: 'Allmaps' },
         {
-          item:
-            'Scripts ran unattended. (If a GM speaks to you and you do not reply within a certain time frame, you may be jailed.)',
+          item: 'Scripts ran unattended. (If a GM speaks to you and you do not reply within a certain time frame, you may be jailed.)',
         },
         { item: 'Shorthand (when used to claim)' },
         { item: 'LightLuggage' },
         {
-          item:
-            'Fishing/exp/healing bots or any other bots that automate player actions',
+          item: 'Fishing/exp/healing bots or any other bots that automate player actions',
         },
         {
-          item:
-            'Claim tools or character enhancement tools like flee or warp hacks.',
+          item: 'Claim tools or character enhancement tools like flee or warp hacks.',
         },
         {
-          item:
-            "WatchDog (or anything that gives you abilities you shouldn't have access to)",
+          item: "WatchDog (or anything that gives you abilities you shouldn't have access to)",
         },
       ],
     },
@@ -147,9 +135,7 @@ module.exports = {
     },
     search: {
       updated: '12/14/2020',
-      list: [
-        'Do not use profanity, include hate messages or any harassing statements. These are public facing channels.',
-      ],
+      list: ['Do not use profanity, include hate messages or any harassing statements. These are public facing channels.'],
     },
     discord: {
       updated: '5/22/2020',
@@ -166,11 +152,9 @@ module.exports = {
   links: [
     {
       url: 'https://discord.gg/S3EAWr2Jec',
-      image:
-        'https://vignette.wikia.nocookie.net/ffxi/images/0/08/Flag.jpg/revision/latest?cb=20060211183144',
+      image: 'https://vignette.wikia.nocookie.net/ffxi/images/0/08/Flag.jpg/revision/latest?cb=20060211183144',
       header: 'Eden Discord',
-      description:
-        'Join us on Discord for technical support, up-to-date annoucements, community events, memes, live chat with staff, and more.',
+      description: 'Join us on Discord for technical support, up-to-date annoucements, community events, memes, live chat with staff, and more.',
     },
     {
       url: 'http://classicffxi.wikia.com/wiki/Classic_FFXI_community',
@@ -183,20 +167,17 @@ module.exports = {
       url: 'https://github.com/EdenServer/community/issues',
       image: 'https://static.ffxiah.com/images/icon/17001.png',
       header: 'Bug Reports',
-      description:
-        'Eden has bugs too. :( See what issues we have and chime in if you found a bug!',
+      description: 'Eden has bugs too. :( See what issues we have and chime in if you found a bug!',
     },
     {
       url: 'https://github.com/EdenServer/eden-web/issues',
       image: 'https://static.ffxiah.com/images/icon/17005.png',
       header: 'Website Bugs',
-      description:
-        'In addition to technical bugs, Eden refines rules, information, and connection details occassionally. Chime in if you found an error!',
+      description: 'In addition to technical bugs, Eden refines rules, information, and connection details occassionally. Chime in if you found an error!',
     },
     {
       url: 'https://ffxiclopedia.wikia.com/wiki/Main_Page',
-      image:
-        'https://vignette.wikia.nocookie.net/ffxi/images/b/b7/Favicon_Poroggo.png/revision/latest/scale-to-width-down/60?cb=20170308121952',
+      image: 'https://vignette.wikia.nocookie.net/ffxi/images/b/b7/Favicon_Poroggo.png/revision/latest/scale-to-width-down/60?cb=20170308121952',
       header: 'FFXIclopedia',
       description:
         'The defacto go-to resource of this era. Keep in mind that this site has been updated post-era and you may need to browse history of the page to get more accurate data.',
@@ -205,29 +186,25 @@ module.exports = {
       url: 'https://www.bg-wiki.com/',
       image: 'https://static.ffxiah.com/images/icon/15076.png',
       header: 'BG Wikipedia',
-      description:
-        "Another resource, however more updated that the era wiki. Can be a good place to get information that isn't provided by other sources.",
+      description: "Another resource, however more updated that the era wiki. Can be a good place to get information that isn't provided by other sources.",
     },
     {
       url: 'http://campsitarus.blogspot.com/',
       image: 'https://www.bg-wiki.com/images/c/c3/Artemis%27s_Medal_icon.png',
       header: 'Campsitarus',
-      description:
-        'A great resource on era retail camps. Some camps will not apply as they are WoTG area camps.',
+      description: 'A great resource on era retail camps. Some camps will not apply as they are WoTG area camps.',
     },
     {
       url: 'http://ffxi-atlas.mageringnetwork.com/',
       image: 'https://static.ffxiah.com/images/icon/191.png',
       header: 'FFXI Atlas (Mirror)',
-      description:
-        'All the maps without the cost of buying your own maps in game. However, good luck finding where you are in relation to the map!',
+      description: 'All the maps without the cost of buying your own maps in game. However, good luck finding where you are in relation to the map!',
     },
     {
       url: 'http://www.pyogenes.com/ffxi/timer/v2.html',
       image: 'https://static.ffxiah.com/images/icon/3706.png',
       header: 'Pyogenes Timer',
-      description:
-        "Pyogenes developed a Vana'Diel clock for retail. Eden runs on the same timer.",
+      description: "Pyogenes developed a Vana'Diel clock for retail. Eden runs on the same timer.",
     },
     {
       url: 'http://www.ffxidb.com/',

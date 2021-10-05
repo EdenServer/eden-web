@@ -8,21 +8,18 @@ export default ({ name, stack }) => {
   const [ah, setAh] = React.useState(null);
 
   const fetchAh = () => {
-    apiUtil.get(
-      { url: `/api/v1/items/${name}/ah?stack=${stack}` },
-      async (error, res) => {
-        try {
-          if (!error && res.status === 200) {
-            setAh(await res.json());
-            setError(false);
-          } else {
-            setError(true);
-          }
-        } catch (error) {
+    apiUtil.get({ url: `/api/v1/items/${name}/ah?stack=${stack}` }, async (error, res) => {
+      try {
+        if (!error && res.status === 200) {
+          setAh(await res.json());
+          setError(false);
+        } else {
           setError(true);
         }
+      } catch (error) {
+        setError(true);
       }
-    );
+    });
   };
 
   const fetchMemoizedAh = React.useCallback(fetchAh);
@@ -63,14 +60,10 @@ export default ({ name, stack }) => {
             <Table.Row key={`ah_history_${i}`}>
               <Table.Cell>{`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}</Table.Cell>
               <Table.Cell>
-                <Link to={`/tools/player/${history.seller_name}`}>
-                  {history.seller_name}
-                </Link>
+                <Link to={`/tools/player/${history.seller_name}`}>{history.seller_name}</Link>
               </Table.Cell>
               <Table.Cell>
-                <Link to={`/tools/player/${history.buyer_name}`}>
-                  {history.buyer_name}
-                </Link>
+                <Link to={`/tools/player/${history.buyer_name}`}>{history.buyer_name}</Link>
               </Table.Cell>
               <Table.Cell>{`${history.sale.toLocaleString()}g`}</Table.Cell>
             </Table.Row>

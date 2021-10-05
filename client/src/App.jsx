@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faNewspaper,
-  faDesktop,
-  faWrench,
-  faLink,
-  faGavel,
-  faInfoCircle,
-  faHome,
-} from '@fortawesome/free-solid-svg-icons';
+import { faNewspaper, faDesktop, faWrench, faLink, faGavel, faInfoCircle, faHome } from '@fortawesome/free-solid-svg-icons';
 import * as api from './api';
 
 import LandingPage from './components/page';
@@ -116,20 +108,10 @@ class App extends Component {
         <SiteNavbar links={links} />
         {config && Object.keys(config).length === 0 && (
           <div className="alert alert-warning m-0 text-center">
-            <span>
-              Website tools are currently down. Please check again later.
-            </span>
+            <span>Website tools are currently down. Please check again later.</span>
           </div>
         )}
-        <div className="gm_content my-3">
-          {ready && (
-            <LandingPage
-              config={config}
-              apiNoResponse={apiNoResponse}
-              className="h-100"
-            />
-          )}
-        </div>
+        <div className="gm_content my-3">{ready && <LandingPage config={config} apiNoResponse={apiNoResponse} className="h-100" />}</div>
         <SiteFooter className="mt-5" />
       </div>
     );

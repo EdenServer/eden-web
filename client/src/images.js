@@ -264,25 +264,18 @@ export default {
   item: itemid => `https://static.ffxiah.com/images/icon/${itemid}.png`,
   equipslot: slotid => `https://static.ffxiah.com/images/eq${slotid}.gif`,
   flags: {
-    sandoria:
-      'https://vignette.wikia.nocookie.net/ffxi/images/2/2f/Ffxi_flg_03l.jpg',
-    bastok:
-      'https://vignette.wikia.nocookie.net/ffxi/images/0/07/Ffxi_flg_01l.jpg',
-    windurst:
-      'https://vignette.wikia.nocookie.net/ffxi/images/b/bf/Ffxi_flg_04l.jpg',
+    sandoria: 'https://vignette.wikia.nocookie.net/ffxi/images/2/2f/Ffxi_flg_03l.jpg',
+    bastok: 'https://vignette.wikia.nocookie.net/ffxi/images/0/07/Ffxi_flg_01l.jpg',
+    windurst: 'https://vignette.wikia.nocookie.net/ffxi/images/b/bf/Ffxi_flg_04l.jpg',
   },
   weather: {
     fire: 'https://vignette.wikia.nocookie.net/ffxi/images/2/2c/Trans_Fire.gif',
     ice: 'https://vignette.wikia.nocookie.net/ffxi/images/c/ca/Trans_Ice.gif',
     wind: 'https://vignette.wikia.nocookie.net/ffxi/images/e/e6/Trans_Wind.gif',
-    earth:
-      'https://vignette.wikia.nocookie.net/ffxi/images/7/7d/Trans_Earth.gif',
-    thunder:
-      'https://vignette.wikia.nocookie.net/ffxi/images/5/5c/Trans_Lightning.gif',
-    water:
-      'https://vignette.wikia.nocookie.net/ffxi/images/0/0a/Trans_Water.gif',
-    light:
-      'https://vignette.wikia.nocookie.net/ffxi/images/a/a2/Trans_Light.gif',
+    earth: 'https://vignette.wikia.nocookie.net/ffxi/images/7/7d/Trans_Earth.gif',
+    thunder: 'https://vignette.wikia.nocookie.net/ffxi/images/5/5c/Trans_Lightning.gif',
+    water: 'https://vignette.wikia.nocookie.net/ffxi/images/0/0a/Trans_Water.gif',
+    light: 'https://vignette.wikia.nocookie.net/ffxi/images/a/a2/Trans_Light.gif',
     dark: 'https://vignette.wikia.nocookie.net/ffxi/images/d/de/Trans_Dark.gif',
   },
 };

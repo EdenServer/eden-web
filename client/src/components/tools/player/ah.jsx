@@ -5,19 +5,11 @@ import apiUtil from '../../../apiUtil';
 
 const formatItem = (itemname, stacksize) => {
   return (
-    <Link
-      to={
-        `/tools/item/${encodeURIComponent(itemname)}` +
-        (parseInt(stacksize) > 1 ? `?stack=true` : ``)
-      }
-    >
+    <Link to={`/tools/item/${encodeURIComponent(itemname)}` + (parseInt(stacksize) > 1 ? `?stack=true` : ``)}>
       {itemname
         .split('_')
         .map(string => {
-          return `${string.substr(0, 1).toUpperCase()}${string.substr(
-            1,
-            string.length
-          )}`;
+          return `${string.substr(0, 1).toUpperCase()}${string.substr(1, string.length)}`;
         })
         .join(' ') + (parseInt(stacksize) > 1 ? ` x${stacksize}` : '')}
     </Link>
@@ -81,15 +73,9 @@ export default ({ name }) => {
           return (
             <Table.Row key={`ah_history_${i}`}>
               <Table.Cell>{`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}</Table.Cell>
-              <Table.Cell>
-                {formatItem(history.name, history.stack_size)}
-              </Table.Cell>
-              <Table.Cell>
-                {formatPlayerLink(name, history.seller_name)}
-              </Table.Cell>
-              <Table.Cell>
-                {formatPlayerLink(name, history.buyer_name)}
-              </Table.Cell>
+              <Table.Cell>{formatItem(history.name, history.stack_size)}</Table.Cell>
+              <Table.Cell>{formatPlayerLink(name, history.seller_name)}</Table.Cell>
+              <Table.Cell>{formatPlayerLink(name, history.buyer_name)}</Table.Cell>
               <Table.Cell>{`${history.sale.toLocaleString()}g`}</Table.Cell>
             </Table.Row>
           );
