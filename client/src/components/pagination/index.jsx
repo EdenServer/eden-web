@@ -8,12 +8,7 @@ const options = [
   { text: '250', value: 250 },
 ];
 
-export default ({
-  extra,
-  results = 0,
-  perPageDefault = 10,
-  changePage = () => {},
-}) => {
+export default ({ extra, results = 0, perPageDefault = 10, changePage = () => {} }) => {
   if (results === 0) {
     return null;
   }
@@ -49,14 +44,7 @@ export default ({
         onPageChange={updateActivePage}
       />
       <div className="eden_pagination-dropdown">
-        Displaying{' '}
-        <Dropdown
-          inline
-          options={options}
-          onChange={updatePerPage}
-          defaultValue={perPage}
-        />{' '}
-        results per page
+        Displaying <Dropdown inline options={options} onChange={updatePerPage} defaultValue={perPage} /> results per page
       </div>
     </>
   );

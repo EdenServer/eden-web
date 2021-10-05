@@ -9,12 +9,7 @@ import OnlineList from './tools/OnlineList';
 import YellTab from './tools/YellTab';
 
 const TabItem = ({ to, activeTab, disabled = false, children }) => (
-  <Menu.Item
-    as={disabled ? undefined : Link}
-    to={disabled ? undefined : to}
-    active={to === activeTab}
-    disabled={disabled}
-  >
+  <Menu.Item as={disabled ? undefined : Link} to={disabled ? undefined : to} active={to === activeTab} disabled={disabled}>
     {children}
   </Menu.Item>
 );

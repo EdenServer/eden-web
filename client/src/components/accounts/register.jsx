@@ -47,22 +47,14 @@ export default ({ error, register, changePage, verify, verified }) => {
         <Form.Input error={!!error.confirmEmail} {...confirmEmail} />
       </Form.Group>
       <Form.Field>
-        <Button
-          floated="right"
-          primary
-          disabled={!verified}
-          onClick={() => register(inputGroup)}
-        >
+        <Button floated="right" primary disabled={!verified} onClick={() => register(inputGroup)}>
           Register
         </Button>
         <Button size="mini" basic onClick={changePage}>
           Existing Account
         </Button>
       </Form.Field>
-      <Reaptcha
-        sitekey="6LdRetoUAAAAADZCMb3UVu28kka1IDVTeZLTWY3w"
-        onVerify={key => verify(key)}
-      />
+      <Reaptcha sitekey="6LdRetoUAAAAADZCMb3UVu28kka1IDVTeZLTWY3w" onVerify={key => verify(key)} />
     </Form>
   );
 };

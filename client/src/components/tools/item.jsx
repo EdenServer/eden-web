@@ -1,14 +1,6 @@
 import { Link } from '@reach/router';
 import React from 'react';
-import {
-  Accordion,
-  Button,
-  Header,
-  Icon,
-  Image,
-  Loader,
-  Segment,
-} from 'semantic-ui-react';
+import { Accordion, Button, Header, Icon, Image, Loader, Segment } from 'semantic-ui-react';
 import apiUtil from '../../apiUtil';
 import images from '../../images';
 import Ah from './item/ah';
@@ -21,69 +13,21 @@ import owner from '../../owner';
 const charToElement = (char, line, i) => {
   switch (char) {
     case '':
-      return (
-        <img
-          key={`desc_ln_${line}_pos_${i}`}
-          alt="fire"
-          src={images.weather.fire}
-        />
-      );
+      return <img key={`desc_ln_${line}_pos_${i}`} alt="fire" src={images.weather.fire} />;
     case '':
-      return (
-        <img
-          key={`desc_ln_${line}_pos_${i}`}
-          alt="ice"
-          src={images.weather.ice}
-        />
-      );
+      return <img key={`desc_ln_${line}_pos_${i}`} alt="ice" src={images.weather.ice} />;
     case '':
-      return (
-        <img
-          key={`desc_ln_${line}_pos_${i}`}
-          alt="wind"
-          src={images.weather.wind}
-        />
-      );
+      return <img key={`desc_ln_${line}_pos_${i}`} alt="wind" src={images.weather.wind} />;
     case '':
-      return (
-        <img
-          key={`desc_ln_${line}_pos_${i}`}
-          alt="earth"
-          src={images.weather.earth}
-        />
-      );
+      return <img key={`desc_ln_${line}_pos_${i}`} alt="earth" src={images.weather.earth} />;
     case '':
-      return (
-        <img
-          key={`desc_ln_${line}_pos_${i}`}
-          alt="thunder"
-          src={images.weather.thunder}
-        />
-      );
+      return <img key={`desc_ln_${line}_pos_${i}`} alt="thunder" src={images.weather.thunder} />;
     case '':
-      return (
-        <img
-          key={`desc_ln_${line}_pos_${i}`}
-          alt="water"
-          src={images.weather.water}
-        />
-      );
+      return <img key={`desc_ln_${line}_pos_${i}`} alt="water" src={images.weather.water} />;
     case '':
-      return (
-        <img
-          key={`desc_ln_${line}_pos_${i}`}
-          alt="light"
-          src={images.weather.light}
-        />
-      );
+      return <img key={`desc_ln_${line}_pos_${i}`} alt="light" src={images.weather.light} />;
     case '':
-      return (
-        <img
-          key={`desc_ln_${line}_pos_${i}`}
-          alt="dark"
-          src={images.weather.dark}
-        />
-      );
+      return <img key={`desc_ln_${line}_pos_${i}`} alt="dark" src={images.weather.dark} />;
     default:
   }
 
@@ -97,18 +41,10 @@ const descriptionWithElements = (description, line) => {
   for (let i = 0; i < description.length; i++) {
     const isElement = elements.test(description[i]);
     if (i === description.length - 1) {
-      render.push(
-        <span key={`desc_ln_${line}_pos_${i + 1}`}>
-          {description.slice(lastStop, i + 1)}
-        </span>
-      );
+      render.push(<span key={`desc_ln_${line}_pos_${i + 1}`}>{description.slice(lastStop, i + 1)}</span>);
     } else if (isElement) {
       if (i !== lastStop) {
-        render.push(
-          <span key={`desc_ln_${line}_pos_${i + 1}`}>
-            {description.slice(lastStop, i)}
-          </span>
-        );
+        render.push(<span key={`desc_ln_${line}_pos_${i + 1}`}>{description.slice(lastStop, i)}</span>);
       }
       render.push(charToElement(description[i], line, i));
       lastStop = i + 1;
@@ -132,13 +68,10 @@ export default ({ history, itemname, setLoading }) => {
     if (!itemname) return;
 
     setLoading(true);
-    apiUtil.get(
-      { url: `/api/v1/items/${itemname}`, json: true },
-      (error, data) => {
-        setItem(data);
-        setLoading(false);
-      }
-    );
+    apiUtil.get({ url: `/api/v1/items/${itemname}`, json: true }, (error, data) => {
+      setItem(data);
+      setLoading(false);
+    });
   };
 
   const fetchMemoizedItem = React.useCallback(fetchItem);
@@ -167,14 +100,7 @@ export default ({ history, itemname, setLoading }) => {
             {item.name}
           </div>
           {item.stackable && (
-            <Button
-              as={Link}
-              to={`/tools/item/${encodeURIComponent(
-                item.key
-              )}?stack=${!isStack}`}
-              circular
-              color="teal"
-            >
+            <Button as={Link} to={`/tools/item/${encodeURIComponent(item.key)}?stack=${!isStack}`} circular color="teal">
               <Icon name={!isStack ? 'boxes' : 'box'} />
               {!isStack ? 'Show Stacks' : 'Show Singles'}
             </Button>

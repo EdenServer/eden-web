@@ -1,13 +1,6 @@
 const { Router } = require('express');
 
-const {
-  getCharCrafts,
-  getCharEquip,
-  getCharBazaar,
-  getCharAH,
-  getCharData,
-  fetchChars,
-} = require('./utils/chars');
+const { getCharCrafts, getCharEquip, getCharBazaar, getCharAH, getCharData, fetchChars } = require('./utils/chars');
 
 const router = Router();
 

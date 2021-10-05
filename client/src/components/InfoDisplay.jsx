@@ -13,9 +13,7 @@ function InfoDisplay(props) {
         </Card.Header>
       )}
       <Card.Body>{children}</Card.Body>
-      {footer && (
-        <Card.Footer className="text-muted text-right">{footer}</Card.Footer>
-      )}
+      {footer && <Card.Footer className="text-muted text-right">{footer}</Card.Footer>}
     </Card>
   );
 }

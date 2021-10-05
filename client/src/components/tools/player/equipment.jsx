@@ -13,11 +13,7 @@ const emptySlot = slotid => (
 const itemSlot = equip => (
   <div title={equip.name} className="equipslot">
     <Link to={`/tools/item/${encodeURIComponent(equip.name)}`}>
-      <img
-        alt={`eq${equip.equipslotid}`}
-        src={images.item(equip.itemid)}
-        className="icon"
-      />
+      <img alt={`eq${equip.equipslotid}`} src={images.item(equip.itemid)} className="icon" />
     </Link>
   </div>
 );
@@ -47,39 +43,14 @@ export default ({ name, job, ranks, callback }) => {
   React.useEffect(fetchEquip, [name]);
 
   if (error) {
-    return (
-      <Button
-        circular
-        color="orange"
-        compact
-        icon="refresh"
-        onClick={fetchEquip}
-      />
-    );
+    return <Button circular color="orange" compact icon="refresh" onClick={fetchEquip} />;
   }
 
   if (!equip) {
     return <Loader active inline />;
   }
 
-  const {
-    main,
-    sub,
-    ranged,
-    ammo,
-    head,
-    body,
-    hands,
-    legs,
-    feet,
-    neck,
-    waist,
-    ear1,
-    ear2,
-    ring1,
-    ring2,
-    back,
-  } = equip;
+  const { main, sub, ranged, ammo, head, body, hands, legs, feet, neck, waist, ear1, ear2, ring1, ring2, back } = equip;
   return (
     <div className="eden_equip-section">
       <div className="player-equipbox">
@@ -101,19 +72,11 @@ export default ({ name, job, ranks, callback }) => {
         {feet.itemid ? itemSlot(feet) : emptySlot(16)}
       </div>
       <span className="eden_player-nations">
-        <img
-          className="eden_player-nation"
-          alt=""
-          src={images.flags.sandoria}
-        />
+        <img className="eden_player-nation" alt="" src={images.flags.sandoria} />
         {ranks.sandoria}
         <img className="eden_player-nation" alt="" src={images.flags.bastok} />
         {ranks.bastok}
-        <img
-          className="eden_player-nation"
-          alt=""
-          src={images.flags.windurst}
-        />
+        <img className="eden_player-nation" alt="" src={images.flags.windurst} />
         {ranks.windurst}
       </span>
       <p className="eden_player-job">{job}</p>

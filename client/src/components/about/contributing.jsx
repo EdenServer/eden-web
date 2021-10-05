@@ -29,11 +29,7 @@ function Contributing() {
   return (
     <Card>
       <Card.Header>
-        <Nav
-          variant="Tabs"
-          onSelect={k => setActiveKey(k)}
-          activeKey={activeKey}
-        >
+        <Nav variant="Tabs" onSelect={k => setActiveKey(k)} activeKey={activeKey}>
           <Nav.Item>
             <Nav.Link eventKey="setup" href="#setting-up-dsp">
               Setting up DSP

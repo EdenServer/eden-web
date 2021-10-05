@@ -17,19 +17,16 @@ function install(props) {
               <a href={info.source1} rel="noopener noreferrer" target="_blank">
                 download the Eden Installer v5.0
               </a>
-              &nbsp; to connect to Eden. You do not need to install retail FFXI
-              first—this install will take care of everything.
+              &nbsp; to connect to Eden. You do not need to install retail FFXI first—this install will take care of everything.
             </Card.Text>
             <Card.Text>
-              The files included in this installer were downloaded directly from
-              SQUARE ENIX CO., LTD&apos;s freely distributed client. If the
-              first link is full you can use the&nbsp;
+              The files included in this installer were downloaded directly from SQUARE ENIX CO., LTD&apos;s freely distributed client. If the first link is
+              full you can use the&nbsp;
               <a href={info.source2} rel="noopener noreferrer" target="_blank">
                 alternative download
               </a>
-              . After setup completes, verify that{' '}
-              <b>--server play.edenxi.com --hairpin</b> appears in your Ashita
-              profile, and then move to the Account Registration section below.
+              . After setup completes, verify that <b>--server play.edenxi.com --hairpin</b> appears in your Ashita profile, and then move to the Account
+              Registration section below.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -39,15 +36,13 @@ function install(props) {
         <Col>
           <InfoDisplay title="Account Registration">
             <Card.Text>
-              The bootloader (black login screen) supports registering an
-              account. Registration requires a 7-digit code that can be obtained
-              from existing players who have accumulated 120 hours (5 days) of
-              playtime and main job is level 15 or greater. The easiest way to
-              get a registration code is to join&nbsp;
+              The bootloader (black login screen) supports registering an account. Registration requires a 7-digit code that can be obtained from existing
+              players who have accumulated 120 hours (5 days) of playtime and main job is level 15 or greater. Make sure you have Eden completely installed
+              before requesting one. The easiest wa;y to get a registration code is to join
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord
               </a>
-              &nbsp; and then ask in the #new-players channel.
+              and then request a code in the #new-players channel.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -55,41 +50,26 @@ function install(props) {
 
       <Row className="mt-3">
         <Col>
-          <InfoDisplay
-            title="Coming back / migrating from another private server"
-            className="mt-3"
-          >
+          <InfoDisplay title="Coming back / migrating from another private server" className="mt-3">
             <Card.Text>
-              You will need to download&nbsp;
-              <a
-                href={info.bootloader}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              You will need to download
+              <a href={info.bootloader} rel="noopener noreferrer" target="_blank">
                 our modified bootloader
               </a>
-              &nbsp; if your client version is older than our 5.0 installer. You
-              may want to visit our tech-support channel on&nbsp;
+              if your client version is older than our 5.0 installer. You may want to visit our tech-support channel on
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord server
               </a>
-              &nbsp; if you&apos;re having trouble.
+              if you're having trouble.
             </Card.Text>
 
             <ul>
-              <li>
-                You can run the bootloader by itself to play on Eden, but
-                suggested use is with Ashita.
-              </li>
+              <li>You can run the bootloader by itself to play on Eden, but suggested use is with Ashita.</li>
+
+              <li>We do not officially support Windower, but you may find some help getting it set up in our tech-support Discord channel.</li>
 
               <li>
-                We do not officially support Windower, but you may find some
-                help getting it set up in our tech-support Discord channel.
-              </li>
-
-              <li>
-                Move <b>edenxi.exe</b> to your Ashita <b>ffxi-bootmod</b>&nbsp;
-                directory. The default folder for this is&nbsp;
+                Move <b>edenxi.exe</b> to your Ashita <b>ffxi-bootmod</b>&nbsp; directory. The default folder for this is&nbsp;
                 <b>~\\Program Files (x86)\PlayOnline\Ashita\ffxi-bootmod</b>
               </li>
 
@@ -97,23 +77,18 @@ function install(props) {
                 DO NOT rename <b>edenxi.exe</b> or it will not work.
               </li>
 
-              <li>
-                Open your Ashita configuration, by right-clicking a profile and
-                then clicking &quot;Edit configuration&quot;.
-              </li>
+              <li>Open your Ashita configuration, by right-clicking a profile and then clicking &quot;Edit configuration&quot;.</li>
 
               <li>
                 In the File section you may see something like&nbsp;
-                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed
-                to&nbsp;
+                <b>.\\ffxi-bootmod\\pol.exe</b>. Ensure that this is changed to&nbsp;
                 <b>.\\ffxi-bootmod\\edenxi.exe</b>
               </li>
 
               <li>
                 Command should include <b>--server play.edenxi.com --hairpin</b>
                 &nbsp; and may optionally include&nbsp;
-                <b>--user MYUSERNAME --pass MYPASSWORD</b> arguments so that you
-                can automatically login.
+                <b>--user MYUSERNAME --pass MYPASSWORD</b> arguments so that you can automatically login.
               </li>
             </ul>
           </InfoDisplay>

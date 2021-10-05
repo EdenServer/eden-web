@@ -16,12 +16,7 @@ const Recipe = ({ recipe, index }) => {
   return (
     <Card>
       <Card.Content>
-        <Image
-          className="gm_image-spacer"
-          floated="right"
-          size="mini"
-          src={images.item(recipe.crystal)}
-        />
+        <Image className="gm_image-spacer" floated="right" size="mini" src={images.item(recipe.crystal)} />
         <Card.Header>{`${recipe.requirements[0].name} (${recipe.requirements[0].level})`}</Card.Header>
         {requirements.length > 1 && (
           <Card.Meta>
@@ -35,9 +30,7 @@ const Recipe = ({ recipe, index }) => {
             <List.Item key={`ing_${index}_${i}`}>
               <List.Content>
                 <Image src={images.item(ingredient.itemid)} />
-                {`${formatString(ingredient.name)} ${
-                  ingredient.count === 1 ? '' : `(${ingredient.count})`
-                }`}
+                {`${formatString(ingredient.name)} ${ingredient.count === 1 ? '' : `(${ingredient.count})`}`}
               </List.Content>
             </List.Item>
           ))}
@@ -50,9 +43,7 @@ const Recipe = ({ recipe, index }) => {
               <List.Content>
                 {`${result.type === 'Normal' ? 'NQ' : result.type}: `}
                 <Image src={images.item(result.itemid)} />
-                {`${formatString(result.name)} ${
-                  result.count === 1 ? '' : `(${result.count})`
-                }`}
+                {`${formatString(result.name)} ${result.count === 1 ? '' : `(${result.count})`}`}
               </List.Content>
             </List.Item>
           ))}

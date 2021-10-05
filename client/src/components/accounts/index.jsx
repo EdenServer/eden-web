@@ -106,8 +106,7 @@ class Account extends React.Component {
     });
 
     if (info.username.length < 6 || info.username.length > 15) {
-      errors.username =
-        'Your username should have between 6 and 15 characters.';
+      errors.username = 'Your username should have between 6 and 15 characters.';
     } else {
       delete errors.username;
     }
@@ -117,8 +116,7 @@ class Account extends React.Component {
       delete errors.confirmUsername;
     }
     if (info.password.length < 6) {
-      errors.password =
-        'Your password should have between 6 and 15 characters.';
+      errors.password = 'Your password should have between 6 and 15 characters.';
     } else {
       delete errors.password;
     }
@@ -128,8 +126,7 @@ class Account extends React.Component {
       delete errors.confirmPassword;
     }
     if (!emailRegex.test(info.email)) {
-      errors.email =
-        'Please enter a valid email. This is used to recover your account if lost.';
+      errors.email = 'Please enter a valid email. This is used to recover your account if lost.';
     } else {
       delete errors.email;
     }
@@ -178,28 +175,12 @@ class Account extends React.Component {
 
     if (!authorized) {
       if (signup) {
-        return (
-          <Register
-            register={this.register}
-            error={error}
-            changePage={this.changePage}
-            verify={this.verify}
-            verified={verify}
-          />
-        );
+        return <Register register={this.register} error={error} changePage={this.changePage} verify={this.verify} verified={verify} />;
       }
-      return (
-        <Login
-          login={this.login}
-          error={Object.keys(error).length > 0}
-          changePage={this.changePage}
-        />
-      );
+      return <Login login={this.login} error={Object.keys(error).length > 0} changePage={this.changePage} />;
     }
 
-    return (
-      <Profile reload={this.fetchProfile} user={profile} logout={this.logout} />
-    );
+    return <Profile reload={this.fetchProfile} user={profile} logout={this.logout} />;
   }
 }
 

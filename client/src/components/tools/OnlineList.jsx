@@ -17,17 +17,9 @@ const OnlineTableHeader = () => (
 );
 
 const PlayerRow = ({ player }) => (
-  <Table.Row
-    className="gm_clickable"
-    onClick={() => navigate(`/tools/player/${player.charname}`)}
-  >
+  <Table.Row className="gm_clickable" onClick={() => navigate(`/tools/player/${player.charname}`)}>
     <Table.Cell>
-      <Image
-        rounded
-        className="gm_online-avatar"
-        size="mini"
-        src={images.avatar(player.avatar)}
-      />
+      <Image rounded className="gm_online-avatar" size="mini" src={images.avatar(player.avatar)} />
     </Table.Cell>
     <Table.Cell>{player.charname}</Table.Cell>
     <Table.Cell>{player.jobString}</Table.Cell>
@@ -56,8 +48,7 @@ class OnlineList extends React.PureComponent {
         json: true,
       },
       (error, data) => {
-        if (!error)
-          this.setState({ players: Object.values(data.chars), loading: false });
+        if (!error) this.setState({ players: Object.values(data.chars), loading: false });
       }
     );
   }
@@ -82,17 +73,12 @@ class OnlineList extends React.PureComponent {
     return (
       <Segment className="gm_tools-container">
         <Segment>
-          <Icon name="power off" color={status === true ? 'green' : 'red'} />{' '}
-          Eden is {status === true ? 'online' : 'offline'}
+          <Icon name="power off" color={status === true ? 'green' : 'red'} /> Eden is {status === true ? 'online' : 'offline'}
         </Segment>
 
         <Segment.Group className="gm_online-count" raised>
           <Segment>{online} Characters Online</Segment>
-          <Pagination
-            perPageDefault={10}
-            results={parseInt(online, 10)}
-            changePage={this.fetchChars}
-          />
+          <Pagination perPageDefault={10} results={parseInt(online, 10)} changePage={this.fetchChars} />
 
           <Segment>
             <Table selectable>
@@ -102,20 +88,12 @@ class OnlineList extends React.PureComponent {
                 {loading && (
                   <Table.Row>
                     <Table.Cell colSpan="3">
-                      <Loader
-                        active={loading}
-                        centered="true"
-                        inline
-                        style={{ width: '100%' }}
-                      />
+                      <Loader active={loading} centered="true" inline style={{ width: '100%' }} />
                     </Table.Cell>
                   </Table.Row>
                 )}
 
-                {!loading &&
-                  players.map((player, idx) => (
-                    <PlayerRow key={idx} player={player} />
-                  ))}
+                {!loading && players.map((player, idx) => <PlayerRow key={idx} player={player} />)}
               </Table.Body>
             </Table>
           </Segment>

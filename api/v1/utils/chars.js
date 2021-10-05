@@ -312,10 +312,7 @@ const getCharData = async (query, charname) => {
   }
 };
 
-const fetchChars = async (
-  query,
-  { search = '', limit = 500, online = false, offset = 0 }
-) => {
+const fetchChars = async (query, { search = '', limit = 500, online = false, offset = 0 }) => {
   try {
     const total = await query(
       `SELECT COUNT(*) AS ct FROM chars
@@ -331,12 +328,7 @@ const fetchChars = async (
             LEFT JOIN accounts ON chars.accid = accounts.id
             WHERE chars.deleted IS NULL AND gmlevel = 0 AND charname LIKE ? AND status < 5
             HAVING isOnline IN (1,?) ORDER BY chars.charname ASC LIMIT ? OFFSET ?;`;
-    const results = await query(statement, [
-      `${search}%`,
-      online ? 1 : 0,
-      limit,
-      offset,
-    ]);
+    const results = await query(statement, [`${search}%`, online ? 1 : 0, limit, offset]);
     return {
       total: total[0].ct,
       chars: results.map(char => ({

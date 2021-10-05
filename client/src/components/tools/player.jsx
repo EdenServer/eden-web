@@ -63,12 +63,7 @@ export default ({ charname, setLoading, setSearch }) => {
         <div className="gm_player-header">
           <div className="gm_player-header-left">
             <span className="gm_item-name">
-              <Image
-                className="gm_image-spacer"
-                size="mini"
-                rounded
-                src={images.avatar(player.avatar)}
-              />
+              <Image className="gm_image-spacer" size="mini" rounded src={images.avatar(player.avatar)} />
               {player.name}
             </span>
             <span className="gm_player-title">{player.title}</span>
@@ -86,12 +81,7 @@ export default ({ charname, setLoading, setSearch }) => {
         </div>
       </Header>
       <div className="eden_profile-content">
-        <Equipment
-          name={player.name}
-          job={player.jobString}
-          ranks={player.ranks}
-          callback={setEquip}
-        />
+        <Equipment name={player.name} job={player.jobString} ranks={player.ranks} callback={setEquip} />
         <Jobs {...player.jobs} />
         <Crafts name={player.name} />
       </div>

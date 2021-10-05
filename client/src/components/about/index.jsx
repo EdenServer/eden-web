@@ -9,39 +9,21 @@ const About = () => {
     <>
       <Row className="mb-3">
         <Col>
-          <InfoDisplay
-            title={
-              "What's Different between Eden, other private servers, and retail?"
-            }
-          >
+          <InfoDisplay title={"What's Different between Eden, other private servers, and retail?"}>
             <Card.Text>
-              Eden was created in part to recreate the era experience as close
-              as possible. We define era as anything that happened before the
-              Wings of the Goddess release on November 20th, 2007. While FFXI is
-              still a great game today, it is vastly different than it was in
-              2007. We don't aim to take the place of retail today, and we
-              encourage you to subscribe to it, if nothing else to finish the
-              amazing storyline.
+              Eden was created in part to recreate the era experience as close as possible. We define era as anything that happened before the Wings of the
+              Goddess release on November 20th, 2007. While FFXI is still a great game today, it is vastly different than it was in 2007. We don't aim to take
+              the place of retail today, and we encourage you to subscribe to it, if nothing else to finish the amazing storyline.
             </Card.Text>
             <Card.Text>
-              Many past players of FFXI long for the days of a cooperative
-              environment where "quality of life" was an afterthought. Because
-              there is no classic solution from SQUARE ENIX CO., LTD, Eden was
-              created to fill that desire. Our vision is to recreate the 2007
-              era experience as closely as possible with as very few deviations
-              as possible.
+              Many past players of FFXI long for the days of a cooperative environment where "quality of life" was an afterthought. Because there is no classic
+              solution from SQUARE ENIX CO., LTD, Eden was created to fill that desire. Our vision is to recreate the 2007 era experience as closely as possible
+              with as few deviations as possible.
             </Card.Text>
             <Card.Text>
-              While all private servers have some deviation from era retail, we
-              believe that the other private servers that we have encountered
-              are full of customizations and/or are just too far from era
-              accuracy. We also have a large volunteer staff of about 30 people
-              that help us keep Eden running smooth.
-            </Card.Text>
-            <Card.Text>
-              Due to abuse, Eden has implemented a few customizations to prevent
-              what we consider attacks that disrupt player experience. Read on
-              to learn more about them.
+              While all private servers have some deviation from era retail, we strive to be as close to possible, and as such do extensive research on
+              everything before implementing it. This includes everything from mob behavior, damage calculations, and magic hit rate, to having each individual
+              battle and event be as close as possible to the true era experience.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -51,8 +33,8 @@ const About = () => {
         <Col>
           <InfoDisplay title="How has Eden deviated from retail?">
             <Card.Text>
-              There are a small handful of deviations from this though and
-              that's what is going to be highlighed below.
+              While our ultimate goal is to mimic era as closely as possible, there are a handful of deviations from era highlighted below. These items are
+              subject to change as the playerbase and game evolves.
             </Card.Text>
             <table className="ui celled table">
               <thead>
@@ -64,51 +46,41 @@ const About = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>PUP has a B- in h2h rating</td>
+                  <td>PUP has a B in h2h rating</td>
                   <td>PUP has a C+ in h2h rating</td>
                   <td>balancing</td>
                 </tr>
                 <tr>
-                  <td>Astral Ring obtained from Castle Oztroja coffer</td>
-                  <td>Astral Ring obtained from BCNM</td>
+                  <td>PUP Automatons have retail magic casting AI which gives them a recast timer for each magic type</td>
+                  <td>The PUP's Automaton had a shared recast timer for all magic types.</td>
+                  <td>balance</td>
+                </tr>
+                <tr>
+                  <td>The auction house has unlimited listings, is shared across all areas and items expire after 30 real life days</td>
+                  <td>The auction house is limited to 7 listings, had distinct AHs per city/region, and items expire after 3 real life days</td>
                   <td>economy</td>
                 </tr>
                 <tr>
-                  <td>
-                    The auction house has unlimited listings and items expire
-                    after 90 real life days
-                  </td>
-                  <td>
-                    The auction house is limited to 7 listings and items expire
-                    after 3 real life days
-                  </td>
-                  <td>economy</td>
-                </tr>
-                <tr>
-                  <td>
-                    Beastmen pet exp scales with the number of players in party
-                    and spheroids award vastly reduced exp
-                  </td>
-                  <td>
-                    Beastmen pet exp does not scale with the number of players
-                    in party and spheroids award an unknown amount of exp
-                  </td>
+                  <td>5/5 Category 2 merits available.</td>
+                  <td>3/5 Category 2 merits available.</td>
                   <td>balancing</td>
                 </tr>
                 <tr>
                   <td>
-                    Wardrobe 1 is awarded by talking to your Moogle after
-                    attaining Rank 3 and Wardrobe 2 by talking to your Moogle
-                    after attaining Rank 6
+                    Wardrobe 1 is awarded by talking to your Moogle after attaining Rank 3, Wardrobe 2 by talking to your Moogle after attaining Rank 6, and
+                    Wardrobe 3 is unlocked by completing Apocalpyse Nigh.
                   </td>
-                  <td>Wardrobe 1 and Wardrobe 2 did not exist</td>
+                  <td>Wardrobes were not available.</td>
                   <td>economy</td>
                 </tr>
                 <tr>
                   <td>Some Ores/Logs/Hides/Beastman armor et. cetera stack</td>
-                  <td>
-                    Some Ores/Logs/Hides/Beastman armor et. cetera did not stack
-                  </td>
+                  <td>Some Ores/Logs/Hides/Beastman armor et. cetera did not stack</td>
+                  <td>economy</td>
+                </tr>
+                <tr>
+                  <td>Power leveling dirties exp if the PL draws hate</td>
+                  <td>Power leveling did not dirty exp.</td>
                   <td>economy</td>
                 </tr>
                 <tr>
@@ -117,51 +89,23 @@ const About = () => {
                   <td>technical limitations / cheat prevention</td>
                 </tr>
                 <tr>
-                  <td>
-                    Original difficulty CoP missions and original item flags
-                    (ex. rare/ex animas)
-                  </td>
+                  <td>Original difficulty CoP missions and original item flags (ex. rare/ex animas)</td>
                   <td>Era difficulty CoP missions and era item flags</td>
                   <td>teamwork</td>
                 </tr>
                 <tr>
-                  <td>
-                    Mobs that link automatically dirty exp to person that linked
-                  </td>
-                  <td>
-                    Mobs did not dirty exp until an action was performed on them
-                  </td>
+                  <td>Mobs that link automatically dirty exp to person that linked</td>
+                  <td>Mobs did not dirty exp until an action was performed on them</td>
                   <td>teamwork</td>
                 </tr>
                 <tr>
-                  <td>
-                    Some mobs do not reset their window when the server is reset
-                    (list to be provided later)
-                  </td>
-                  <td>
-                    Some mobs windows would reset when a server was reset or
-                    crashed
-                  </td>
+                  <td>Some mobs do not reset their window when the server is reset</td>
+                  <td>Some mobs windows would reset when a server was reset or crashed</td>
                   <td>economy</td>
                 </tr>
                 <tr>
-                  <td>
-                    Alkyoneus, Pallas, Sozu Rogberry and Ullikummi are lottery
-                    pops
-                  </td>
-                  <td>
-                    Alkyoneus, Pallas, Sozu Rogberry and Ullikummi are forced
-                    pops
-                  </td>
-                  <td>economy</td>
-                </tr>
-                <tr>
-                  <td>
-                    High profile mobs drop the non rare/ex versions of items
-                  </td>
-                  <td>
-                    High profile mobs drop rare/ex items of the BCNM equvilent
-                  </td>
+                  <td>Ranged att/acc adj</td>
+                  <td>Some mobs windows would reset when a server was reset or crashed</td>
                   <td>economy</td>
                 </tr>
                 <tr>
@@ -184,18 +128,13 @@ const About = () => {
         <Col>
           <InfoDisplay title="How can I help?">
             <Card.Text>
-              There are several ways to help. You can fill out{' '}
-              <a href="https://github.com/EdenServer/community/issues">
-                bug reports
-              </a>
-              , report players who are cheating by using the in-game ticketing
-              system, volunteer as a staff member, contribute code, or help out
-              in the #tech-support discord channel.
+              There are several ways to help. You can fill out <a href="https://github.com/EdenServer/community/issues">bug reports</a>, report players who are
+              cheating by using the in-game ticketing system, volunteer as a staff member or tester, contribute code, or help out in the #tech-support discord
+              channel.
             </Card.Text>
             <Card.Text>
-              Eden does not accept donations or any other form of monetary
-              contribution. Requests for real money payment should be reported
-              to any staff member via discord.
+              Eden does not accept donations or any other form of monetary contribution. Requests for real money payment should be reported to any staff member
+              via discord.
             </Card.Text>
           </InfoDisplay>
         </Col>

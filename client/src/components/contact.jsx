@@ -80,19 +80,11 @@ const Contact = () => {
         <Form.Group widths={2}>
           <Form.Field>
             <label>Character Name</label>
-            <input
-              placeholder="Character Name (optional)"
-              value={name}
-              onChange={e => setName(e.target.value)}
-            />
+            <input placeholder="Character Name (optional)" value={name} onChange={e => setName(e.target.value)} />
           </Form.Field>
           <Form.Field>
             <label>Email</label>
-            <input
-              placeholder="Email (optional)"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
+            <input placeholder="Email (optional)" value={email} onChange={e => setEmail(e.target.value)} />
           </Form.Field>
         </Form.Group>
         <Form.Field>
@@ -108,17 +100,10 @@ const Contact = () => {
         </Form.Field>
         <Form.Field>
           <label>Message</label>
-          <textarea
-            placeholder="Message (required)"
-            value={message}
-            onChange={e => setMessage(e.target.value)}
-          />
+          <textarea placeholder="Message (required)" value={message} onChange={e => setMessage(e.target.value)} />
         </Form.Field>
         <Form.Field>
-          <Reaptcha
-            sitekey="6LdRetoUAAAAADZCMb3UVu28kka1IDVTeZLTWY3w"
-            onVerify={key => setVerify(key)}
-          />
+          <Reaptcha sitekey="6LdRetoUAAAAADZCMb3UVu28kka1IDVTeZLTWY3w" onVerify={key => setVerify(key)} />
         </Form.Field>
         <Button disabled={!verify || message.length < 15} onClick={contact}>
           Submit
