@@ -48,7 +48,7 @@ const About = () => {
                 <tr>
                   <td>PUP has a B in h2h rating</td>
                   <td>PUP has a C+ in h2h rating</td>
-                  <td>balancing</td>
+                  <td>balance</td>
                 </tr>
                 <tr>
                   <td>PUP Automatons have retail magic casting AI which gives them a recast timer for each magic type</td>
@@ -63,7 +63,7 @@ const About = () => {
                 <tr>
                   <td>5/5 Category 2 merits available.</td>
                   <td>3/5 Category 2 merits available.</td>
-                  <td>balancing</td>
+                  <td>balance</td>
                 </tr>
                 <tr>
                   <td>
@@ -106,7 +106,7 @@ const About = () => {
                 <tr>
                   <td>Ranged att/acc distance correction does not exist.</td>
                   <td>Ranged attack and accuracy was dependent on distance from target and weapon/ammo.</td>
-                  <td>economy</td>
+                  <td>balance</td>
                 </tr>
                 <tr>
                   <td>Level Sync</td>
