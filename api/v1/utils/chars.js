@@ -144,10 +144,11 @@ const getCharAH = async (query, charname, limit = 10) => {
 
 const getCharBazaar = async (query, charname) => {
   try {
-    const statement = `SELECT b.name, i.bazaar FROM char_inventory AS i
+    const statement = `SELECT b.name, i.bazaar, SUM(quantity) quantity FROM char_inventory AS i
             JOIN chars AS c ON c.charid = i.charid
             JOIN item_basic AS b ON b.itemid = i.itemid
-            WHERE bazaar != 0 AND charname = ? ORDER BY b.name ASC`;
+            WHERE bazaar != 0 AND charname = ? GROUP BY name, bazaar
+            ORDER BY b.name ASC`;
     return await query(statement, [charname]);
   } catch (error) {
     console.error('Error while getting character bazaar', error);
