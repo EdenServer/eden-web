@@ -260,8 +260,9 @@ const getCharData = async (query, charname) => {
             JOIN char_look ON chars.charid = char_look.charid
             JOIN char_jobs ON chars.charid = char_jobs.charid
             JOIN char_profile ON chars.charid = char_profile.charid
+            JOIN accounts ON chars.accid = accounts.id
             LEFT JOIN accounts_sessions on chars.charid = accounts_sessions.charid
-            WHERE chars.deleted IS NULL AND gmlevel = 0 AND charname = ?;`;
+            WHERE chars.deleted IS NULL AND gmlevel = 0 AND accounts.status < 5 AND charname = ?;`;
     const response = await query(statement, [charname]);
     if (response.length === 1) {
       const char = response[0];
