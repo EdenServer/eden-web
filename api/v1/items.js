@@ -8,18 +8,22 @@ const utils = require('./utils');
 router.get('/', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
     const { search = '', limit = 10, offset = 0 } = req.query;
-    const items = Object.values(lists.items).filter(i => {
-      if (i.name.toLowerCase().indexOf(search.toLowerCase()) !== -1) {
-        if (!req.app.locals.itemKeys[i.id]) {
-          console.warn(`itemid ${i.id} does not have an entry in itemKeys`);
-          return false;
-        } else {
-          return true;
+    const items = Object.values(lists.items)
+      .filter(i => {
+        if (i.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 || i.sort.toLowerCase().indexOf(search.toLowerCase()) !== -1) {
+          if (!req.app.locals.itemKeys[i.id]) {
+            console.warn(`itemid ${i.id} does not have an entry in itemKeys`);
+            return false;
+          } else {
+            return true;
+          }
         }
-      }
 
-      return false;
-    });
+        return false;
+      })
+      .sort(function (a, b) {
+        return a.sort < b.sort ? -1 : a.sort > b.sort ? 1 : 0;
+      });
 
     return {
       total: items.length,
