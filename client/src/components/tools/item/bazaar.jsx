@@ -42,6 +42,7 @@ export default ({ name }) => {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>Seller</Table.HeaderCell>
+          <Table.HeaderCell>Quantity</Table.HeaderCell>
           <Table.HeaderCell>Price</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
@@ -57,6 +58,7 @@ export default ({ name }) => {
               />{' '}
               <Link to={`/tools/player/${sell.charname}`}>{sell.charname}</Link>
             </Table.Cell>
+            <Table.Cell>{sell.quantity}</Table.Cell>
             <Table.Cell>{`${sell.bazaar.toLocaleString()}g`}</Table.Cell>
           </Table.Row>
         ))}
