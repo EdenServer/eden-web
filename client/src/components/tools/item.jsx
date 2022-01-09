@@ -7,6 +7,7 @@ import Ah from './item/ah';
 import Bazaar from './item/bazaar';
 import Owners from './item/owners';
 import owner from '../../owner';
+import Crafts from './item/crafts'
 
 // import Crafts from './item/crafts';
 
@@ -148,8 +149,7 @@ export default ({ history, itemname, setLoading }) => {
           Crafting
         </Accordion.Title>
         <Accordion.Content active={crafts}>
-          {/* <Crafts name={item.key} /> */}
-          In Development
+          { <Crafts name={item.key} /> }
         </Accordion.Content>
       </Accordion>
     </Segment>

@@ -50,9 +50,20 @@ const loadItemKeys = async query => {
 
 const getRecipeFor = async (query, itemname) => {
   try {
-    const statement = `SELECT * FROM synth_recipes AS r
-            JOIN item_basic AS b ON r.result = b.itemid OR resultHQ1 = b.itemid OR resultHQ2 = b.itemid OR resultHQ3 = b.itemid
-            WHERE b.name = ?;`;
+    const statement = `SELECT *,
+    (SELECT name from item_basic WHERE itemid = Ingredient1) AS Ingredient1Name,
+    (SELECT name from item_basic WHERE itemid = Ingredient2) AS Ingredient2Name,
+    (SELECT name from item_basic WHERE itemid = Ingredient3) AS Ingredient3Name,
+    (SELECT name from item_basic WHERE itemid = Ingredient4) AS Ingredient4Name,
+    (SELECT name from item_basic WHERE itemid = Ingredient5) AS Ingredient5Name,
+    (SELECT name from item_basic WHERE itemid = Ingredient6) AS Ingredient6Name,
+    (SELECT name from item_basic WHERE itemid = Ingredient7) AS Ingredient7Name,
+    (SELECT name from item_basic WHERE itemid = Ingredient8) AS Ingredient8Name,
+    (SELECT name from item_basic WHERE itemid = ResultHQ1) AS ResultHQ1Name,
+    (SELECT name from item_basic WHERE itemid = ResultHQ2) AS ResultHQ2Name,
+    (SELECT name from item_basic WHERE itemid = ResultHQ3) AS ResultHQ3Name
+    FROM synth_recipes AS r
+    JOIN item_basic AS b ON r.result = b.itemid OR resultHQ1 = b.itemid OR resultHQ2 = b.itemid OR resultHQ3 = b.itemid WHERE b.name = ?;`;
     return await query(statement, [itemname]);
   } catch (error) {
     console.error('Error while getting specific recipe', error);
@@ -141,4 +152,4 @@ const getJobs = (level, jobs, idToStr) => {
   }
 };
 
-export { loadItems, loadItemKeys, getRecipeFor, getLastSold, getBazaars, getOwners, refreshOwnersCache, getJobs };
+export { loadItems, loadItemKeys, getRecipeFor, getLastSold, getBazaars, getOwners, refreshOwnersCache, getJobs};
