@@ -9,8 +9,6 @@ import Owners from './item/owners';
 import owner from '../../owner';
 import Crafts from './item/crafts';
 
-// import Crafts from './item/crafts';
-
 const charToElement = (char, line, i) => {
   switch (char) {
     case '':
