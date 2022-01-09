@@ -152,4 +152,4 @@ const getJobs = (level, jobs, idToStr) => {
   }
 };
 
-export { loadItems, loadItemKeys, getRecipeFor, getLastSold, getBazaars, getOwners, refreshOwnersCache, getJobs};
+export { loadItems, loadItemKeys, getRecipeFor, getLastSold, getBazaars, getOwners, refreshOwnersCache, getJobs };

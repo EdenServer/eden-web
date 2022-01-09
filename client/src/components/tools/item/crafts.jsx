@@ -13,69 +13,53 @@ const formatString = string =>
     })
     .join(' ');
 
-const formatRecipe = (recipeToParse) => {
+const formatRecipe = recipeToParse => {
   //Match and correct craft name
   const craftNames = {
-    Alchemy: "Alchemy",
-    Bone: "Bonecraft",
-    Cloth: "Clothcraft",
-    Cook: "Cooking",
-    Gold: "Goldsmithing",
-    Leather: "Leathercraft",
-    Smith: "Smithing",
-    Wood: "Woodworking",
+    Alchemy: 'Alchemy',
+    Bone: 'Bonecraft',
+    Cloth: 'Clothcraft',
+    Cook: 'Cooking',
+    Gold: 'Goldsmithing',
+    Leather: 'Leathercraft',
+    Smith: 'Smithing',
+    Wood: 'Woodworking',
   };
   //Initialize subarrays for storing enumerable data
-  recipeToParse["requirements"] = [];
-  recipeToParse["ingredients"] = [];
-  recipeToParse["results"] = [];
+  recipeToParse['requirements'] = [];
+  recipeToParse['ingredients'] = [];
+  recipeToParse['results'] = [];
 
   /*
   All keys are iterated through to match key/value for extraction.
   Data is then put into subarrays for further processing.
   */
-  Object.keys(recipeToParse).map((keyName) => {
+  Object.keys(recipeToParse).map(keyName => {
     //Collect craft level values
-    if (
-      Object.keys(craftNames).includes(keyName) &&
-      recipeToParse[keyName] > 0
-    ) {
-      recipeToParse["requirements"].push({
+    if (Object.keys(craftNames).includes(keyName) && recipeToParse[keyName] > 0) {
+      recipeToParse['requirements'].push({
         name: craftNames[keyName],
         level: recipeToParse[keyName],
       });
       //Collect ingredients
-    } else if (keyName.startsWith("Ingredient") && recipeToParse[keyName] > 0) {
+    } else if (keyName.startsWith('Ingredient') && recipeToParse[keyName] > 0) {
       //Checking for duplicates to condense count
-      if (
-        recipeToParse["ingredients"].some(
-          (e) => e.itemid == recipeToParse[keyName]
-        )
-      ) {
-        var foundIndex = recipeToParse["ingredients"].findIndex(
-          (x) => x.itemid == recipeToParse[keyName]
-        );
-        recipeToParse["ingredients"][foundIndex]["count"] += 1;
+      if (recipeToParse['ingredients'].some(e => e.itemid == recipeToParse[keyName])) {
+        var foundIndex = recipeToParse['ingredients'].findIndex(x => x.itemid == recipeToParse[keyName]);
+        recipeToParse['ingredients'][foundIndex]['count'] += 1;
       } else {
-        recipeToParse["ingredients"].push({
-          name: recipeToParse[keyName + "Name"],
+        recipeToParse['ingredients'].push({
+          name: recipeToParse[keyName + 'Name'],
           itemid: recipeToParse[keyName],
           count: 1,
         });
       }
       //Collect NQ/HQ Results
-    } else if (
-      keyName.startsWith("Result") &&
-      !keyName.endsWith("Qty") &&
-      recipeToParse[keyName] > 0
-    ) {
-      recipeToParse["results"].push({
-        name: recipeToParse[keyName + "Name"],
-        count: recipeToParse[keyName + "Qty"],
-        type:
-          keyName.replace("Result", "") == ""
-            ? "Normal"
-            : keyName.replace("Result", ""),
+    } else if (keyName.startsWith('Result') && !keyName.endsWith('Qty') && recipeToParse[keyName] > 0) {
+      recipeToParse['results'].push({
+        name: recipeToParse[keyName + 'Name'],
+        count: recipeToParse[keyName + 'Qty'],
+        type: keyName.replace('Result', '') == '' ? 'Normal' : keyName.replace('Result', ''),
         itemid: recipeToParse[keyName],
       });
     }
@@ -101,7 +85,7 @@ const Recipe = ({ recipe, index }) => {
               return <div key={`req_${i}`}>{`${req.name} (${req.level})`}</div>;
             })}
           </Card.Meta>
-          )}
+        )}
         <List>
           {Object.values(recipe.ingredients).map((ingredient, i) => (
             <List.Item key={`ing_${index}_${i}`}>
