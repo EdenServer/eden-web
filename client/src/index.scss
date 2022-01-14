@@ -25,6 +25,11 @@
 // );
 
 $body-bg: #e6e6e6;
+body.dark {
+    @import 'darkly';
+    background-color: #222;
+    color: #fff;
+}
 
 // Import Bootstrap
 // - This import must go below all SASS variable overrides
