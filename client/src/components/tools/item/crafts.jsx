@@ -13,76 +13,16 @@ const formatString = string =>
     })
     .join(' ');
 
-const formatRecipe = recipeToParse => {
-  //Match and correct craft name
-  const craftNames = {
-    Alchemy: 'Alchemy',
-    Bone: 'Bonecraft',
-    Cloth: 'Clothcraft',
-    Cook: 'Cooking',
-    Gold: 'Goldsmithing',
-    Leather: 'Leathercraft',
-    Smith: 'Smithing',
-    Wood: 'Woodworking',
-  };
-  //Initialize subarrays for storing enumerable data
-  recipeToParse['requirements'] = [];
-  recipeToParse['ingredients'] = [];
-  recipeToParse['results'] = [];
-
-  /*
-  All keys are iterated through to match key/value for extraction.
-  Data is then put into subarrays for further processing.
-  */
-  Object.keys(recipeToParse).map(keyName => {
-    //Collect craft level values
-    if (Object.keys(craftNames).includes(keyName) && recipeToParse[keyName] > 0) {
-      recipeToParse['requirements'].push({
-        name: craftNames[keyName],
-        level: recipeToParse[keyName],
-      });
-      //Collect ingredients
-    } else if (keyName.startsWith('Ingredient') && recipeToParse[keyName] > 0) {
-      //Checking for duplicates to condense count
-      if (recipeToParse['ingredients'].some(e => e.itemid == recipeToParse[keyName])) {
-        var foundIndex = recipeToParse['ingredients'].findIndex(x => x.itemid == recipeToParse[keyName]);
-        recipeToParse['ingredients'][foundIndex]['count'] += 1;
-      } else {
-        recipeToParse['ingredients'].push({
-          name: recipeToParse[keyName + 'Name'],
-          itemid: recipeToParse[keyName],
-          count: 1,
-        });
-      }
-      //Collect NQ/HQ Results
-    } else if (keyName.startsWith('Result') && !keyName.endsWith('Qty') && recipeToParse[keyName] > 0) {
-      recipeToParse['results'].push({
-        name: recipeToParse[keyName + 'Name'],
-        count: recipeToParse[keyName + 'Qty'],
-        type: keyName.replace('Result', '') == '' ? 'Normal' : keyName.replace('Result', ''),
-        itemid: recipeToParse[keyName],
-      });
-    }
-  });
-  //Crafts sorted by level to determine main craft.
-  recipeToParse.requirements.sort(function (a, b) {
-    var x = a.level > b.level ? -1 : 1;
-    return x;
-  });
-  return recipeToParse;
-};
-
 const Recipe = ({ recipe, index }) => {
-  recipe = formatRecipe(recipe);
   return (
     <Card>
       <Card.Content>
         <Image className="gm_image-spacer" floated="right" size="mini" src={images.item(recipe.Crystal)} />
-        <Card.Header>{`${recipe.requirements[0].name} (${recipe.requirements[0].level})`}</Card.Header>
-        {recipe.requirements.length > 1 && (
+        <Card.Header>{`${recipe.crafts[0].craft} (${recipe.crafts[0].level})`}</Card.Header>
+        {recipe.crafts.length > 1 && (
           <Card.Meta>
-            {recipe.requirements.slice(1).map((req, i) => {
-              return <div key={`req_${i}`}>{`${req.name} (${req.level})`}</div>;
+            {recipe.crafts.slice(1).map((req, i) => {
+              return <div key={`req_${i}`}>{`${req.craft} (${req.level})`}</div>;
             })}
           </Card.Meta>
         )}
@@ -90,7 +30,7 @@ const Recipe = ({ recipe, index }) => {
           {Object.values(recipe.ingredients).map((ingredient, i) => (
             <List.Item key={`ing_${index}_${i}`}>
               <List.Content>
-                <Image src={images.item(ingredient.itemid)} />
+                <Image src={images.item(ingredient.id)} />
                 {` ${formatString(ingredient.name)} ${ingredient.count === 1 ? '' : `(${ingredient.count})`}`}
               </List.Content>
             </List.Item>
@@ -103,7 +43,7 @@ const Recipe = ({ recipe, index }) => {
             <List.Item key={`res_${index}_${i}`}>
               <List.Content>
                 {`${result.type === 'Normal' ? 'NQ' : result.type}: `}
-                <Image src={images.item(result.itemid)} />
+                <Image src={images.item(result.id)} />
                 {`${result.type === 'Normal' ? result.name : formatString(result.name)} ${result.count === 1 ? '' : `(${result.count})`}`}
               </List.Content>
             </List.Item>
@@ -117,7 +57,6 @@ const Recipe = ({ recipe, index }) => {
 const Crafting = ({ name }) => {
   const [error, setError] = React.useState(false);
   const [crafts, setCrafts] = React.useState(null);
-  console.log(crafts);
 
   const fetchCrafts = () => {
     setCrafts(null);
