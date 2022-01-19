@@ -4,4 +4,4 @@ author: Rude
 title: Password Resets
 ---
 
-Reset of account passwords is now handled by Rude and Juul. Please reach out to either on Discord should you require a password reset.
+Password resets can now be requested via the EdenBot bot account in Discord. PM the bot !pwreset to start the process.
