@@ -26,9 +26,15 @@
 
 $body-bg: #e6e6e6;
 body.dark {
-    @import 'darkly';
-    background-color: #222;
-    color: #fff;
+    $primary: #222;
+    $secondary: #303030;
+    $text-main: #fff;
+    $text-alt: rgba(126, 126, 126, 1);
+    $bl-color: #845cf3;
+
+    background-color: $primary;
+
+    @import 'theme-switch';
 }
 
 // Import Bootstrap

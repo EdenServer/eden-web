@@ -1,0 +1,188 @@
+.navbar, .container-fluid {
+  background-color: $secondary!important;
+}
+
+a {
+  color: $bl-color;
+}
+
+.ui.teal.button {
+  background-color: $bl-color;
+}
+
+.menu {
+  background-color: $secondary;
+}
+
+.menu .item {
+  color: $text-main;
+}
+
+.menu .active.item {
+  color: $text-alt;
+}
+
+.ui.pointing.menu .active.item:after {
+  background-color: $secondary;
+  border-bottom: 1px solid $secondary;
+  border-right: 1px solid $secondary;
+}
+
+.ui.segment {
+  background-color: $secondary;
+  color: $text-main;
+}
+
+.ui.segment.item {
+  background-color: $primary;
+}
+
+.ui.segment.item:hover {
+  background-color: $secondary;
+  color: $text-alt;
+}
+
+.card-header {
+  background-color: $secondary;
+  color: $text-main;
+}
+
+.card-title a{
+  color: $text-main!important;
+}
+
+.card-title a:hover{
+  color: $text-alt!important;
+}
+
+.card-body {
+  background-color: $primary;
+  color: $text-main;
+}
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #303030;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.ui.celled.table {
+  position: relative;
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #303030;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.ui.celled.table th, .table-bordered th {
+  background-color: $secondary;
+  border-top-color: $secondary;
+  color: $text-main;
+}
+
+.ui.celled.table td, .table-bordered td {
+  background-color: $primary;
+  color: $text-main;
+  border-color: $secondary;
+}
+
+.table-bordered th {
+  border-color: $secondary;
+}
+
+.ui.selectable.table th {
+  background-color: $primary;
+  color: $text-main;
+  border-top-color: $primary;
+}
+
+.ui.selectable.table tr {
+  border-right: 1px solid $text-alt;
+  border-left: 1px solid $text-alt;
+}
+
+.ui.selectable.table td {
+  background-color: $secondary;
+  color: $text-main;
+}
+
+.ui.selectable.table {
+  border-bottom-color: $primary;
+  background-color: $primary;
+}
+
+.ui.selectable.table thead {
+  border: none;
+  background-color: $primary;
+}
+
+.ui.selectable.table thead {
+  border-top: $primary;
+}
+
+.ui.fluid.accordion {
+  background-color: $primary;
+}
+
+.ui.fluid.accordion .title, .gm_player-header {
+  color: $text-main;
+}
+
+.ui.fluid.accordion th {
+  background-color: $secondary;
+  color: $text-main;
+  border-top-color: $secondary;
+}
+
+.ui.fluid.accordion td {
+  background-color: $primary;
+  color: $text-main;
+}
+
+.ui.fluid.accordion table {
+  background-color: $primary;
+  border: 1px solid $secondary;
+  color: $text-main;
+}
+
+.gm_item-name, .eden_item-description {
+  color: $text-main;
+}
+
+.ui.pagination.menu .active.item {
+  color: $text-main;
+}
+
+.ui.card {
+  background-color: $secondary;
+  border: 1px solid $secondary!important;
+  box-shadow: none;
+}
+
+.ui.card .content {
+  background-color: $primary;
+  color: $text-main;
+}
+
+.ui.card .extra.content {
+  background-color: $primary;
+  color: $text-main;
+  border-top-color: $secondary;
+}
+
+.ui.card .content .header {
+  color: $text-main;
+}
