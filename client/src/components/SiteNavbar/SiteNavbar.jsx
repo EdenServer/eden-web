@@ -15,7 +15,8 @@ const SiteNavbar = props => {
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav>
           {links.map(link => (
-            <NavLink as={Link} to={link.to} key={link.key} className="mr-3">
+            /* Links specified to be functions will provide the event as a parameter. This can be used to prevent the default click action. */
+            <NavLink as={Link} to={link.to} key={link.key} onClick={link.type == 'function' ? action => link.func(action) : null} className="mr-3">
               {link.icon ? <span className="mr-1">{link.icon}</span> : null} {link.text}
             </NavLink>
           ))}
