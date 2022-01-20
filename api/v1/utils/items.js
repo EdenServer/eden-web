@@ -1,4 +1,5 @@
 import owner from '../../../client/src/owner';
+import cparse from './crafts';
 
 const loadItems = async query => {
   try {
@@ -51,9 +52,8 @@ const loadItemKeys = async query => {
 const getRecipeFor = async (query, itemname) => {
   try {
     const statement = `SELECT * FROM synth_recipes AS r
-            JOIN item_basic AS b ON r.result = b.itemid OR resultHQ1 = b.itemid OR resultHQ2 = b.itemid OR resultHQ3 = b.itemid
-            WHERE b.name = ?;`;
-    return await query(statement, [itemname]);
+    JOIN item_basic AS b ON r.result = b.itemid OR resultHQ1 = b.itemid OR resultHQ2 = b.itemid OR resultHQ3 = b.itemid WHERE b.name = ?;`;
+    return cparse.parse(await query(statement, [itemname]));
   } catch (error) {
     console.error('Error while getting specific recipe', error);
     return [];

@@ -1,7 +1,9 @@
-import React from 'react';
+import { json } from 'body-parser';
+import React, { useState } from 'react';
 import { Image, Card, List, Loader } from 'semantic-ui-react';
-import apiUtil from '../../apiUtil';
-import images from '../../images';
+import apiUtil from '../../../apiUtil';
+import images from '../../../images';
+import crafts from '../player/crafts';
 
 const formatString = string =>
   string
@@ -12,16 +14,15 @@ const formatString = string =>
     .join(' ');
 
 const Recipe = ({ recipe, index }) => {
-  const { requirements } = recipe;
   return (
     <Card>
       <Card.Content>
-        <Image className="gm_image-spacer" floated="right" size="mini" src={images.item(recipe.crystal)} />
-        <Card.Header>{`${recipe.requirements[0].name} (${recipe.requirements[0].level})`}</Card.Header>
-        {requirements.length > 1 && (
+        <Image className="gm_image-spacer" floated="right" size="mini" src={images.item(recipe.Crystal)} />
+        <Card.Header>{`${recipe.crafts[0].craft} (${recipe.crafts[0].level})`}</Card.Header>
+        {recipe.crafts.length > 1 && (
           <Card.Meta>
-            {requirements.slice(1).map((req, i) => {
-              return <div key={`req_${i}`}>{`${req.name} (${req.level})`}</div>;
+            {recipe.crafts.slice(1).map((req, i) => {
+              return <div key={`req_${i}`}>{`${req.craft} (${req.level})`}</div>;
             })}
           </Card.Meta>
         )}
@@ -29,8 +30,8 @@ const Recipe = ({ recipe, index }) => {
           {Object.values(recipe.ingredients).map((ingredient, i) => (
             <List.Item key={`ing_${index}_${i}`}>
               <List.Content>
-                <Image src={images.item(ingredient.itemid)} />
-                {`${formatString(ingredient.name)} ${ingredient.count === 1 ? '' : `(${ingredient.count})`}`}
+                <Image src={images.item(ingredient.id)} />
+                {` ${formatString(ingredient.name)} ${ingredient.count === 1 ? '' : `(${ingredient.count})`}`}
               </List.Content>
             </List.Item>
           ))}
@@ -42,8 +43,8 @@ const Recipe = ({ recipe, index }) => {
             <List.Item key={`res_${index}_${i}`}>
               <List.Content>
                 {`${result.type === 'Normal' ? 'NQ' : result.type}: `}
-                <Image src={images.item(result.itemid)} />
-                {`${formatString(result.name)} ${result.count === 1 ? '' : `(${result.count})`}`}
+                <Image src={images.item(result.id)} />
+                {`${result.type === 'Normal' ? result.name : formatString(result.name)} ${result.count === 1 ? '' : `(${result.count})`}`}
               </List.Content>
             </List.Item>
           ))}
@@ -56,7 +57,6 @@ const Recipe = ({ recipe, index }) => {
 const Crafting = ({ name }) => {
   const [error, setError] = React.useState(false);
   const [crafts, setCrafts] = React.useState(null);
-  console.log(crafts);
 
   const fetchCrafts = () => {
     setCrafts(null);
@@ -77,7 +77,7 @@ const Crafting = ({ name }) => {
   React.useEffect(fetchCrafts, [name]);
 
   if (error) {
-    return <p>Error fetching auction house history...</p>;
+    return <p>Error fetching recipes...</p>;
   }
 
   if (!crafts) {
@@ -85,7 +85,7 @@ const Crafting = ({ name }) => {
   }
 
   if (crafts.length === 0) {
-    return <p>No auction house history...</p>;
+    return <p>No recipe...</p>;
   }
 
   return (

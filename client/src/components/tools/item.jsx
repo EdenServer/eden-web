@@ -7,8 +7,7 @@ import Ah from './item/ah';
 import Bazaar from './item/bazaar';
 import Owners from './item/owners';
 import owner from '../../owner';
-
-// import Crafts from './item/crafts';
+import Crafts from './item/crafts';
 
 const charToElement = (char, line, i) => {
   switch (char) {
@@ -147,10 +146,7 @@ export default ({ history, itemname, setLoading }) => {
           <Icon name="dropdown" />
           Crafting
         </Accordion.Title>
-        <Accordion.Content active={crafts}>
-          {/* <Crafts name={item.key} /> */}
-          In Development
-        </Accordion.Content>
+        <Accordion.Content active={crafts}>{<Crafts name={item.key} />}</Accordion.Content>
       </Accordion>
     </Segment>
   );

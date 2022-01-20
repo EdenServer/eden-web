@@ -4,6 +4,7 @@
  */
 const titles = require('./titles');
 const items = require('./itemNames.json');
+const crafts = require('./craftNames');
 const itemDescriptions = require('./itemDescriptions.json');
 Object.keys(itemDescriptions).forEach(itemid => {
   items[itemid].desc = itemDescriptions[itemid];
@@ -12,4 +13,5 @@ Object.keys(itemDescriptions).forEach(itemid => {
 module.exports = {
   items,
   titles,
+  crafts,
 };
