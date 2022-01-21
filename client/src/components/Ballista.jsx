@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import InfoDisplay from './InfoDisplay';
 import { useMediaQuery } from 'react-responsive';
+import InfoDisplay from './InfoDisplay';
 
 import SandoriaLogo from '../assets/sandoria.jpg';
 import BastokLogo from '../assets/bastok.jpg';
@@ -148,7 +148,7 @@ const Ballista = React.memo(
       // Go to next even day (when Ballista happens)
       incrementVanaDate(currentDate, currentDate.day % 2);
 
-      let toShow = parseInt(matchCount);
+      const toShow = parseInt(matchCount, 10);
 
       for (let i = 0; i < toShow; i++) {
         const match = vanaDateToBallistaMatch(currentDate.year, currentDate.month, currentDate.day);
@@ -169,7 +169,7 @@ const Ballista = React.memo(
       const match = upcomingMatches[i];
       const matchDate = new Date(match.entryStart);
 
-      if (matchDate.getDate() != currentDay) {
+      if (matchDate.getDate() !== currentDay) {
         upcomingMatchesRows.push(
           <tr>
             <td colSpan="100%" style={{ padding: '0.5em 0' }}>
@@ -183,7 +183,7 @@ const Ballista = React.memo(
       upcomingMatchesRows.push(
         <tr key={match.startTime}>
           <td>{match.zone}</td>
-          <td>{match.levelCap == 0 ? 'None' : match.levelCap}</td>
+          <td>{match.levelCap === 0 ? 'None' : match.levelCap}</td>
           <td>
             <img src={match.team1.logoSrc} alt={match.team1.name} width={isTabletOrMobile ? '20px' : '32px'} />
             {isTabletOrMobile ? ' ' : ' vs '}
@@ -200,7 +200,7 @@ const Ballista = React.memo(
     }
 
     return (
-      <InfoDisplay title={'Upcoming Ballista matches'}>
+      <InfoDisplay title="Upcoming Ballista matches">
         <table width="100%" style={{ textAlign: 'center', margin: '0.5em 0', padding: '0.5em' }} border="true">
           <thead>
             <tr>
@@ -216,7 +216,7 @@ const Ballista = React.memo(
       </InfoDisplay>
     );
   },
-  (props, newProps) => props.vanaDay == newProps.vanaDay
+  (props, newProps) => props.vanaDay === newProps.vanaDay
 );
 
 export default Ballista;

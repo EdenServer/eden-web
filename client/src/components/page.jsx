@@ -20,7 +20,7 @@ const Page = props => {
       <Row className="h-100 flex-column-reverse flex-lg-row">
         <Col>
           <Router primary={false}>
-            <Home path="/" discordLink={config.install.discord} />
+            <Home path="/" discordLink={config.install?.discord} />
             <ServerInfo path="/info" />
             <News path="/posts" />
             <Install path="/install" info={config.install} />

@@ -63,7 +63,7 @@ export default ({ history, itemname, setLoading }) => {
   const [crafts, setCrafts] = React.useState(false);
   const isStack = stack === 'true';
 
-  const fetchItem = (itemname, stack = false) => {
+  const fetchItem = itemname => {
     if (!itemname) return;
 
     setLoading(true);
@@ -146,7 +146,9 @@ export default ({ history, itemname, setLoading }) => {
           <Icon name="dropdown" />
           Crafting
         </Accordion.Title>
-        <Accordion.Content active={crafts}>{<Crafts name={item.key} />}</Accordion.Content>
+        <Accordion.Content active={crafts}>
+          <Crafts name={item.key} />
+        </Accordion.Content>
       </Accordion>
     </Segment>
   );

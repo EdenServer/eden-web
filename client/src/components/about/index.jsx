@@ -1,8 +1,7 @@
 import React from 'react';
+import { Row, Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import InfoDisplay from '../InfoDisplay';
-import Contributing from './contributing';
-import { Row, Col } from 'react-bootstrap';
 
 const About = () => {
   return (

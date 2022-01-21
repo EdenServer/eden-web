@@ -1,9 +1,7 @@
-import { json } from 'body-parser';
-import React, { useState } from 'react';
+import React from 'react';
 import { Image, Card, List, Loader } from 'semantic-ui-react';
 import apiUtil from '../../../apiUtil';
 import images from '../../../images';
-import crafts from '../player/crafts';
 
 const formatString = string =>
   string

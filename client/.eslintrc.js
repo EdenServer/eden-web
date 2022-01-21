@@ -19,5 +19,27 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
+    'react/no-array-index-key': 'warn',
+    'react/no-unescaped-entities': 0,
+    'react/jsx-props-no-spreading': 0,
+    'react/prop-types': 0,
+    'react/default-props-match-prop-types': 0,
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'no-shadow': 'warn',
+    'no-console': 0,
+    'no-restricted-syntax': 'warn',
+    'no-plusplus': 'warn',
+    'no-unused-vars': 'warn',
+    'no-param-reassign': 'warn',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
   },
 };

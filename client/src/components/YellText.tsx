@@ -10,14 +10,22 @@ const translatePattern = /«([^»]+?)»/g;
 
 function parseYell(message: string) {
   let currentIdx = 0;
-  let result = [];
+  const result = [];
   for (const match of message.matchAll(translatePattern)) {
-    let translatedText = match[1];
+    const translatedText = match[1];
     result.push(message.slice(currentIdx, match.index));
 
-    result.push(<span className="gm_autotranslate-start">{'{'}</span>);
+    result.push(
+      <span className="gm_autotranslate-start" key={`translate-start-${match.index}`}>
+        {'{'}
+      </span>
+    );
     result.push(translatedText);
-    result.push(<span className="gm_autotranslate-end">{'}'}</span>);
+    result.push(
+      <span className="gm_autotranslate-end" key={`translate-end-${match.index}`}>
+        {'}'}
+      </span>
+    );
 
     currentIdx = match.index! + translatedText.length + 2;
   }
@@ -28,13 +36,15 @@ function parseYell(message: string) {
   return result;
 }
 
-const YellText = (yell: YellTextProps) => (
+const YellText = ({ date, speaker, message }: YellTextProps) => (
   <>
-    <span className="gm_yell-name">
-      [{new Date(yell.date).toLocaleTimeString()}] {yell.speaker}
+    <span className="gm_yell-name" key="name">
+      [{new Date(date).toLocaleTimeString()}] {speaker}
     </span>{' '}
     : &nbsp;
-    <span className="gm_yell-text">{parseYell(yell.message)}</span>
+    <span className="gm_yell-text" key="text">
+      {parseYell(message)}
+    </span>
   </>
 );
 

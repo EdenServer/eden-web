@@ -1,10 +1,10 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { Row, Col } from 'react-bootstrap';
 import YellBox from './yellbox';
 import TimeInfo from './TimeInfo';
-import { useMediaQuery } from 'react-responsive';
 
-function ServerInfo({}) {
+function ServerInfo() {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   return (

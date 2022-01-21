@@ -16,7 +16,7 @@ export default ({ name, stack }) => {
         } else {
           setError(true);
         }
-      } catch (error) {
+      } catch (err) {
         setError(true);
       }
     });

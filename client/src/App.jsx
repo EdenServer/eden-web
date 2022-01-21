@@ -30,10 +30,8 @@ class App extends Component {
     await this.getConfig();
   }
 
-  setContext(updatedContext) {
-    this.setState(state => {
-      return { ...state, ...updatedContext };
-    });
+  handleErrorOnGetConfig() {
+    this.setState({ config: {}, ready: true });
   }
 
   setConfig(config) {
@@ -47,8 +45,10 @@ class App extends Component {
       .catch(() => this.handleErrorOnGetConfig());
   }
 
-  handleErrorOnGetConfig() {
-    this.setState({ config: {}, ready: true });
+  setContext(updatedContext) {
+    this.setState(state => {
+      return { ...state, ...updatedContext };
+    });
   }
 
   render() {

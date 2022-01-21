@@ -16,7 +16,7 @@ const SiteNavbar = props => {
         <Nav>
           {links.map(link => (
             /* Links specified to be functions will provide the event as a parameter. This can be used to prevent the default click action. */
-            <NavLink as={Link} to={link.to} key={link.key} onClick={link.type == 'function' ? action => link.func(action) : null} className="mr-3">
+            <NavLink as={Link} to={link.to} key={link.key} onClick={link.type === 'function' ? action => link.func(action) : null} className="mr-3">
               {link.icon ? <span className="mr-1">{link.icon}</span> : null} {link.text}
             </NavLink>
           ))}

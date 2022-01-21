@@ -97,7 +97,8 @@ class Account extends React.Component {
   }
 
   register(inputGroup) {
-    const info = { verify: this.state.verify };
+    const { verify } = this.state;
+    const info = { verify };
     const errors = {};
 
     // cycle through each of the inputs and output a map

@@ -8,12 +8,16 @@ export default ({ error, login, changePage }) => {
     <Form error={error}>
       <Message error header="Invalid Credentials" content="Check your username and password and try again." />
       <Form.Field error={error}>
-        <label>Username</label>
-        <input placeholder="Username" name="username" value={username} onChange={e => setUsername(e.target.value)} />
+        <label htmlFor="username">
+          Username
+          <input placeholder="Username" name="username" value={username} onChange={e => setUsername(e.target.value)} />
+        </label>
       </Form.Field>
       <Form.Field error={error}>
-        <label>Password</label>
-        <input placeholder="Password" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+        <label htmlFor="password">
+          Password
+          <input placeholder="Password" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+        </label>
       </Form.Field>
       <Form.Field>
         <Button floated="right" primary onClick={() => login(username, password)}>
