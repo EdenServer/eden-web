@@ -5,13 +5,13 @@ import apiUtil from '../../../apiUtil';
 
 const formatItem = (itemname, stacksize) => {
   return (
-    <Link to={`/tools/item/${encodeURIComponent(itemname)}` + (parseInt(stacksize) > 1 ? `?stack=true` : ``)}>
+    <Link to={`/tools/item/${encodeURIComponent(itemname)}${parseInt(stacksize, 10) > 1 ? '?stack=true' : ''}`}>
       {itemname
         .split('_')
         .map(string => {
           return `${string.substr(0, 1).toUpperCase()}${string.substr(1, string.length)}`;
         })
-        .join(' ') + (parseInt(stacksize) > 1 ? ` x${stacksize}` : '')}
+        .join(' ') + (parseInt(stacksize, 10) > 1 ? ` x${stacksize}` : '')}
     </Link>
   );
 };

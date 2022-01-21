@@ -17,10 +17,22 @@ jobs:
     strategy:
       matrix:
         os: [ windows-latest, ubuntu-latest ]
-        node-version: [10.x, 12.x]
+        node-version: [16.x, 17.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Reconfigure git to use HTTP authentication
+      # Workaround for npm bug:
+      # https://github.com/actions/setup-node/issues/214#issuecomment-810829250
+      # https://github.com/npm/cli/issues/2610
+      run: >
+        git config --global url."https://github.com/".insteadOf
+        ssh://git@github.com/
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:

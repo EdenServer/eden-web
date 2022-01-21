@@ -9,7 +9,7 @@ import images from '../../images';
 const OnlineTableHeader = () => (
   <Table.Header>
     <Table.Row>
-      <Table.HeaderCell style={{ width: '60px' }}></Table.HeaderCell>
+      <Table.HeaderCell style={{ width: '60px' }} />
       <Table.HeaderCell style={{ width: '50%' }}>Name</Table.HeaderCell>
       <Table.HeaderCell>Job</Table.HeaderCell>
     </Table.Row>
@@ -39,20 +39,6 @@ class OnlineList extends React.PureComponent {
     this.fetchChars = this.fetchChars.bind(this);
   }
 
-  fetchChars({ limit, offset }) {
-    // fetch online characters
-    this.setState({ loading: true });
-    apiUtil.get(
-      {
-        url: `/api/v1/chars?online=true&limit=${limit}&offset=${offset}`,
-        json: true,
-      },
-      (error, data) => {
-        if (!error) this.setState({ players: Object.values(data.chars), loading: false });
-      }
-    );
-  }
-
   componentDidMount() {
     // fetch server status
     apiUtil.get({ url: '/api/v1/misc/status' }, async (error, res) => {
@@ -66,6 +52,20 @@ class OnlineList extends React.PureComponent {
         this.setState({ status, online: 0 });
       }
     });
+  }
+
+  fetchChars({ limit, offset }) {
+    // fetch online characters
+    this.setState({ loading: true });
+    apiUtil.get(
+      {
+        url: `/api/v1/chars?online=true&limit=${limit}&offset=${offset}`,
+        json: true,
+      },
+      (error, data) => {
+        if (!error) this.setState({ players: Object.values(data.chars), loading: false });
+      }
+    );
   }
 
   render() {

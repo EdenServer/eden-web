@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
+import { useMediaQuery } from 'react-responsive';
 import YellBox from './yellbox';
 import TimeInfo from './TimeInfo';
 import InfoDisplay from './InfoDisplay';
-import { useMediaQuery } from 'react-responsive';
 
 function Home({ discordLink }) {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
@@ -11,7 +11,7 @@ function Home({ discordLink }) {
   return (
     <Row className="min-vh-100 flex-column flex-lg-row">
       <Col>
-        <InfoDisplay title={'Welcome to Eden!'}>
+        <InfoDisplay title="Welcome to Eden!">
           <Card.Text>
             Eden attempts to recreate the Treasures of Aht Urhgan era experience with a few quality-of-life additions. While FFXI is still a great game today,
             it is vastly different than it was back in 2007. We don't aim to take the place of retail today, and we encourage you to subscribe to it, if for
@@ -23,7 +23,7 @@ function Home({ discordLink }) {
             event be as close as possible to the true era experience.
           </Card.Text>
           <Card.Text>
-            <a href={discordLink} target="_blank">
+            <a href={discordLink} target="_blank" rel="noreferrer">
               Join our Discord
             </a>{' '}
             to learn more!

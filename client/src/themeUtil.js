@@ -1,6 +1,7 @@
 export default {
   change: redirect => {
-    const newTheme = localStorage.getItem('theme') === 'light' ? 'dark' : localStorage.getItem('theme') === null ? 'dark' : 'light';
+    const currentTheme = localStorage.getItem('theme') ?? 'light';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     document.body.classList.remove(localStorage.getItem('theme'));
     document.body.classList.add(newTheme);
     localStorage.setItem('theme', newTheme);

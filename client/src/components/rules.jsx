@@ -1,8 +1,8 @@
 import React from 'react';
+import { Row, Col, Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import InfoDisplay from './InfoDisplay';
-import { Row, Col, Table } from 'react-bootstrap';
 
 const Rules = ({ list }) => {
   const { terms, rules, software, yells, search, discord } = list;

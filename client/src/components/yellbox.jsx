@@ -1,18 +1,12 @@
 import React from 'react';
 import apiUtil from '../apiUtil';
-import YellText from './YellText';
+import YellText from './YellText.tsx';
 
 class Yells extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { yells: [] };
     this.yells = this.yells.bind(this);
-  }
-
-  yells() {
-    apiUtil.get({ url: '/api/v1/misc/yells', json: true }, (error, yells) => {
-      if (!error) this.setState({ yells });
-    });
   }
 
   componentDidMount() {
@@ -22,6 +16,12 @@ class Yells extends React.PureComponent {
 
   componentWillUnmount() {
     clearInterval(this.polling);
+  }
+
+  yells() {
+    apiUtil.get({ url: '/api/v1/misc/yells', json: true }, (error, yells) => {
+      if (!error) this.setState({ yells });
+    });
   }
 
   render() {

@@ -45,19 +45,26 @@ function getMoonPhase(vanaDate) {
 function getMoonName(vanaDate) {
   if (vanaDate.dayOfMoon <= -40 || vanaDate.dayOfMoon >= 38) {
     return 'Full Moon';
-  } else if (vanaDate.dayOfMoon <= -26) {
+  }
+  if (vanaDate.dayOfMoon <= -26) {
     return 'Waning Gibbous';
-  } else if (vanaDate.dayOfMoon <= -19) {
+  }
+  if (vanaDate.dayOfMoon <= -19) {
     return 'Last Quarter Moon';
-  } else if (vanaDate.dayOfMoon <= -5) {
+  }
+  if (vanaDate.dayOfMoon <= -5) {
     return 'Waning Crescent';
-  } else if (vanaDate.dayOfMoon <= 2) {
+  }
+  if (vanaDate.dayOfMoon <= 2) {
     return 'New Moon';
-  } else if (vanaDate.dayOfMoon <= 16) {
+  }
+  if (vanaDate.dayOfMoon <= 16) {
     return 'Waxing Crescent';
-  } else if (vanaDate.dayOfMoon <= 23) {
+  }
+  if (vanaDate.dayOfMoon <= 23) {
     return 'First Quarter Moon';
-  } else if (vanaDate.dayOfMoon <= 37) {
+  }
+  if (vanaDate.dayOfMoon <= 37) {
     return 'Waxing Gibbous';
   }
 
@@ -113,7 +120,7 @@ const TimeInfo = () => {
   const date = new Date(now);
   return (
     <>
-      <InfoDisplay title={'Time information'}>
+      <InfoDisplay title="Time information">
         <table width="100%" style={{ fontSize: isTabletOrMobile ? '1em' : '1.1em' }}>
           <tbody>
             <tr>
