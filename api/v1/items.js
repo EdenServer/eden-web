@@ -53,10 +53,16 @@ router.get('/:itemname/ah', async (req, res) => {
 });
 
 router.get('/:itemname/crafts', async (req, res) => {
-  const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
-    const { itemname = '' } = req.params;
-    return utils.items.getRecipeFor(req.app.locals.query, decodeURIComponent(itemname));
-  });
+  const cache = await req.app.locals.cache.fetch(
+    {
+      key: req.originalUrl,
+      interval: 28800000, // 8 hours
+    },
+    () => {
+      const { itemname = '' } = req.params;
+      return utils.items.getRecipeFor(req.app.locals.query, decodeURIComponent(itemname));
+    }
+  );
 
   res.send(cache);
 });
