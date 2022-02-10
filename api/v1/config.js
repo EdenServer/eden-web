@@ -229,7 +229,7 @@ module.exports = {
     },
   ],
   install: {
-    source1: 'https://bit.ly/Eden51Installer',
+    source1: 'https://bit.ly/Eden52Installer',
     source2: 'https://bit.ly/EdenV5BackupInstaller',
     bootloader: 'https://bit.ly/EdenXILoader',
     discord: 'https://discord.gg/S3EAWr2Jec',
