@@ -10,8 +10,8 @@ const About = () => {
         <Col>
           <InfoDisplay title={"What's Different between Eden, other private servers, and retail?"}>
             <Card.Text>
-              Eden was created in part to recreate the era experience as close as possible. We define era as anything that happened before the Wings of the
-              Goddess release on November 20th, 2007. While FFXI is still a great game today, it is vastly different than it was in 2007. We don't aim to take
+              Eden was created in part to recreate the era experience as close as possible. We define era as anything that happened up to and including the September 2008 patch.
+              While FFXI is still a great game today, it is vastly different than it was in 2007/2008. We don't aim to take
               the place of retail today, and we encourage you to subscribe to it, if nothing else to finish the amazing storyline.
             </Card.Text>
             <Card.Text>
@@ -60,11 +60,6 @@ const About = () => {
                   <td>economy</td>
                 </tr>
                 <tr>
-                  <td>5/5 Category 2 merits available.</td>
-                  <td>3/5 Category 2 merits available.</td>
-                  <td>balance</td>
-                </tr>
-                <tr>
                   <td>
                     Wardrobe 1 is awarded by talking to your Moogle after attaining Rank 3, Wardrobe 2 by talking to your Moogle after attaining Rank 6, and
                     Wardrobe 3 is unlocked by completing Apocalpyse Nigh.
@@ -88,7 +83,7 @@ const About = () => {
                   <td>technical limitations / cheat prevention</td>
                 </tr>
                 <tr>
-                  <td>Original difficulty CoP missions and original item flags (ex. rare/ex animas)</td>
+                  <td>Original difficulty CoP missions</td>
                   <td>Era difficulty CoP missions and era item flags</td>
                   <td>teamwork</td>
                 </tr>
@@ -101,11 +96,6 @@ const About = () => {
                   <td>Some mobs do not reset their window when the server is reset</td>
                   <td>Some mobs windows would reset when a server was reset or crashed</td>
                   <td>economy</td>
-                </tr>
-                <tr>
-                  <td>Ranged att/acc distance correction does not exist.</td>
-                  <td>Ranged attack and accuracy was dependent on distance from target and weapon/ammo.</td>
-                  <td>balance</td>
                 </tr>
                 <tr>
                   <td>Level Sync</td>
