@@ -10,9 +10,9 @@ const About = () => {
         <Col>
           <InfoDisplay title={"What's Different between Eden, other private servers, and retail?"}>
             <Card.Text>
-              Eden was created in part to recreate the era experience as close as possible. We define era as anything that happened up to and including the September 2008 patch.
-              While FFXI is still a great game today, it is vastly different than it was in 2007/2008. We don't aim to take
-              the place of retail today, and we encourage you to subscribe to it, if nothing else to finish the amazing storyline.
+              Eden was created in part to recreate the era experience as close as possible. We define era as anything that happened up to and including the
+              September 2008 patch. While FFXI is still a great game today, it is vastly different than it was in 2007/2008. We don't aim to take the place of
+              retail today, and we encourage you to subscribe to it, if nothing else to finish the amazing storyline.
             </Card.Text>
             <Card.Text>
               Many past players of FFXI long for the days of a cooperative environment where "quality of life" was an afterthought. Because there is no classic
