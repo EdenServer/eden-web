@@ -186,3 +186,7 @@ a {
 .ui.card .content .header {
   color: $text-main;
 }
+
+.ui.card > .content > .meta {
+  color: $text-alt;
+}
