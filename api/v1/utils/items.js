@@ -141,12 +141,12 @@ const getJobs = (level, jobs, idToStr) => {
   }
 };
 
-const safeDecode = (uri) => {
+const safeDecode = uri => {
   try {
     return decodeURIComponent(uri);
   } catch (error) {
     return '';
   }
-}
+};
 
 export { loadItems, loadItemKeys, getRecipeFor, getLastSold, getBazaars, getOwners, refreshOwnersCache, getJobs, safeDecode };
