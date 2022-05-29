@@ -141,4 +141,12 @@ const getJobs = (level, jobs, idToStr) => {
   }
 };
 
-export { loadItems, loadItemKeys, getRecipeFor, getLastSold, getBazaars, getOwners, refreshOwnersCache, getJobs };
+const safeDecode = uri => {
+  try {
+    return decodeURIComponent(uri);
+  } catch (error) {
+    return '';
+  }
+};
+
+export { loadItems, loadItemKeys, getRecipeFor, getLastSold, getBazaars, getOwners, refreshOwnersCache, getJobs, safeDecode };
