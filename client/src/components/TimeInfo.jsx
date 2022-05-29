@@ -129,7 +129,7 @@ const TimeInfo = () => {
                 <br />
                 <span
                   style={{
-                    color: weekDays[vanaWeekDay]?.color,
+                    color: weekDays[vanaWeekDay]?.name === 'Darksday' && localStorage.getItem('theme') === 'dark' ? 'grey' : weekDays[vanaWeekDay]?.color,
                     fontWeight: 'bold',
                   }}
                 >
