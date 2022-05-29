@@ -17,7 +17,7 @@
     "react-dom": "^16.9.0",
     "react-markdown": "^8.0.0",
     "react-responsive": "^8.1.0",
-    "react-scripts": "^5.0.0",
+    "react-scripts": "^5.0.1",
     "reaptcha": "1.6.0",
     "sass": "^1.49.0",
     "semantic-ui-react": "0.88.2",
