@@ -71,7 +71,7 @@ const getLastSold = async (query, itemid, stack = 0, count = 10) => {
 
     const statement = `SELECT name, seller_name, buyer_name, sale, sell_date FROM server_auctionhouse
             JOIN item_basic on item_basic.itemid = server_auctionhouse.itemid
-            WHERE sell_date != 0 AND server_auctionhouse.itemid = ? AND stack = ?
+            WHERE buyer_name IS NOT NULL AND server_auctionhouse.itemid = ? AND stack = ?
             ORDER BY sell_date DESC LIMIT ?;`;
     return await query(statement, [itemid, stack, count]);
   } catch (error) {
