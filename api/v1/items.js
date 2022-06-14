@@ -10,7 +10,7 @@ function getItemFromName(req, itemname) {
 }
 
 function getItemIdFromName(req, itemname) {
-  return getItemFromName(req, itemname)?.itemid;
+  return getItemFromName(req, itemname)?.id;
 }
 
 router.get('/', async (req, res) => {
