@@ -5,6 +5,14 @@ const router = Router();
 const lists = require('./lists');
 const utils = require('./utils');
 
+function getItemFromName(req, itemname) {
+  return req.app.locals.itemsByName[utils.items.safeDecode(itemname)];
+}
+
+function getItemIdFromName(req, itemname) {
+  return getItemFromName(req, itemname)?.itemid;
+}
+
 router.get('/', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
     const { search = '', limit = 10, offset = 0 } = req.query;
@@ -46,7 +54,7 @@ router.get('/:itemname/ah', async (req, res) => {
   const { itemname = '' } = req.params;
   const stack = req.query.stack === 'true' ? 1 : 0;
   const cache = await req.app.locals.cache.fetch(`${req.originalUrl}?stack=${stack}`, () => {
-    return utils.items.getLastSold(req.app.locals.query, utils.items.safeDecode(itemname), stack, 10);
+    return utils.items.getLastSold(req.app.locals.query, getItemIdFromName(req, itemname), stack, 10);
   });
 
   res.send(cache);
@@ -88,9 +96,7 @@ router.get('/:itemid/owners', async (req, res) => {
 router.get('/:itemname', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
     const { itemname = '' } = req.params;
-    const item = Object.values(req.app.locals.items).filter(i => {
-      return i.name.toLowerCase() === utils.items.safeDecode(itemname).toLowerCase();
-    })[0];
+    const item = getItemFromName(req, itemname);
 
     if (item) {
       const response = lists.items[item.id];

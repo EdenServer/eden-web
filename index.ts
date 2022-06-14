@@ -46,7 +46,7 @@ app.locals.query = preparedStatement(app.locals.db);
 
 (async () => {
   try {
-    app.locals.items = await loadItems(app.locals.query);
+    app.locals.itemsByName = await loadItems(app.locals.query);
     app.locals.itemKeys = await loadItemKeys(app.locals.query);
 
     // Setup cached results and refreshing of them

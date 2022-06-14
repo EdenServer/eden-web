@@ -21,10 +21,13 @@ const loadItems = async query => {
             LEFT JOIN item_puppet AS p ON b.itemid = p.itemid
             LEFT JOIN item_usable AS u ON b.itemid = u.itemid
             LEFT JOIN item_weapon AS w ON b.itemid = w.itemid;`;
-    return await query(statement);
+    const results = await query(statement);
+    const map = {};
+    results.forEach(r => (map[r.name.toLowerCase()] = r));
+    return map;
   } catch (error) {
     console.error('Error while loading items', error);
-    return [];
+    return {};
   }
 };
 
@@ -60,13 +63,17 @@ const getRecipeFor = async (query, itemname) => {
   }
 };
 
-const getLastSold = async (query, itemname, stack = 0, count = 10) => {
+const getLastSold = async (query, itemid, stack = 0, count = 10) => {
   try {
+    if (!itemid) {
+      return [];
+    }
+
     const statement = `SELECT name, seller_name, buyer_name, sale, sell_date FROM server_auctionhouse
             JOIN item_basic on item_basic.itemid = server_auctionhouse.itemid
-            WHERE sell_date != 0 AND item_basic.name = ? AND stack = ?
+            WHERE sell_date != 0 AND server_auctionhouse.itemid = ? AND stack = ?
             ORDER BY sell_date DESC LIMIT ?;`;
-    return await query(statement, [itemname, stack, count]);
+    return await query(statement, [itemid, stack, count]);
   } catch (error) {
     console.error('Error while getting last sold', error);
     return [];
