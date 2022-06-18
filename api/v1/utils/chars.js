@@ -320,13 +320,13 @@ const getCharData = async (query, charname) => {
   }
 };
 
-const fetchChars = async (query, { limit = 500, online = false, offset = 0 }) => {
+const fetchChars = async (query, { search = '', limit = 500, online = false, offset = 0 }) => {
   try {
     const total = await query(
       `SELECT COUNT(*) AS ct FROM chars
       LEFT JOIN accounts ON chars.accid = accounts.id
-      WHERE chars.deleted IS NULL AND gmlevel = 0 AND status < 5;`,
-      []
+      WHERE chars.deleted IS NULL AND gmlevel = 0 AND charname LIKE ? AND status < 5;`,
+      [`${search}%`]
     );
     const statement = `SELECT *, chars.charid AS charid, chars.accid AS accid, IF(accounts_sessions.charid IS NULL, 0, 1) AS \`isOnline\` FROM chars
             JOIN char_stats ON chars.charid = char_stats.charid
@@ -334,9 +334,9 @@ const fetchChars = async (query, { limit = 500, online = false, offset = 0 }) =>
             JOIN char_jobs ON chars.charid = char_jobs.charid
             LEFT JOIN accounts_sessions on chars.charid = accounts_sessions.charid
             LEFT JOIN accounts ON chars.accid = accounts.id
-            WHERE chars.deleted IS NULL AND gmlevel = 0 AND status < 5
+            WHERE chars.deleted IS NULL AND gmlevel = 0 AND charname LIKE ? AND status < 5
             HAVING isOnline IN (1,?) ORDER BY chars.charname ASC LIMIT ? OFFSET ?;`;
-    const results = await query(statement, [online ? 1 : 0, limit, offset]);
+    const results = await query(statement, [`${search}%`, online ? 1 : 0, limit, offset]);
     return {
       total: total[0].ct,
       chars: results.map(char => ({
