@@ -21,7 +21,7 @@ const loadItems = async query => {
             LEFT JOIN item_puppet AS p ON b.itemid = p.itemid
             LEFT JOIN item_usable AS u ON b.itemid = u.itemid
             LEFT JOIN item_weapon AS w ON b.itemid = w.itemid;`;
-    const results = await query(statement);
+    const results = await query(statement, [], false);
     const map = {};
     results.forEach(r => (map[r.name.toLowerCase()] = r));
     return map;
@@ -109,7 +109,7 @@ const refreshOwnersCache = async query => {
         AND a.status <= 1
         ORDER BY charname ASC;`;
 
-  const result = await query(statement);
+  const result = await query(statement, []);
 
   var updatedCache = {};
   for (var row of result) {

@@ -131,11 +131,17 @@ const getCharCrafts = async (query, charid) => {
 
 const getCharAH = async (query, charname, limit = 10) => {
   try {
+    const charQuery = `SELECT charid FROM chars WHERE charname = ?`;
+    const charResult = await query(charQuery, [charname]);
+    if (!charResult || charResult.length < 1) {
+      return [];
+    }
+
     const statement = `SELECT name, CASE WHEN stack = 1 THEN stacksize ELSE 1 END AS stack_size,
                               seller_name, buyer_name, sale, sell_date FROM server_auctionhouse
             JOIN item_basic on item_basic.itemid = server_auctionhouse.itemid
-            WHERE sell_date != 0 AND (seller_name = ? OR buyer_name = ?) ORDER BY sell_date DESC LIMIT ?;`;
-    return await query(statement, [charname, charname, limit]);
+            WHERE sell_date != 0 AND (seller = ? OR buyer_name = ?) ORDER BY sell_date DESC LIMIT ?;`;
+    return await query(statement, [charResult[0].charid, charname, limit]);
   } catch (error) {
     console.error('Error while getting character AH', error);
     return [];
@@ -314,13 +320,13 @@ const getCharData = async (query, charname) => {
   }
 };
 
-const fetchChars = async (query, { search = '', limit = 500, online = false, offset = 0 }) => {
+const fetchChars = async (query, { limit = 500, online = false, offset = 0 }) => {
   try {
     const total = await query(
       `SELECT COUNT(*) AS ct FROM chars
       LEFT JOIN accounts ON chars.accid = accounts.id
-      WHERE chars.deleted IS NULL AND gmlevel = 0 AND charname LIKE ? AND status < 5;`,
-      [`${search}%`]
+      WHERE chars.deleted IS NULL AND gmlevel = 0 AND status < 5;`,
+      []
     );
     const statement = `SELECT *, chars.charid AS charid, chars.accid AS accid, IF(accounts_sessions.charid IS NULL, 0, 1) AS \`isOnline\` FROM chars
             JOIN char_stats ON chars.charid = char_stats.charid
@@ -328,9 +334,9 @@ const fetchChars = async (query, { search = '', limit = 500, online = false, off
             JOIN char_jobs ON chars.charid = char_jobs.charid
             LEFT JOIN accounts_sessions on chars.charid = accounts_sessions.charid
             LEFT JOIN accounts ON chars.accid = accounts.id
-            WHERE chars.deleted IS NULL AND gmlevel = 0 AND charname LIKE ? AND status < 5
+            WHERE chars.deleted IS NULL AND gmlevel = 0 AND status < 5
             HAVING isOnline IN (1,?) ORDER BY chars.charname ASC LIMIT ? OFFSET ?;`;
-    const results = await query(statement, [`${search}%`, online ? 1 : 0, limit, offset]);
+    const results = await query(statement, [online ? 1 : 0, limit, offset]);
     return {
       total: total[0].ct,
       chars: results.map(char => ({
