@@ -117,7 +117,7 @@ export default ({ history, itemname, setLoading }) => {
         </div>
       </Header>
       <Accordion fluid styled>
-        {owner.owner_item_list.includes(item.id) && (
+        {(owner.owner_item_list.includes(item.id) || owner.owner_item_map[item.id]) && (
           <div>
             <Accordion.Title active={owners} onClick={() => setOwners(!owners)}>
               <Icon name="dropdown" />

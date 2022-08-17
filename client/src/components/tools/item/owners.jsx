@@ -2,15 +2,19 @@ import React from 'react';
 import { Table, Loader } from 'semantic-ui-react';
 import { Link } from '@reach/router';
 import apiUtil from '../../../apiUtil';
+import owner from '../../../owner';
 
 export default ({ itemid }) => {
   const [error, setError] = React.useState(false);
   const [owners, setOwners] = React.useState(null);
 
   const fetchOwners = () => {
-    console.log(itemid);
+    let thisItem = itemid;
+    if (owner.owner_item_map[itemid]) {
+      thisItem = owner.owner_item_map[itemid];
+    }
     setOwners(null);
-    apiUtil.get({ url: `/api/v1/items/${itemid}/owners` }, async (error, res) => {
+    apiUtil.get({ url: `/api/v1/items/${thisItem}/owners` }, async (error, res) => {
       try {
         if (!error && res.status === 200) {
           setOwners(await res.json());
