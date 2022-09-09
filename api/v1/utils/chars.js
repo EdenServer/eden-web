@@ -131,7 +131,7 @@ const getCharCrafts = async (query, charid) => {
 
 const getCharAH = async (query, charname, limit = 10) => {
   try {
-    const charQuery = `SELECT charid FROM chars WHERE charname = ?`;
+    const charQuery = `SELECT charid FROM chars WHERE charname = ? AND deleted IS NULL LIMIT 1`;
     const charResult = await query(charQuery, [charname]);
     if (!charResult || charResult.length < 1) {
       return [];
