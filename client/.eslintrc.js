@@ -19,8 +19,10 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
+    'react/function-component-definition': 0,
     'react/no-array-index-key': 'warn',
     'react/no-unescaped-entities': 0,
+    'react/no-unused-class-component-methods': 0,
     'react/jsx-props-no-spreading': 0,
     'react/prop-types': 0,
     'react/default-props-match-prop-types': 0,
