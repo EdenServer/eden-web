@@ -49,7 +49,7 @@ const descriptionWithElements = (description, line) => {
       lastStop = i + 1;
     }
   }
-  return <>{render}</>;
+  return render;
 };
 
 export default ({ history, itemname, setLoading }) => {
