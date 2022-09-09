@@ -5,7 +5,7 @@ import mysql from 'mysql2';
 import path from 'path';
 import Cache from './api/v1/utils/cache';
 import preparedStatement from './api/v1/utils/db';
-import { loadItemKeys, loadItems, refreshOwnersCache } from './api/v1/utils/items';
+import { loadItems, refreshOwnersCache } from './api/v1/utils/items';
 import { refreshTitleCache } from './api/v1/utils/chars';
 import api from './api';
 import rateLimit from 'express-rate-limit';
@@ -46,8 +46,7 @@ app.locals.query = preparedStatement(app.locals.db);
 
 (async () => {
   try {
-    app.locals.itemsByName = await loadItems(app.locals.query);
-    app.locals.itemKeys = await loadItemKeys(app.locals.query);
+    app.locals.items = await loadItems(app.locals.query);
 
     // Setup cached results and refreshing of them
     await refreshOwnersCache(app.locals.query);
