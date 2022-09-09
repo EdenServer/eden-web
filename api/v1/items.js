@@ -2,29 +2,24 @@ const { Router } = require('express');
 
 const router = Router();
 
-const lists = require('./lists');
 const utils = require('./utils');
 
-function getItemFromName(req, itemname) {
-  return req.app.locals.itemsByName[utils.items.safeDecode(itemname)];
+function getItem(req, key) {
+  const safeKey = utils.items.safeDecode(key);
+  return req.app.locals.items.byName[safeKey] ?? req.app.locals.items.byId[safeKey];
 }
 
 function getItemIdFromName(req, itemname) {
-  return getItemFromName(req, itemname)?.id;
+  return getItem(req, itemname)?.id;
 }
 
 router.get('/', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
     const { search = '', limit = 10, offset = 0 } = req.query;
-    const items = Object.values(lists.items)
+    const items = Object.values(req.app.locals.items.byId)
       .filter(i => {
-        if (i.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 || i.sort.toLowerCase().indexOf(search.toLowerCase()) !== -1) {
-          if (!req.app.locals.itemKeys[i.id]) {
-            console.warn(`itemid ${i.id} does not have an entry in itemKeys`);
-            return false;
-          } else {
-            return true;
-          }
+        if (i.displayName.toLowerCase().indexOf(search.toLowerCase()) !== -1 || i.sort.toLowerCase().indexOf(search.toLowerCase()) !== -1) {
+          return true;
         }
 
         return false;
@@ -36,12 +31,11 @@ router.get('/', async (req, res) => {
     return {
       total: items.length,
       items: items.splice(offset, limit).map(item => {
-        const key = req.app.locals.itemKeys[item.id].key;
         return {
           id: item.id,
-          name: item.name,
+          name: item.displayName,
           sort: item.sort,
-          key,
+          key: item.id,
         };
       }),
     };
@@ -96,16 +90,19 @@ router.get('/:itemid/owners', async (req, res) => {
 router.get('/:itemname', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(req.originalUrl, () => {
     const { itemname = '' } = req.params;
-    const item = getItemFromName(req, itemname);
+    const item = getItem(req, itemname);
 
     if (item) {
-      const response = lists.items[item.id];
-      const info = req.app.locals.itemKeys[item.id];
-      const stackable = Boolean(item.stackSize > 1);
-      const armor = utils.items.getJobs(info.level, info.jobs, utils.chars.jobIdToString);
-      return Object.assign({ armor, stackable }, response, {
+      const { desc, id, displayName, sort, level, jobs } = item;
+      return {
+        desc,
+        id,
+        name: displayName,
+        sort,
+        stackable: Boolean(item.stackSize > 1),
+        armor: utils.items.getJobs(level, jobs, utils.chars.jobIdToString),
         key: utils.items.safeDecode(itemname).toLowerCase(),
-      });
+      };
     }
   });
 

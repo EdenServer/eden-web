@@ -1,6 +1,8 @@
 import owner from '../../../client/src/owner';
 import cparse from './crafts';
 
+const lists = require('../lists');
+
 const loadItems = async query => {
   try {
     const statement = `SELECT *, b.itemid AS id, b.name AS name,
@@ -22,32 +24,30 @@ const loadItems = async query => {
             LEFT JOIN item_usable AS u ON b.itemid = u.itemid
             LEFT JOIN item_weapon AS w ON b.itemid = w.itemid;`;
     const results = await query(statement, [], false);
-    const map = {};
-    results.forEach(r => (map[r.name.toLowerCase()] = r));
-    return map;
+    const byId = {};
+    const byName = {};
+
+    results.forEach(r => {
+      if (r.level > 75) {
+        return;
+      }
+
+      // Populate database item object with display name, description, and sortname from the JSON info file.
+      const { name, sort, desc } = lists.items[r.id];
+      r.displayName = name;
+      r.sort = sort;
+      r.desc = desc;
+
+      byId[r.id] = r;
+
+      const nameKey = r.name.toLowerCase();
+      if (!(nameKey in byName)) {
+        byName[nameKey] = r;
+      }
+    });
+    return { byId, byName };
   } catch (error) {
     console.error('Error while loading items', error);
-    return {};
-  }
-};
-
-const loadItemKeys = async query => {
-  try {
-    const statement = `SELECT item_basic.itemid, item_basic.name, level, jobs FROM item_basic
-            LEFT JOIN item_armor ON item_basic.itemid = item_armor.itemid;`;
-    const results = await query(statement);
-    const map = {};
-    results.forEach(
-      r =>
-        (map[r.itemid] = {
-          key: r.name,
-          level: r.level,
-          jobs: r.jobs,
-        })
-    );
-    return map;
-  } catch (error) {
-    console.error('Error while loading item keys', error);
     return {};
   }
 };
@@ -156,4 +156,4 @@ const safeDecode = uri => {
   }
 };
 
-export { loadItems, loadItemKeys, getRecipeFor, getLastSold, getBazaars, getOwners, refreshOwnersCache, getJobs, safeDecode };
+export { loadItems, getRecipeFor, getLastSold, getBazaars, getOwners, refreshOwnersCache, getJobs, safeDecode };
