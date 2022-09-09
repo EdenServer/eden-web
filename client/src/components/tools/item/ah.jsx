@@ -3,12 +3,12 @@ import { Table, Loader } from 'semantic-ui-react';
 import { Link } from '@reach/router';
 import apiUtil from '../../../apiUtil';
 
-export default ({ name, stack }) => {
+export default ({ itemid, stack }) => {
   const [error, setError] = React.useState(false);
   const [ah, setAh] = React.useState(null);
 
   const fetchAh = () => {
-    apiUtil.get({ url: `/api/v1/items/${name}/ah?stack=${stack}` }, async (error, res) => {
+    apiUtil.get({ url: `/api/v1/items/${itemid}/ah?stack=${stack}` }, async (error, res) => {
       try {
         if (!error && res.status === 200) {
           setAh(await res.json());
@@ -25,11 +25,11 @@ export default ({ name, stack }) => {
   const fetchMemoizedAh = React.useCallback(fetchAh);
 
   React.useEffect(() => {
-    if (name) {
+    if (itemid) {
       setAh(null);
       fetchMemoizedAh();
     }
-  }, [name, stack]);
+  }, [itemid, stack]);
 
   if (error) {
     return <p>Error fetching auction house history...</p>;

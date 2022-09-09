@@ -3,9 +3,9 @@ import { Table, Loader } from 'semantic-ui-react';
 import { Link } from '@reach/router';
 import apiUtil from '../../../apiUtil';
 
-const formatItem = itemname => {
+const formatItem = (itemkey, itemname) => {
   return (
-    <Link to={`/tools/item/${encodeURIComponent(itemname)}`}>
+    <Link to={`/tools/item/${encodeURIComponent(itemkey)}`}>
       {itemname
         .split('_')
         .map(string => {
@@ -58,7 +58,7 @@ export default ({ name }) => {
       <Table.Body>
         {bazaar.map((sell, i) => (
           <Table.Row key={`ah_history_${i}`}>
-            <Table.Cell>{formatItem(sell.name)}</Table.Cell>
+            <Table.Cell>{formatItem(sell.itemid, sell.name)}</Table.Cell>
             <Table.Cell>{sell.quantity}</Table.Cell>
             <Table.Cell>{`${sell.bazaar.toLocaleString()}g`}</Table.Cell>
           </Table.Row>

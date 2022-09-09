@@ -137,7 +137,7 @@ const getCharAH = async (query, charname, limit = 10) => {
       return [];
     }
 
-    const statement = `SELECT name, CASE WHEN stack = 1 THEN stacksize ELSE 1 END AS stack_size,
+    const statement = `SELECT item_basic.itemid, name, CASE WHEN stack = 1 THEN stacksize ELSE 1 END AS stack_size,
                               seller_name, buyer_name, sale, sell_date FROM server_auctionhouse
             JOIN item_basic on item_basic.itemid = server_auctionhouse.itemid
             WHERE sell_date != 0 AND (seller = ? OR buyer_name = ?) ORDER BY sell_date DESC LIMIT ?;`;
@@ -150,7 +150,7 @@ const getCharAH = async (query, charname, limit = 10) => {
 
 const getCharBazaar = async (query, charname) => {
   try {
-    const statement = `SELECT b.name, i.bazaar, SUM(quantity) quantity FROM char_inventory AS i
+    const statement = `SELECT b.itemid, b.name, i.bazaar, SUM(quantity) quantity FROM char_inventory AS i
             JOIN chars AS c ON c.charid = i.charid
             JOIN item_basic AS b ON b.itemid = i.itemid
             WHERE bazaar != 0 AND charname = ? GROUP BY name, bazaar

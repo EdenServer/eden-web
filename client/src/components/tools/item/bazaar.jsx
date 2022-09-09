@@ -3,13 +3,13 @@ import { Table, Loader, Icon } from 'semantic-ui-react';
 import { Link } from '@reach/router';
 import apiUtil from '../../../apiUtil';
 
-export default ({ name }) => {
+export default ({ itemid }) => {
   const [error, setError] = React.useState(false);
   const [bazaar, setBazaar] = React.useState(null);
 
   const fetchBazaar = () => {
     setBazaar(null);
-    apiUtil.get({ url: `/api/v1/items/${name}/bazaar` }, async (error, res) => {
+    apiUtil.get({ url: `/api/v1/items/${itemid}/bazaar` }, async (error, res) => {
       try {
         if (!error && res.status === 200) {
           setBazaar(await res.json());
@@ -23,7 +23,7 @@ export default ({ name }) => {
     });
   };
 
-  React.useEffect(fetchBazaar, [name]);
+  React.useEffect(fetchBazaar, [itemid]);
 
   if (error) {
     return <p>Error fetching bazaar items...</p>;

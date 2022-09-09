@@ -3,9 +3,9 @@ import { Table, Loader } from 'semantic-ui-react';
 import { Link } from '@reach/router';
 import apiUtil from '../../../apiUtil';
 
-const formatItem = (itemname, stacksize) => {
+const formatItem = (itemkey, itemname, stacksize) => {
   return (
-    <Link to={`/tools/item/${encodeURIComponent(itemname)}${parseInt(stacksize, 10) > 1 ? '?stack=true' : ''}`}>
+    <Link to={`/tools/item/${encodeURIComponent(itemkey)}${parseInt(stacksize, 10) > 1 ? '?stack=true' : ''}`}>
       {itemname
         .split('_')
         .map(string => {
@@ -73,7 +73,7 @@ export default ({ name }) => {
           return (
             <Table.Row key={`ah_history_${i}`}>
               <Table.Cell>{`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}</Table.Cell>
-              <Table.Cell>{formatItem(history.name, history.stack_size)}</Table.Cell>
+              <Table.Cell>{formatItem(history.itemid, history.name, history.stack_size)}</Table.Cell>
               <Table.Cell>{formatPlayerLink(name, history.seller_name)}</Table.Cell>
               <Table.Cell>{formatPlayerLink(name, history.buyer_name)}</Table.Cell>
               <Table.Cell>{`${history.sale.toLocaleString()}g`}</Table.Cell>
