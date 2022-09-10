@@ -52,11 +52,11 @@ const loadItems = async query => {
   }
 };
 
-const getRecipeFor = async (query, itemname) => {
+const getRecipeFor = async (query, itemid) => {
   try {
     const statement = `SELECT * FROM synth_recipes AS r
-    JOIN item_basic AS b ON r.result = b.itemid OR resultHQ1 = b.itemid OR resultHQ2 = b.itemid OR resultHQ3 = b.itemid WHERE b.name = ?;`;
-    return cparse.parse(await query(statement, [itemname]));
+    JOIN item_basic AS b ON r.result = b.itemid OR resultHQ1 = b.itemid OR resultHQ2 = b.itemid OR resultHQ3 = b.itemid WHERE b.itemid = ?;`;
+    return cparse.parse(await query(statement, [itemid]));
   } catch (error) {
     console.error('Error while getting specific recipe', error);
     return [];
@@ -80,17 +80,17 @@ const getLastSold = async (query, itemid, stack = 0, count = 10) => {
   }
 };
 
-const getBazaars = async (query, itemname, limit = 300) => {
+const getBazaars = async (query, itemid, limit = 300) => {
   try {
     const statement = `SELECT charname, bazaar, SUM(quantity) AS quantity, IF(s.charid IS NULL, 0, 1) AS online_flag FROM char_inventory AS i
             JOIN item_basic AS b ON b.itemid = i.itemid
             JOIN chars AS c ON c.charid = i.charid
             JOIN accounts a ON a.id = c.accid
             LEFT JOIN accounts_sessions s on c.charid = s.charid
-            WHERE bazaar != 0 AND b.name = ? AND a.timelastmodify > NOW() - INTERVAL 30 DAY
+            WHERE bazaar != 0 AND b.itemid = ? AND a.timelastmodify > NOW() - INTERVAL 30 DAY
             GROUP BY charname, bazaar, online_flag
             ORDER BY CASE WHEN online_flag = 1 THEN 1 ELSE 2 END, bazaar, quantity, charname ASC LIMIT ?;`;
-    return await query(statement, [itemname, limit]);
+    return await query(statement, [itemid, limit]);
   } catch (error) {
     console.error('Error while getting bazaars', error);
     return [];
