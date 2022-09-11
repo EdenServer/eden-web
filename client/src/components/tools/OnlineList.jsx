@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Segment, Icon, Loader, Table } from 'semantic-ui-react';
+import { Image, Segment, Icon, Loader, Table, Popup } from 'semantic-ui-react';
 import { navigate } from '@reach/router';
 
 import Pagination from '../pagination';
@@ -85,12 +85,17 @@ class OnlineList extends React.PureComponent {
 
         <Segment.Group className="gm_online-count" raised>
           <Segment>
-            <span>{online} characters online </span>
+            {online} characters online
             {active != null && (
-              <span data-tooltip="Daily average active characters calculated\nby averaging sums of unique characters that have logged in during the last 14 days. Characters that stay logged in multiple days at a time will not be reflected in this count as they need to manually log in for their character to count for the day's average.\ntest">
+              <>
                 {' '}
-                | {active} active daily
-              </span>
+                | {active} active daily{' '}
+                <Popup
+                  on="hover"
+                  content="Daily average active characters calculated by averaging sums of unique characters that have logged in during the last 14 days. Characters that stay logged in multiple days at a time will not be reflected in this count as they need to manually log in for their character to count for the day's average."
+                  trigger={<Icon name="info circle" />}
+                />
+              </>
             )}
           </Segment>
           <Pagination perPageDefault={10} results={parseInt(online, 10)} changePage={this.fetchChars} />
