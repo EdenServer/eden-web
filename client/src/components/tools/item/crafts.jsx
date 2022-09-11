@@ -28,7 +28,9 @@ const Recipe = ({ recipe, index }) => {
           {Object.values(recipe.ingredients).map((ingredient, i) => (
             <List.Item key={`ing_${index}_${i}`}>
               <List.Content>
-                <Image src={images.item(ingredient.id)} />
+                <a href={`/tools/item/${ingredient.id}`}>
+                  <Image src={images.item(ingredient.id)} />
+                </a>
                 {` ${formatString(ingredient.name)} ${ingredient.count === 1 ? '' : `(${ingredient.count})`}`}
               </List.Content>
             </List.Item>
@@ -41,7 +43,9 @@ const Recipe = ({ recipe, index }) => {
             <List.Item key={`res_${index}_${i}`}>
               <List.Content>
                 {`${result.type === 'Normal' ? 'NQ' : result.type}: `}
-                <Image src={images.item(result.id)} />
+                <a href={`/tools/item/${result.id}`}>
+                  <Image src={images.item(result.id)} />
+                </a>
                 {`${result.type === 'Normal' ? result.name : formatString(result.name)} ${result.count === 1 ? '' : `(${result.count})`}`}
               </List.Content>
             </List.Item>
