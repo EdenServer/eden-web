@@ -54,6 +54,9 @@ const loadItems = async query => {
 
 const getRecipeFor = async (query, itemid) => {
   try {
+    if (!itemid) {
+      return [];
+    }
     const statement = `SELECT * FROM synth_recipes AS r
     JOIN item_basic AS b ON r.result = b.itemid OR resultHQ1 = b.itemid OR resultHQ2 = b.itemid OR resultHQ3 = b.itemid WHERE b.itemid = ?;`;
     return cparse.parse(await query(statement, [itemid]));
@@ -82,6 +85,9 @@ const getLastSold = async (query, itemid, stack = 0, count = 10) => {
 
 const getBazaars = async (query, itemid, limit = 300) => {
   try {
+    if (!itemid) {
+      return [];
+    }
     const statement = `SELECT charname, bazaar, SUM(quantity) AS quantity, IF(s.charid IS NULL, 0, 1) AS online_flag FROM char_inventory AS i
             JOIN item_basic AS b ON b.itemid = i.itemid
             JOIN chars AS c ON c.charid = i.charid
