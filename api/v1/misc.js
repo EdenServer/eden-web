@@ -32,6 +32,32 @@ router.get('/status', async (req, res) => {
   }
 });
 
+router.get('/active', async (req, res) => {
+  const cache = await req.app.locals.cache.fetch(
+    {
+      key: req.originalUrl,
+      interval: 86400000, // 24 hours
+    },
+    async () => {
+      try {
+        const activeDays = await req.app.locals.query(
+          'SELECT COUNT(DISTINCT charid) AS active_players, CAST(login_time AS DATE) AS date FROM audit_iprecord WHERE login_time BETWEEN DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 14 DAY) AND CURRENT_TIMESTAMP GROUP BY date;'
+        );
+        if (activeDays == null || activeDays.length < 1) {
+          return res.send(404);
+        }
+        const sum = activeDays.reduce((s, day) => s + parseInt(day.active_players, 10), 0);
+        res.send(Math.round(sum / activeDays.length).toString());
+      } catch {
+        return res.send(500);
+      }
+      return res.status(200).send('504');
+    }
+  );
+
+  res.send(cache);
+});
+
 router.get('/yells', async (req, res) => {
   const cache = await req.app.locals.cache.fetch(
     {
