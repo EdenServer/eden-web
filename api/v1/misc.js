@@ -47,7 +47,7 @@ router.get('/active', async (req, res) => {
           return res.status(404).send();
         }
         const sum = activeDays.reduce((s, day) => s + parseInt(day.active_players, 10), 0);
-        res.status(200).send(Math.round(sum / activeDays.length).toString());
+        return Math.round(sum / activeDays.length).toString();
       } catch {
         return res.status(500).send();
       }
