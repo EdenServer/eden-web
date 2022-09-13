@@ -54,9 +54,11 @@ class OnlineList extends React.PureComponent {
       }
     });
     apiUtil.get({ url: '/api/v1/misc/active' }, async (error, res) => {
-      console.log(error, res.status);
       if (error == null && res.status === 200) {
-        this.setState({ active: await res.text() });
+        const count = await res.text();
+        if (count) {
+          this.setState({ active: count });
+        }
       }
     });
   }
