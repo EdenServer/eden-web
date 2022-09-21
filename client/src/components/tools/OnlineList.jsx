@@ -94,7 +94,7 @@ class OnlineList extends React.PureComponent {
                 | {active} active daily{' '}
                 <Popup
                   on="hover"
-                  content="Daily average active characters calculated by averaging sums of unique characters that have logged in during the last 14 days. Characters that stay logged in multiple days at a time will not be reflected in this count as they need to manually log in for their character to count for the day's average."
+                  content="Daily average active characters calculated by averaging sums of unique characters that have logged in during the last full 14 days. Characters that stay logged in multiple days at a time will not be reflected in this count as they need to manually log in for their character to count for the day's average."
                   trigger={<Icon name="info circle" />}
                 />
               </>
