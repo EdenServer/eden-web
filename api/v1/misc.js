@@ -41,7 +41,7 @@ router.get('/active', async (req, res) => {
     async () => {
       try {
         const activeDays = await req.app.locals.query(
-          'SELECT COUNT(DISTINCT charid) AS active_players, CAST(login_time AS DATE) AS date FROM audit_iprecord WHERE login_time BETWEEN DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 14 DAY) AND CURRENT_TIMESTAMP GROUP BY date;'
+          'SELECT COUNT(DISTINCT charid) AS active_players, CAST(login_time AS DATE) AS date FROM audit_iprecord WHERE login_time BETWEEN DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 15 DAY) AND DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 DAY) GROUP BY date;'
         );
         if (activeDays == null || activeDays.length < 1) {
           return res.status(404).send();
