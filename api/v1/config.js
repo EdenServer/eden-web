@@ -78,7 +78,7 @@ module.exports = {
       ],
     },
     software: {
-      updated: '5/22/2020',
+      updated: '11/13/2022',
       list: [
         { item: 'Combat Parsers', allowed: true },
         { item: 'GearLock', allowed: true },
@@ -102,10 +102,6 @@ module.exports = {
         },
         { item: 'AuctionHelper / Auction House assistants' },
         { item: 'Multisend / Servo' },
-        {
-          item: 'Minimap and other map overlays that interact with the world  (Show NPCs, players, etc)',
-        },
-        { item: 'Allmaps' },
         {
           item: 'Scripts ran unattended. (If a GM speaks to you and you do not reply within a certain time frame, you may be jailed.)',
         },
