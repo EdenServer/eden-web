@@ -14,7 +14,7 @@ module.exports = {
       ],
     },
     rules: {
-      updated: '5/22/2020',
+      updated: '12/08/2022',
       list: [
         'Using a non-Eden bootloader--including using a modified version of the Eden bootloader--is NOT allowed. The bootloader must be downloaded from the official site or #annoucements channel in our official Discord otherwise there are no guarantees it is official.',
         'If something feels like it is broken, either not like it was on era retail or a potential exploit or too overpowered (read: if something seems like it was not intentional from the development team) report it. Knowingly taking advantage of these activities is NOT allowed.',
@@ -44,28 +44,28 @@ module.exports = {
         { rule: 'Pos Hacking / Speed Hacking', consequence: 'Banned' },
         {
           rule: 'Harassment',
-          consequence: '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned',
+          consequence: 'Staff Discretion ',
         },
         {
           rule: 'Navmesh Abuse',
-          consequence: '1st-3rd Violation: Homepointed\n4th Violation: 2 Week Suspension\n5th Violation: 1 Month Suspension',
+          consequence: 'Staff Discretion ',
         },
         {
           rule: 'Intentional MPK',
-          consequence: '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned\n',
+          consequence: 'Staff Discretion',
         },
         {
           rule: 'RMT (Buying and Selling)',
-          consequence: 'Banned',
+          consequence: 'Banned (Seller and Buyer)',
         },
         {
           rule: 'Too many characters online',
-          consequence: '1st Violation: Warning\n2nd Violation: 2 Week Suspension\n3rd Violation: 2 Month Suspension\n4th Violation: Banned\n',
+          consequence: 'Staff Discretion',
         },
         {
           rule: 'Gardening on more than 3 characters',
           consequence:
-            '1st Violation: Warning and emptied pots\n2nd Violation: 1 Month Suspension and emptied pots\n3rd Violation: 3 Month Suspension and emptied pots\n4th Violation: Banned\n',
+            'Staff Discretion',
         },
         {
           rule: 'Severe Exploits',
@@ -73,12 +73,12 @@ module.exports = {
         },
         {
           rule: 'Inappropriate Character Names',
-          consequence: 'Randomly Assigned Character Name',
+          consequence: 'Staff Discretion',
         },
       ],
     },
     software: {
-      updated: '5/22/2020',
+      updated: '12/08/2022',
       list: [
         { item: 'Combat Parsers', allowed: true },
         { item: 'GearLock', allowed: true },
@@ -102,10 +102,6 @@ module.exports = {
         },
         { item: 'AuctionHelper / Auction House assistants' },
         { item: 'Multisend / Servo' },
-        {
-          item: 'Minimap and other map overlays that interact with the world  (Show NPCs, players, etc)',
-        },
-        { item: 'Allmaps' },
         {
           item: 'Scripts ran unattended. (If a GM speaks to you and you do not reply within a certain time frame, you may be jailed.)',
         },
@@ -229,9 +225,9 @@ module.exports = {
     },
   ],
   install: {
-    source1: 'https://bit.ly/Eden532',
-    source2: 'https://bit.ly/Edenv531',
-    bootloader: 'https://github.com/EdenServer/xiloader/releases/latest/download/xiloader.exe',
+    source1: 'https://bit.ly/Eden51Installer',
+    source2: 'https://bit.ly/EdenV5BackupInstaller',
+    bootloader: 'https://bit.ly/EdenXILoader',
     discord: 'https://discord.gg/S3EAWr2Jec',
   },
 };
