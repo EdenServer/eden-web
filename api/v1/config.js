@@ -35,48 +35,7 @@ module.exports = {
         'Character names that depict cheating, could be considered sexually explicit, or any names that could be disallowed on retail are NOT allowed.',
         'Use of, or advertisement of, any cheat program/addon or a non-approved addon/program on Eden or its media is NOT allowed. There will be an allowed list and a non-allowed list. Those not in the approved list are discouraged from use as you may be penalized for using them. Use at your own risk. Those that are similar to a forbidden program are most likely forbidden as well.',
         'GM interaction is limited here but if a GM messages you in game and you are active, respond within a reasonable time. Ignoring a GM is likely to get you jailed as we will likely think you are afk botting.',
-      ],
-      violations: [
-        {
-          rule: 'Using Bots to include Fish Botting and Claim Botting',
-          consequence: 'Banned',
-        },
-        { rule: 'Pos Hacking / Speed Hacking', consequence: 'Banned' },
-        {
-          rule: 'Harassment',
-          consequence: '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned',
-        },
-        {
-          rule: 'Navmesh Abuse',
-          consequence: '1st-3rd Violation: Homepointed\n4th Violation: 2 Week Suspension\n5th Violation: 1 Month Suspension',
-        },
-        {
-          rule: 'Intentional MPK',
-          consequence: '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned\n',
-        },
-        {
-          rule: 'RMT (Buying and Selling)',
-          consequence: 'Banned',
-        },
-        {
-          rule: 'Too many characters online',
-          consequence: '1st Violation: Warning\n2nd Violation: 2 Week Suspension\n3rd Violation: 2 Month Suspension\n4th Violation: Banned\n',
-        },
-        {
-          rule: 'Gardening on more than 3 characters',
-          consequence:
-            '1st Violation: Warning and emptied pots\n2nd Violation: 1 Month Suspension and emptied pots\n3rd Violation: 3 Month Suspension and emptied pots\n4th Violation: Banned\n',
-        },
-        {
-          rule: 'Severe Exploits',
-          consequence: 'Banned',
-        },
-        {
-          rule: 'Inappropriate Character Names',
-          consequence: 'Randomly Assigned Character Name',
-        },
-      ],
-    },
+      ],   
     software: {
       updated: '5/22/2020',
       list: [
@@ -102,10 +61,6 @@ module.exports = {
         },
         { item: 'AuctionHelper / Auction House assistants' },
         { item: 'Multisend / Servo' },
-        {
-          item: 'Minimap and other map overlays that interact with the world  (Show NPCs, players, etc)',
-        },
-        { item: 'Allmaps' },
         {
           item: 'Scripts ran unattended. (If a GM speaks to you and you do not reply within a certain time frame, you may be jailed.)',
         },
