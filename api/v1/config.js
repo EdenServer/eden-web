@@ -35,7 +35,48 @@ module.exports = {
         'Character names that depict cheating, could be considered sexually explicit, or any names that could be disallowed on retail are NOT allowed.',
         'Use of, or advertisement of, any cheat program/addon or a non-approved addon/program on Eden or its media is NOT allowed. There will be an allowed list and a non-allowed list. Those not in the approved list are discouraged from use as you may be penalized for using them. Use at your own risk. Those that are similar to a forbidden program are most likely forbidden as well.',
         'GM interaction is limited here but if a GM messages you in game and you are active, respond within a reasonable time. Ignoring a GM is likely to get you jailed as we will likely think you are afk botting.',
-      ],   
+      ],
+      violations: [
+        {
+          rule: 'Using Bots to include Fish Botting and Claim Botting',
+          consequence: 'Banned',
+        },
+        { rule: 'Pos Hacking / Speed Hacking', consequence: 'Banned' },
+        {
+          rule: 'Harassment',
+          consequence: 'Staff Discretion ',
+        },
+        {
+          rule: 'Navmesh Abuse',
+          consequence: 'Staff Discretion ',
+        },
+        {
+          rule: 'Intentional MPK',
+          consequence: 'Staff Discretion',
+        },
+        {
+          rule: 'RMT (Buying and Selling)',
+          consequence: 'Banned (Seller and Buyer)',
+        },
+        {
+          rule: 'Too many characters online',
+          consequence: 'Staff Discretion',
+        },
+        {
+          rule: 'Gardening on more than 3 characters',
+          consequence:
+            'Staff Discretion',
+        },
+        {
+          rule: 'Severe Exploits',
+          consequence: 'Banned',
+        },
+        {
+          rule: 'Inappropriate Character Names',
+          consequence: 'Staff Discretion',
+        },
+      ],
+    },
     software: {
       updated: '5/22/2020',
       list: [
