@@ -225,9 +225,9 @@ module.exports = {
     },
   ],
   install: {
-    source1: 'https://bit.ly/Eden51Installer',
-    source2: 'https://bit.ly/EdenV5BackupInstaller',
-    bootloader: 'https://bit.ly/EdenXILoader',
+    source1: 'https://bit.ly/Eden532',
+    source2: 'https://bit.ly/Edenv531',
+    bootloader: 'https://github.com/EdenServer/xiloader/releases/latest/download/xiloader.exe',
     discord: 'https://discord.gg/S3EAWr2Jec',
   },
 };
