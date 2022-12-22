@@ -34,7 +34,7 @@
     "discord.js": "11.5.1",
     "express": "4.17.1",
     "express-rate-limit": "^6.4.0",
-    "jsonwebtoken": "8.5.1",
+    "jsonwebtoken": "9.0.0",
     "lightenv": "1.1.0",
     "mysql2": "2.1.0",
     "parse-md": "^2.0.4",
