@@ -11,7 +11,7 @@ router.get('/points', async (req, res) => {
       interval: 300000,
     },
     () => {
-      return fetchGuildItems(req.app.locals.query);
+      return fetchGuildItems(req.app.locals.query, req.app.locals.pattern);
     }
   );
 

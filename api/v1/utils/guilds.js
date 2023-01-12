@@ -1,11 +1,21 @@
 const { guilds, ranks, items } = require('../lists');
 
 function getVanaTime() {
-  return (Date.now() - 1009810800000 - 900) / 1000; //Adjusted to be delayed 15 minutes
+  return (Date.now() - 1009810800000 - 900000) / 1000; //Adjusted to be delayed 15 minutes
 }
 
 function getAdjustedRank(initialRank) {
   return (((getVanaTime() / (60 * 60 * 24)) % (initialRank + 4)) + 1) % (initialRank + 4);
+}
+
+async function getPattern(query, patternCache) {
+  if (await patternCache.isValidPattern()) {
+    return await patternCache.get();
+  } else {
+    const pattern = await query('SELECT value FROM server_variables WHERE name = "[GUILD]pattern"');
+    await patternCache.update(pattern);
+    return await patternCache.get();
+  }
 }
 
 function sortGuildItems(results) {
@@ -52,9 +62,9 @@ function parseGuildItems(items) {
   return gpitems;
 }
 
-const fetchGuildItems = async query => {
+const fetchGuildItems = async (query, patternCache) => {
   try {
-    const pattern = await query('SELECT value FROM server_variables WHERE name = "[GUILD]pattern"');
+    const pattern = await getPattern(query, patternCache);
     const statement = `SELECT guildid, itemid, rank, points, max_points
     FROM guild_item_points
     WHERE pattern = ?;`;
