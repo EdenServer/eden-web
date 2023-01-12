@@ -12,6 +12,7 @@ export default class Pattern {
   async isValidPattern(): Promise<Boolean> {
     await this.updateDate();
     if ((await this.patternShouldChange()) || this.pattern == -1) {
+      this.day = this.date.getDay();
       return false;
     } else {
       return true;
