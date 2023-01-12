@@ -4,6 +4,7 @@ const chars = require('./chars');
 const db = require('./db');
 const items = require('./items');
 const yells = require('./yells');
+const guilds = require('./guilds');
 
 module.exports = {
   accounts,
@@ -12,4 +13,5 @@ module.exports = {
   db,
   items,
   yells,
+  guilds,
 };
