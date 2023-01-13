@@ -20,7 +20,7 @@ async function getPattern(query, patternCache) {
 
 function sortGuildItems(results) {
   const gpitems = {};
-  var previousTier = 0;
+  var previousTier;
   Object.keys(guilds).forEach(guildid => {
     gpitems[guilds[guildid]] = [];
   });
