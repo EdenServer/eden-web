@@ -18,6 +18,15 @@ async function getPattern(query, patternCache) {
   }
 }
 
+function showPending(patternCache) {
+  var time = new Date(patternCache.getJPTime());
+  if (time.getHours() == 0 && time.getMinutes() < 15) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function sortGuildItems(results) {
   const gpitems = {};
   var previousTier;
@@ -65,6 +74,9 @@ function parseGuildItems(items) {
 const fetchGuildItems = async (query, patternCache) => {
   try {
     const pattern = await getPattern(query, patternCache);
+    if (showPending(patternCache)) {
+      return {};
+    }
     const statement = `SELECT guildid, itemid, rank, points, max_points
     FROM guild_item_points
     WHERE pattern = ?;`;
@@ -74,7 +86,7 @@ const fetchGuildItems = async (query, patternCache) => {
     return parseditems;
   } catch (error) {
     console.error('Error while fetching Guild Point items', error);
-    return { gpitems: [] };
+    return {};
   }
 };
 

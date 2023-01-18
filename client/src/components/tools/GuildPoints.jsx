@@ -56,7 +56,13 @@ const GuildPoints = () => {
       }
     );
   }, []);
-
+  if (Object.keys(gpitems).length === 0) {
+    return (
+      <Segment className="gm_tools-container">
+        <p style={{ textAlign: 'center' }}>Pending new pattern! Check back soon.</p>
+      </Segment>
+    );
+  }
   return (
     <Segment className="gm_tools-container">
       <Table selectable>

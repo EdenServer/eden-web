@@ -5,7 +5,7 @@ export default class Pattern {
 
   constructor() {
     this.pattern = -1; //Initialize as an incorrect value to force new assignment
-    this.date = new Date(new Date(this.getJPTime())); //Need JP time
+    this.date = new Date(this.getJPTime()); //Need JP time
     this.day = this.date.getDay();
   }
 
@@ -38,7 +38,7 @@ export default class Pattern {
     return this.pattern;
   }
 
-  private getJPTime(): string {
+  getJPTime(): string {
     return new Date().toLocaleString('en-US', { timeZone: 'Japan' });
   }
 }
