@@ -4,6 +4,7 @@ import express from 'express';
 import mysql from 'mysql2';
 import path from 'path';
 import Cache from './api/v1/utils/cache';
+import Pattern from './api/v1/utils/pattern';
 import preparedStatement from './api/v1/utils/db';
 import { loadItems, refreshOwnersCache } from './api/v1/utils/items';
 import { refreshTitleCache } from './api/v1/utils/chars';
@@ -33,6 +34,7 @@ app.get('/*', (req, res) => {
 });
 
 app.locals.cache = new Cache({ interval: 120000 }); // 2 minutes
+app.locals.pattern = new Pattern();
 app.locals.db = mysql.createPool({
   host: process.env.MYSQLHOST,
   user: process.env.MYSQLUSER,

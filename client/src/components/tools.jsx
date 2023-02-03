@@ -7,6 +7,7 @@ import Itemsearch from './tools/itemsearch';
 import Playersearch from './tools/playersearch';
 import OnlineList from './tools/OnlineList';
 import YellTab from './tools/YellTab';
+import GuildPoints from './tools/GuildPoints';
 
 const TabItem = ({ to, activeTab, disabled = false, children }) => (
   <Menu.Item as={disabled ? undefined : Link} to={disabled ? undefined : to} active={to === activeTab} disabled={disabled}>
@@ -37,6 +38,9 @@ const Tools = () => {
           <TabItem to="yells" activeTab={activeTab}>
             Yells
           </TabItem>
+          <TabItem to="guilds" activeTab={activeTab}>
+            Guild Points
+          </TabItem>
         </Menu>
         <Router>
           <OnlineList path="/" />
@@ -45,6 +49,7 @@ const Tools = () => {
           <Itemsearch path="item/*" history={history} />
           <Playersearch path="player/*" history={history} />
           <YellTab path="yells" />
+          <GuildPoints path="guilds" />
         </Router>
       </div>
     </div>
