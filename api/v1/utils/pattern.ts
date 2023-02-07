@@ -1,5 +1,5 @@
 export default class Pattern {
-  private pattern: number;
+  private pattern: any;
   private date: Date;
   private day: number;
 
@@ -11,7 +11,7 @@ export default class Pattern {
 
   async isValidPattern(): Promise<Boolean> {
     await this.updateDate();
-    if ((await this.patternShouldChange()) || this.pattern == -1) {
+    if ((await this.patternShouldChange()) || typeof this.pattern != 'object' || this.pattern.length == 0) {
       this.day = this.date.getDay();
       return false;
     } else {
