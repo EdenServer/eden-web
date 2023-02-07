@@ -12,8 +12,12 @@ async function getPattern(query, patternCache) {
   if (await patternCache.isValidPattern()) {
     return await patternCache.get();
   } else {
-    const pattern = await query('SELECT value FROM server_variables WHERE name = "[GUILD]pattern"');
-    await patternCache.update(pattern);
+    const queryResult = await query('SELECT value FROM server_variables WHERE name = "[GUILD]pattern"');
+    if (queryResult && queryResult.length > 0) {
+      patternCache.set(queryResult[0].value);
+    } else {
+      patternCache.set(0);
+    }
     return await patternCache.get();
   }
 }
@@ -80,7 +84,7 @@ const fetchGuildItems = async (query, patternCache) => {
     const statement = `SELECT guildid, itemid, rank, points, max_points
     FROM guild_item_points
     WHERE pattern = ?;`;
-    const results = await query(statement, [`${pattern[0].value}`]);
+    const results = await query(statement, [pattern]);
     const gpitems = sortGuildItems(results);
     const parseditems = parseGuildItems(gpitems);
     return parseditems;
