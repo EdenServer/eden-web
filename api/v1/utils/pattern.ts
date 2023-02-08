@@ -1,5 +1,5 @@
 export default class Pattern {
-  private pattern: any;
+  private pattern: number;
   private date: Date;
   private day: number;
 
@@ -10,8 +10,8 @@ export default class Pattern {
   }
 
   async isValidPattern(): Promise<Boolean> {
-    await this.updateDate();
-    if ((await this.patternShouldChange()) || typeof this.pattern != 'object' || this.pattern.length == 0) {
+    this.updateDate();
+    if (this.patternShouldChange() || this.pattern == -1) {
       this.day = this.date.getDay();
       return false;
     } else {
@@ -19,22 +19,22 @@ export default class Pattern {
     }
   }
 
-  private async patternShouldChange() {
+  private patternShouldChange() {
     if (this.date.getDay() != this.day && (this.date.getHours() > 0 || this.date.getMinutes() >= 15)) {
       return true;
     }
     return false;
   }
 
-  private async updateDate() {
+  private updateDate() {
     this.date = new Date(this.getJPTime());
   }
 
-  async update(pattern: number) {
+  set(pattern: number) {
     this.pattern = pattern;
   }
 
-  async get(): Promise<any> {
+  get(): number {
     return this.pattern;
   }
 
