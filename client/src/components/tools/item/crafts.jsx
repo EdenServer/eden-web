@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import { Image, Card, List, Loader } from 'semantic-ui-react';
+import { Image, Card, List, Loader, Popup } from 'semantic-ui-react';
 import apiUtil from '../../../apiUtil';
 import images from '../../../images';
 
@@ -16,7 +16,9 @@ const Recipe = ({ recipe, index }) => {
   return (
     <Card>
       <Card.Content>
-        <Image className="gm_image-spacer" floated="right" size="mini" src={images.item(recipe.Crystal)} />
+        <Link to={`/tools/item/${recipe.Crystal}`}>
+          <Popup content={recipe.CrystalName} trigger={<Image className="gm_image-spacer" floated="right" size="mini" src={images.item(recipe.Crystal)} />} />
+        </Link>
         <Card.Header>{`${recipe.crafts[0].craft} (${recipe.crafts[0].level})`}</Card.Header>
         {recipe.crafts.length > 1 && (
           <Card.Meta>
