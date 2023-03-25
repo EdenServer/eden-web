@@ -83,11 +83,6 @@ const About = () => {
                   <td>technical limitations / cheat prevention</td>
                 </tr>
                 <tr>
-                  <td>Original difficulty CoP missions</td>
-                  <td>Era difficulty CoP missions and era item flags</td>
-                  <td>teamwork</td>
-                </tr>
-                <tr>
                   <td>Mobs that link automatically dirty exp to person that linked</td>
                   <td>Mobs did not dirty exp until an action was performed on them</td>
                   <td>teamwork</td>
@@ -95,17 +90,7 @@ const About = () => {
                 <tr>
                   <td>Some mobs do not reset their window when the server is reset</td>
                   <td>Some mobs windows would reset when a server was reset or crashed</td>
-                  <td>economy</td>
-                </tr>
-                <tr>
-                  <td>Level Sync</td>
-                  <td>No Level Sync</td>
-                  <td>teamwork</td>
-                </tr>
-                <tr>
-                  <td>Mythic Weapons (currently unavailable)</td>
-                  <td>Mythic weapons did not exist</td>
-                  <td>toau content</td>
+                  <td>potential crashes</td>
                 </tr>
               </tbody>
             </table>
