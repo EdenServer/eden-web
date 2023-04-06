@@ -229,7 +229,7 @@ module.exports = {
     },
   ],
   install: {
-    source1: 'https://bit.ly/Eden533',
+    source1: 'https://bit.ly/Eden534',
     source2: 'https://bit.ly/Eden532',
     bootloader: 'https://github.com/EdenServer/xiloader/releases/latest/download/xiloader.exe',
     discord: 'https://discord.gg/S3EAWr2Jec',
