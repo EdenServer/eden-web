@@ -42,7 +42,7 @@ function install(props) {
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
                 our Discord
               </a>
-              &nbsp;, then request a code in the #new-players channel.
+              &nbsp; and request a code in the #new-players channel.
             </Card.Text>
           </InfoDisplay>
         </Col>
