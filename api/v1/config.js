@@ -14,7 +14,7 @@ module.exports = {
       ],
     },
     rules: {
-      updated: '5/22/2020',
+      updated: '3/25/2023',
       list: [
         'Using a non-Eden bootloader--including using a modified version of the Eden bootloader--is NOT allowed. The bootloader must be downloaded from the official site or #annoucements channel in our official Discord otherwise there are no guarantees it is official.',
         'If something feels like it is broken, either not like it was on era retail or a potential exploit or too overpowered (read: if something seems like it was not intentional from the development team) report it. Knowingly taking advantage of these activities is NOT allowed.',
@@ -56,7 +56,7 @@ module.exports = {
         },
         {
           rule: 'RMT (Buying and Selling)',
-          consequence: 'Banned',
+          consequence: 'Banned (Buyer and Seller)',
         },
         {
           rule: 'Too many characters online',
@@ -78,16 +78,16 @@ module.exports = {
       ],
     },
     software: {
-      updated: '5/22/2020',
+      updated: '3/25/2023',
       list: [
         { item: 'Combat Parsers', allowed: true },
-        { item: 'GearLock', allowed: true },
-        { item: 'TPParty', allowed: true },
-        { item: 'WatchEXP', allowed: true },
-        { item: 'FPS', allowed: true },
+        { item: 'GearLock', windower: 'Dressup', allowed: true },
+        { item: 'TPParty', windower: 'TParty', allowed: true },
+        { item: 'WatchEXP', windower: 'Pointwatch', allowed: true },
+        { item: 'FPS', windower: 'Config', allowed: true },
         { item: 'Duration', allowed: true },
         { item: 'HideConsole', allowed: true },
-        { item: 'Recast', windower: 'Renamer', allowed: true },
+        { item: 'Recast', windower: 'Timers', allowed: true },
         { item: 'Timestamp', allowed: true },
         {
           item: 'Shorthand (only for actions on players -- NOT allowed for claiming)',
@@ -229,8 +229,8 @@ module.exports = {
     },
   ],
   install: {
-    source1: 'https://bit.ly/Eden532',
-    source2: 'https://bit.ly/Edenv531',
+    source1: 'https://bit.ly/Eden534',
+    source2: 'https://bit.ly/Eden532',
     bootloader: 'https://github.com/EdenServer/xiloader/releases/latest/download/xiloader.exe',
     discord: 'https://discord.gg/S3EAWr2Jec',
   },
