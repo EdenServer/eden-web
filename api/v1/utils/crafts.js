@@ -54,6 +54,7 @@ const parse = recipes => {
     synth['ingredients'] = [];
     synth['results'] = [];
     delete synth['ResultName'];
+    synth['CrystalName'] = items[synth['Crystal']].name;
     Object.keys(synth).map(keyName => {
       if (Object.keys(crafts).includes(keyName)) {
         getCraftLevels(synth, keyName);
