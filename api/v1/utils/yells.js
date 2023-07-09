@@ -58,12 +58,13 @@ const parseMessage = (message, items) => {
   return val1.replace(/\}/g, '»');
 };
 
-const getYells = async (query, limit = 30) => {
+const getYells = async query => {
   try {
+    const limit = parseInt(process.env.MAX_YELLS_DISPLAYED ?? 30, 10);
     const statement = `SELECT speaker, message, unix_timestamp(datetime) AS date
             FROM audit_chat WHERE type = "YELL"
-            ORDER BY lineID DESC LIMIT ?;`;
-    const results = await query(statement, [limit]);
+            ORDER BY lineID DESC${limit === 0 ? ';' : ' LIMIT ?;'}`;
+    const results = await query(statement, limit === 0 ? undefined : [limit]);
     return results.map(row => ({
       date: row.date * 1000,
       speaker: row.speaker,
