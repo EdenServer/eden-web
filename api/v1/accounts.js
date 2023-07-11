@@ -1,5 +1,5 @@
+const axios = require('axios');
 const jwt = require('jsonwebtoken');
-const request = require('request');
 const { Router } = require('express');
 
 const router = Router();
@@ -46,6 +46,7 @@ router.get('/profile', validate, async (req, res) => {
 });
 
 router.post('/register', (req, res) => {
+  return res.status(404).send();
   const disallowedIP = [];
 
   const { username, password, email, confirmUsername, confirmPassword, confirmEmail, verify } = req.body;
@@ -78,21 +79,15 @@ router.post('/register', (req, res) => {
       });
     } else {
       // All pre-tests have passed. Validate the Recaptcha3.
-      request(
-        {
-          url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${verify}&remoteip=${req.headers['x-forwarded-for']}`,
-          method: 'POST',
-          body: {},
-          json: true,
+      axios({
+        method: 'post',
+        url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${verify}&remoteip=${req.headers['x-forwarded-for']}`,
+        data: {},
+        headers: {
+          'Content-Type': 'application/json',
         },
-        async (error, resp) => {
-          if (error) {
-            return res.json({
-              status: 'ERROR',
-              errors: { server: 'An unknown error occured. (1)' },
-            });
-          }
-
+      })
+        .then(async resp => {
           // Recaptcha3 has passed. Validate the DB entry.
           if (resp.body.success) {
             try {
@@ -141,8 +136,13 @@ router.post('/register', (req, res) => {
               },
             });
           }
-        }
-      );
+        })
+        .catch(_error => {
+          return res.json({
+            status: 'ERROR',
+            errors: { server: 'An unknown error occured. (1)' },
+          });
+        });
     }
   } catch (err) {
     return res.json({

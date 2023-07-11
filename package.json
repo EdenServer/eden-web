@@ -30,16 +30,16 @@
   },
   "homepage": "https://github.com/EdenServer/eden-web#readme",
   "dependencies": {
-    "body-parser": "1.19.0",
+    "axios": "1.4.0",
+    "body-parser": "1.20.2",
     "discord.js": "11.5.1",
-    "express": "4.17.1",
+    "express": "4.18.2",
     "express-rate-limit": "^6.4.0",
-    "jsonwebtoken": "8.5.1",
+    "jsonwebtoken": "9.0.0",
     "lightenv": "1.1.0",
     "mysql2": "2.1.0",
     "parse-md": "^2.0.4",
-    "portscanner": "2.2.0",
-    "request": "2.88.0"
+    "portscanner": "2.2.0"
   },
   "_devDependencies": {
     "eslint": "6.8.0",
@@ -64,6 +64,6 @@
     "ts-jest": "^27.0.0",
     "ts-node": "^8.10.1",
     "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.8.3"
+    "typescript": "4.9.5"
   }
 }

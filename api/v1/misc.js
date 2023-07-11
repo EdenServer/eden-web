@@ -4,7 +4,7 @@ const { Router } = require('express');
 
 const router = Router();
 
-const request = require('request');
+const axios = require('axios');
 const scanner = require('portscanner');
 
 const { getYells } = require('./utils/yells');
@@ -95,64 +95,56 @@ router.post('/contact', (req, res) => {
     return res.status(400).send();
   }
 
-  request(
-    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${verify}&remoteip=${req.headers['x-forwarded-for']}`,
-    {
-      method: 'POST',
-      body: {},
-      json: true,
+  axios({
+    method: 'post',
+    url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${verify}&remoteip=${req.headers['x-forwarded-for']}`,
+    data: {},
+    headers: {
+      'Content-Type': 'application/json',
     },
-    (recaptchError, recaptchResponse) => {
-      if (!recaptchError) {
-        // Recaptcha3 has passed.
-        if (recaptchResponse.body.success) {
-          const contact = {
-            author: {
-              name: 'Anonymous',
-              icon_url: 'https://edenxi.com/public/models/unknown.jpg.webp',
-            },
-            title: subject,
-            color: 9862070,
-            description: 'No Content',
-          };
+  })
+    .then(recaptchResponse => {
+      // Recaptcha3 has passed.
+      if (recaptchResponse.body.success) {
+        const contact = {
+          author: {
+            name: 'Anonymous',
+            icon_url: 'https://edenxi.com/public/models/unknown.jpg.webp',
+          },
+          title: subject,
+          color: 9862070,
+          description: 'No Content',
+        };
 
-          if (name) {
-            contact.author.name = name;
-          }
-
-          if (email) {
-            contact.author.name += ` (${email})`;
-          }
-
-          if (message) {
-            contact.description = message;
-          }
-
-          request(
-            group,
-            {
-              method: 'POST',
-              body: JSON.stringify({
-                embeds: [contact],
-              }),
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            },
-            (discordError, _discordResponse) => {
-              if (!discordError) {
-                res.send();
-              } else {
-                res.status(400).send();
-              }
-            }
-          );
+        if (name) {
+          contact.author.name = name;
         }
-      } else {
-        res.status(400).send();
+
+        if (email) {
+          contact.author.name += ` (${email})`;
+        }
+
+        if (message) {
+          contact.description = message;
+        }
+
+        axios({
+          method: 'post',
+          url: group,
+          data: {
+            embeds: [contact],
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then(() => res.send())
+          .catch(() => res.status(400).send());
       }
-    }
-  );
+    })
+    .catch(recaptchError => {
+      res.status(400).send();
+    });
 });
 
 router.get('/config', async (req, res) => {
