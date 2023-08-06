@@ -50,6 +50,11 @@ app.locals.query = preparedStatement(app.locals.db);
   try {
     app.locals.items = await loadItems(app.locals.query);
 
+    // Create the MySQL 5.x PASSWORD function if needed
+    app.locals.db.execute(
+      "CREATE FUNCTION IF NOT EXISTS PASSWORD (password CHAR(50)) RETURNS CHAR(50) RETURN CONCAT('*', UPPER(SHA1(UNHEX(SHA1(password)))));"
+    );
+
     // Setup cached results and refreshing of them
     await refreshOwnersCache(app.locals.query);
     setInterval(
