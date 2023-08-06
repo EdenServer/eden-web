@@ -164,8 +164,8 @@ router.post('/register', (req, res) => {
 
 router.put('/email', validate, async (req, res) => {
   try {
-    const statement = 'UPDATE accounts SET `email` = ? WHERE id = ?;';
-    const result = await req.app.locals.query(statement, [req.headers.email, req.jwt.id]);
+    const statement = 'UPDATE accounts SET `email` = ? WHERE id = ? AND `password` = PASSWORD(?);';
+    const result = await req.app.locals.query(statement, [req.headers.email, req.jwt.id, req.headers.password]);
     if (result.affectedRows) {
       const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
       res.send(token);
@@ -177,8 +177,8 @@ router.put('/email', validate, async (req, res) => {
 
 router.put('/password', validate, async (req, res) => {
   try {
-    const statement = 'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ?;';
-    const result = await req.app.locals.query(statement, [req.headers.password, req.jwt.id]);
+    const statement = 'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ? AND `password` = PASSWORD(?);';
+    const result = await req.app.locals.query(statement, [req.headers.newpass, req.jwt.id, req.headers.oldpass]);
     if (result.affectedRows) {
       const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
       res.send(token);
