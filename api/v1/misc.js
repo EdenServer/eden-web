@@ -44,12 +44,12 @@ router.get('/active', async (req, res) => {
           'SELECT COUNT(DISTINCT charid) AS active_players, CAST(login_time AS DATE) AS date FROM audit_iprecord WHERE login_time BETWEEN CAST(DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 15 DAY) AS DATE) AND CAST(DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 DAY) AS DATE) GROUP BY date;'
         );
         if (activeDays == null || activeDays.length < 1) {
-          return res.status(404).send();
+          return '0';
         }
         const sum = activeDays.reduce((s, day) => s + parseInt(day.active_players, 10), 0);
         return Math.round(sum / activeDays.length).toString();
       } catch {
-        return res.status(500).send();
+        return '0';
       }
     }
   );
