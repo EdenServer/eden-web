@@ -1,4 +1,4 @@
-import { Button, Input, Modal, Row } from 'antd';
+import { Alert, Button, Input, Modal, notification, Row } from 'antd';
 import React from 'react';
 import { Segment, List, Message, Card, Image, Icon } from 'semantic-ui-react';
 import apiUtil from '../../apiUtil';
@@ -12,6 +12,7 @@ export default ({ user, logout, reload }) => {
   const [password, setPassword] = React.useState('');
   const [oldPassword, setOldPassword] = React.useState('');
   const lastLogin = new Date(user.timelastmodify);
+  const [notify, banner] = notification.useNotification();
 
   const cancelUpdate = () => {
     setModalOpen(null);
@@ -21,11 +22,11 @@ export default ({ user, logout, reload }) => {
     setPassword('');
     setOldPassword('');
   };
-  const updateField = (field, value) => {
+  const updateField = (field, payload) => {
     apiUtil.put(
       {
         url: `/api/v1/accounts/${field}`,
-        headers: { [field]: value },
+        headers: payload,
       },
       (error, res) => {
         if (error) {
@@ -40,7 +41,12 @@ export default ({ user, logout, reload }) => {
             })
             .catch(err => console.error(err));
         } else {
-          console.error('Unable to change password.');
+          notify.error({
+            duration: 3,
+            key: 'notification',
+            message: `Unable to update ${field}`,
+            placement: 'top',
+          });
         }
       }
     );
@@ -48,12 +54,22 @@ export default ({ user, logout, reload }) => {
 
   return (
     <>
+      {banner}
       <Modal
         open={modalOpen === 'email'}
         onCancel={cancelUpdate}
         footer={[
           <Button onClick={cancelUpdate}>Cancel</Button>,
-          <Button disabled={oldPassword.length < 6 || email.length < 6 || email !== confirmEmail} type="primary" onClick={() => updateField('email', email)}>
+          <Button
+            disabled={oldPassword.length < 6 || email.length < 6 || email !== confirmEmail}
+            type="primary"
+            onClick={() =>
+              updateField('email', {
+                email,
+                oldpass: oldPassword,
+              })
+            }
+          >
             Update email
           </Button>,
         ]}
@@ -73,7 +89,12 @@ export default ({ user, logout, reload }) => {
           <Button
             disabled={oldPassword.length < 6 || password.length < 6 || password !== confirmPassword || oldPassword === password}
             type="primary"
-            onClick={() => updateField('password', password)}
+            onClick={() =>
+              updateField('password', {
+                newpass: password,
+                oldpass: oldPassword,
+              })
+            }
           >
             Update password
           </Button>,

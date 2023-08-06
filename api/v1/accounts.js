@@ -165,10 +165,12 @@ router.post('/register', (req, res) => {
 router.put('/email', validate, async (req, res) => {
   try {
     const statement = 'UPDATE accounts SET `email` = ? WHERE id = ? AND `password` = PASSWORD(?);';
-    const result = await req.app.locals.query(statement, [req.headers.email, req.jwt.id, req.headers.password]);
+    const result = await req.app.locals.query(statement, [req.headers.email, req.jwt.id, req.headers.oldpass]);
     if (result.affectedRows) {
       const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
       res.send(token);
+    } else {
+      res.status(401).send();
     }
   } catch (error) {
     res.status(401).send();
@@ -182,6 +184,8 @@ router.put('/password', validate, async (req, res) => {
     if (result.affectedRows) {
       const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
       res.send(token);
+    } else {
+      res.status(401).send();
     }
   } catch (error) {
     res.status(401).send();
