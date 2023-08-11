@@ -9,14 +9,24 @@ const { getJWTForAccountId } = require('./utils/accounts');
 
 const validate = (req, res, next) => {
   const token = req.headers.authorization.replace(/^Bearer\s/, '');
-  jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
-    if (!error) {
-      req.jwt = decoded;
-      next();
-    } else {
-      res.status(401).send();
+  jwt.verify(
+    token,
+    process.env.JWT_SECRET,
+    {
+      algorithms: ['HS512'],
+      clockTolerance: 0,
+      ignoreExpiration: false,
+      maxAge: '30h',
+    },
+    (error, decoded) => {
+      if (!error) {
+        req.jwt = decoded;
+        next();
+      } else {
+        res.status(401).send();
+      }
     }
-  });
+  );
 };
 
 router.get('/profile', validate, async (req, res) => {
