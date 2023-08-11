@@ -1,19 +1,32 @@
+import { Alert, Button, Input, Modal, notification, Row } from 'antd';
 import React from 'react';
-import { Segment, Label, List, Message, Card, Image, Icon, Button, Modal, Form, Input } from 'semantic-ui-react';
+import { Segment, List, Message, Card, Image, Icon } from 'semantic-ui-react';
 import apiUtil from '../../apiUtil';
 import images from '../../images';
 
 export default ({ user, logout, reload }) => {
   const [modalOpen, setModalOpen] = React.useState(null);
-  const [email, setEmail] = React.useState(user.email || '');
+  const [email, setEmail] = React.useState('');
+  const [confirmEmail, setConfirmEmail] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [oldPassword, setOldPassword] = React.useState('');
   const lastLogin = new Date(user.timelastmodify);
+  const [notify, banner] = notification.useNotification();
 
-  const updateField = (field, value) => {
+  const cancelUpdate = () => {
+    setModalOpen(null);
+    setEmail('');
+    setConfirmEmail('');
+    setConfirmPassword('');
+    setPassword('');
+    setOldPassword('');
+  };
+  const updateField = (field, payload) => {
     apiUtil.put(
       {
-        url: `api/v1/accounts/${field}`,
-        headers: { [field]: value },
+        url: `/api/v1/accounts/${field}`,
+        headers: payload,
       },
       (error, res) => {
         if (error) {
@@ -28,7 +41,12 @@ export default ({ user, logout, reload }) => {
             })
             .catch(err => console.error(err));
         } else {
-          console.error('Unable to change password.');
+          notify.error({
+            duration: 3,
+            key: 'notification',
+            message: `Unable to update ${field}`,
+            placement: 'top',
+          });
         }
       }
     );
@@ -36,41 +54,58 @@ export default ({ user, logout, reload }) => {
 
   return (
     <>
-      <Modal className="gm_field-change" closeOnDimmerClick open={modalOpen === 'email'} onClose={() => setModalOpen('email')}>
-        <Modal.Header>
-          <Label color="blue" attached="top">
-            Update Email
-          </Label>
-          <Form>
-            <Form.Field>
-              <Input placeholder="new email" value={email} onChange={e => setEmail(e.target.value)} />
-            </Form.Field>
-            <Button negative onClick={() => setModalOpen(null)}>
-              Cancel
-            </Button>
-            <Button primary onClick={() => updateField('email', email)}>
-              Save
-            </Button>
-          </Form>
-        </Modal.Header>
+      {banner}
+      <Modal
+        open={modalOpen === 'email'}
+        onCancel={cancelUpdate}
+        footer={[
+          <Button onClick={cancelUpdate}>Cancel</Button>,
+          <Button
+            disabled={oldPassword.length < 6 || email.length < 6 || email !== confirmEmail}
+            type="primary"
+            onClick={() =>
+              updateField('email', {
+                email,
+                oldpass: oldPassword,
+              })
+            }
+          >
+            Update email
+          </Button>,
+        ]}
+        title="Update Email"
+      >
+        <Row gutter={[8, 8]}>
+          <Input placeholder="new email" value={email} onChange={e => setEmail(e.target.value)} size="large" />
+          <Input placeholder="confirm new email" value={confirmEmail} onChange={e => setConfirmEmail(e.target.value)} size="large" />
+          <Input.Password placeholder="current password" value={oldPassword} onChange={e => setOldPassword(e.target.value)} size="large" />
+        </Row>
       </Modal>
-      <Modal className="gm_field-change" closeOnDimmerClick open={modalOpen === 'password'} onClose={() => setModalOpen(null)}>
-        <Modal.Header>
-          <Label color="blue" attached="top">
-            Update Password
-          </Label>
-          <Form>
-            <Form.Field>
-              <Input maxLength={15} placeholder="new password" value={password} onChange={e => setPassword(e.target.value)} />
-            </Form.Field>
-            <Button negative onClick={() => setModalOpen(null)}>
-              Cancel
-            </Button>
-            <Button primary onClick={() => updateField('password', password)}>
-              Save
-            </Button>
-          </Form>
-        </Modal.Header>
+      <Modal
+        open={modalOpen === 'password'}
+        onCancel={cancelUpdate}
+        footer={[
+          <Button onClick={cancelUpdate}>Cancel</Button>,
+          <Button
+            disabled={oldPassword.length < 6 || password.length < 6 || password !== confirmPassword || oldPassword === password}
+            type="primary"
+            onClick={() =>
+              updateField('password', {
+                newpass: password,
+                oldpass: oldPassword,
+              })
+            }
+          >
+            Update password
+          </Button>,
+        ]}
+        title="Update password"
+      >
+        <Row gutter={[8, 8]}>
+          <Input.Password placeholder="new password" value={password} onChange={e => setPassword(e.target.value)} size="large" />
+          <Input.Password placeholder="confirm new password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} size="large" />
+          <Input.Password placeholder="current password" value={oldPassword} onChange={e => setOldPassword(e.target.value)} size="large" />
+        </Row>
       </Modal>
       <Segment>
         <List>
@@ -105,13 +140,17 @@ export default ({ user, logout, reload }) => {
             ))}
           </Card.Group>
         )}
-        <div className="gm_profile-buttons">
-          <Button onClick={() => setModalOpen('email')}>{user.email ? 'Change' : 'Add'} Email</Button>
-          <Button onClick={() => setModalOpen('password')}>Change Password</Button>
-          <Button floated="right" color="red" onClick={logout}>
+        <Row style={{ marginTop: '8px' }} justify="space-between">
+          <Row gutter={[8, 8]}>
+            <Button style={{ marginRight: '8px' }} onClick={() => setModalOpen('email')}>
+              {user.email ? 'Change' : 'Add'} Email
+            </Button>
+            <Button onClick={() => setModalOpen('password')}>Change Password</Button>
+          </Row>
+          <Button type="dashed" danger onClick={logout}>
             Logout
           </Button>
-        </div>
+        </Row>
       </Segment>
     </>
   );

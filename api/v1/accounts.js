@@ -9,14 +9,24 @@ const { getJWTForAccountId } = require('./utils/accounts');
 
 const validate = (req, res, next) => {
   const token = req.headers.authorization.replace(/^Bearer\s/, '');
-  jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
-    if (!error) {
-      req.jwt = decoded;
-      next();
-    } else {
-      res.status(401).send();
+  jwt.verify(
+    token,
+    process.env.JWT_SECRET,
+    {
+      algorithms: ['HS512'],
+      clockTolerance: 0,
+      ignoreExpiration: false,
+      maxAge: '30h',
+    },
+    (error, decoded) => {
+      if (!error) {
+        req.jwt = decoded;
+        next();
+      } else {
+        res.status(401).send();
+      }
     }
-  });
+  );
 };
 
 router.get('/profile', validate, async (req, res) => {
@@ -154,11 +164,13 @@ router.post('/register', (req, res) => {
 
 router.put('/email', validate, async (req, res) => {
   try {
-    const statement = 'UPDATE accounts SET `email` = ? WHERE id = ?;';
-    const result = await req.app.locals.query(statement, [req.headers.email, req.jwt.id]);
+    const statement = 'UPDATE accounts SET `email` = ? WHERE id = ? AND `password` = PASSWORD(?);';
+    const result = await req.app.locals.query(statement, [req.headers.email, req.jwt.id, req.headers.oldpass]);
     if (result.affectedRows) {
       const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
       res.send(token);
+    } else {
+      res.status(401).send();
     }
   } catch (error) {
     res.status(401).send();
@@ -167,11 +179,13 @@ router.put('/email', validate, async (req, res) => {
 
 router.put('/password', validate, async (req, res) => {
   try {
-    const statement = 'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ?;';
-    const result = await req.app.locals.query(statement, [req.headers.password, req.jwt.id]);
+    const statement = 'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ? AND `password` = PASSWORD(?);';
+    const result = await req.app.locals.query(statement, [req.headers.newpass, req.jwt.id, req.headers.oldpass]);
     if (result.affectedRows) {
       const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
       res.send(token);
+    } else {
+      res.status(401).send();
     }
   } catch (error) {
     res.status(401).send();
