@@ -44,15 +44,15 @@ module.exports = {
         { rule: 'Pos Hacking / Speed Hacking', consequence: 'Banned' },
         {
           rule: 'Harassment',
-          consequence: '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned',
+          consequence: 'Staff Discretion',
         },
         {
           rule: 'Navmesh Abuse',
-          consequence: '1st-3rd Violation: Homepointed\n4th Violation: 2 Week Suspension\n5th Violation: 1 Month Suspension',
+          consequence: 'Staff Discretion',
         },
         {
           rule: 'Intentional MPK',
-          consequence: '1st Violation: 2 Week Suspension\n2nd Violation: 1 Month Suspension\n3rd Violation: 3 Month Suspension\n4th Violation: Banned\n',
+          consequence: 'Staff Discretion',
         },
         {
           rule: 'RMT (Buying and Selling)',
@@ -60,12 +60,11 @@ module.exports = {
         },
         {
           rule: 'Too many characters online',
-          consequence: '1st Violation: Warning\n2nd Violation: 2 Week Suspension\n3rd Violation: 2 Month Suspension\n4th Violation: Banned\n',
+          consequence: 'Staff Discretion',
         },
         {
           rule: 'Gardening on more than 3 characters',
-          consequence:
-            '1st Violation: Warning and emptied pots\n2nd Violation: 1 Month Suspension and emptied pots\n3rd Violation: 3 Month Suspension and emptied pots\n4th Violation: Banned\n',
+          consequence: 'Staff Discretion',
         },
         {
           rule: 'Severe Exploits',
@@ -73,7 +72,7 @@ module.exports = {
         },
         {
           rule: 'Inappropriate Character Names',
-          consequence: 'Randomly Assigned Character Name',
+          consequence: 'Staff Discretion',
         },
       ],
     },
@@ -102,10 +101,6 @@ module.exports = {
         },
         { item: 'AuctionHelper / Auction House assistants' },
         { item: 'Multisend / Servo' },
-        {
-          item: 'Minimap and other map overlays that interact with the world  (Show NPCs, players, etc)',
-        },
-        { item: 'Allmaps' },
         {
           item: 'Scripts ran unattended. (If a GM speaks to you and you do not reply within a certain time frame, you may be jailed.)',
         },
@@ -154,14 +149,14 @@ module.exports = {
       url: 'https://discord.gg/S3EAWr2Jec',
       image: 'https://vignette.wikia.nocookie.net/ffxi/images/0/08/Flag.jpg/revision/latest?cb=20060211183144',
       header: 'Eden Discord',
-      description: 'Join us on Discord for technical support, up-to-date annoucements, community events, memes, live chat with staff, and more.',
+      description: 'Join us on Discord for technical support, up-to-date announcements, community events, memes, live chat with staff, and more.',
     },
     {
       url: 'http://classicffxi.wikia.com/wiki/Classic_FFXI_community',
       image: 'https://avatars2.githubusercontent.com/u/1171011?s=200&v=4',
       header: 'Eden Wiki',
       description:
-        'This is a player led wiki open for everyone to edit. Although it is specific to Eden, it may have incorrect information due to the fact that it is not an official source of information.',
+        'This is a player-led wiki open for everyone to edit. Although it is specific to Eden, it may have incorrect information due to the fact that it is not an official source of information.',
     },
     {
       url: 'https://github.com/EdenServer/community/issues',
