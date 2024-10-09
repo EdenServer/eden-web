@@ -36,13 +36,10 @@ function install(props) {
         <Col>
           <InfoDisplay title="Account Registration">
             <Card.Text>
-              The bootloader (black login screen) supports registering an account. If you are prompted for a registration code, one can be obtained from players
-              who have accumulated 120 hours (5 days) of playtime and whose current job is level 15 or greater. Make sure you have Eden completely installed
-              before requesting one. The easiest way to get a registration code is to join&nbsp;
+              The bootloader (black login screen) supports registering an account. Make sure to join&nbsp;
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
-                our Discord
+                our Discord server if you have any questions.
               </a>
-              &nbsp; and request a code in the #new-players channel.
             </Card.Text>
           </InfoDisplay>
         </Col>
@@ -54,7 +51,7 @@ function install(props) {
             <Card.Text>
               You will need to download&nbsp;
               <a href={info.bootloader} rel="noopener noreferrer" target="_blank">
-                our modified bootloader&nbsp;.
+                our bootloader&nbsp;.
               </a>
               You may want to visit our tech-support channel on&nbsp;
               <a href={info.discord} rel="noopener noreferrer" target="_blank">
