@@ -157,7 +157,6 @@ router.get('/config', async (req, res) => {
 });
 
 router.get('/news', async (req, res) => {
-  console.log(req.originalUrl);
   const cache = await req.app.locals.cache.fetch(
     {
       key: req.originalUrl,
