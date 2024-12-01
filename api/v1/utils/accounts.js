@@ -49,6 +49,29 @@ const getJWTForAccountId = async (query, accid) => {
   }
 };
 
+const validateJWT = (req, res, next) => {
+  const token = req.headers.authorization.replace(/^Bearer\s/, '');
+  jwt.verify(
+    token,
+    process.env.JWT_SECRET,
+    {
+      algorithms: ['HS512'],
+      clockTolerance: 0,
+      ignoreExpiration: false,
+      maxAge: '30h',
+    },
+    (error, decoded) => {
+      if (!error) {
+        req.jwt = decoded;
+        next();
+      } else {
+        res.status(401).send();
+      }
+    }
+  );
+};
+
 module.exports = {
   getJWTForAccountId,
+  validateJWT,
 };

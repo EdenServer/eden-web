@@ -59,4 +59,8 @@ export default class Cache {
       return cacheEntry.value;
     }
   }
+
+  clear(key: string): void {
+    delete this.store[key];
+  }
 }

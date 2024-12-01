@@ -8,7 +8,7 @@ const About = () => {
     <>
       <Row className="mb-3">
         <Col>
-          <InfoDisplay title={"What's Different between Eden, other private servers, and retail?"}>
+          <InfoDisplay title="What's Different between Eden, other private servers, and retail?">
             <Card.Text>
               Eden was created in part to recreate the era experience as close as possible. We define era as anything that happened up to and including the
               September 2008 patch. While FFXI is still a great game today, it is vastly different than it was in 2007/2008. We don't aim to take the place of
