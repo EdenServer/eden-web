@@ -82,7 +82,7 @@ const News = () => {
               </span>
             }
           >
-            <Card.Text className="text-justify">
+            <Card.Text className="text-justify gm_news_limit_img_max_width">
               <ReactMarkdown>{content}</ReactMarkdown>
             </Card.Text>
           </InfoDisplay>

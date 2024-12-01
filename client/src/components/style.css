@@ -83,6 +83,10 @@ body {
   margin-bottom: 0;
 }
 
+.gm_news_limit_img_max_width img {
+  max-width: 100%;
+}
+
 /* Yellbox */
 
 .gm_yell-container {
