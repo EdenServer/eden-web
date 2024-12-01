@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const privileges = [
   'PLAYER', // 1
-  'UNUSED1', // 2
+  'WEB_SCRIBE', // 2
   'UNUSED2', // 4
   'UNUSED3', // 8
   'UNUSED4', // 16
