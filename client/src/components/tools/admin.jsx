@@ -26,6 +26,7 @@ function Admin() {
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           <Button
+            disabled={author.trim().length === 0 || title.trim().length === 0 || markdown.trim().length === 0}
             primary
             onClick={async () => {
               await apiUtil.post(
