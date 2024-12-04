@@ -6,7 +6,7 @@ CREATE TABLE `web_posts` (
   `author` varchar(16) NOT NULL,
   `title` varchar(100) NOT NULL,
   `markdown` TEXT NOT NULL,
-  `expiration` timestamp,
+  `expiration` timestamp NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
