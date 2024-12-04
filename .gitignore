@@ -5,3 +5,4 @@ build
 sql/queries/*
 !sql/queries/samples
 !sql/queries/README.md
+.DS_Store

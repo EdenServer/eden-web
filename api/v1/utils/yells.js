@@ -10,6 +10,7 @@ const hexToAscii = str => {
   return strOut;
 };
 
+// prettier-ignore
 const hexMap = {
   '0': '30',
   '1': '31',

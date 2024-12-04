@@ -5,31 +5,9 @@ const { Router } = require('express');
 const router = Router();
 
 const { formatAvatar, formatJobString, titleIdToString } = require('./utils/chars');
-const { getJWTForAccountId } = require('./utils/accounts');
+const { getJWTForAccountId, validateJWT } = require('./utils/accounts');
 
-const validate = (req, res, next) => {
-  const token = req.headers.authorization.replace(/^Bearer\s/, '');
-  jwt.verify(
-    token,
-    process.env.JWT_SECRET,
-    {
-      algorithms: ['HS512'],
-      clockTolerance: 0,
-      ignoreExpiration: false,
-      maxAge: '30h',
-    },
-    (error, decoded) => {
-      if (!error) {
-        req.jwt = decoded;
-        next();
-      } else {
-        res.status(401).send();
-      }
-    }
-  );
-};
-
-router.get('/profile', validate, async (req, res) => {
+router.get('/profile', validateJWT, async (req, res) => {
   try {
     const statement = `SELECT *, IF(accounts_sessions.charid IS NULL, 0, 1) AS \`online\` FROM chars
             JOIN char_stats ON chars.charid = char_stats.charid
@@ -162,7 +140,7 @@ router.post('/register', (req, res) => {
   }
 });
 
-router.put('/email', validate, async (req, res) => {
+router.put('/email', validateJWT, async (req, res) => {
   try {
     const statement = 'UPDATE accounts SET `email` = ? WHERE id = ? AND `password` = PASSWORD(?);';
     const result = await req.app.locals.query(statement, [req.headers.email, req.jwt.id, req.headers.oldpass]);
@@ -177,7 +155,7 @@ router.put('/email', validate, async (req, res) => {
   }
 });
 
-router.put('/password', validate, async (req, res) => {
+router.put('/password', validateJWT, async (req, res) => {
   try {
     const statement = 'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ? AND `password` = PASSWORD(?);';
     const result = await req.app.locals.query(statement, [req.headers.newpass, req.jwt.id, req.headers.oldpass]);

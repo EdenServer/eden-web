@@ -1,5 +1,3 @@
-const parseMD = require('parse-md').default;
-const fs = require('fs');
 const { Router } = require('express');
 
 const router = Router();
@@ -8,6 +6,9 @@ const axios = require('axios');
 const scanner = require('portscanner');
 
 const { getYells } = require('./utils/yells');
+const { validateJWT } = require('./utils/accounts');
+
+const MAX_NUMBER_OF_POSTS = 5;
 
 router.get('/status', async (req, res) => {
   try {
@@ -156,39 +157,72 @@ router.get('/config', async (req, res) => {
 });
 
 router.get('/news', async (req, res) => {
-  const maxAmountOfPosts = 5;
-  const newsFolder = './news';
-
   const cache = await req.app.locals.cache.fetch(
     {
       key: req.originalUrl,
       interval: 300000, // 5 minutes
     },
-    () => {
-      let posts = [];
-      let currentDate = new Date();
-
-      const files = fs.readdirSync(newsFolder);
-      files.forEach(file => {
-        const fileContents = fs.readFileSync(`${newsFolder}/${file}`, 'utf8');
-        let post = parseMD(fileContents);
-        let date = Date.parse(post.metadata.date);
-
-        if (date > currentDate) {
-          // news that's dated in the future shouldn't show up
-          return;
-        }
-
-        posts.push(post);
-      });
-
-      posts.sort((p1, p2) => p2.metadata.date - p1.metadata.date);
-      posts = posts.slice(0, maxAmountOfPosts);
-      return posts;
+    async () => {
+      const statement = `
+        SELECT post_id, DATE_FORMAT(date, '%Y-%m-%dT%T.000Z') AS date, author, title, markdown
+        FROM web_posts
+        WHERE (expiration IS NULL OR expiration > UTC_TIMESTAMP) AND date < UTC_TIMESTAMP AND deleted = 0
+        ORDER BY date DESC
+        LIMIT ?;
+      `;
+      const posts = await req.app.locals.query(statement, [MAX_NUMBER_OF_POSTS]);
+      return posts.map(post => ({
+        content: post.markdown,
+        metadata: {
+          id: post.post_id,
+          title: post.title,
+          author: post.author,
+          date: post.date,
+        },
+      }));
     }
   );
 
   res.send(cache);
+});
+
+router.post('/write', validateJWT, async (req, res) => {
+  try {
+    if (req.jwt.privileges.includes('WEB_SCRIBE')) {
+      const { author, date, expiration, title, markdown } = req.body;
+      const statement = 'INSERT INTO web_posts (`author_id`,`date`,`author`,`title`,`markdown`,`expiration`) VALUES (?, ?, ?, ?, ?, ?)';
+      const results = await req.app.locals.query(statement, [req.jwt.id, date, author, title, markdown, expiration]);
+      if (results.affectedRows) {
+        req.app.locals.cache.clear('/api/v1/misc/news');
+        res.send();
+      } else {
+        res.status(500).send();
+      }
+    } else {
+      res.status(401).send();
+    }
+  } catch {
+    res.status(500).send();
+  }
+});
+
+router.post('/trash', validateJWT, async (req, res) => {
+  try {
+    if (req.jwt.privileges.includes('WEB_SCRIBE')) {
+      const statement = 'UPDATE web_posts SET deleted = 1 WHERE post_id = ?';
+      const results = await req.app.locals.query(statement, [req.body.id]);
+      if (results.affectedRows) {
+        req.app.locals.cache.clear('/api/v1/misc/news');
+        res.send();
+      } else {
+        res.status(500).send();
+      }
+    } else {
+      res.status(401).send();
+    }
+  } catch {
+    res.status(500).send();
+  }
 });
 
 module.exports = router;

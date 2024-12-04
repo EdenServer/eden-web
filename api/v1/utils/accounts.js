@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const privileges = [
   'PLAYER', // 1
-  'UNUSED1', // 2
+  'WEB_SCRIBE', // 2
   'UNUSED2', // 4
   'UNUSED3', // 8
   'UNUSED4', // 16
@@ -49,6 +49,29 @@ const getJWTForAccountId = async (query, accid) => {
   }
 };
 
+const validateJWT = (req, res, next) => {
+  const token = req.headers.authorization.replace(/^Bearer\s/, '');
+  jwt.verify(
+    token,
+    process.env.JWT_SECRET,
+    {
+      algorithms: ['HS512'],
+      clockTolerance: 0,
+      ignoreExpiration: false,
+      maxAge: '30h',
+    },
+    (error, decoded) => {
+      if (!error) {
+        req.jwt = decoded;
+        next();
+      } else {
+        res.status(401).send();
+      }
+    }
+  );
+};
+
 module.exports = {
   getJWTForAccountId,
+  validateJWT,
 };
