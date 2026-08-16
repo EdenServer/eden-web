@@ -15,7 +15,7 @@ const loadItems = async query => {
                 IF(u.itemid IS NOT NULL, 1, 0) AS isUsable,
                 IF(w.itemid IS NOT NULL, 1, 0) AS isWeapon
             FROM item_basic AS b
-            LEFT JOIN item_armor AS a ON b.itemid  = a.itemid
+            LEFT JOIN item_equipment AS a ON b.itemid  = a.itemid
             LEFT JOIN item_furnishing AS f ON b.itemid = f.itemid
             LEFT JOIN item_latents AS l ON b.itemid = l.itemid
             LEFT JOIN item_mods AS m ON b.itemid = m.itemid

@@ -54,8 +54,10 @@ export default class Cache {
       cacheEntry.value = await cacheEntry.update();
       cacheEntry.nextUpdate = now + cacheEntry.interval;
       this.store[key] = cacheEntry;
+      // console.log("Returning", cacheEntry.value)
       return cacheEntry.value;
     } else {
+      // console.log("Returning", cacheEntry.value)
       return cacheEntry.value;
     }
   }

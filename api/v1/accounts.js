@@ -1,3 +1,4 @@
+const argon2 = require('argon2');
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
 const { Router } = require('express');
@@ -162,16 +163,41 @@ router.post('/register', (req, res) => {
   }
 });
 
+/**
+ * Helper function to verify a password.
+ * Checks Argon2id first, then falls back to the legacy SQL PASSWORD() function.
+ */
+async function verifyPassword(query, userId, plainTextPassword, storedHash) {
+  // Try Argon2id verification first
+  try {
+    if (await argon2.verify(storedHash, plainTextPassword)) {
+      return true;
+    }
+  } catch (err) {}
+
+  // Fallback to SQL PASSWORD() verification
+  const statement = 'SELECT 1 FROM accounts WHERE id = ? AND `password` = PASSWORD(?) LIMIT 1;';
+  const results = await query(statement, [userId, plainTextPassword]);
+
+  return results.length > 0;
+}
+
 router.put('/email', validate, async (req, res) => {
   try {
-    const statement = 'UPDATE accounts SET `email` = ? WHERE id = ? AND `password` = PASSWORD(?);';
-    const result = await req.app.locals.query(statement, [req.headers.email, req.jwt.id, req.headers.oldpass]);
-    if (result.affectedRows) {
-      const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
-      res.send(token);
-    } else {
-      res.status(401).send();
-    }
+    const { email, oldpass } = req.headers;
+    const userId = req.jwt.id;
+
+    const users = await req.app.locals.query('SELECT password FROM accounts WHERE id = ?', [userId]);
+    if (!users.length) return res.status(401).send();
+
+    const isValid = await verifyPassword(req.app.locals.query, userId, oldpass, users[0].password);
+    if (!isValid) return res.status(401).send();
+
+    const statement = 'UPDATE accounts SET `email` = ? WHERE id = ?;';
+    await req.app.locals.query(statement, [email, userId]);
+
+    const token = await getJWTForAccountId(req.app.locals.query, userId);
+    res.send(token);
   } catch (error) {
     res.status(401).send();
   }
@@ -179,14 +205,23 @@ router.put('/email', validate, async (req, res) => {
 
 router.put('/password', validate, async (req, res) => {
   try {
-    const statement = 'UPDATE accounts SET `password` = PASSWORD(?) WHERE id = ? AND `password` = PASSWORD(?);';
-    const result = await req.app.locals.query(statement, [req.headers.newpass, req.jwt.id, req.headers.oldpass]);
-    if (result.affectedRows) {
-      const token = await getJWTForAccountId(req.app.locals.query, req.jwt.id);
-      res.send(token);
-    } else {
-      res.status(401).send();
-    }
+    const { newpass, oldpass } = req.headers;
+    const userId = req.jwt.id;
+
+    const users = await req.app.locals.query('SELECT password FROM accounts WHERE id = ?', [userId]);
+    if (!users.length) return res.status(401).send();
+
+    const isValid = await verifyPassword(req.app.locals.query, userId, oldpass, users[0].password);
+    if (!isValid) return res.status(401).send();
+
+    // Hash the new password using Argon2id to migrate away from SQL PASSWORD()
+    const newArgon2Hash = await argon2.hash(newpass, { type: argon2.argon2id });
+
+    const statement = 'UPDATE accounts SET `password` = ? WHERE id = ?;';
+    await req.app.locals.query(statement, [newArgon2Hash, userId]);
+
+    const token = await getJWTForAccountId(req.app.locals.query, userId);
+    res.send(token);
   } catch (error) {
     res.status(401).send();
   }
@@ -195,10 +230,17 @@ router.put('/password', validate, async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { user, pass } = req.headers;
-    const statement = 'SELECT * FROM accounts WHERE `login` = ? AND `password` = PASSWORD(?) AND status = 1;';
-    const results = await req.app.locals.query(statement, [user, pass]);
-    if (results.length === 1) {
-      const token = await getJWTForAccountId(req.app.locals.query, results[0].id);
+
+    const statement = 'SELECT id, password FROM accounts WHERE `login` = ? AND status = 1;';
+    const users = await req.app.locals.query(statement, [user]);
+    if (users.length !== 1) return res.status(401).send();
+
+    const dbUser = users[0];
+
+    const isValid = await verifyPassword(req.app.locals.query, dbUser.id, pass, dbUser.password);
+
+    if (isValid) {
+      const token = await getJWTForAccountId(req.app.locals.query, dbUser.id);
       res.send(token);
     } else {
       res.status(401).send();
