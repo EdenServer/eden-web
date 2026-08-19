@@ -223,7 +223,10 @@ router.put('/password', validate, async (req, res) => {
     if (!isValid) return res.status(401).send();
 
     // Hash the new password using Argon2id to migrate away from SQL PASSWORD()
-    const newArgon2Hash = await argon2.hash(newpass, argon2Options);
+    let newArgon2Hash = await argon2.hash(newpass, argon2Options);
+
+    // Ensure the parameter ordering is what's expected from the login server
+    newArgon2Hash = newArgon2Hash.replace(',p=1,t=2', ',t=2,p=1');
 
     const statement = 'UPDATE accounts SET `password` = ? WHERE id = ?;';
     await req.app.locals.query(statement, [newArgon2Hash, userId]);
