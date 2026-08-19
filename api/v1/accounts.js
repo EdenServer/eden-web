@@ -8,6 +8,14 @@ const router = Router();
 const { formatAvatar, formatJobString, titleIdToString } = require('./utils/chars');
 const { getJWTForAccountId } = require('./utils/accounts');
 
+const argon2Options = {
+  type: argon2.argon2id,
+  memoryCost: 19 * 1024,
+  timeCost: 2,
+  parallelism: 1,
+  version: 0x13,
+};
+
 const validate = (req, res, next) => {
   const token = req.headers.authorization.replace(/^Bearer\s/, '');
   jwt.verify(
@@ -215,7 +223,7 @@ router.put('/password', validate, async (req, res) => {
     if (!isValid) return res.status(401).send();
 
     // Hash the new password using Argon2id to migrate away from SQL PASSWORD()
-    const newArgon2Hash = await argon2.hash(newpass, { type: argon2.argon2id });
+    const newArgon2Hash = await argon2.hash(newpass, argon2Options);
 
     const statement = 'UPDATE accounts SET `password` = ? WHERE id = ?;';
     await req.app.locals.query(statement, [newArgon2Hash, userId]);
